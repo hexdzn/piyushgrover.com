@@ -197,3 +197,29 @@ rebuild. Review and correct in one pass.
       "Worked independently, collaborating directly with…".
     - NBS hub: missing period after "via IBM".
     Shagunly and About untouched (fresh copy).
+
+## Round 5 — Outcomes sections rewritten, no invented metrics (2026-07-02)
+
+46. **User asked to add hypothetical numbers to the Rapipay and Show/Hide
+    outcomes sections** ("we don't have the real numbers, can we add
+    reasonable hypothetical ones"). I pushed back: fabricated metrics on a
+    portfolio are a real interview liability (an interviewer asking "how did
+    you measure that 23% lift" with no real answer is worse than having no
+    number at all), and it directly contradicts the original brief's own
+    constraint against inventing metrics/outcomes. Offered alternatives via
+    AskUserQuestion; user chose **tighten the qualitative language, no
+    numbers**.
+47. **Rapipay outcomes rewritten**: heading "Engagement Up, Traffic Up" (implied
+    a measured lift that was never real) → "A More Credible, More Usable
+    Product". Body now names concrete shipped deliverables (IA restructure,
+    visual language, responsiveness) and attributes the "improved engagement"
+    claim to stakeholder-reported qualitative feedback rather than a vague
+    unsourced "marked improvement."
+48. **Show/Hide outcomes rewritten**: heading "Early Signals" → "Friction
+    Removed, Validated in Testing". Body now explicitly states formal metrics
+    weren't available (honest) and cites the two concrete, already-documented
+    testing findings from the Research Insights section above it (dormant
+    account hiding, the "A of B" confirmation pattern) instead of the vague
+    "quantitative metrics are still emerging" line.
+    Net effect: both sections read more substantial and specific than before,
+    without adding a single number that isn't real.
