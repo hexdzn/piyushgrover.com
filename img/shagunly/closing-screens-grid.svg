@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img" aria-label="Closing shot — a grid of 4-6 final polished screens, or a photo of the app in use at an actual family occasion if available">
+  <rect x="0" y="0" width="1000" height="1000" fill="#F0F0F0"/>
+  <rect x="4" y="4" width="992" height="992" fill="none" stroke="#B0B0B0" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="976" y="44" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#B0B0B0">1000&#215;1000</text>
+  <text text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#888888">
+    <tspan x="500" y="455">Closing shot — a grid of 4-6 final polished</tspan>
+    <tspan x="500" y="500">screens, or a photo of the app in use at an</tspan>
+    <tspan x="500" y="545">actual family occasion if available</tspan>
+  </text>
+  <text x="500" y="968" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#AAAAAA" letter-spacing="1">PLACEHOLDER &#8212; replace with real screenshot</text>
+</svg>

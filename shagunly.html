@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shagunly | Piyush Grover — Portfolio</title>
+  <meta name="description" content="Shagunly — a vibe-coded iOS app for tracking shagun gift exchanges. Product design, UX and AI-directed engineering, end-to-end.">
+  <link rel="icon" href="img/shared/Memoji1.png">
+  <link rel="preload" href="fonts/SpaceGrotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/main.css">
+  <script>
+    (function () {
+      var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+  <div class="page-curtain"></div>
+
+  <header class="site-head">
+    <a class="brand" href="index.html"><img src="img/shared/Memoji1.png" alt="" width="30" height="30">Piyush Grover</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Work</a>
+      <a href="playground.html">Not Work</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="head-actions">
+      <button class="theme-toggle" aria-label="Toggle light/dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.5 4.5l1.8 1.8M17.7 17.7l1.8 1.8M19.5 4.5l-1.8 1.8M6.3 17.7l-1.8 1.8"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+  <nav class="menu-overlay" aria-label="Mobile">
+    <a class="menu-link" href="index.html">Work <small>01</small></a>
+    <a class="menu-link" href="playground.html">Not Work <small>02</small></a>
+    <a class="menu-link" href="about.html">About <small>03</small></a>
+    <div class="menu-socials">
+      <a href="https://www.instagram.com/piyushgrover_/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/piyushgroverdzn/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.behance.net/piyushgrover" target="_blank" rel="noopener">Behance</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="cs-hero">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>iOS — Personal Product · TestFlight Beta</p>
+        <h1 class="display-lg" data-reveal>Shagunly — Tracking Tradition, One Gift at a Time</h1>
+        <p class="lede" data-reveal>A vibe-coded iOS app — designed &amp; directed by me, built in collaboration with Claude (Anthropic).</p>
+        <dl class="meta-grid" data-reveal>
+          <div><dt>Role</dt><dd>Product Designer &amp; Director (end-to-end: research, UX, visual design, and AI-directed engineering)</dd></div>
+          <div><dt>Platform</dt><dd>iOS (native, SwiftUI) — originally a PWA</dd></div>
+          <div><dt>Status</dt><dd>Live in TestFlight beta, external/family testing</dd></div>
+          <div><dt>Backend</dt><dd>Supabase</dd></div>
+          <div><dt>Build method</dt><dd>Vibe coded — 100% AI-directed development, zero hand-written code</dd></div>
+          <div><dt>Timeline</dt><dd>Ongoing, iterative builds (Build 1 → Build 3 in progress)</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="wrap" data-reveal>
+      <figure class="fig" style="margin:0;">
+        <img src="img/shagunly/hero-shot.svg" alt="Hero shot — app icon + 2-3 key screens on an iPhone mockup, warm festive background (marigold/gold tones nod to Indian celebrations)" fetchpriority="high">
+      </figure>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">01</span><span class="eyebrow" style="margin:0;">Overview</span></div>
+            <h2>A Culturally-Native Ledger</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>Shagunly is an iOS app for tracking <em>shagun</em> — the cash and gift exchanges that are a core part of Indian weddings, festivals, and birthdays. It replaces the mental math, scattered notebooks, and "who gave what" guesswork with a simple, culturally-native ledger.</p>
+            <p>I designed it, made every product and UX decision, and directed its entire technical build without writing a line of code myself — using Claude as an AI engineering partner. This case study covers both halves of that story: the design thinking, and what it actually looks like to <em>vibe code</em> a real product from concept to TestFlight.</p>
+          </div>
+        </div>
+        <figure class="fig" data-reveal>
+          <img src="img/shagunly/before-after-notebook.svg" alt="Before/after — a photo of a handwritten shagun notebook/register next to a clean screenshot of the app's entry list" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">02</span><span class="eyebrow" style="margin:0;">The Problem</span></div>
+            <h2>A Real, Ongoing Social Obligation</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>At Indian occasions — weddings, Diwali, birthdays — cash and gifts change hands constantly, and tracking who gave what (and what's owed in return) is a real, ongoing social obligation. Families still do this with pen-and-paper registers or fragmented memory. There was no lightweight, culturally-specific tool built for this — generic expense trackers don't understand the <em>shagun</em> mental model of reciprocity, occasions, and relationships.</p>
+            <p>This was a problem I understood firsthand, which shaped both the product's name (a playful spin on "shagun") and its tone throughout.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">03</span><span class="eyebrow" style="margin:0;">Design Process</span></div>
+            <h2>Insight-Driven, Then a Hard Platform Call</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <h3 style="margin-top:0;">Research &amp; Framing</h3>
+            <p>Rather than a formal research phase, this was insight-driven design — grounded in direct, lived experience of the problem and validated early with family as real users. That closeness to the user became a strength: every design decision could be pressure-tested against "would my own family actually use this at a wedding?"</p>
+            <h3>From PWA to Native</h3>
+            <p>Shagunly began life as <strong>Sagan Tracker</strong>, a progressive web app. It worked, but a PWA has real ceilings for this use case — no App Store presence, weaker offline reliability, and a "second-class" feel for something meant to be used mid-celebration, one-handed, often with spotty venue wifi.</p>
+            <p>I made the call to rebuild native in SwiftUI. That's a significant product decision — trading faster iteration for a proper install, TestFlight distribution, and a path to the App Store — and it's the kind of build-vs-rebuild tradeoff any product designer has to own.</p>
+          </div>
+        </div>
+        <figure class="fig" data-reveal>
+          <img src="img/shagunly/pwa-vs-native.svg" alt="Simple two-column comparison graphic — PWA: Sagan Tracker vs Native: Shagunly with 3-4 contrast points each" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">04</span><span class="eyebrow" style="margin:0;">Key Screens &amp; Flows</span></div>
+            <h2>Calm by Default, Fast Mid-Celebration</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <ul>
+              <li><strong>Entry list (Root view)</strong> — the day-to-day home screen, scannable at a glance</li>
+              <li><strong>Entry detail</strong> — tap an entry for a clean read-only view; a pencil icon surfaces editing, keeping the default state calm and low-friction</li>
+              <li><strong>Add/edit entry</strong> — fast capture during a live event, minimal required fields</li>
+              <li><strong>Occasions</strong> — entries are grouped by real-world context (a wedding, Diwali, a birthday), not just a flat list</li>
+              <li><strong>Auth</strong> — email/password with a forgot-password flow; Apple/Google Sign-In designed and scaffolded, gated on Apple Developer enrollment</li>
+            </ul>
+          </div>
+        </div>
+        <figure class="fig" data-reveal style="max-width:520px;margin-left:auto;margin-right:auto;">
+          <img src="img/shagunly/screen-flow-tap-to-edit.svg" alt="Annotated screenshot flow — 3-4 screens showing the tap-to-detail-to-edit interaction pattern" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">05</span><span class="eyebrow" style="margin:0;">Design Principles</span></div>
+            <h2>Principles I Held To</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <ul>
+              <li><strong>Calm by default, powerful on demand</strong> — read-only detail views with edit as a deliberate second step, not the default</li>
+              <li><strong>Culturally specific copy</strong> — placeholder text like <em>"Diwali, a wedding…"</em> instead of generic examples, so the product feels made <em>for</em> this context, not adapted to it</li>
+              <li><strong>Free first, monetize later</strong> — I made the call to strip the paywall entirely during the validation phase (premium logic hardcoded on, payment provider removed) so nothing gets in the way of real usage feedback</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">06</span><span class="eyebrow" style="margin:0;">Building It</span></div>
+            <h2>The Vibe Coding Approach</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>This is the part of the story most portfolios don't tell, and it's increasingly the part hiring managers ask about.</p>
+            <p>I have no coding background. Every screen, flow, and backend interaction in Shagunly was built by directing Claude — describing intent, reviewing output, and iterating — the same way I'd direct an engineer, but faster and entirely in my own hands.</p>
+            <h3>How I actually worked</h3>
+            <ul>
+              <li>I thought in <strong>components and states</strong>, the same mental model as Figma layers and variants — "this view has a read state and an edit state," not "write a SwiftUI struct"</li>
+              <li>Every change followed the same loop: <strong>describe the change → review the code → paste it into Xcode → build → test on my own device</strong></li>
+              <li>Changes were batched and reviewed as complete file overwrites, not tiny patches — closer to reviewing a full component than debugging a line</li>
+            </ul>
+            <h3>What this actually produced</h3>
+            <p>Not just prototypes:</p>
+            <ul>
+              <li>A working auth system with a real forgot-password flow via Supabase</li>
+              <li>A new read/edit view architecture (<code>EntryDetailView</code>) built and wired into the app's root navigation</li>
+              <li>A backend on Supabase, with admin accounts, a dedicated reviewer test account, and a hosted privacy policy for App Store compliance</li>
+              <li>A build that <strong>passed Apple's Beta App Review</strong> and is live on TestFlight today</li>
+            </ul>
+          </div>
+        </div>
+        <figure class="fig" data-reveal>
+          <img src="img/shagunly/vibe-coding-workflow.svg" alt="A clean workflow diagram — Design intent → AI-directed build → Test on device → Ship, styled as a simple 4-step process graphic" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">07</span><span class="eyebrow" style="margin:0;">Engineering Judgment</span></div>
+            <h2>Real Engineering Problems, Solved Without Writing Code</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>Vibe coding doesn't mean skipping the hard parts — it means directing through them:</p>
+            <ul>
+              <li><strong>Signing &amp; distribution</strong> — learning to catch a free "Personal Team" signing config before it silently blocked App Store distribution</li>
+              <li><strong>Syntax integrity</strong> — instituting a mandatory validation step before every push, after one missing brace silently broke every button on a page</li>
+              <li><strong>Caching</strong> — versioning the service worker on every deploy during the PWA phase, after stale caches masked real bugs during testing</li>
+              <li><strong>Distribution targets</strong> — learning the difference between "TestFlight Internal Only" and full App Store Connect distribution, which determines whether external testers can even access a build</li>
+            </ul>
+            <p class="callout">These aren't things I coded — they're things I had to understand well enough to direct, which is arguably the more transferable skill.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">08</span><span class="eyebrow" style="margin:0;">Testing &amp; Validation</span></div>
+            <h2>Real Testers, Real Feedback Loop</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>Shagunly is live on TestFlight with family as real, external testers — not synthetic QA. Build 2 cleared Apple's Beta App Review process and is currently gathering usage feedback, which is directly shaping Build 3 (the read/edit view split and forgot-password flow both came out of that feedback loop).</p>
+          </div>
+        </div>
+        <figure class="fig" data-reveal>
+          <img src="img/shagunly/testflight-feedback.svg" alt="Screenshot of the TestFlight listing/build status, or a mocked feedback → shipped callout showing one piece of tester feedback next to the feature it produced" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">09</span><span class="eyebrow" style="margin:0;">What's Next</span></div>
+            <h2>The Road to the App Store</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <ul>
+              <li><strong>Family grouping</strong> — shared visibility into occasions across a household</li>
+              <li><strong>Dark mode</strong> — a deliberately scoped, large effort given the size of the existing color system</li>
+              <li><strong>Phone OTP sign-in</strong> — for a lower-friction, more India-familiar auth pattern</li>
+              <li><strong>Account deletion flow</strong> — required for App Store submission</li>
+              <li><strong>App Store screenshots, listing, and public launch</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">10</span><span class="eyebrow" style="margin:0;">Reflection</span></div>
+            <h2>Product Judgment, End to End</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>Shagunly is as much a case study in <strong>product judgment</strong> as it is in interface design. The interesting decisions weren't about corner radii — they were things like: rebuild native or stay web? Strip the paywall or protect revenue during validation? Ship a calm read-only view or a more powerful but noisier editable one by default?</p>
+            <p>Directing an AI to build the app didn't replace design thinking — it removed the traditional bottleneck between having a decision and seeing it live in a real, installable product that real people could test. It let me stay end-to-end: the same person who decided <em>what</em> to build also shipped <em>how</em> it works.</p>
+            <p class="muted">Shagunly is currently in closed beta on TestFlight. <a href="mailto:piyushggrover@gmail.com" style="color:var(--accent);">Request access →</a></p>
+          </div>
+        </div>
+        <figure class="fig" data-reveal>
+          <img src="img/shagunly/closing-screens-grid.svg" alt="Closing shot — a grid of 4-6 final polished screens, or a photo of the app in use at an actual family occasion if available" loading="lazy">
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pn-nav" aria-label="Project navigation">
+    <a href="linkedin-commission.html">
+      <span class="pn-dir">← Previous Project</span>
+      <span class="pn-title">LinkedIn — Commission Calculation</span>
+    </a>
+    <a href="nbs.html">
+      <span class="pn-dir">Next Project →</span>
+      <span class="pn-title">Nationwide Building Society</span>
+    </a>
+  </nav>
+
+  <footer class="site-foot" style="margin-top:0;">
+    <div class="wrap foot-top">
+      <div data-reveal>
+        <div class="foot-name">Piyush Grover</div>
+        <p class="foot-made">Made with Love ❤️</p>
+      </div>
+      <div class="foot-cols" data-reveal>
+        <div>
+          <h5>Menu</h5>
+          <ul>
+            <li><a href="index.html">Work</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mailto:piyushggrover@gmail.com">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Social</h5>
+          <ul>
+            <li><a href="https://www.instagram.com/piyushgrover_/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/in/piyushgroverdzn/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.behance.net/piyushgrover" target="_blank" rel="noopener">Behance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© <span data-year></span> Piyush Grover</span>
+      <span>Designing fluid and functional interfaces</span>
+    </div>
+  </footer>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

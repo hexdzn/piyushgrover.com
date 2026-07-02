@@ -155,3 +155,20 @@ rebuild. Review and correct in one pass.
     index.html must stay index.html for GitHub Pages.
 37. **Playground page** title/eyebrow now "Not Work"; H1 stays "Beyond the
     9-to-5" (it reads as the tagline for Not Work).
+
+## Round 3 — Shagunly case study added (2026-07-02)
+
+38. **New page shagunly.html** built from ~/Downloads/shagunly-case-study.md.
+    Content used as written, restructured into the site's numbered-section
+    case-study pattern. Two copy adaptations: the byline "Designed & directed
+    by Hex" → "designed & directed by me" (site is first-person; Hex is the
+    handle), and the closing "[Link / contact for access — placeholder]" →
+    a "Request access" mailto CTA.
+39. **All 7 images are labeled placeholder SVGs** (copied to img/shagunly/)
+    pending real screenshots — each one visibly says "PLACEHOLDER — replace
+    with real screenshot". Swap in real assets before any public launch.
+40. **Home Work list**: Shagunly added as 01 (section is "Latest Projects" and
+    it's the newest); NBS/Rapipay/LinkedIn renumbered 02–04. Reorder if you'd
+    rather lead with NBS.
+41. **Prev/next chain now**: NBS hub → CASS → Auth → Show/Hide → Rapipay →
+    LinkedIn → Shagunly → back to NBS hub.
