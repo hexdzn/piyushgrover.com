@@ -223,3 +223,32 @@ rebuild. Review and correct in one pass.
     "quantitative metrics are still emerging" line.
     Net effect: both sections read more substantial and specific than before,
     without adding a single number that isn't real.
+
+## Round 6 — Banner images standardized to 1600×600 (2026-07-03)
+
+49. **All 5 case-study landing-page banners now share one size, 1600×600
+    (2.667:1)**: NBS hub, Auth Uplift, Show/Hide, Rapipay, Shagunly. Re-cropped
+    from the full-resolution originals in assets/ (not the already-downsized
+    img/ copies) for better quality, using Pillow for exact framing control
+    instead of a plain center-crop. CASS and LinkedIn Commission don't have a
+    landing banner at all (never did) — left as-is since the ask was to
+    standardize existing banners, not add new ones. Flag if you want banners
+    added there too for full consistency.
+50. **Per-image crop decisions** (my call, as asked):
+    - NBS-Cover: vertical band centered on the phone, symmetric trim off the
+      black backdrop top/bottom.
+    - Banner-3 (Auth Uplift): centered across all three phones, trimming
+      empty gradient evenly top/bottom.
+    - Show-hide: weighted toward the upper two-thirds — keeps the three
+      screen headers ("Reorder accounts" / "Show or hide accounts" /
+      "What's new") and the account list fully visible, crops out the bottom
+      buttons and empty background below.
+    - Rapipay: this source is a full-page scroll capture (1366×5010), not a
+      normal hero photo. Took the top band only — logo/nav, the "New Age, New
+      You, Neo Banking" headline, and the phone mockups' upper half; the CTA
+      button and full phones bleed off the bottom edge (intentional — a
+      1366px-wide source can only yield ~512px of vertical content at this
+      aspect ratio, so a hard edge crop was unavoidable; positioned to avoid
+      cutting through any text).
+    - Shagunly hero-shot.svg: regenerated at 1600×600 directly (it's a
+      generated placeholder, not a photo, so no crop needed).
