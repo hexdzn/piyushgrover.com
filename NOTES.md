@@ -277,3 +277,27 @@ rebuild. Review and correct in one pass.
     so it isn't lost. When the videos arrive, swap the `<img>` tags for
     `<video>` (muted/autoplay/loop or click-to-play, matching the site's
     restrained motion approach) in that fig-grid.
+
+## Round 8 — Rapipay main banner swapped (2026-07-03)
+
+53. **Rapipay hero banner changed** per user request: was
+    Rapipay-Homepage-1_1.jpg (the full-page scroll capture, cropped to its
+    top band per round 6), now Home-page-banner-1.png (device mockups —
+    phone, card, POS terminal). Re-cropped fresh from the full-res original in
+    assets/ (2142x1340) to the site's 1600x600 banner standard, keeping the
+    RapiPay POS logo and all three device screens in frame; the card and
+    "SELL" button bleed off the bottom edge.
+54. **Source is a transparent PNG** (no background in the original asset) —
+    kept the transparency rather than inventing a flat background color to
+    composite it onto. The .fig img CSS already gives transparent images a
+    var(--card) fallback background, so it adapts to light/dark theme
+    automatically. Verified it reads cleanly in both themes.
+55. **Old banner file left in place, just unreferenced** — consistent with
+    the earlier decision (#32) not to delete assets from the repo. Nothing on
+    the page points to Rapipay-Homepage-1_1.jpg anymore.
+56. **Flag, not fixed**: Home-page-banner-1 (the full 1600x1001 uncropped
+    version) is still used further down the page in the "Design Process"
+    section (idx 03), so the same photograph now appears twice — once as the
+    tight hero crop, once in full further down. Left alone since it wasn't
+    part of the ask and it's a genuinely different crop/purpose, but flagging
+    in case you'd rather swap that section to a different image.
