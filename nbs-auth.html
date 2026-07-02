@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NBS — Authentication Uplift | Piyush Grover — Portfolio</title>
+  <meta name="description" content="From card readers to Face ID — reinventing secure banking at Nationwide Building Society.">
+  <link rel="icon" href="img/shared/Memoji1.png">
+  <link rel="preload" href="fonts/SpaceGrotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/main.css">
+  <script>
+    (function () {
+      var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+  <div class="page-curtain"></div>
+
+  <header class="site-head">
+    <a class="brand" href="index.html"><img src="img/shared/Memoji1.png" alt="" width="30" height="30">Piyush Grover</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Work</a>
+      <a href="playground.html">Not Work</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="head-actions">
+      <button class="theme-toggle" aria-label="Toggle light/dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.5 4.5l1.8 1.8M17.7 17.7l1.8 1.8M19.5 4.5l-1.8 1.8M6.3 17.7l-1.8 1.8"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+  <nav class="menu-overlay" aria-label="Mobile">
+    <a class="menu-link" href="index.html">Work <small>01</small></a>
+    <a class="menu-link" href="playground.html">Not Work <small>02</small></a>
+    <a class="menu-link" href="about.html">About <small>03</small></a>
+    <div class="menu-socials">
+      <a href="https://www.instagram.com/piyushgrover_/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/piyushgroverdzn/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.behance.net/piyushgrover" target="_blank" rel="noopener">Behance</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="cs-hero">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>Nationwide Building Society — Case Study</p>
+        <h1 class="display-lg" data-reveal>From Card Readers to Face ID: Reinventing Secure Banking</h1>
+        <p class="lede" data-reveal>Reducing login friction and simplifying everyday banking through biometric authentication and streamlined information architecture.</p>
+        <dl class="meta-grid" data-reveal>
+          <div><dt>Client</dt><dd>Nationwide Building Society</dd></div>
+          <div><dt>Role</dt><dd>Sr. Product Designer</dd></div>
+          <div><dt>Duration</dt><dd>2+ Years (Ongoing)</dd></div>
+          <div><dt>Tools</dt><dd>Figma, Miro</dd></div>
+          <div><dt>Team Setup</dt><dd>Collaborated with on-shore design team; worked individually and as part of cross-functional teams across value streams.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="wrap" data-reveal>
+      <figure class="fig" style="margin:0;">
+        <img src="img/nbs-auth/Banner-3.jpg" alt="Authentication Uplift — biometric login experience banner" fetchpriority="high">
+      </figure>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">01</span><span class="eyebrow" style="margin:0;">Design Brief</span></div>
+            <h2>The Task</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>Nationwide's mobile banking app, used by millions of UK customers, was experiencing friction due to outdated authentication methods and scattered navigation patterns. Users had to rely on hardware card readers for critical tasks like transfers, leading to delays and dissatisfaction. As the bank moved towards modernizing its digital infrastructure, our task was to redesign the mobile banking experience to be seamless, secure, and efficient, empowering customers with intuitive interactions and smarter workflows.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">02</span><span class="eyebrow" style="margin:0;">Problem</span></div>
+            <h2>Outdated Login, Fragmented Hierarchy</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>Customers were frustrated by an outdated login process, especially when quick access was needed for tasks like checking balances or transferring funds. The lack of biometric authentication and a fragmented information hierarchy made everyday banking cumbersome. While the legacy UI adhered to baseline accessibility standards, it still posed usability challenges for older customers and those with visual impairments particularly around contrast, type sizing, and content discoverability.</p>
+            <h3>Hypothesis</h3>
+            <p>We hypothesized that redesigning the mobile app with a streamlined IA, integrated biometric authentication, and a component-driven design system would:</p>
+            <ul>
+              <li>Reduce user drop-offs during login and transaction flows by 30–40%</li>
+              <li>Improve time-to-task completion for core actions like "view balance" or "make a payment"</li>
+              <li>Enhance user trust through consistency, accessibility, and modern UI patterns</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">03</span><span class="eyebrow" style="margin:0;">Research</span></div>
+            <h2>Research Approach</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>Since UX research was led by the onshore team, I collaborated closely with them to extract actionable insights. This included:</p>
+            <ul>
+              <li>Supported the onshore research team by translating key research findings into actionable UI design decisions, particularly around login friction, content discoverability, and mobile-first interactions</li>
+              <li>Studying competitor apps for patterns in biometrics, cardless transactions, and dashboards</li>
+            </ul>
+            <h3>Competitor Analysis</h3>
+            <p>We reviewed mobile banking apps from top UK and global financial institutions, focusing on authentication flows, navigation models, and product discoverability.</p>
+            <p>Key takeaways included:</p>
+            <ul>
+              <li>Most modern apps prominently featured Face ID or fingerprint login with fallback options.</li>
+              <li>Competitors like Monzo and Revolut offered simplified dashboards with upfront access to balances and transactions.</li>
+              <li>Quick-access shortcuts (like recent payees or 'Send again') were standard in most payment flows.</li>
+              <li>Financial products were grouped under a single hub, avoiding deep navigation trees.</li>
+            </ul>
+            <h3>Key Insights</h3>
+            <ul>
+              <li><strong>Biometric demand was high.</strong> Users wanted Face ID or fingerprint login to avoid using card readers.</li>
+              <li><strong>Account information was scattered.</strong> Users had difficulty accessing summary views or toggling between accounts.</li>
+              <li><strong>Navigation was unintuitive.</strong> Important features like savings goals or passcode updates were buried under layers.</li>
+            </ul>
+          </div>
+        </div>
+        <figure class="fig" data-reveal>
+          <img src="img/nbs-auth/User-testing_edited.jpg" alt="User testing session — observing login friction with the legacy flow" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">04</span><span class="eyebrow" style="margin:0;">Goals</span></div>
+            <h2>What Success Looked Like</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <ul>
+              <li><strong>Reduce login friction</strong> by integrating Face ID and fingerprint authentication, allowing users to skip card reader steps and access the app more efficiently.</li>
+              <li><strong>Improve discoverability</strong> by restructuring product and account navigation, making it easier to find key financial tools and insights.</li>
+              <li><strong>Create a component-driven design</strong> using scalable UI elements for consistency across features and smoother developer collaboration.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">05</span><span class="eyebrow" style="margin:0;">Design Process</span></div>
+            <h2>Component-Driven, Mobile-First</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <h3 style="margin-top:0;">Component-Driven UI System</h3>
+            <ul>
+              <li>Designed reusable components (cards, toggles, summary views, modals)</li>
+              <li>Proposed inclusion into the design system to ensure scalability across teams</li>
+            </ul>
+            <h3>Mobile-First Patterns</h3>
+            <ul>
+              <li>Focused on thumb-reach zones and tap target sizes</li>
+              <li>Applied progressive disclosure in features like mortgage applications</li>
+            </ul>
+          </div>
+        </div>
+        <h3 data-reveal>Components</h3>
+        <div class="fig-grid cols-3" data-reveal>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-auth/Tabs.png" alt="Tab component states" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-auth/Segmented-Control_edited.jpg" alt="Segmented control component" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-auth/Card-with-badge.png" alt="Card component with badge" loading="lazy"></figure>
+        </div>
+        <figure class="fig" data-reveal>
+          <img src="img/nbs-auth/Tappability.jpg" alt="Thumb-reach zones and tap target sizing study" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-label" data-reveal><span class="idx">06</span><span class="eyebrow" style="margin:0;">User Persona</span></div>
+        <div class="persona-grid">
+          <div class="persona-card" data-reveal>
+            <h4>James Connor</h4>
+            <p class="p-meta">Age 34 · Digital Marketing Manager · Manchester, UK</p>
+            <ul>
+              <li><strong>Goals:</strong> Access accounts quickly with Face ID; consolidate account tracking</li>
+              <li><strong>Pain Points:</strong> Frustrated by old passcode logins; navigation feels slow</li>
+              <li><strong>Traits:</strong> Daily app user, prefers minimal-step flows and personalization</li>
+            </ul>
+          </div>
+          <div class="persona-card" data-reveal data-reveal-delay="0.1">
+            <h4>Mary Thompson</h4>
+            <p class="p-meta">Age 55 · Teacher · Leeds, UK</p>
+            <ul>
+              <li><strong>Goals:</strong> View pension and savings easily; complete tasks without help</li>
+              <li><strong>Pain Points:</strong> Struggles with multi-step flows and small UI text</li>
+              <li><strong>Traits:</strong> Uses tablet, values clarity and accessibility</li>
+            </ul>
+          </div>
+        </div>
+        <div class="fig-grid cols-2" data-reveal>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-auth/Persona-1.jpg" alt="User persona — James Connor" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-auth/Persona-2.jpg" alt="User persona — Mary Thompson" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-label" data-reveal><span class="idx">07</span><span class="eyebrow" style="margin:0;">User Journey</span></div>
+        <figure class="fig" data-reveal>
+          <img src="img/nbs-auth/User-Journey-Map.png" alt="User journey map — from login to task completion" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">08</span><span class="eyebrow" style="margin:0;">Micro-Interaction</span></div>
+            <h2>Feedback at Key Touchpoints</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>To enhance user feedback and system clarity, I created micro-interactions for key touchpoints like biometric login, error states, and payment confirmations.</p>
+            <p>These subtle animations helped:</p>
+            <ul>
+              <li>Reinforce success and error cues</li>
+              <li>Guide user attention through state changes</li>
+              <li>Improve perceived responsiveness of the interface</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-label" data-reveal><span class="idx">09</span><span class="eyebrow" style="margin:0;">Final Solution</span></div>
+        <div class="fig-grid cols-2" data-reveal>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-auth/Group-427320992.jpg" alt="Final solution — redesigned login and dashboard screens" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-auth/Group-427320993.jpg" alt="Final solution — biometric authentication flow screens" loading="lazy"></figure>
+        </div>
+        <div class="fig-grid cols-3" data-reveal>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-auth/0c9a39_0f54d5278dbb4593bcf5dd9692d4c0acf001.jpg" alt="Final UI screen — account overview" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-auth/0c9a39_3e370f41587044dfa30f277f6dacde9af000.jpg" alt="Final UI screen — payments" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-auth/0c9a39_bb3390899e6d406694140bcc31a55ebef000.jpg" alt="Final UI screen — product hub" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">10</span><span class="eyebrow" style="margin:0;">Feature Enhancements</span></div>
+            <h2>Show/Hide and Reorder Accounts</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>Introduced customization options allowing users to hide selected accounts from the dashboard and reorder accounts by priority. These features improved personalization, reduced clutter, and increased user satisfaction. The design leveraged new and existing components with accessibility considerations, informed by user research and ongoing collaboration with the project manager and UX researcher.</p>
+            <a class="btn btn-ghost" href="nbs-show-hide.html">Read More <span class="arr">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">11</span><span class="eyebrow" style="margin:0;">Feature Spotlight</span></div>
+            <h2>Digital Cheque Deposit (POC)</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p><strong>Goal:</strong> Enable users to deposit cheques digitally via the mobile app</p>
+            <p>UI/UX Considerations:</p>
+            <ul>
+              <li>Simple step-by-step capture process</li>
+              <li>Clear confirmation and receipt post-deposit</li>
+              <li>Help icons and microcopy to guide users unfamiliar with digital cheque deposits</li>
+              <li>Mobile camera permissions and image quality indicators for clarity</li>
+            </ul>
+            <p><strong>Stakeholder Feedback:</strong> The feature was well received internally and appreciated for its potential to reduce reliance on branch visits and manual processing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pn-nav" aria-label="Project navigation">
+    <a href="nbs-cass.html">
+      <span class="pn-dir">← Previous Case Study</span>
+      <span class="pn-title">CASS — Current Account Switch Service</span>
+    </a>
+    <a href="nbs-show-hide.html">
+      <span class="pn-dir">Next Case Study →</span>
+      <span class="pn-title">Show/Hide &amp; Re-Order Accounts</span>
+    </a>
+  </nav>
+
+  <footer class="site-foot" style="margin-top:0;">
+    <div class="wrap foot-top">
+      <div data-reveal>
+        <div class="foot-name">Piyush Grover</div>
+        <p class="foot-made">Made with Love ❤️</p>
+      </div>
+      <div class="foot-cols" data-reveal>
+        <div>
+          <h5>Menu</h5>
+          <ul>
+            <li><a href="index.html">Work</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mailto:piyushggrover@gmail.com">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Social</h5>
+          <ul>
+            <li><a href="https://www.instagram.com/piyushgrover_/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/in/piyushgroverdzn/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.behance.net/piyushgrover" target="_blank" rel="noopener">Behance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© <span data-year></span> Piyush Grover</span>
+      <span>Designing fluid and functional interfaces</span>
+    </div>
+  </footer>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

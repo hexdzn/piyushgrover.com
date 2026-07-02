@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | Piyush Grover — Portfolio</title>
+  <meta name="description" content="About Piyush Grover — Senior Product Designer crafting intuitive and visually engaging digital experiences.">
+  <link rel="icon" href="img/shared/Memoji1.png">
+  <link rel="preload" href="fonts/SpaceGrotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/main.css">
+  <script>
+    (function () {
+      var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+  <div class="page-curtain"></div>
+
+  <header class="site-head">
+    <a class="brand" href="index.html"><img src="img/shared/Memoji1.png" alt="" width="30" height="30">Piyush Grover</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Work</a>
+      <a href="playground.html">Not Work</a>
+      <a href="about.html" aria-current="page">About</a>
+    </nav>
+    <div class="head-actions">
+      <button class="theme-toggle" aria-label="Toggle light/dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.5 4.5l1.8 1.8M17.7 17.7l1.8 1.8M19.5 4.5l-1.8 1.8M6.3 17.7l-1.8 1.8"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+  <nav class="menu-overlay" aria-label="Mobile">
+    <a class="menu-link" href="index.html">Work <small>01</small></a>
+    <a class="menu-link" href="playground.html">Not Work <small>02</small></a>
+    <a class="menu-link" href="about.html">About <small>03</small></a>
+    <div class="menu-socials">
+      <a href="https://www.instagram.com/piyushgrover_/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/piyushgroverdzn/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.behance.net/piyushgrover" target="_blank" rel="noopener">Behance</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="cs-hero">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>About</p>
+        <h1 class="display-xl" data-reveal>About Piyush</h1>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="about-grid">
+        <div class="cs-prose" data-reveal>
+          <p style="font-size:clamp(1.1rem,1.8vw,1.4rem);line-height:1.6;">Hi, I’m a Senior Product Designer with 8 years of experience crafting intuitive and visually engaging digital experiences. In my current role, I specialize in designing user-centered interfaces that balance aesthetics with seamless usability. With a deep understanding of user behavior and evolving industry trends, I create solutions that enhance accessibility and engagement.</p>
+          <p style="font-size:clamp(1.1rem,1.8vw,1.4rem);line-height:1.6;">Beyond design, my passion for photography sharpens my eye for detail and composition, influencing my creative approach. I also have a keen interest in technology, staying up-to-date with the latest advancements to incorporate innovative solutions into my work. This blend of design expertise, creativity, and curiosity helps me build meaningful digital experiences that leave an impact.</p>
+          <div class="hero-cta-row" style="margin-top:2.5rem;">
+            <a class="btn btn-solid" href="https://www.linkedin.com/in/piyushgroverdzn/" target="_blank" rel="noopener">Connect on LinkedIn <span class="arr">→</span></a>
+            <a class="btn btn-ghost" href="playground.html">See the Not Work <span class="arr">→</span></a>
+          </div>
+        </div>
+        <div class="about-photo" data-reveal data-reveal-delay="0.15">
+          <img src="img/about/IMG_5889_HEIC.jpg" alt="Portrait photograph of Piyush Grover" loading="lazy">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap foot-top">
+      <div data-reveal>
+        <div class="foot-name">Piyush Grover</div>
+        <p class="foot-made">Made with Love ❤️</p>
+      </div>
+      <div class="foot-cols" data-reveal>
+        <div>
+          <h5>Menu</h5>
+          <ul>
+            <li><a href="index.html">Work</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mailto:piyushggrover@gmail.com">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Social</h5>
+          <ul>
+            <li><a href="https://www.instagram.com/piyushgrover_/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/in/piyushgroverdzn/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.behance.net/piyushgrover" target="_blank" rel="noopener">Behance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© <span data-year></span> Piyush Grover</span>
+      <span>Designing fluid and functional interfaces</span>
+    </div>
+  </footer>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

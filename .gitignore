@@ -1,0 +1,19 @@
+# Full-resolution Wix source originals (~230MB). The site references the
+# optimized derivatives in img/ — these are kept locally as a source archive
+# but not committed (they'd bloat the repo and risk GitHub push limits).
+# To version them, use Git LFS or a separate archive branch.
+assets/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Local scratch
+scratchpad/
+*.log
+
+# Local Claude Code permission allowlist (machine-specific)
+.claude/settings.local.json

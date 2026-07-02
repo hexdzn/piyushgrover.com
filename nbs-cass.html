@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NBS — CASS | Piyush Grover — Portfolio</title>
+  <meta name="description" content="Re-architecting a regulated Current Account Switch Service journey for mobile at Nationwide Building Society.">
+  <link rel="icon" href="img/shared/Memoji1.png">
+  <link rel="preload" href="fonts/SpaceGrotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/main.css">
+  <script>
+    (function () {
+      var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+  <div class="page-curtain"></div>
+
+  <header class="site-head">
+    <a class="brand" href="index.html"><img src="img/shared/Memoji1.png" alt="" width="30" height="30">Piyush Grover</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Work</a>
+      <a href="playground.html">Not Work</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="head-actions">
+      <button class="theme-toggle" aria-label="Toggle light/dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.5 4.5l1.8 1.8M17.7 17.7l1.8 1.8M19.5 4.5l-1.8 1.8M6.3 17.7l-1.8 1.8"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+  <nav class="menu-overlay" aria-label="Mobile">
+    <a class="menu-link" href="index.html">Work <small>01</small></a>
+    <a class="menu-link" href="playground.html">Not Work <small>02</small></a>
+    <a class="menu-link" href="about.html">About <small>03</small></a>
+    <div class="menu-socials">
+      <a href="https://www.instagram.com/piyushgrover_/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/piyushgroverdzn/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.behance.net/piyushgrover" target="_blank" rel="noopener">Behance</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="cs-hero">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>Nationwide Building Society — Case Study</p>
+        <h1 class="display-lg" data-reveal>Re-Architecting a Regulated Switching Journey for Mobile</h1>
+        <p class="lede" data-reveal>Transforming a dense desktop CASS flow into a cognitively lighter, mobile-first interaction architecture without changing regulatory structure.</p>
+        <dl class="meta-grid" data-reveal>
+          <div><dt>Role</dt><dd>Product Designer</dd></div>
+          <div><dt>Timeline</dt><dd>In development (launch pending)</dd></div>
+          <div><dt>Tools</dt><dd>Figma, Miro</dd></div>
+          <div><dt>Team Setup</dt><dd>Product Manager, BA, Engineering, Design System (NEL), Content</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">01</span><span class="eyebrow" style="margin:0;">Strategic Framing</span></div>
+            <h2>Designing for Reuse, Compliance &amp; Scale</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>Before design began, stakeholders raised foundational questions:</p>
+            <ul>
+              <li>How can this journey be reusable across Internet Banking and Mobile?</li>
+              <li>How can we leverage existing CASS APIs?</li>
+              <li>Where should switch initiation live in the app?</li>
+              <li>How should unhappy paths be surfaced?</li>
+              <li>How do we ensure accessibility compliance?</li>
+            </ul>
+            <p>This reframed the project from a mobile migration to a cross-channel architecture initiative. My role was to translate these platform-level concerns into a scalable interaction system.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">02</span><span class="eyebrow" style="margin:0;">Existing System Analysis</span></div>
+            <h2>Understanding the Structural Baseline</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>The Internet Banking CASS journey consisted of 4–5 steps. However, each step clustered multiple unrelated inputs on a single page.</p>
+            <p>Challenges identified:</p>
+            <ul>
+              <li>High information density</li>
+              <li>Mixed categories within single screens</li>
+              <li>Cognitive overload</li>
+              <li>Limited mobile adaptability</li>
+              <li>Implicit differentiation between Full vs Partial switch</li>
+            </ul>
+            <p>While compliant, the structure was not optimized for mobile interaction patterns.</p>
+          </div>
+        </div>
+        <div class="fig-grid cols-2" data-reveal>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-cass/Screenshot-2026-02-16-at-10_50_01_AM.jpg" alt="Existing Internet Banking CASS journey — dense desktop step screen" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-cass/Screenshot-2026-02-16-at-10_50_21_AM.jpg" alt="Existing Internet Banking CASS journey — multiple unrelated inputs clustered on one page" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">03</span><span class="eyebrow" style="margin:0;">Behavioral &amp; Process Insight</span></div>
+            <h2>Mapping Emotional and Operational Friction</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>We reviewed:</p>
+            <ul>
+              <li>As-Is Journey Mapping (Bangalore workshop)</li>
+              <li>Empathy mapping artifacts</li>
+              <li>User story &amp; persona created using the IBM ICA tool to accelerate discussion</li>
+            </ul>
+            <p class="callout">Key insight: Switching accounts carries emotional weight — users seek clarity, reassurance, and control.</p>
+            <p>This validated the need for:</p>
+            <ul>
+              <li>Explicit switch-type differentiation</li>
+              <li>Clear sequencing</li>
+              <li>Strong confirmation states</li>
+              <li>Reduced cognitive stacking</li>
+            </ul>
+          </div>
+        </div>
+        <div class="fig-grid cols-3" data-reveal>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-cass/as-is-mapping.jpg" alt="As-Is journey mapping artifacts from the Bangalore workshop" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-cass/empathy-mapping.jpg" alt="Empathy mapping artifacts" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-cass/IMG_7919.jpg" alt="Workshop session photograph" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">04</span><span class="eyebrow" style="margin:0;">Market &amp; Pattern Benchmarking</span></div>
+            <h2>Understanding Switching Design Patterns</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>A competitor review helped identify:</p>
+            <ul>
+              <li>Step structuring approaches</li>
+              <li>How reassurance is surfaced</li>
+              <li>How progress indicators are handled</li>
+              <li>Error-state communication strategies</li>
+            </ul>
+            <p>This informed decisions around sequencing and clarity without overcomplicating the regulated structure.</p>
+          </div>
+        </div>
+        <figure class="fig" data-reveal>
+          <img src="img/nbs-cass/Comp.jpg" alt="Competitor benchmarking — account switching flow patterns across banking apps" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-label" data-reveal><span class="idx">05</span><span class="eyebrow" style="margin:0;">Interaction Architecture Redesign</span></div>
+
+        <div class="cs-cols">
+          <div data-reveal>
+            <h2>From Dense Pages to Single-Intent Screens</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>Instead of compressing steps, the mobile strategy decomposed them.</p>
+            <p><strong>Internet Banking:</strong></p>
+            <ul>
+              <li>Fewer steps</li>
+              <li>More information per screen</li>
+            </ul>
+            <p><strong>Mobile:</strong></p>
+            <ul>
+              <li>One primary question per screen</li>
+              <li>Logical sequencing</li>
+              <li>Progressive disclosure</li>
+              <li>Clear branching between Full and Partial switch</li>
+            </ul>
+            <p>This reduced cognitive load while maintaining backend compatibility.</p>
+          </div>
+        </div>
+        <div class="fig-grid cols-3" data-reveal>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-cass/Shot.jpg" alt="Redesigned mobile CASS screen — single-intent question with step progress indicator" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-cass/Shot2.jpg" alt="Redesigned mobile CASS screen — logical sequencing and progressive disclosure" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-cass/Shot4.jpg" alt="Redesigned mobile CASS screen — switch-type branching" loading="lazy"></figure>
+        </div>
+
+        <div class="cs-cols" style="margin-top:var(--space-5);">
+          <div data-reveal>
+            <h2>Wayfinding Without Breaking Compliance</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>A key debate centered around the progress indicator.</p>
+            <p>Options considered:</p>
+            <ul>
+              <li>Dynamic step adaptation based on branch logic</li>
+              <li>Retaining fixed regulatory structure</li>
+            </ul>
+            <p>Final decision:</p>
+            <ul>
+              <li>Maintain regulatory step structure</li>
+              <li>Simplify sequencing clarity</li>
+              <li>Reduce visual noise</li>
+            </ul>
+            <p>This balanced usability improvements with system constraints.</p>
+          </div>
+        </div>
+
+        <div class="cs-cols" style="margin-top:var(--space-5);">
+          <div data-reveal>
+            <h2>Structuring Unhappy Paths</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>We explored how failed or incomplete switches should be surfaced.</p>
+            <p>Considerations included:</p>
+            <ul>
+              <li>Clear status communication</li>
+              <li>Error state messaging</li>
+              <li>Recovery pathways</li>
+              <li>Maintaining user trust even during rejection</li>
+            </ul>
+            <p class="callout">Failure handling was designed as part of the system — not an afterthought.</p>
+          </div>
+        </div>
+        <div class="fig-grid cols-2" data-reveal>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-cass/Screenshot-2026-02-16-at-11_10_54_AM.jpg" alt="CASS flow structure exploration" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/nbs-cass/0c9a39_8dbfe7d8d482411c8318490583eb3949_mv2.jpg" alt="CASS journey design exploration" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pn-nav" aria-label="Project navigation">
+    <a href="nbs.html">
+      <span class="pn-dir">← Nationwide Overview</span>
+      <span class="pn-title">Nationwide Building Society</span>
+    </a>
+    <a href="nbs-auth.html">
+      <span class="pn-dir">Next Case Study →</span>
+      <span class="pn-title">Authentication Uplift</span>
+    </a>
+  </nav>
+
+  <footer class="site-foot" style="margin-top:0;">
+    <div class="wrap foot-top">
+      <div data-reveal>
+        <div class="foot-name">Piyush Grover</div>
+        <p class="foot-made">Made with Love ❤️</p>
+      </div>
+      <div class="foot-cols" data-reveal>
+        <div>
+          <h5>Menu</h5>
+          <ul>
+            <li><a href="index.html">Work</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mailto:piyushggrover@gmail.com">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Social</h5>
+          <ul>
+            <li><a href="https://www.instagram.com/piyushgrover_/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/in/piyushgroverdzn/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.behance.net/piyushgrover" target="_blank" rel="noopener">Behance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© <span data-year></span> Piyush Grover</span>
+      <span>Designing fluid and functional interfaces</span>
+    </div>
+  </footer>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
