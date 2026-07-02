@@ -172,3 +172,28 @@ rebuild. Review and correct in one pass.
     rather lead with NBS.
 41. **Prev/next chain now**: NBS hub → CASS → Auth → Show/Hide → Rapipay →
     LinkedIn → Shagunly → back to NBS hub.
+
+## Round 4 — Feedback fixes + copy revision pass (2026-07-02)
+
+42. **Footer heart**: emoji ❤️ replaced with a ♥ glyph colored `var(--accent)`
+    so it adapts to dark/light themes (user request).
+43. **Marquee**: "Piyush Grover" removed; now cycles Senior Product Designer /
+    Interaction Design / Design Systems / Vibe Coding / AI-Directed
+    Development / Micro-interactions (user asked for vibe-coding/AI keywords).
+44. **"01" index removed** from the "Latest Projects" section heading.
+45. **Copy revision pass across case studies** (user-authorized). Grammar,
+    parallelism, and awkward Wix-era phrasing only — no new claims, metrics,
+    or client names. Notable edits:
+    - Auth Uplift: research-approach intro + first bullet rewritten for
+      parallel structure ("Translating key research findings…"); missing
+      comma before "particularly"; "Proposed inclusion into" → "Proposed for
+      inclusion in"; Team Setup meta rephrased as a noun phrase.
+    - Show/Hide: "iterative enhancements in enhancing personalization" →
+      "iterative refinement of personalization"; tense fixed.
+    - CASS: "BA" → "Business Analyst" in Team Setup.
+    - Rapipay: "due to complex navigation or outdated design elements" →
+      "from complex navigation and outdated design elements".
+    - LinkedIn: "Worked independently with direct collaboration with…" →
+      "Worked independently, collaborating directly with…".
+    - NBS hub: missing period after "via IBM".
+    Shagunly and About untouched (fresh copy).
