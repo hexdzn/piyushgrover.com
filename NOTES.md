@@ -252,3 +252,28 @@ rebuild. Review and correct in one pass.
       cutting through any text).
     - Shagunly hero-shot.svg: regenerated at 1600×600 directly (it's a
       generated placeholder, not a photo, so no crop needed).
+
+## Round 7 — Auth Uplift sections removed, video note logged (2026-07-03)
+
+51. **Removed sections 10 and 11 from nbs-auth.html** ("From Card Readers to
+    Face ID: Reinventing Secure Banking") per user request:
+    - Section 10, "Feature Enhancements: Show/Hide and Reorder Accounts" —
+      this also removed its "Read More →" cross-link to nbs-show-hide.html.
+      That case study is still fully reachable via the NBS hub and the
+      prev/next chain, so nothing is orphaned.
+    - Section 11, "Feature Spotlight: Digital Cheque Deposit (POC)" — this was
+      the one deliberately-kept copy of the duplicated Wix "Cheque Deposit"
+      block (see note #6/#21 — it used to appear on all 3 NBS pages, later
+      consolidated to just this one). It's now removed from the site
+      entirely, which is fine since it originated from a literal
+      "[Placeholder for visuals]" Wix stub with no real content behind it.
+    - Section 09 ("Final Solution") is now the last content section on the
+      page, flowing directly into the prev/next nav.
+52. **Section 09's 3-image row is a placeholder for video**: user says these
+    3 screens (account overview / payments / product hub) were video
+    walkthroughs on the original build, not static screenshots, and will
+    share the actual video files later. Left as images for now with an HTML
+    comment marking them (`<!-- TODO: these 3 were video walkthroughs... -->`)
+    so it isn't lost. When the videos arrive, swap the `<img>` tags for
+    `<video>` (muted/autoplay/loop or click-to-play, matching the site's
+    restrained motion approach) in that fig-grid.
