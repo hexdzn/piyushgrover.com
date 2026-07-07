@@ -1,0 +1,167 @@
+/* Shagunly case study — device-mockup hero + interactive screen viewer */
+
+/* ---------- Shared device-frame component ---------- */
+.device-frame {
+  position: relative;
+  flex-shrink: 0;
+  background: linear-gradient(160deg, #232329, #08080a);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), inset 0 0 0 2px rgba(255, 255, 255, 0.06);
+}
+.device-frame.phone {
+  width: clamp(150px, 15vw, 210px);
+  aspect-ratio: 1320 / 2868;
+  border-radius: 34px;
+  padding: 9px;
+}
+.device-frame.tablet {
+  width: clamp(230px, 24vw, 320px);
+  aspect-ratio: 2064 / 2752;
+  border-radius: 22px;
+  padding: 9px;
+}
+.device-frame .device-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+.device-frame.phone .device-screen { border-radius: 26px; }
+.device-frame.tablet .device-screen { border-radius: 15px; }
+.device-frame .device-screen img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.5s ease, transform 0.6s var(--ease-out);
+}
+.device-frame .device-screen img.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ---------- Hero device composition ---------- */
+.shag-hero {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: clamp(340px, 44vw, 540px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-soft);
+  background:
+    radial-gradient(120% 140% at 18% 12%, rgba(217, 154, 63, 0.32), transparent 60%),
+    radial-gradient(100% 120% at 88% 88%, rgba(168, 85, 190, 0.26), transparent 55%),
+    var(--card);
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+.shag-hero-devices {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+.shag-hero-devices .device-frame:nth-child(1) {
+  transform: rotate(-7deg) translateY(6px);
+  z-index: 1;
+}
+.shag-hero-devices .device-frame:nth-child(2) {
+  transform: rotate(6deg) translateY(-18px);
+  margin-left: clamp(-2.6rem, -4vw, -1.4rem);
+  z-index: 2;
+}
+.shag-hero-devices .device-frame img { opacity: 1; transform: none; transition: none; }
+.shag-hero-icon {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(48px, 6vw, 68px);
+  height: clamp(48px, 6vw, 68px);
+  border-radius: 22%;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+  z-index: 3;
+}
+@media (max-width: 640px) {
+  .shag-hero-devices .device-frame:nth-child(2) { margin-left: -2rem; }
+}
+
+/* ---------- Interactive screen viewer ---------- */
+.device-mockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+.mockup-toolbar { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; width: 100%; }
+.device-toggle, .screen-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+.device-toggle button, .screen-tabs button {
+  padding: 0.5rem 1.1rem;
+  border-radius: 99px;
+  border: 1px solid var(--line);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  background: transparent;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+.device-toggle button:hover, .screen-tabs button:hover { border-color: var(--text); color: var(--text); }
+.device-toggle button.active, .screen-tabs button.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+.device-toggle button:active, .screen-tabs button:active { transform: scale(0.95); }
+
+.mockup-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-block: var(--space-2);
+  min-height: clamp(300px, 40vw, 460px);
+  align-items: center;
+  width: 100%;
+}
+.device-mockup .device-frame.tablet { display: none; }
+.device-mockup[data-device='tablet'] .device-frame.phone { display: none; }
+.device-mockup[data-device='tablet'] .device-frame.tablet { display: block; }
+@media (hover: hover) and (pointer: fine) {
+  .device-mockup .device-frame { transition: transform 0.4s var(--ease-out); }
+  .device-mockup .device-frame:hover { transform: translateY(-6px) scale(1.015); }
+}
+
+.mockup-caption {
+  max-width: 54ch;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  min-height: 2.8em;
+}
+.mockup-caption span { display: none; }
+.mockup-caption span.active { display: inline; }
+
+/* ---------- App icon strip ---------- */
+.icon-strip { display: flex; gap: 1.6rem; justify-content: center; margin-top: var(--space-3); flex-wrap: wrap; }
+.icon-strip figure { margin: 0; text-align: center; }
+.icon-strip img {
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s var(--ease-out);
+}
+.icon-strip figure:hover img { transform: translateY(-4px) scale(1.04); }
+.icon-strip figcaption { margin-top: 0.6rem; font-size: 0.8rem; color: var(--text-muted); }
+
+/* ---------- Closing screens grid ---------- */
+.closing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); align-items: end; }
+.closing-grid figure { margin: 0; }
+.closing-grid img { border-radius: 16px; border: 1px solid var(--line-soft); }
+@media (max-width: 700px) {
+  .closing-grid { grid-template-columns: 1fr 1fr; }
+  .closing-grid figure:nth-child(3) { grid-column: span 2; max-width: 60%; margin-inline: auto; }
+}

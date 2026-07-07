@@ -301,3 +301,59 @@ rebuild. Review and correct in one pass.
     tight hero crop, once in full further down. Left alone since it wasn't
     part of the ask and it's a genuinely different crop/purpose, but flagging
     in case you'd rather swap that section to a different image.
+
+## Round 9 — Real Shagunly mockups + interactive device viewer (2026-07-07)
+
+User supplied a zip of real Simulator screenshots (5 iPhone 17 Pro Max, 5 iPad
+Pro 13" — the same 5 flows on each device) plus 3 app-icon variants
+(default/dark/tinted), and asked for these to be used logically with
+micro-interactions, iOS shots in an iPhone silhouette and iPad shots in an
+iPad silhouette.
+
+57. **New component: `.device-frame`** (css/shagunly.css) — a CSS-only phone
+    and tablet bezel (no image asset), sized to the real screenshot aspect
+    ratios (iPhone 1320:2868, iPad 2064:2752). The screenshots already bake in
+    the status bar, Dynamic Island, and home indicator, so the frame only
+    needed the hardware bezel + corner rounding, not an overlaid notch.
+58. **New hero**: replaced the flat hero-shot.svg placeholder with a real
+    composition — two tilted/overlapping phone frames (Home + New Shagun
+    entry screens) and the default app-icon badge floating between them, on a
+    warm marigold/gold gradient. This is a direct, non-interactive build of
+    the brief's original hero suggestion ("app icon + 2-3 key screens on an
+    iPhone mockup, warm festive background"), now with real screens instead
+    of a gray placeholder.
+59. **New interactive component in section 04** ("Key Screens & Flows"):
+    `.device-mockup` — an iPhone/iPad toggle plus 5 screen tabs (Home /
+    People / Occasions / Occasion / New Shagun), crossfading the visible
+    screenshot in a shared device frame with a caption that updates per
+    screen. All 10 images (5 screens × 2 devices) are present in the DOM and
+    toggle via `js/shagunly-mockup.js` (vanilla JS, no framework, matches the
+    site's existing pattern). This replaced the screen-flow-tap-to-edit.svg
+    placeholder.
+60. **Bullet list in section 04 updated to match reality**: added a "People"
+    bullet (the relationship-balance screen is real and now shown, but wasn't
+    in the original case-study text) and a line noting the responsive iPad
+    layout. Everything added is directly visible in the screenshots supplied
+    — nothing invented.
+61. **App icon strip added to section 06** ("Building It"), showing all 3
+    supplied variants (default/dark/tinted) with captions, plus one new
+    bullet in "What this actually produced" noting the icon was designed
+    across iOS's three appearance modes.
+62. **Closing grid (section 10) replaced**: closing-screens-grid.svg
+    placeholder swapped for 3 real screens (iPad Home, iPhone New Shagun,
+    iPhone Occasion detail) in a responsive grid — 3-col desktop, 2-col +
+    centered third on mobile.
+63. **Orphaned placeholders left on disk, unreferenced** (per standing
+    convention #32/#39): hero-shot.svg, screen-flow-tap-to-edit.svg,
+    closing-screens-grid.svg. before-after-notebook.svg, pwa-vs-native.svg,
+    testflight-feedback.svg, and vibe-coding-workflow.svg remain in active use
+    — no real assets were supplied for those sections, so they're untouched.
+64. **Source images**: originals kept in
+    `/private/tmp/.../scratchpad/shagunly-mockups/` (session scratchpad, not
+    in the repo); web copies resized via Pillow into `img/shagunly/screens/`
+    (JPEG q90, phone @640px wide, tablet @780px wide) and `img/shagunly/`
+    (icons, PNG 256x256).
+65. **Verified interactively** in the browser at desktop/tablet/mobile: both
+    the iPhone↔iPad toggle and all 5 screen tabs correctly crossfade the
+    right image in both frames simultaneously (so switching device mid-flow
+    keeps your place), captions and button active-states stay in sync.
