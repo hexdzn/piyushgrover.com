@@ -394,3 +394,26 @@ iPad silhouette.
     contact toast; (3) a styled console message for anyone who opens
     DevTools, with hints to the other two. All respect
     prefers-reduced-motion (toast only, no confetti).
+
+## Round 11 — Hero placement, rail divider, egg copy (2026-07-09)
+
+71. **Easter-egg copy**: removed the "made with Claude" line from the footer-
+    heart egg (now confetti only) and any Claude mention from egg toasts.
+    NOTE: the Shagunly case study still references Claude — but that's the
+    user's own authored narrative about genuinely vibe-coding the app (the
+    whole thesis of the case study), left intact deliberately. Flag if you
+    want it changed there too.
+72. **Home hero placement fixed for 13" laptops**: the heavier Archivo made
+    the old display-xl clamp (8.5vw / up to 7.5rem) oversized — ~108px at
+    1280px wide, crowding the heading under the nav and reading top-heavy.
+    Reduced to clamp(2.4rem, 6.4vw, 6.6rem), switched the hero from
+    justify-content:flex-end to center with explicit top/bottom padding so
+    the content block sits balanced and never slides under the fixed header
+    on short viewports. Verified at 1280×800 and 1440×900.
+73. **Case-study section dividers no longer run behind the chapter rail**:
+    the divider was a full-bleed border-top on .cs-section (spanning 0→100vw),
+    so it crossed under the fixed rail. Moved it to a pseudo-element inside
+    .cs-section > .wrap, inset by the wrap's padding (and +240px on has-rail
+    desktop), so the line always lives in the content column and clears the
+    rail by ~40px at every width. Mobile unchanged (spans content, rail
+    hidden).

@@ -101,8 +101,7 @@
       if (taps >= 3) {
         taps = 0;
         var r = heart.getBoundingClientRect();
-        confetti(r.left + r.width / 2, r.top + r.height / 2, 80);
-        toast('Made with Love — and with Claude. piyushggrover@gmail.com →');
+        confetti(r.left + r.width / 2, r.top + r.height / 2, 90);
       }
     });
   }
@@ -116,5 +115,6 @@
     );
     console.log('%cInspecting the craft? Good instinct. There\'s a Konami surprise on the keyboard, and the footer ♥ likes attention. → piyushggrover@gmail.com',
       'color:#91959d;font-family:monospace;');
+    // (no other secrets here — keep looking)
   } catch (e) {}
 })();
