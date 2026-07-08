@@ -357,3 +357,40 @@ iPad silhouette.
     the iPhone↔iPad toggle and all 5 screen tabs correctly crossfade the
     right image in both frames simultaneously (so switching device mid-flow
     keeps your place), captions and button active-states stay in sync.
+
+## Round 10 — Fonts, rail fixes, micro-interactions, easter eggs (2026-07-09)
+
+66. **Fonts swapped to the v2 system**: Archivo VF (display + body, variable
+    wght/wdth) and IBM Plex Mono (all labels: eyebrows, indices, nav, meta,
+    buttons, captions, marquee, rail). Space Grotesk and Inter retired but
+    left in fonts/ per convention. Preloads updated on all 10 pages.
+67. **Homepage marquee shrunk** from display-size (~24px, 17px padding) to a
+    slim mono ticker (11.5px, uppercase, tracked) per user request.
+68. **Chapter-rail bugs root-caused and fixed**: the "click 7th, land mid-6th"
+    drift was lazy-loaded images shifting layout after anchor jumps — fixed by
+    injecting real width/height attributes on all 120 content images (also a
+    CLS win). Rail clicks are now JS-driven (position computed at click time),
+    ScrollTrigger positions refresh after full load, deep-linked hashes
+    re-land after images settle, and the rail fade-out now triggers at the
+    prev/next nav (95%) instead of hiding mid-article. Also fixed a JS syntax
+    error (duplicated closing block) that had silently disabled every
+    ScrollTrigger on case pages.
+69. **Micro-interactions added, one per project, using existing images only**:
+    - Auth Uplift: 3D cursor tilt + shadow on the three component specimens
+      (Tabs / Segmented Control / Card with badge).
+    - CASS: grouped "fan" hover on the three final mobile screens; tilt on
+      the competitor-benchmarking board.
+    - LinkedIn: draggable before/after slider comparing the legacy screen to
+      the redesigned landing page (range input, keyboard accessible).
+    - Show/Hide: a live iOS-style toggle in Key Solutions that crossfades
+      Explorations ⇄ Final UI — the feature's own interaction pattern, made
+      tangible.
+    - Rapipay: auto-scrolling filmstrip of the six design-solution screens,
+      pauses on hover; degrades to a scrollable strip under reduced-motion.
+    - Shagunly already had the device viewer (untouched).
+70. **Easter eggs** (all my picks, user delegated): (1) Konami code →
+    themed confetti burst (♥ ✳ glyphs in accent/text colors) + toast;
+    (2) triple-clicking the footer ♥ → heartbeat animation, confetti and a
+    contact toast; (3) a styled console message for anyone who opens
+    DevTools, with hints to the other two. All respect
+    prefers-reduced-motion (toast only, no confetti).

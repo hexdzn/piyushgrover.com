@@ -197,37 +197,71 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
   }
 
-  /* ---------- Case-study chapter rail: active section tracking ---------- */
+  /* ---------- Case-study chapter rail ---------- */
   var rail = document.querySelector('.cs-rail');
-  if (rail && window.gsap && window.ScrollTrigger) {
+  var HEAD_OFFSET = 95; // keep in sync with scroll-margin-top in css
+
+  function scrollToSection(target, instant) {
+    // compute at click time — immune to any earlier layout shifts
+    var y = target.getBoundingClientRect().top + window.scrollY - HEAD_OFFSET;
+    window.scrollTo({ top: y, behavior: (instant || prefersReduced) ? 'auto' : 'smooth' });
+  }
+
+  if (rail) {
     var railLinks = rail.querySelectorAll('a[href^="#"]');
+
+    // JS-driven navigation: precise landing regardless of image loading state
     railLinks.forEach(function (a) {
-      var target = document.querySelector(a.getAttribute('href'));
-      if (!target) return;
-      ScrollTrigger.create({
-        trigger: target,
-        start: 'top 45%',
-        end: 'bottom 45%',
-        onToggle: function (self) {
-          if (self.isActive) {
-            railLinks.forEach(function (x) { x.classList.remove('active'); });
-            a.classList.add('active');
-          }
-        }
+      a.addEventListener('click', function (e) {
+        var target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        scrollToSection(target);
+        history.replaceState(null, '', a.getAttribute('href'));
+        railLinks.forEach(function (x) { x.classList.remove('active'); });
+        a.classList.add('active');
       });
     });
-    // Hide the fixed rail once the reader reaches the prev/next nav or footer,
-    // so it doesn't float over full-width content below the article.
-    var railEnd = document.querySelector('.pn-nav') || document.querySelector('.site-foot');
-    if (railEnd) {
-      ScrollTrigger.create({
-        trigger: railEnd,
-        start: 'top 80%',
-        onEnter: function () { rail.classList.add('is-hidden'); },
-        onLeaveBack: function () { rail.classList.remove('is-hidden'); }
+
+    if (window.gsap && window.ScrollTrigger) {
+      railLinks.forEach(function (a) {
+        var target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        ScrollTrigger.create({
+          trigger: target,
+          start: 'top 45%',
+          end: 'bottom 45%',
+          onToggle: function (self) {
+            if (self.isActive) {
+              railLinks.forEach(function (x) { x.classList.remove('active'); });
+              a.classList.add('active');
+            }
+          }
+        });
       });
+      // Hide the fixed rail only when the prev/next nav is actually entering
+      // the viewport, so it never disappears mid-article.
+      var railEnd = document.querySelector('.pn-nav') || document.querySelector('.site-foot');
+      if (railEnd) {
+        ScrollTrigger.create({
+          trigger: railEnd,
+          start: 'top 95%',
+          onEnter: function () { rail.classList.add('is-hidden'); },
+          onLeaveBack: function () { rail.classList.remove('is-hidden'); }
+        });
+      }
     }
   }
+
+  /* Recompute all scroll-trigger positions once every asset has loaded, and
+     re-land any hash navigation that images may have displaced. */
+  window.addEventListener('load', function () {
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+    if (location.hash) {
+      var t = document.querySelector(location.hash);
+      if (t) setTimeout(function () { scrollToSection(t, true); }, 60);
+    }
+  });
 
   /* ---------- Footer year ---------- */
   var yr = document.querySelector('[data-year]');

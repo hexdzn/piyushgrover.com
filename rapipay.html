@@ -6,8 +6,8 @@
   <title>Rapipay | Piyush Grover — Portfolio</title>
   <meta name="description" content="Rapipay neo-banking website redesign — accessibility, responsiveness and a contemporary visual language.">
   <link rel="icon" href="img/shared/Memoji1.png">
-  <link rel="preload" href="fonts/SpaceGrotesk-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/Inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/PlexMono-500.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/main.css">
   <script>
     (function () {
@@ -69,7 +69,7 @@
 
     <section class="wrap" data-reveal>
       <figure class="fig" style="margin:0;">
-        <img src="img/rapipay/Home-page-banner-1.png" alt="Rapipay redesigned website homepage — device mockups" fetchpriority="high">
+        <img src="img/rapipay/Home-page-banner-1.png" width="1600" height="600" alt="Rapipay redesigned website homepage — device mockups" fetchpriority="high">
       </figure>
     </section>
 
@@ -131,7 +131,7 @@
           </div>
         </div>
         <figure class="fig" data-reveal>
-          <img src="img/rapipay/Home-page-banner-1.jpg" alt="Rapipay design process — homepage banner exploration" loading="lazy">
+          <img src="img/rapipay/Home-page-banner-1.jpg" width="1600" height="1001" alt="Rapipay design process — homepage banner exploration" loading="lazy">
         </figure>
       </div>
     </section>
@@ -140,7 +140,7 @@
       <div class="wrap">
         <div class="cs-label" data-reveal><span class="idx">04</span><span class="eyebrow" style="margin:0;">Information Architecture</span></div>
         <figure class="fig" data-reveal>
-          <img src="img/rapipay/Illustration-(1).jpg" alt="Rapipay information architecture" loading="lazy">
+          <img src="img/rapipay/Illustration-(1).jpg" width="1600" height="416" alt="Rapipay information architecture" loading="lazy">
         </figure>
       </div>
     </section>
@@ -149,7 +149,7 @@
       <div class="wrap">
         <div class="cs-label" data-reveal><span class="idx">05</span><span class="eyebrow" style="margin:0;">UI Explorations</span></div>
         <figure class="fig" data-reveal>
-          <img src="img/rapipay/Group-1116.jpg" alt="Rapipay UI explorations — layout and visual language studies" loading="lazy">
+          <img src="img/rapipay/Group-1116.jpg" width="1600" height="5913" alt="Rapipay UI explorations — layout and visual language studies" loading="lazy">
         </figure>
       </div>
     </section>
@@ -171,13 +171,21 @@
     <section class="cs-section" id="solution">
       <div class="wrap">
         <div class="cs-label" data-reveal><span class="idx">07</span><span class="eyebrow" style="margin:0;">Design Solution</span></div>
-        <div class="fig-grid cols-2" data-reveal>
-          <figure class="fig" style="margin:0;"><img src="img/rapipay/2nd.jpg" alt="Rapipay design solution — landing sections" loading="lazy"></figure>
-          <figure class="fig" style="margin:0;"><img src="img/rapipay/5.jpg" alt="Rapipay design solution — product sections" loading="lazy"></figure>
-          <figure class="fig" style="margin:0;"><img src="img/rapipay/6.jpg" alt="Rapipay design solution — services overview" loading="lazy"></figure>
-          <figure class="fig" style="margin:0;"><img src="img/rapipay/7.jpg" alt="Rapipay design solution — feature detail" loading="lazy"></figure>
-          <figure class="fig" style="margin:0;"><img src="img/rapipay/8.png" alt="Rapipay design solution — responsive views" loading="lazy"></figure>
-          <figure class="fig" style="margin:0;"><img src="img/rapipay/9.jpg" alt="Rapipay design solution — closing sections" loading="lazy"></figure>
+        <div class="filmstrip" data-reveal>
+          <div class="filmstrip-track">
+            <img src="img/rapipay/2nd.jpg" alt="Rapipay design solution — landing sections" loading="lazy">
+            <img src="img/rapipay/5.jpg" alt="Rapipay design solution — product sections" loading="lazy">
+            <img src="img/rapipay/6.jpg" alt="Rapipay design solution — services overview" loading="lazy">
+            <img src="img/rapipay/7.jpg" alt="Rapipay design solution — feature detail" loading="lazy">
+            <img src="img/rapipay/8.png" alt="Rapipay design solution — responsive views" loading="lazy">
+            <img src="img/rapipay/9.jpg" alt="Rapipay design solution — closing sections" loading="lazy">
+            <img src="img/rapipay/2nd.jpg" alt="" aria-hidden="true" loading="lazy">
+            <img src="img/rapipay/5.jpg" alt="" aria-hidden="true" loading="lazy">
+            <img src="img/rapipay/6.jpg" alt="" aria-hidden="true" loading="lazy">
+            <img src="img/rapipay/7.jpg" alt="" aria-hidden="true" loading="lazy">
+            <img src="img/rapipay/8.png" alt="" aria-hidden="true" loading="lazy">
+            <img src="img/rapipay/9.jpg" alt="" aria-hidden="true" loading="lazy">
+          </div>
         </div>
       </div>
     </section>
@@ -228,5 +236,7 @@
   <script src="vendor/gsap.min.js"></script>
   <script src="vendor/ScrollTrigger.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/interactions.js"></script>
+  <script src="js/eggs.js"></script>
 </body>
 </html>
