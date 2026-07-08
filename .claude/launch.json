@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "4173", "--bind", "127.0.0.1"],
       "port": 4173
+    },
+    {
+      "name": "portfolio-v2",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4180", "--bind", "127.0.0.1", "--directory", "/Users/Piyush/piyush-portfolio-v2"],
+      "port": 4180
     }
   ]
 }

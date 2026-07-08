@@ -577,6 +577,45 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
   font-size: 0.8rem; color: var(--text-muted);
 }
 
+/* ---------- Case-study chapter rail ---------- */
+.cs-rail {
+  position: fixed;
+  left: calc(max((100vw - var(--w-max)) / 2, 0px) + var(--pad-x));
+  top: 130px;
+  z-index: 40;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  width: 200px;
+  transition: opacity 0.3s ease;
+}
+.cs-rail.is-hidden { opacity: 0; pointer-events: none; }
+.cs-rail a {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0.35rem 0 0.35rem 0.75rem;
+  border-left: 2px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+.cs-rail a .idx {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+.cs-rail a:hover { color: var(--text); }
+.cs-rail a.active { color: var(--accent); border-left-color: var(--accent); }
+section[id] { scroll-margin-top: 95px; }
+@media (min-width: 1180px) {
+  .cs-rail { display: flex; }
+  body.has-rail main .wrap { padding-left: calc(var(--pad-x) + 240px); }
+}
+
 /* ---------- Reveal animations (GSAP adds .revealed) ---------- */
 [data-reveal] { opacity: 0; transform: translateY(28px); }
 html.no-js [data-reveal], [data-reveal].revealed { opacity: 1; transform: none; }

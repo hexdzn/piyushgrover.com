@@ -197,6 +197,38 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
   }
 
+  /* ---------- Case-study chapter rail: active section tracking ---------- */
+  var rail = document.querySelector('.cs-rail');
+  if (rail && window.gsap && window.ScrollTrigger) {
+    var railLinks = rail.querySelectorAll('a[href^="#"]');
+    railLinks.forEach(function (a) {
+      var target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      ScrollTrigger.create({
+        trigger: target,
+        start: 'top 45%',
+        end: 'bottom 45%',
+        onToggle: function (self) {
+          if (self.isActive) {
+            railLinks.forEach(function (x) { x.classList.remove('active'); });
+            a.classList.add('active');
+          }
+        }
+      });
+    });
+    // Hide the fixed rail once the reader reaches the prev/next nav or footer,
+    // so it doesn't float over full-width content below the article.
+    var railEnd = document.querySelector('.pn-nav') || document.querySelector('.site-foot');
+    if (railEnd) {
+      ScrollTrigger.create({
+        trigger: railEnd,
+        start: 'top 80%',
+        onEnter: function () { rail.classList.add('is-hidden'); },
+        onLeaveBack: function () { rail.classList.remove('is-hidden'); }
+      });
+    }
+  }
+
   /* ---------- Footer year ---------- */
   var yr = document.querySelector('[data-year]');
   if (yr) yr.textContent = new Date().getFullYear();
