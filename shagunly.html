@@ -54,25 +54,29 @@
       <a href="#process"><span class="idx">03</span> Process</a>
       <a href="#screens"><span class="idx">04</span> Screens</a>
       <a href="#principles"><span class="idx">05</span> Principles</a>
-      <a href="#building"><span class="idx">06</span> Building It</a>
-      <a href="#judgment"><span class="idx">07</span> Judgment</a>
-      <a href="#testing"><span class="idx">08</span> Testing</a>
-      <a href="#next"><span class="idx">09</span> Next</a>
-      <a href="#reflection"><span class="idx">10</span> Reflection</a>
+      <a href="#decisions"><span class="idx">06</span> Decisions</a>
+      <a href="#building"><span class="idx">07</span> Building It</a>
+      <a href="#judgment"><span class="idx">08</span> Judgment</a>
+      <a href="#testing"><span class="idx">09</span> Testing</a>
+      <a href="#next"><span class="idx">10</span> Next</a>
+      <a href="#reflection"><span class="idx">11</span> Reflection</a>
   </nav>
     <section class="cs-hero">
       <div class="wrap">
-        <p class="eyebrow" data-reveal>iOS — Personal Product · TestFlight Beta</p>
+        <p class="eyebrow" data-reveal>iOS — Personal Product · Live on the App Store</p>
         <h1 class="display-lg" data-reveal>Shagunly — Tracking Tradition, One Gift at a Time</h1>
         <p class="lede" data-reveal>A vibe-coded iOS app — designed &amp; directed by me, built in collaboration with Claude (Anthropic).</p>
         <dl class="meta-grid" data-reveal>
           <div><dt>Role</dt><dd>Product Designer &amp; Director (end-to-end: research, UX, visual design, and AI-directed engineering)</dd></div>
           <div><dt>Platform</dt><dd>iOS (native, SwiftUI) — originally a PWA</dd></div>
-          <div><dt>Status</dt><dd>Live in TestFlight beta, external/family testing</dd></div>
+          <div><dt>Status</dt><dd>Live on the <a href="https://apps.apple.com/us/app/shagunly/id6783436742" target="_blank" rel="noopener" style="color:var(--accent);">App Store ↗</a></dd></div>
           <div><dt>Backend</dt><dd>Supabase</dd></div>
           <div><dt>Build method</dt><dd>Vibe coded — 100% AI-directed development, zero hand-written code</dd></div>
           <div><dt>Timeline</dt><dd>Ongoing, iterative builds (Build 1 → Build 3 in progress)</dd></div>
         </dl>
+        <div class="hero-cta-row" style="margin-top:2rem;" data-reveal>
+          <a class="btn btn-solid" href="https://apps.apple.com/us/app/shagunly/id6783436742" target="_blank" rel="noopener">Download on the App Store <span class="arr">↗</span></a>
+        </div>
       </div>
     </section>
 
@@ -227,11 +231,67 @@
       </div>
     </section>
 
+    <section class="cs-section" id="decisions">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">06</span><span class="eyebrow" style="margin:0;">Design Decisions &amp; Trade-offs</span></div>
+            <h2>The Calls Behind the Screens</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>Every screen above is the survivor of a set of options. The decisions that shaped Shagunly weren't visual polish — they were product calls about what the app should <em>feel like</em> to a family mid-celebration. What was on the table, what shipped, and why:</p>
+          </div>
+        </div>
+        <div class="decision-grid">
+          <article class="decision-card" data-reveal>
+            <h4><span class="idx">D1</span> Amount entry</h4>
+            <p class="d-row"><span class="d-tag">Considered</span> A plain numeric field — fastest to build, culturally blind.</p>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> One-tap auspicious presets — ₹501, ₹1,100, ₹2,100, ₹5,100 — above the keyboard.</p>
+            <p class="d-row why"><span class="d-tag">Why</span> Shagun amounts conventionally end in ₹1. Presets make the culturally correct amount the path of least resistance and cut mid-event entry to a single tap.</p>
+          </article>
+          <article class="decision-card" data-reveal data-reveal-delay="0.06">
+            <h4><span class="idx">D2</span> The People screen</h4>
+            <p class="d-row"><span class="d-tag">Considered</span> A transaction log per contact — accurate, but reads like accounting.</p>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> A running balance per relationship, with a "Your turn / Their turn" cue.</p>
+            <p class="d-row why"><span class="d-tag">Why</span> Shagun is reciprocity, not bookkeeping. Framing each person as a relationship state answers the real question — "where do we stand?" — at a glance.</p>
+          </article>
+          <article class="decision-card" data-reveal data-reveal-delay="0.12">
+            <h4><span class="idx">D3</span> Entry detail</h4>
+            <p class="d-row"><span class="d-tag">Considered</span> Editable-by-default detail views — powerful, but noisy and risky.</p>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> Read-only by default; editing sits behind a deliberate pencil tap.</p>
+            <p class="d-row why"><span class="d-tag">Why</span> Most opens are checks, not changes. A calm read state keeps the record safe from accidental edits in the middle of a crowded function.</p>
+          </article>
+          <article class="decision-card" data-reveal>
+            <h4><span class="idx">D4</span> Direction first</h4>
+            <p class="d-row"><span class="d-tag">Considered</span> Amount-first forms, with given/received as an afterthought toggle.</p>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> Received / Given as the first, color-coded choice — green in, red out.</p>
+            <p class="d-row why"><span class="d-tag">Why</span> Direction is the meaning of the transaction. Committing it first keeps every later field — preset, person, occasion — in the right mental frame.</p>
+          </article>
+          <article class="decision-card" data-reveal data-reveal-delay="0.06">
+            <h4><span class="idx">D5</span> Occasion linking</h4>
+            <p class="d-row"><span class="d-tag">Considered</span> Requiring an occasion on every entry — cleaner data, slower capture.</p>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> Occasion is optional at capture, linkable when there's time.</p>
+            <p class="d-row why"><span class="d-tag">Why</span> At a live event, speed beats structure. Optional linking keeps the ledger usable in the moment without giving up organization afterwards.</p>
+          </article>
+          <article class="decision-card" data-reveal data-reveal-delay="0.12">
+            <h4><span class="idx">D6</span> Visual identity</h4>
+            <p class="d-row"><span class="d-tag">Considered</span> Default system typography on a light canvas — native, but generic.</p>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> A serif display voice over a deep night palette with festive gradient accents.</p>
+            <p class="d-row why"><span class="d-tag">Why</span> The serif brings warmth and sense of occasion to a money app; the dark canvas lets celebratory color glow without shouting.</p>
+          </article>
+        </div>
+        <div class="fig-grid cols-2" data-reveal>
+          <figure class="fig fx-tilt" style="margin:0;"><img src="img/shagunly/screens/phone-new-entry.jpg" width="640" height="1391" alt="New Shagun entry screen — direction-first choice, auspicious presets, optional occasion" loading="lazy"><figcaption>D1 · D4 · D5 — direction-first entry, auspicious presets, optional occasion</figcaption></figure>
+          <figure class="fig fx-tilt" style="margin:0;"><img src="img/shagunly/screens/phone-people.jpg" width="640" height="1391" alt="People screen — running balances with your-turn / their-turn cues" loading="lazy"><figcaption>D2 — relationships as running balances, not transaction logs</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
     <section class="cs-section" id="building">
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">06</span><span class="eyebrow" style="margin:0;">Building It</span></div>
+            <div class="cs-label"><span class="idx">07</span><span class="eyebrow" style="margin:0;">Building It</span></div>
             <h2>The Vibe Coding Approach</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -278,7 +338,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">07</span><span class="eyebrow" style="margin:0;">Engineering Judgment</span></div>
+            <div class="cs-label"><span class="idx">08</span><span class="eyebrow" style="margin:0;">Engineering Judgment</span></div>
             <h2>Real Engineering Problems, Solved Without Writing Code</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -299,11 +359,11 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">08</span><span class="eyebrow" style="margin:0;">Testing &amp; Validation</span></div>
+            <div class="cs-label"><span class="idx">09</span><span class="eyebrow" style="margin:0;">Testing &amp; Validation</span></div>
             <h2>Real Testers, Real Feedback Loop</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <p>Shagunly is live on TestFlight with family as real, external testers — not synthetic QA. Build 2 cleared Apple's Beta App Review process and is currently gathering usage feedback, which is directly shaping Build 3 (the read/edit view split and forgot-password flow both came out of that feedback loop).</p>
+            <p>Shagunly was tested on TestFlight with family as real, external testers — not synthetic QA. Build 2 cleared Apple's Beta App Review, and that feedback loop directly shaped Build 3 (the read/edit view split and forgot-password flow both came out of it). The app has since cleared full App Review and is <a href="https://apps.apple.com/us/app/shagunly/id6783436742" target="_blank" rel="noopener" style="color:var(--accent);">live on the App Store ↗</a>.</p>
           </div>
         </div>
         <figure class="fig" data-reveal>
@@ -316,16 +376,14 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">09</span><span class="eyebrow" style="margin:0;">What's Next</span></div>
-            <h2>The Road to the App Store</h2>
+            <div class="cs-label"><span class="idx">10</span><span class="eyebrow" style="margin:0;">What's Next</span></div>
+            <h2>Beyond the Launch</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
             <ul>
               <li><strong>Family grouping</strong> — shared visibility into occasions across a household</li>
               <li><strong>Dark mode</strong> — a deliberately scoped, large effort given the size of the existing color system</li>
               <li><strong>Phone OTP sign-in</strong> — for a lower-friction, more India-familiar auth pattern</li>
-              <li><strong>Account deletion flow</strong> — required for App Store submission</li>
-              <li><strong>App Store screenshots, listing, and public launch</strong></li>
             </ul>
           </div>
         </div>
@@ -336,13 +394,13 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">10</span><span class="eyebrow" style="margin:0;">Reflection</span></div>
+            <div class="cs-label"><span class="idx">11</span><span class="eyebrow" style="margin:0;">Reflection</span></div>
             <h2>Product Judgment, End to End</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
             <p>Shagunly is as much a case study in <strong>product judgment</strong> as it is in interface design. The interesting decisions weren't about corner radii — they were things like: rebuild native or stay web? Strip the paywall or protect revenue during validation? Ship a calm read-only view or a more powerful but noisier editable one by default?</p>
             <p>Directing an AI to build the app didn't replace design thinking — it removed the traditional bottleneck between having a decision and seeing it live in a real, installable product that real people could test. It let me stay end-to-end: the same person who decided <em>what</em> to build also shipped <em>how</em> it works.</p>
-            <p class="muted">Shagunly is currently in closed beta on TestFlight. <a href="mailto:piyushggrover@gmail.com" style="color:var(--accent);">Request access →</a></p>
+            <p class="muted">Shagunly is out in the world. <a href="https://apps.apple.com/us/app/shagunly/id6783436742" target="_blank" rel="noopener" style="color:var(--accent);">Get it on the App Store ↗</a></p>
           </div>
         </div>
         <div class="closing-grid" data-reveal>

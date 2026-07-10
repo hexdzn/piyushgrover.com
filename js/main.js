@@ -253,13 +253,22 @@
     }
   }
 
-  /* Recompute all scroll-trigger positions once every asset has loaded, and
-     re-land any hash navigation that images may have displaced. */
+  /* Recompute all scroll-trigger positions once every asset has loaded.
+     Re-land the hash ONLY for true deep links (hash present at page open,
+     user hasn't interacted yet) — never after in-page rail clicks, which
+     used to cause an abrupt jump when late-loading images fired 'load'. */
+  var initialHash = location.hash;
+  var userInteracted = false;
+  ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (ev) {
+    window.addEventListener(ev, function () { userInteracted = true; }, { passive: true, once: true });
+  });
   window.addEventListener('load', function () {
     if (window.ScrollTrigger) ScrollTrigger.refresh();
-    if (location.hash) {
-      var t = document.querySelector(location.hash);
-      if (t) setTimeout(function () { scrollToSection(t, true); }, 60);
+    if (initialHash && !userInteracted) {
+      var t = document.querySelector(initialHash);
+      if (t) setTimeout(function () {
+        if (!userInteracted) scrollToSection(t, true);
+      }, 60);
     }
   });
 

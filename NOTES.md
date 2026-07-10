@@ -417,3 +417,41 @@ iPad silhouette.
     desktop), so the line always lives in the content column and clears the
     rail by ~40px at every width. Mobile unchanged (spans content, rail
     hidden).
+
+## Round 12 — Scroll-jump fix, more eggs, Shagunly launch update (2026-07-11)
+
+74. **Side-nav scroll jump fixed (root cause)**: round-10's load-time hash
+    re-scroll fired whenever heavy images finished loading — so clicking a
+    rail chapter (which writes #hash) before full page load caused an abrupt
+    yank back to that chapter seconds later. Now the hash is only honored on
+    load for true deep links (hash present at page open AND zero user
+    interaction since); wheel/touch/key/pointer all cancel it. Verified the
+    click path end-to-end; note the in-pane verification required
+    behavior:'instant' because the preview tab is a hidden rendering context
+    where Chrome pauses smooth-scroll — real browsers unaffected.
+75. **Three new easter eggs** (joining Konami, heart, console): triple-click
+    the header memoji → it spins and rains memojis; 5 rapid theme toggles →
+    icon spin + confetti + "Both modes are hand-tuned" toast; typing
+    "piyush" anywhere → confetti + the marquee's ✳ separators turn to ♥ for
+    8s. All reduced-motion-safe, no invented claims in copy.
+76. **Shagunly is LIVE ON THE APP STORE**
+    (https://apps.apple.com/us/app/shagunly/id6783436742 — verified 200 +
+    title). Updated: hero eyebrow, Status meta (linked), new "Download on
+    the App Store" hero CTA, Testing section (TestFlight → shipped through
+    full App Review), What's Next retitled "Beyond the Launch" with the two
+    completed launch items removed (account deletion flow, store
+    listing/launch), Reflection closing now links the store. Home page row
+    tag → "iOS · Live on the App Store"; hover preview swapped from the gray
+    hero-shot.svg placeholder to a real screen (tablet-home.jpg).
+77. **New section 06 "Design Decisions & Trade-offs"** on shagunly.html
+    (user asked to elaborate decisions/variations; chose decision-narratives
+    now, Figma exports to be slotted in later). Six Considered/Shipped/Why
+    cards — auspicious presets, People-as-balance framing, read-only detail,
+    direction-first entry, optional occasion linking, serif/night identity —
+    every claim grounded in the original case-study copy or directly visible
+    in the shipped screenshots; the two annotated figures reuse existing
+    screens with fx-tilt. All later sections renumbered 07–11, rail updated,
+    anchors verified (11/11 resolve, order matches).
+78. **V2 not yet synced** with the App Store launch or the new Decisions
+    section — piyush-v2's Shagunly page still says TestFlight beta. Pending
+    the v1-vs-v2 direction decision.

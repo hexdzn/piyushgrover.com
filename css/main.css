@@ -506,6 +506,44 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
 .persona-card .p-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; }
 .persona-card ul { margin: 0; padding-left: 1.1em; font-size: 0.92rem; }
 
+/* Design decision cards */
+.decision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+.decision-card {
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  transition: border-color 0.3s ease, transform 0.35s var(--ease-out);
+}
+.decision-card:hover { border-color: var(--line); transform: translateY(-4px); }
+.decision-card h4 {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+.decision-card h4 .idx { font-family: var(--font-mono); font-weight: 500; font-size: 0.72rem; color: var(--accent); }
+.decision-card .d-row { font-size: 0.92rem; margin-bottom: 0.7rem; color: var(--text-muted); }
+.decision-card .d-row.why { color: var(--text); margin-bottom: 0; }
+.decision-card .d-tag {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  color: var(--text-muted);
+}
+.decision-card .d-row.shipped .d-tag, .decision-card .d-row.shipped { color: var(--text); }
+.decision-card .d-row.shipped .d-tag { color: var(--accent); }
+
 /* Case study card (hub page) */
 .cs-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-3); }
 .cs-card {
@@ -681,6 +719,12 @@ html.no-js [data-reveal], [data-reveal].revealed { opacity: 1; transform: none; 
   35% { transform: scale(1.5); }
   60% { transform: scale(0.9); }
   100% { transform: scale(1); }
+}
+.egg-spin { animation: eggspin 0.7s var(--ease-out); }
+@keyframes eggspin { to { transform: rotate(360deg); } }
+.marquee-track span.egg-hearts::after { content: '♥'; }
+@media (prefers-reduced-motion: reduce) {
+  .egg-spin { animation: none; }
 }
 
 /* Page curtain transition */

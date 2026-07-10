@@ -106,7 +106,108 @@
     });
   }
 
-  /* ---------- Egg 3: for the ones who open the console ---------- */
+  /* ---------- Egg 3: memoji rain (triple-click the brand) ---------- */
+  var brand = document.querySelector('.brand img');
+  if (brand) {
+    var bTaps = 0, bTimer = null;
+    brand.parentElement.addEventListener('click', function (e) {
+      bTaps++;
+      clearTimeout(bTimer);
+      bTimer = setTimeout(function () { bTaps = 0; }, 900);
+      if (bTaps >= 3) {
+        bTaps = 0;
+        e.preventDefault();
+        brand.classList.remove('egg-spin');
+        void brand.offsetWidth;
+        brand.classList.add('egg-spin');
+        memojiRain(brand.src);
+      }
+    });
+  }
+  function memojiRain(src) {
+    if (prefersReduced) return;
+    var img = new Image();
+    img.src = src;
+    img.onload = function () {
+      var canvas = document.createElement('canvas');
+      canvas.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:300;';
+      document.body.appendChild(canvas);
+      var ctx = canvas.getContext('2d');
+      var dpr = Math.min(devicePixelRatio || 1, 2);
+      canvas.width = innerWidth * dpr;
+      canvas.height = innerHeight * dpr;
+      ctx.scale(dpr, dpr);
+      var drops = [];
+      for (var i = 0; i < 26; i++) {
+        drops.push({
+          x: Math.random() * innerWidth,
+          y: -40 - Math.random() * innerHeight * 0.6,
+          v: 3.5 + Math.random() * 5,
+          size: 22 + Math.random() * 26,
+          rot: (Math.random() - 0.5) * 0.6,
+          spin: (Math.random() - 0.5) * 0.08
+        });
+      }
+      var start = performance.now();
+      (function frame(now) {
+        var t = (now - start) / 2600;
+        ctx.clearRect(0, 0, innerWidth, innerHeight);
+        drops.forEach(function (d) {
+          d.y += d.v;
+          d.rot += d.spin;
+          ctx.save();
+          ctx.translate(d.x, d.y);
+          ctx.rotate(d.rot);
+          ctx.globalAlpha = Math.max(0, 1 - Math.max(0, t - 0.72) * 3.5);
+          ctx.drawImage(img, -d.size / 2, -d.size / 2, d.size, d.size);
+          ctx.restore();
+        });
+        if (t < 1) requestAnimationFrame(frame);
+        else canvas.remove();
+      })(start);
+    };
+  }
+
+  /* ---------- Egg 4: theme-toggle enthusiasm ---------- */
+  var toggles = document.querySelectorAll('.theme-toggle');
+  var tCount = 0, tTimer = null;
+  toggles.forEach(function (tg) {
+    tg.addEventListener('click', function () {
+      tCount++;
+      clearTimeout(tTimer);
+      tTimer = setTimeout(function () { tCount = 0; }, 2200);
+      if (tCount >= 5) {
+        tCount = 0;
+        tg.classList.remove('egg-spin');
+        void tg.offsetWidth;
+        tg.classList.add('egg-spin');
+        var r = tg.getBoundingClientRect();
+        confetti(r.left + r.width / 2, r.top + r.height / 2, 50);
+        toast('Both modes are hand-tuned. Pick your fighter.');
+      }
+    });
+  });
+
+  /* ---------- Egg 5: type "piyush" anywhere ---------- */
+  var NAME = 'piyush';
+  var nPos = 0;
+  document.addEventListener('keydown', function (e) {
+    if (e.key.length !== 1) return;
+    var c = e.key.toLowerCase();
+    nPos = (c === NAME[nPos]) ? nPos + 1 : (c === NAME[0] ? 1 : 0);
+    if (nPos === NAME.length) {
+      nPos = 0;
+      confetti(innerWidth / 2, innerHeight * 0.35, 110);
+      toast('You rang? → piyushggrover@gmail.com');
+      // marquee asterisks turn to hearts for a moment
+      document.querySelectorAll('.marquee-track span').forEach(function (s) { s.classList.add('egg-hearts'); });
+      setTimeout(function () {
+        document.querySelectorAll('.marquee-track span').forEach(function (s) { s.classList.remove('egg-hearts'); });
+      }, 8000);
+    }
+  });
+
+  /* ---------- Egg 6: for the ones who open the console ---------- */
   try {
     console.log(
       '%c PIYUSH GROVER %c Designing fluid & functional interfaces ',
