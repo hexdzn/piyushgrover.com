@@ -455,3 +455,34 @@ iPad silhouette.
 78. **V2 not yet synced** with the App Store launch or the new Decisions
     section — piyush-v2's Shagunly page still says TestFlight beta. Pending
     the v1-vs-v2 direction decision.
+
+## Round 13 — Shagunly Design Kit (SVG export page) (2026-07-11)
+
+79. **New standalone page `design-kit.html`** (NOT linked anywhere, meta
+    robots=noindex; reachable only by direct URL
+    /design-kit.html). Purpose: a source of designed SVG artifacts Piyush can
+    "Copy SVG" and paste straight into Figma (⌘V pastes editable vectors +
+    text) to build out the real Shagunly Figma file. 17 artifacts across 5
+    sections: Design System (colour tokens, type scale, spacing, night+festive
+    theme), Components (buttons/states, segmented toggle, auspicious chips,
+    cards, FAB+nav), Explorations (5 A/B "Considered vs Shipped" pairs —
+    amount entry, People, entry detail, direction-first, identity), Flows
+    (capture + reciprocity), Handoff (annotated redline spec = the
+    "Figma → AI build" story in one frame).
+80. **Colours sampled from the shipped app screenshots** (PIL pixel sampling),
+    nudged slightly more vivid to undo JPEG dulling: primary #7158D7, festive
+    gradient #7E6BD6→#8B57E6, received #40C486, given #EC6A7C, gold #E8B04B,
+    surfaces #0D0D14/#1B1B26/#15131F. Noted on the page.
+81. **Fonts in the SVGs** are placeholders for Figma remap: display = serif
+    (Georgia fallback), UI = Archivo, labels/numerals = IBM Plex Mono. The
+    real Shagunly serif should be swapped in Figma after paste — called out in
+    the page hint.
+82. **These A/B explorations are reconstructions**, clearly framed as
+    wireframe-level alternates (not claimed as original exploration history) —
+    consistent with the earlier decision (#77) to power the case study's
+    Decisions cards with real Figma frames once Piyush exports them. This kit
+    is the tool to help produce/ää formalize those.
+83. **Copy mechanism**: js/design-kit.js serializes each SVG standalone (adds
+    xmlns) to the clipboard; verified the output is valid XML, starts with
+    <svg>, retains gradients + text. Button → "Copied ✓" + toast. Deployed but
+    unlinked, so it ships with the site without appearing in nav/sitemap.

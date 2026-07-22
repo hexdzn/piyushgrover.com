@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Shagunly — Design Kit (internal)</title>
+  <link rel="icon" href="img/shagunly/icon-default.png">
+  <link rel="preload" href="fonts/Archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/PlexMono-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/design-kit.css">
+</head>
+<body>
+  <header class="kit-head">
+    <h1>Shagunly — Design Kit <small>Internal export · not linked in portfolio</small></h1>
+    <nav class="kit-nav">
+      <a href="#system">System</a>
+      <a href="#components">Components</a>
+      <a href="#explorations">Explorations</a>
+      <a href="#flows">Flows</a>
+      <a href="#handoff">Handoff</a>
+    </nav>
+  </header>
+
+  <div class="kit-hint">
+    <b>How to use:</b> hit <b>Copy SVG</b> on any tile → in Figma press <b>⌘V</b>. It pastes as editable vectors + text.
+    Colours are sampled from the shipped app. Display type is set as <b>serif</b> (swap to your Shagunly serif), UI text as <b>Archivo</b>, labels/numerals as <b>IBM Plex Mono</b> — remap fonts in Figma after paste.
+  </div>
+
+  <main>
+
+  <!-- ============================ 01 SYSTEM ============================ -->
+  <section class="kit-section" id="system">
+    <header>
+      <span class="num">01 — Foundations</span>
+      <h2>Design System &amp; Styles</h2>
+      <p>The tokens the whole app is built from — colour, type, spacing, and the “night + festive” theme. Sampled from the live build.</p>
+    </header>
+    <div class="kit-grid">
+
+      <!-- Color tokens -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Colour Tokens</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" width="760" height="500">
+            <defs>
+              <linearGradient id="ct-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#7E6BD6"/><stop offset="1" stop-color="#8B57E6"/>
+              </linearGradient>
+            </defs>
+            <rect width="760" height="500" rx="16" fill="#0D0D14"/>
+            <text x="32" y="52" font-family="'IBM Plex Mono',monospace" font-size="13" letter-spacing="2" fill="#9A9AA8">COLOUR TOKENS</text>
+            <!-- row helper: swatch 150 wide -->
+            <!-- Surfaces -->
+            <text x="32" y="92" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#6E6E7C">SURFACES</text>
+            <g>
+              <rect x="32" y="104" width="160" height="86" rx="10" fill="#0D0D14" stroke="rgba(255,255,255,0.12)"/>
+              <text x="44" y="164" font-family="Archivo,sans-serif" font-size="13" fill="#F4F3F7">Base</text>
+              <text x="44" y="180" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9A9AA8">#0D0D14</text>
+            </g>
+            <g>
+              <rect x="204" y="104" width="160" height="86" rx="10" fill="#1B1B26" stroke="rgba(255,255,255,0.10)"/>
+              <text x="216" y="164" font-family="Archivo,sans-serif" font-size="13" fill="#F4F3F7">Card</text>
+              <text x="216" y="180" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9A9AA8">#1B1B26</text>
+            </g>
+            <g>
+              <rect x="376" y="104" width="160" height="86" rx="10" fill="#15131F" stroke="rgba(255,255,255,0.10)"/>
+              <text x="388" y="164" font-family="Archivo,sans-serif" font-size="13" fill="#F4F3F7">Field</text>
+              <text x="388" y="180" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9A9AA8">#15131F</text>
+            </g>
+            <g>
+              <rect x="548" y="104" width="180" height="86" rx="10" fill="#20212B" stroke="rgba(255,255,255,0.10)"/>
+              <text x="560" y="164" font-family="Archivo,sans-serif" font-size="13" fill="#F4F3F7">Elevated</text>
+              <text x="560" y="180" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9A9AA8">#20212B</text>
+            </g>
+            <!-- Brand + semantic -->
+            <text x="32" y="228" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#6E6E7C">BRAND &amp; SEMANTIC</text>
+            <g>
+              <rect x="32" y="240" width="160" height="120" rx="10" fill="url(#ct-grad)"/>
+              <text x="44" y="326" font-family="Archivo,sans-serif" font-size="13" fill="#fff">Festive gradient</text>
+              <text x="44" y="344" font-family="'IBM Plex Mono',monospace" font-size="10.5" fill="rgba(255,255,255,0.85)">#7E6BD6 → #8B57E6</text>
+            </g>
+            <g>
+              <rect x="204" y="240" width="160" height="120" rx="10" fill="#7158D7"/>
+              <text x="216" y="326" font-family="Archivo,sans-serif" font-size="13" fill="#fff">Primary</text>
+              <text x="216" y="344" font-family="'IBM Plex Mono',monospace" font-size="11" fill="rgba(255,255,255,0.9)">#7158D7</text>
+            </g>
+            <g>
+              <rect x="376" y="240" width="118" height="120" rx="10" fill="#40C486"/>
+              <text x="388" y="326" font-family="Archivo,sans-serif" font-size="13" fill="#06130C">Received</text>
+              <text x="388" y="344" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#06130C">#40C486</text>
+            </g>
+            <g>
+              <rect x="506" y="240" width="106" height="120" rx="10" fill="#EC6A7C"/>
+              <text x="518" y="326" font-family="Archivo,sans-serif" font-size="13" fill="#2A0910">Given</text>
+              <text x="518" y="344" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#2A0910">#EC6A7C</text>
+            </g>
+            <g>
+              <rect x="624" y="240" width="104" height="120" rx="10" fill="#E8B04B"/>
+              <text x="636" y="326" font-family="Archivo,sans-serif" font-size="13" fill="#231703">Gold</text>
+              <text x="636" y="344" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#231703">#E8B04B</text>
+            </g>
+            <!-- Text -->
+            <text x="32" y="398" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#6E6E7C">TEXT</text>
+            <g>
+              <rect x="32" y="410" width="230" height="66" rx="10" fill="#1B1B26" stroke="rgba(255,255,255,0.08)"/>
+              <circle cx="66" cy="443" r="14" fill="#F4F3F7"/>
+              <text x="92" y="440" font-family="Archivo,sans-serif" font-size="13" fill="#F4F3F7">Text / Primary</text>
+              <text x="92" y="456" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9A9AA8">#F4F3F7</text>
+            </g>
+            <g>
+              <rect x="274" y="410" width="230" height="66" rx="10" fill="#1B1B26" stroke="rgba(255,255,255,0.08)"/>
+              <circle cx="308" cy="443" r="14" fill="#9A9AA8"/>
+              <text x="334" y="440" font-family="Archivo,sans-serif" font-size="13" fill="#F4F3F7">Text / Muted</text>
+              <text x="334" y="456" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9A9AA8">#9A9AA8</text>
+            </g>
+            <g>
+              <rect x="516" y="410" width="212" height="66" rx="10" fill="#1B1B26" stroke="rgba(255,255,255,0.08)"/>
+              <rect x="536" y="429" width="28" height="28" rx="6" fill="none" stroke="rgba(255,255,255,0.14)"/>
+              <text x="576" y="440" font-family="Archivo,sans-serif" font-size="13" fill="#F4F3F7">Hairline</text>
+              <text x="576" y="456" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#9A9AA8">rgba(255,.10)</text>
+            </g>
+          </svg>
+        </div>
+      </figure>
+
+      <!-- Type scale -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Type Scale</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" width="760" height="500">
+            <rect width="760" height="500" rx="16" fill="#0D0D14"/>
+            <text x="32" y="52" font-family="'IBM Plex Mono',monospace" font-size="13" letter-spacing="2" fill="#9A9AA8">TYPE SCALE</text>
+            <line x1="32" y1="70" x2="728" y2="70" stroke="rgba(255,255,255,0.08)"/>
+
+            <text x="32" y="118" font-family="Georgia,serif" font-size="40" fill="#F4F3F7">Meera’s Sangeet</text>
+            <text x="600" y="112" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9A9AA8" text-anchor="end">Display · Serif</text>
+            <text x="728" y="112" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#6E6E7C" text-anchor="end">34/40</text>
+
+            <text x="32" y="170" font-family="Georgia,serif" font-size="26" fill="#F4F3F7">New Shagun</text>
+            <text x="600" y="166" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9A9AA8" text-anchor="end">Title · Serif</text>
+            <text x="728" y="166" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#6E6E7C" text-anchor="end">22/28</text>
+
+            <text x="32" y="214" font-family="Archivo,sans-serif" font-size="17" font-weight="600" fill="#F4F3F7">Log a gift received</text>
+            <text x="600" y="210" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9A9AA8" text-anchor="end">Label · Sans 600</text>
+            <text x="728" y="210" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#6E6E7C" text-anchor="end">16/22</text>
+
+            <text x="32" y="252" font-family="Archivo,sans-serif" font-size="14" fill="#C7C7D2">You’ve received ₹11,100 more than you’ve given</text>
+            <text x="600" y="248" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9A9AA8" text-anchor="end">Body · Sans</text>
+            <text x="728" y="248" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#6E6E7C" text-anchor="end">14/21</text>
+
+            <text x="32" y="288" font-family="Archivo,sans-serif" font-size="12" fill="#9A9AA8">2 entries · Birthday · 22 Mar</text>
+            <text x="600" y="284" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9A9AA8" text-anchor="end">Caption · Sans</text>
+            <text x="728" y="284" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#6E6E7C" text-anchor="end">12/16</text>
+
+            <text x="32" y="324" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#9A9AA8">AUSPICIOUS AMOUNTS</text>
+            <text x="600" y="320" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9A9AA8" text-anchor="end">Overline · Mono</text>
+            <text x="728" y="320" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#6E6E7C" text-anchor="end">11/16</text>
+
+            <line x1="32" y1="352" x2="728" y2="352" stroke="rgba(255,255,255,0.08)"/>
+            <text x="32" y="384" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#6E6E7C">NUMERALS — tabular, mono</text>
+            <text x="32" y="428" font-family="'IBM Plex Mono',monospace" font-size="30" fill="#40C486">+ ₹5,100</text>
+            <text x="250" y="428" font-family="'IBM Plex Mono',monospace" font-size="30" fill="#EC6A7C">− ₹2,100</text>
+            <text x="470" y="428" font-family="'IBM Plex Mono',monospace" font-size="30" fill="#F4F3F7">₹13,901</text>
+            <text x="32" y="462" font-family="Archivo,sans-serif" font-size="12" fill="#9A9AA8">Amounts always use mono numerals so columns align in lists.</text>
+          </svg>
+        </div>
+      </figure>
+
+      <!-- Spacing -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Spacing Scale (4pt base)</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" width="760" height="340">
+            <rect width="760" height="340" rx="16" fill="#0D0D14"/>
+            <text x="32" y="48" font-family="'IBM Plex Mono',monospace" font-size="13" letter-spacing="2" fill="#9A9AA8">SPACING · 4PT BASE</text>
+            <!-- bars -->
+            <g font-family="'IBM Plex Mono',monospace" font-size="12">
+              <rect x="120" y="74" width="16" height="20" rx="3" fill="#7158D7"/><text x="104" y="89" fill="#9A9AA8" text-anchor="end">4</text><text x="150" y="89" fill="#6E6E7C">xs · icon gaps</text>
+              <rect x="120" y="104" width="32" height="20" rx="3" fill="#7158D7"/><text x="104" y="119" fill="#9A9AA8" text-anchor="end">8</text><text x="166" y="119" fill="#6E6E7C">sm · chip padding</text>
+              <rect x="120" y="134" width="48" height="20" rx="3" fill="#7158D7"/><text x="104" y="149" fill="#9A9AA8" text-anchor="end">12</text><text x="182" y="149" fill="#6E6E7C">md · list row gap</text>
+              <rect x="120" y="164" width="64" height="20" rx="3" fill="#8058DC"/><text x="104" y="179" fill="#9A9AA8" text-anchor="end">16</text><text x="198" y="179" fill="#6E6E7C">lg · card padding</text>
+              <rect x="120" y="194" width="96" height="20" rx="3" fill="#8058DC"/><text x="104" y="209" fill="#9A9AA8" text-anchor="end">24</text><text x="230" y="209" fill="#6E6E7C">xl · section inset</text>
+              <rect x="120" y="224" width="128" height="20" rx="3" fill="#8B57E6"/><text x="104" y="239" fill="#9A9AA8" text-anchor="end">32</text><text x="262" y="239" fill="#6E6E7C">2xl · block gap</text>
+              <rect x="120" y="254" width="192" height="20" rx="3" fill="#8B57E6"/><text x="104" y="269" fill="#9A9AA8" text-anchor="end">48</text><text x="326" y="269" fill="#6E6E7C">3xl · screen margin top</text>
+              <rect x="120" y="284" width="256" height="20" rx="3" fill="#8B57E6"/><text x="104" y="299" fill="#9A9AA8" text-anchor="end">64</text><text x="390" y="299" fill="#6E6E7C">4xl · hero rhythm</text>
+            </g>
+            <text x="32" y="326" font-family="Archivo,sans-serif" font-size="11" fill="#6E6E7C">Corner radius: chips 999 · cards 16 · sheets 24 · fields 14</text>
+          </svg>
+        </div>
+      </figure>
+
+      <!-- Theme board -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Theme — Night + Festive</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380">
+            <defs>
+              <radialGradient id="th-glow" cx="0.75" cy="0.25" r="0.8">
+                <stop offset="0" stop-color="#8B57E6" stop-opacity="0.55"/>
+                <stop offset="0.5" stop-color="#7E6BD6" stop-opacity="0.18"/>
+                <stop offset="1" stop-color="#0D0D14" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="th-card" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#7E6BD6"/><stop offset="1" stop-color="#8B57E6"/>
+              </linearGradient>
+            </defs>
+            <rect width="760" height="380" rx="16" fill="#0D0D14"/>
+            <rect width="760" height="380" rx="16" fill="url(#th-glow)"/>
+            <text x="32" y="52" font-family="'IBM Plex Mono',monospace" font-size="13" letter-spacing="2" fill="#C7C7D2">NIGHT + FESTIVE</text>
+            <text x="32" y="118" font-family="Georgia,serif" font-size="34" fill="#F4F3F7">A money app that</text>
+            <text x="32" y="158" font-family="Georgia,serif" font-size="34" fill="#F4F3F7">feels like an occasion.</text>
+            <text x="32" y="196" font-family="Archivo,sans-serif" font-size="14" fill="#B7B7C4" width="360">Deep navy base lets celebratory violet glow without shouting;</text>
+            <text x="32" y="216" font-family="Archivo,sans-serif" font-size="14" fill="#B7B7C4">a serif voice brings warmth to the numbers.</text>
+            <!-- sample festive card -->
+            <g transform="translate(430,240)">
+              <rect x="0" y="0" width="298" height="112" rx="16" fill="url(#th-card)"/>
+              <text x="20" y="34" font-family="'IBM Plex Mono',monospace" font-size="10" letter-spacing="1.5" fill="rgba(255,255,255,0.85)">COMING UP</text>
+              <text x="20" y="66" font-family="Georgia,serif" font-size="22" fill="#fff">Meera’s Sangeet</text>
+              <text x="20" y="90" font-family="Archivo,sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">Meera · 31 Aug · in 56 days</text>
+              <path d="M266 22 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 z" fill="rgba(255,255,255,0.7)"/>
+            </g>
+            <!-- sparkle motifs -->
+            <path d="M360 250 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 z" fill="#E8B04B" opacity="0.8"/>
+            <path d="M395 320 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2 z" fill="#8B57E6"/>
+          </svg>
+        </div>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ============================ 02 COMPONENTS ============================ -->
+  <section class="kit-section" id="components">
+    <header>
+      <span class="num">02 — Library</span>
+      <h2>Components &amp; States</h2>
+      <p>The reusable pieces, drawn with their real states. Everything sits on the 4pt grid with the token colours above.</p>
+    </header>
+    <div class="kit-grid">
+
+      <!-- Buttons -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Buttons</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380">
+            <defs>
+              <linearGradient id="btn-g" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#7E6BD6"/><stop offset="1" stop-color="#8B57E6"/>
+              </linearGradient>
+              <linearGradient id="btn-g2" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#5B4CA6" stop-opacity="0.9"/><stop offset="1" stop-color="#6A44B0" stop-opacity="0.9"/>
+              </linearGradient>
+            </defs>
+            <rect width="760" height="380" rx="16" fill="#0D0D14"/>
+            <text x="32" y="46" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="2" fill="#9A9AA8">PRIMARY · gradient</text>
+            <!-- default -->
+            <rect x="32" y="62" width="320" height="52" rx="14" fill="url(#btn-g)"/>
+            <text x="192" y="94" font-family="Archivo,sans-serif" font-size="16" font-weight="600" fill="#fff" text-anchor="middle">Save Shagun</text>
+            <text x="372" y="94" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#6E6E7C">default</text>
+            <!-- pressed -->
+            <rect x="32" y="126" width="320" height="52" rx="14" fill="url(#btn-g2)"/>
+            <text x="192" y="158" font-family="Archivo,sans-serif" font-size="16" font-weight="600" fill="rgba(255,255,255,0.9)" text-anchor="middle">Save Shagun</text>
+            <text x="372" y="158" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#6E6E7C">pressed</text>
+            <!-- disabled -->
+            <rect x="32" y="190" width="320" height="52" rx="14" fill="#26242E"/>
+            <text x="192" y="222" font-family="Archivo,sans-serif" font-size="16" font-weight="600" fill="#55555F" text-anchor="middle">Save Shagun</text>
+            <text x="372" y="222" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#6E6E7C">disabled</text>
+
+            <text x="460" y="46" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="2" fill="#9A9AA8">SECONDARY</text>
+            <!-- white pill (on gradient card) -->
+            <rect x="460" y="62" width="268" height="52" rx="14" fill="#EFEEF7"/>
+            <text x="594" y="94" font-family="Archivo,sans-serif" font-size="16" font-weight="600" fill="#4B3B9E" text-anchor="middle">Plan a gift</text>
+            <!-- ghost -->
+            <rect x="460" y="126" width="268" height="52" rx="14" fill="none" stroke="rgba(255,255,255,0.16)"/>
+            <text x="594" y="158" font-family="Archivo,sans-serif" font-size="16" font-weight="600" fill="#F4F3F7" text-anchor="middle">Cancel</text>
+            <!-- text btn -->
+            <text x="460" y="220" font-family="Archivo,sans-serif" font-size="15" font-weight="600" fill="#7C6BDF">Save &amp; Add Another</text>
+
+            <!-- destructive / given ctas -->
+            <text x="32" y="288" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="2" fill="#9A9AA8">CONTEXTUAL</text>
+            <rect x="32" y="304" width="210" height="48" rx="12" fill="#40C486"/>
+            <text x="137" y="334" font-family="Archivo,sans-serif" font-size="15" font-weight="600" fill="#06130C" text-anchor="middle">Log received</text>
+            <rect x="258" y="304" width="210" height="48" rx="12" fill="#EC6A7C"/>
+            <text x="363" y="334" font-family="Archivo,sans-serif" font-size="15" font-weight="600" fill="#2A0910" text-anchor="middle">Log given</text>
+          </svg>
+        </div>
+      </figure>
+
+      <!-- Segmented toggle -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Segmented Toggle</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" width="760" height="340">
+            <rect width="760" height="340" rx="16" fill="#0D0D14"/>
+            <text x="32" y="46" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="2" fill="#9A9AA8">DIRECTION — received / given</text>
+            <rect x="32" y="62" width="440" height="56" rx="14" fill="#15131F"/>
+            <rect x="40" y="70" width="212" height="40" rx="10" fill="#20212B"/>
+            <text x="146" y="96" font-family="Archivo,sans-serif" font-size="15" font-weight="600" fill="#9A9AA8" text-anchor="middle">Received</text>
+            <rect x="256" y="70" width="208" height="40" rx="10" fill="#EC6A7C"/>
+            <text x="360" y="96" font-family="Archivo,sans-serif" font-size="15" font-weight="600" fill="#2A0910" text-anchor="middle">Given</text>
+            <text x="492" y="96" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#6E6E7C">selected: Given</text>
+
+            <text x="32" y="168" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="2" fill="#9A9AA8">GIFT TYPE — cash / gift / both</text>
+            <rect x="32" y="184" width="150" height="48" rx="12" fill="none" stroke="#7158D7"/>
+            <text x="107" y="213" font-family="Archivo,sans-serif" font-size="15" font-weight="600" fill="#9C8BEA" text-anchor="middle">Cash</text>
+            <rect x="190" y="184" width="150" height="48" rx="12" fill="#1B1B26"/>
+            <text x="265" y="213" font-family="Archivo,sans-serif" font-size="15" fill="#9A9AA8" text-anchor="middle">Gift</text>
+            <rect x="348" y="184" width="150" height="48" rx="12" fill="#1B1B26"/>
+            <text x="423" y="213" font-family="Archivo,sans-serif" font-size="15" fill="#9A9AA8" text-anchor="middle">Both</text>
+
+            <text x="32" y="284" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="2" fill="#9A9AA8">SWITCH — show / hide account</text>
+            <rect x="32" y="298" width="54" height="30" rx="15" fill="#7158D7"/>
+            <circle cx="71" cy="313" r="11" fill="#fff"/>
+            <text x="100" y="317" font-family="Archivo,sans-serif" font-size="14" fill="#C7C7D2">On</text>
+            <rect x="160" y="298" width="54" height="30" rx="15" fill="#2A2A34"/>
+            <circle cx="175" cy="313" r="11" fill="#8A8A96"/>
+            <text x="228" y="317" font-family="Archivo,sans-serif" font-size="14" fill="#9A9AA8">Off</text>
+          </svg>
+        </div>
+      </figure>
+
+      <!-- Auspicious chips -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Auspicious Amount Chips</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="760" height="280">
+            <rect width="760" height="280" rx="16" fill="#0D0D14"/>
+            <text x="32" y="46" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#9A9AA8">AUSPICIOUS AMOUNTS — default</text>
+            <g font-family="'IBM Plex Mono',monospace" font-size="15">
+              <rect x="32" y="60" width="120" height="46" rx="23" fill="none" stroke="rgba(124,107,223,0.5)"/><text x="92" y="88" fill="#9C8BEA" text-anchor="middle">₹501</text>
+              <rect x="166" y="60" width="140" height="46" rx="23" fill="none" stroke="rgba(124,107,223,0.5)"/><text x="236" y="88" fill="#9C8BEA" text-anchor="middle">₹1,100</text>
+              <rect x="320" y="60" width="140" height="46" rx="23" fill="none" stroke="rgba(124,107,223,0.5)"/><text x="390" y="88" fill="#9C8BEA" text-anchor="middle">₹2,100</text>
+              <rect x="474" y="60" width="140" height="46" rx="23" fill="none" stroke="rgba(124,107,223,0.5)"/><text x="544" y="88" fill="#9C8BEA" text-anchor="middle">₹5,100</text>
+            </g>
+            <text x="32" y="158" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#9A9AA8">SELECTED — ₹2,100 tapped</text>
+            <g font-family="'IBM Plex Mono',monospace" font-size="15">
+              <rect x="32" y="172" width="120" height="46" rx="23" fill="none" stroke="rgba(124,107,223,0.4)"/><text x="92" y="200" fill="#7A7A88" text-anchor="middle">₹501</text>
+              <rect x="166" y="172" width="140" height="46" rx="23" fill="none" stroke="rgba(124,107,223,0.4)"/><text x="236" y="200" fill="#7A7A88" text-anchor="middle">₹1,100</text>
+              <rect x="320" y="172" width="140" height="46" rx="23" fill="#7158D7"/><text x="390" y="200" fill="#fff" text-anchor="middle">₹2,100</text>
+              <rect x="474" y="172" width="140" height="46" rx="23" fill="none" stroke="rgba(124,107,223,0.4)"/><text x="544" y="200" fill="#7A7A88" text-anchor="middle">₹5,100</text>
+            </g>
+            <text x="32" y="256" font-family="Archivo,sans-serif" font-size="12" fill="#6E6E7C">Amounts conventionally end in ₹1 — presets make the culturally-correct value one tap.</text>
+          </svg>
+        </div>
+      </figure>
+
+      <!-- Cards -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Cards — occasion &amp; person</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380">
+            <rect width="760" height="380" rx="16" fill="#0D0D14"/>
+            <text x="32" y="44" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#9A9AA8">OCCASION ROW</text>
+            <rect x="32" y="58" width="696" height="92" rx="16" fill="#1B1B26" stroke="rgba(255,255,255,0.06)"/>
+            <rect x="52" y="78" width="52" height="52" rx="12" fill="#211E33"/>
+            <text x="78" y="103" font-family="'IBM Plex Mono',monospace" font-size="17" fill="#9C8BEA" text-anchor="middle">22</text>
+            <text x="78" y="120" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#9A9AA8" text-anchor="middle">MAR</text>
+            <text x="124" y="98" font-family="Georgia,serif" font-size="19" fill="#F4F3F7">Dad’s 60th Birthday</text>
+            <text x="124" y="120" font-family="Archivo,sans-serif" font-size="12" fill="#9A9AA8">Dad · Birthday</text>
+            <text x="708" y="110" font-family="Archivo,sans-serif" font-size="12" fill="#9A9AA8" text-anchor="end">5 gifts logged</text>
+
+            <text x="32" y="196" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#9A9AA8">PERSON ROW — running balance</text>
+            <rect x="32" y="210" width="696" height="80" rx="16" fill="#1B1B26" stroke="rgba(255,255,255,0.06)"/>
+            <circle cx="76" cy="250" r="22" fill="#3A2740"/>
+            <text x="76" y="256" font-family="Archivo,sans-serif" font-size="17" font-weight="600" fill="#E39BC0" text-anchor="middle">A</text>
+            <text x="112" y="245" font-family="Archivo,sans-serif" font-size="16" font-weight="600" fill="#F4F3F7">Arjun Malhotra</text>
+            <text x="112" y="266" font-family="Archivo,sans-serif" font-size="12" fill="#9A9AA8">2 entries</text>
+            <text x="676" y="242" font-family="'IBM Plex Mono',monospace" font-size="17" fill="#40C486" text-anchor="end">+ ₹2,200</text>
+            <text x="676" y="264" font-family="Archivo,sans-serif" font-size="11" fill="#9A9AA8" text-anchor="end">Your turn</text>
+            <path d="M700 236 l6 6 -6 6" fill="none" stroke="#6E6E7C" stroke-width="1.5"/>
+
+            <text x="32" y="336" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#9A9AA8">BALANCE STATES</text>
+            <text x="32" y="362" font-family="'IBM Plex Mono',monospace" font-size="14" fill="#40C486">+ Your turn</text>
+            <text x="200" y="362" font-family="'IBM Plex Mono',monospace" font-size="14" fill="#EC6A7C">− Their turn</text>
+            <text x="380" y="362" font-family="'IBM Plex Mono',monospace" font-size="14" fill="#9A9AA8">= Even</text>
+          </svg>
+        </div>
+      </figure>
+
+      <!-- FAB + nav -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">FAB &amp; Bottom Nav</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" width="760" height="260">
+            <defs>
+              <linearGradient id="fab-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7E6BD6"/><stop offset="1" stop-color="#8B57E6"/></linearGradient>
+            </defs>
+            <rect width="760" height="260" rx="16" fill="#0D0D14"/>
+            <text x="32" y="44" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#9A9AA8">FLOATING ACTION</text>
+            <circle cx="80" cy="120" r="34" fill="url(#fab-g)"/>
+            <path d="M80 104 v32 M64 120 h32" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+            <text x="140" y="116" font-family="Archivo,sans-serif" font-size="13" fill="#C7C7D2">56×56 · gradient · glow shadow</text>
+            <text x="140" y="136" font-family="Archivo,sans-serif" font-size="13" fill="#9A9AA8">Opens “New Shagun” sheet</text>
+
+            <text x="32" y="196" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#9A9AA8">TAB BAR</text>
+            <rect x="200" y="200" width="360" height="44" rx="22" fill="#16161F"/>
+            <g font-family="Archivo,sans-serif" font-size="10" text-anchor="middle">
+              <rect x="212" y="210" width="80" height="24" rx="12" fill="#241F38"/>
+              <circle cx="252" cy="216" r="3.5" fill="#9C8BEA"/><text x="252" y="230" fill="#9C8BEA">Home</text>
+              <circle cx="340" cy="216" r="3.5" fill="#7A7A88"/><text x="340" y="230" fill="#7A7A88">People</text>
+              <circle cx="420" cy="216" r="3.5" fill="#7A7A88"/><text x="420" y="230" fill="#7A7A88">Occasions</text>
+              <circle cx="510" cy="216" r="3.5" fill="#7A7A88"/><text x="510" y="230" fill="#7A7A88">Settings</text>
+            </g>
+          </svg>
+        </div>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ============================ 03 EXPLORATIONS ============================ -->
+  <section class="kit-section" id="explorations">
+    <header>
+      <span class="num">03 — Explorations</span>
+      <h2>Variations &amp; Rejected Alternates</h2>
+      <p>Each shipped screen is the survivor of a fork. These are the wireframe-level alternates I weighed in Figma before committing — “Considered” vs “Shipped”. Drop the real exploration frames on top of these once exported.</p>
+    </header>
+    <div class="kit-grid">
+
+      <!-- Amount entry -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Amount entry — plain field vs presets</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440">
+            <rect width="760" height="440" rx="16" fill="#0D0D14"/>
+            <!-- A: considered -->
+            <text x="40" y="46" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#EC6A7C">A · CONSIDERED</text>
+            <rect x="40" y="60" width="300" height="340" rx="22" fill="#14141E" stroke="rgba(255,255,255,0.08)"/>
+            <text x="64" y="104" font-family="Georgia,serif" font-size="18" fill="#F4F3F7">Enter amount</text>
+            <rect x="64" y="126" width="252" height="60" rx="12" fill="#0D0D14" stroke="rgba(255,255,255,0.12)"/>
+            <text x="80" y="164" font-family="'IBM Plex Mono',monospace" font-size="22" fill="#55555F">₹ 0</text>
+            <rect x="64" y="210" width="252" height="150" rx="10" fill="#101019"/>
+            <text x="190" y="290" font-family="Archivo,sans-serif" font-size="12" fill="#55555F" text-anchor="middle">numeric keypad</text>
+            <text x="64" y="392" font-family="Archivo,sans-serif" font-size="11" fill="#7A7A88">Fast to build · culturally blind</text>
+            <!-- B: shipped -->
+            <text x="420" y="46" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#40C486">B · SHIPPED ✓</text>
+            <rect x="420" y="60" width="300" height="340" rx="22" fill="#14141E" stroke="rgba(124,107,223,0.4)"/>
+            <text x="444" y="104" font-family="Georgia,serif" font-size="18" fill="#F4F3F7">Enter amount</text>
+            <rect x="444" y="126" width="252" height="56" rx="12" fill="#15131F" stroke="rgba(255,255,255,0.10)"/>
+            <text x="460" y="162" font-family="'IBM Plex Mono',monospace" font-size="20" fill="#F4F3F7">₹ 2,100</text>
+            <text x="444" y="212" font-family="'IBM Plex Mono',monospace" font-size="9" letter-spacing="1.5" fill="#9A9AA8">AUSPICIOUS</text>
+            <g font-family="'IBM Plex Mono',monospace" font-size="12">
+              <rect x="444" y="222" width="76" height="34" rx="17" fill="none" stroke="rgba(124,107,223,0.5)"/><text x="482" y="244" fill="#9C8BEA" text-anchor="middle">₹501</text>
+              <rect x="530" y="222" width="84" height="34" rx="17" fill="#7158D7"/><text x="572" y="244" fill="#fff" text-anchor="middle">₹2,100</text>
+              <rect x="624" y="222" width="72" height="34" rx="17" fill="none" stroke="rgba(124,107,223,0.5)"/><text x="660" y="244" fill="#9C8BEA" text-anchor="middle">₹5.1k</text>
+            </g>
+            <rect x="444" y="286" width="252" height="74" rx="10" fill="#101019"/>
+            <text x="570" y="328" font-family="Archivo,sans-serif" font-size="12" fill="#55555F" text-anchor="middle">keypad (optional)</text>
+            <text x="444" y="392" font-family="Archivo,sans-serif" font-size="11" fill="#9C8BEA">Correct amount in one tap</text>
+          </svg>
+        </div>
+      </figure>
+
+      <!-- People -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">People — log vs running balance</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440">
+            <rect width="760" height="440" rx="16" fill="#0D0D14"/>
+            <text x="40" y="46" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#EC6A7C">A · CONSIDERED — transaction log</text>
+            <rect x="40" y="60" width="300" height="340" rx="22" fill="#14141E" stroke="rgba(255,255,255,0.08)"/>
+            <g font-family="Archivo,sans-serif">
+              <text x="64" y="98" font-family="Georgia,serif" font-size="17" fill="#F4F3F7">Arjun Malhotra</text>
+              <line x1="64" y1="112" x2="316" y2="112" stroke="rgba(255,255,255,0.07)"/>
+              <text x="64" y="140" font-size="12" fill="#C7C7D2">22 Mar · Birthday</text><text x="316" y="140" font-size="12" fill="#40C486" text-anchor="end">+₹1,100</text>
+              <text x="64" y="168" font-size="12" fill="#C7C7D2">03 Jun · —</text><text x="316" y="168" font-size="12" fill="#40C486" text-anchor="end">+₹1,100</text>
+              <text x="64" y="196" font-size="12" fill="#C7C7D2">12 Apr · Wedding</text><text x="316" y="196" font-size="12" fill="#EC6A7C" text-anchor="end">−₹2,100</text>
+              <text x="64" y="224" font-size="12" fill="#C7C7D2">18 Jan · Diwali</text><text x="316" y="224" font-size="12" fill="#40C486" text-anchor="end">+₹501</text>
+              <line x1="64" y1="244" x2="316" y2="244" stroke="rgba(255,255,255,0.07)"/>
+            </g>
+            <text x="64" y="392" font-family="Archivo,sans-serif" font-size="11" fill="#7A7A88">Accurate · reads like accounting</text>
+
+            <text x="420" y="46" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#40C486">B · SHIPPED ✓ — relationship state</text>
+            <rect x="420" y="60" width="300" height="340" rx="22" fill="#14141E" stroke="rgba(124,107,223,0.4)"/>
+            <text x="444" y="98" font-family="Georgia,serif" font-size="17" fill="#F4F3F7">People</text>
+            <g>
+              <rect x="444" y="116" width="252" height="58" rx="12" fill="#1B1B26"/>
+              <circle cx="474" cy="145" r="15" fill="#3A2740"/><text x="474" y="150" font-family="Archivo,sans-serif" font-size="12" fill="#E39BC0" text-anchor="middle">A</text>
+              <text x="500" y="141" font-family="Archivo,sans-serif" font-size="13" fill="#F4F3F7">Arjun Malhotra</text>
+              <text x="500" y="159" font-family="Archivo,sans-serif" font-size="10" fill="#9A9AA8">2 entries</text>
+              <text x="680" y="140" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#40C486" text-anchor="end">+₹2,200</text>
+              <text x="680" y="158" font-family="Archivo,sans-serif" font-size="9" fill="#9A9AA8" text-anchor="end">Your turn</text>
+            </g>
+            <g>
+              <rect x="444" y="184" width="252" height="58" rx="12" fill="#1B1B26"/>
+              <circle cx="474" cy="213" r="15" fill="#2A2438"/><text x="474" y="218" font-family="Archivo,sans-serif" font-size="12" fill="#9C8BEA" text-anchor="middle">S</text>
+              <text x="500" y="209" font-family="Archivo,sans-serif" font-size="13" fill="#F4F3F7">Sunita Verma</text>
+              <text x="500" y="227" font-family="Archivo,sans-serif" font-size="10" fill="#9A9AA8">2 entries</text>
+              <text x="680" y="208" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#40C486" text-anchor="end">+₹12,100</text>
+              <text x="680" y="226" font-family="Archivo,sans-serif" font-size="9" fill="#9A9AA8" text-anchor="end">Your turn</text>
+            </g>
+            <g>
+              <rect x="444" y="252" width="252" height="58" rx="12" fill="#1B1B26"/>
+              <circle cx="474" cy="281" r="15" fill="#3A2740"/><text x="474" y="286" font-family="Archivo,sans-serif" font-size="12" fill="#E39BC0" text-anchor="middle">A</text>
+              <text x="500" y="277" font-family="Archivo,sans-serif" font-size="13" fill="#F4F3F7">Ananya</text>
+              <text x="500" y="295" font-family="Archivo,sans-serif" font-size="10" fill="#9A9AA8">1 entry</text>
+              <text x="680" y="276" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#EC6A7C" text-anchor="end">−₹2,100</text>
+              <text x="680" y="294" font-family="Archivo,sans-serif" font-size="9" fill="#9A9AA8" text-anchor="end">Their turn</text>
+            </g>
+            <text x="444" y="392" font-family="Archivo,sans-serif" font-size="11" fill="#9C8BEA">Answers “where do we stand?” at a glance</text>
+          </svg>
+        </div>
+      </figure>
+
+      <!-- Entry detail -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Entry detail — editable vs read-only</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440">
+            <rect width="760" height="440" rx="16" fill="#0D0D14"/>
+            <text x="40" y="46" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#EC6A7C">A · CONSIDERED — editable by default</text>
+            <rect x="40" y="60" width="300" height="340" rx="22" fill="#14141E" stroke="rgba(255,255,255,0.08)"/>
+            <text x="64" y="100" font-family="Georgia,serif" font-size="17" fill="#F4F3F7">Edit entry</text>
+            <rect x="64" y="118" width="252" height="44" rx="10" fill="#0D0D14" stroke="rgba(255,255,255,0.12)"/><text x="80" y="145" font-family="Archivo,sans-serif" font-size="13" fill="#C7C7D2">₹ 2,100</text>
+            <rect x="64" y="172" width="252" height="44" rx="10" fill="#0D0D14" stroke="rgba(255,255,255,0.12)"/><text x="80" y="199" font-family="Archivo,sans-serif" font-size="13" fill="#C7C7D2">Meera</text>
+            <rect x="64" y="226" width="252" height="44" rx="10" fill="#0D0D14" stroke="rgba(255,255,255,0.12)"/><text x="80" y="253" font-family="Archivo,sans-serif" font-size="13" fill="#C7C7D2">6 Jul 2026</text>
+            <text x="64" y="392" font-family="Archivo,sans-serif" font-size="11" fill="#7A7A88">Powerful · noisy · easy to mis-edit</text>
+
+            <text x="420" y="46" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#40C486">B · SHIPPED ✓ — calm read, edit on tap</text>
+            <rect x="420" y="60" width="300" height="340" rx="22" fill="#14141E" stroke="rgba(124,107,223,0.4)"/>
+            <text x="444" y="100" font-family="Georgia,serif" font-size="17" fill="#F4F3F7">Meera</text>
+            <circle cx="686" cy="94" r="16" fill="#20212B"/>
+            <path d="M680 100 l8 -8 3 3 -8 8 -3 -3 z M691 89 l2 -2 3 3 -2 2 z" fill="#9C8BEA"/>
+            <text x="444" y="150" font-family="'IBM Plex Mono',monospace" font-size="26" fill="#EC6A7C">− ₹2,100</text>
+            <text x="444" y="176" font-family="Archivo,sans-serif" font-size="12" fill="#9A9AA8">Given · 12 Apr 2026</text>
+            <line x1="444" y1="196" x2="696" y2="196" stroke="rgba(255,255,255,0.07)"/>
+            <text x="444" y="224" font-family="Archivo,sans-serif" font-size="12" fill="#9A9AA8">Occasion</text><text x="696" y="224" font-family="Archivo,sans-serif" font-size="12" fill="#C7C7D2" text-anchor="end">Meera’s Wedding</text>
+            <text x="444" y="252" font-family="Archivo,sans-serif" font-size="12" fill="#9A9AA8">Type</text><text x="696" y="252" font-family="Archivo,sans-serif" font-size="12" fill="#C7C7D2" text-anchor="end">Cash</text>
+            <text x="444" y="392" font-family="Archivo,sans-serif" font-size="11" fill="#9C8BEA">Safe by default · editing is deliberate</text>
+          </svg>
+        </div>
+      </figure>
+
+      <!-- Direction first -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Capture order — amount-first vs direction-first</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440">
+            <rect width="760" height="440" rx="16" fill="#0D0D14"/>
+            <text x="40" y="46" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#EC6A7C">A · CONSIDERED — amount first</text>
+            <rect x="40" y="60" width="300" height="340" rx="22" fill="#14141E" stroke="rgba(255,255,255,0.08)"/>
+            <text x="64" y="100" font-family="Archivo,sans-serif" font-size="11" fill="#9A9AA8">1 · AMOUNT</text>
+            <rect x="64" y="110" width="252" height="52" rx="12" fill="#0D0D14" stroke="rgba(255,255,255,0.12)"/><text x="80" y="143" font-family="'IBM Plex Mono',monospace" font-size="18" fill="#C7C7D2">₹ 2,100</text>
+            <text x="64" y="196" font-family="Archivo,sans-serif" font-size="11" fill="#9A9AA8">2 · WAS THIS GIVEN OR RECEIVED?</text>
+            <rect x="64" y="206" width="252" height="44" rx="10" fill="#15131F"/>
+            <text x="128" y="233" font-family="Archivo,sans-serif" font-size="12" fill="#9A9AA8" text-anchor="middle">Received</text><text x="252" y="233" font-family="Archivo,sans-serif" font-size="12" fill="#9A9AA8" text-anchor="middle">Given</text>
+            <text x="64" y="392" font-family="Archivo,sans-serif" font-size="11" fill="#7A7A88">Meaning decided last · error-prone</text>
+
+            <text x="420" y="46" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#40C486">B · SHIPPED ✓ — direction first</text>
+            <rect x="420" y="60" width="300" height="340" rx="22" fill="#14141E" stroke="rgba(124,107,223,0.4)"/>
+            <text x="444" y="100" font-family="Archivo,sans-serif" font-size="11" fill="#9A9AA8">1 · RECEIVED OR GIVEN?</text>
+            <rect x="444" y="110" width="252" height="48" rx="12" fill="#15131F"/>
+            <rect x="450" y="116" width="120" height="36" rx="9" fill="#20212B"/><text x="510" y="139" font-family="Archivo,sans-serif" font-size="13" font-weight="600" fill="#9A9AA8" text-anchor="middle">Received</text>
+            <rect x="574" y="116" width="118" height="36" rx="9" fill="#EC6A7C"/><text x="633" y="139" font-family="Archivo,sans-serif" font-size="13" font-weight="600" fill="#2A0910" text-anchor="middle">Given</text>
+            <text x="444" y="196" font-family="Archivo,sans-serif" font-size="11" fill="#9A9AA8">2 · AMOUNT</text>
+            <rect x="444" y="206" width="252" height="52" rx="12" fill="#15131F" stroke="rgba(236,106,124,0.4)"/><text x="460" y="239" font-family="'IBM Plex Mono',monospace" font-size="18" fill="#EC6A7C">₹ 2,100</text>
+            <text x="444" y="392" font-family="Archivo,sans-serif" font-size="11" fill="#9C8BEA">Frame set first · every field inherits it</text>
+          </svg>
+        </div>
+      </figure>
+
+      <!-- Identity -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Identity — system/light vs serif/night</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440">
+            <defs><linearGradient id="idg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7E6BD6"/><stop offset="1" stop-color="#8B57E6"/></linearGradient></defs>
+            <rect width="760" height="440" rx="16" fill="#0D0D14"/>
+            <text x="40" y="46" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#EC6A7C">A · CONSIDERED — system / light</text>
+            <rect x="40" y="60" width="300" height="340" rx="22" fill="#F3F3F5"/>
+            <text x="64" y="104" font-family="-apple-system,Archivo,sans-serif" font-size="20" font-weight="700" fill="#111">Meera's Sangeet</text>
+            <text x="64" y="128" font-family="-apple-system,Archivo,sans-serif" font-size="12" fill="#666">Meera · 31 Aug</text>
+            <rect x="64" y="150" width="252" height="70" rx="12" fill="#fff" stroke="#E2E2E6"/>
+            <text x="80" y="182" font-family="-apple-system,Archivo,sans-serif" font-size="13" fill="#111">Recent</text>
+            <rect x="64" y="300" width="252" height="46" rx="10" fill="#0A84FF"/><text x="190" y="328" font-family="-apple-system,Archivo,sans-serif" font-size="14" font-weight="600" fill="#fff" text-anchor="middle">Plan a gift</text>
+            <text x="64" y="392" font-family="Archivo,sans-serif" font-size="11" fill="#7A7A88" opacity="0.001">.</text>
+
+            <text x="420" y="46" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.5" fill="#40C486">B · SHIPPED ✓ — serif / night</text>
+            <rect x="420" y="60" width="300" height="340" rx="22" fill="#0D0D14" stroke="rgba(124,107,223,0.4)"/>
+            <rect x="444" y="150" width="252" height="88" rx="16" fill="url(#idg)"/>
+            <text x="462" y="178" font-family="'IBM Plex Mono',monospace" font-size="9" letter-spacing="1.5" fill="rgba(255,255,255,0.85)">COMING UP</text>
+            <text x="462" y="206" font-family="Georgia,serif" font-size="20" fill="#fff">Meera’s Sangeet</text>
+            <text x="462" y="226" font-family="Archivo,sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">Meera · 31 Aug</text>
+            <text x="444" y="104" font-family="Archivo,sans-serif" font-size="12" fill="#9A9AA8">Good evening,</text>
+            <text x="444" y="128" font-family="Georgia,serif" font-size="22" fill="#F4F3F7">Rahul</text>
+            <rect x="444" y="300" width="252" height="46" rx="12" fill="#EFEEF7"/><text x="570" y="328" font-family="Archivo,sans-serif" font-size="14" font-weight="600" fill="#4B3B9E" text-anchor="middle">Plan a gift</text>
+            <text x="444" y="392" font-family="Archivo,sans-serif" font-size="11" fill="#9C8BEA">Warmth + occasion, not generic fintech</text>
+          </svg>
+        </div>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ============================ 04 FLOWS ============================ -->
+  <section class="kit-section" id="flows">
+    <header>
+      <span class="num">04 — Flows</span>
+      <h2>Key Flows &amp; Wireframes</h2>
+      <p>The two journeys the whole product turns on — logging a gift in the moment, and reading a relationship over time.</p>
+    </header>
+    <div class="kit-grid wide">
+
+      <!-- Capture flow -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Capture flow — log a shagun</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 280" width="1180" height="280">
+            <rect width="1180" height="280" rx="16" fill="#0D0D14"/>
+            <text x="32" y="44" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="2" fill="#9A9AA8">CAPTURE — happy path</text>
+            <g font-family="Archivo,sans-serif">
+              <!-- nodes -->
+              <g>
+                <rect x="40" y="80" width="180" height="120" rx="14" fill="#14141E" stroke="rgba(255,255,255,0.10)"/>
+                <text x="130" y="120" font-size="14" font-weight="600" fill="#F4F3F7" text-anchor="middle">Home</text>
+                <text x="130" y="146" font-size="11" fill="#9A9AA8" text-anchor="middle">balance + recent</text>
+                <circle cx="130" cy="172" r="12" fill="#7158D7"/><path d="M130 166v12 M124 172h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              </g>
+              <g>
+                <rect x="290" y="80" width="200" height="120" rx="14" fill="#14141E" stroke="rgba(124,107,223,0.4)"/>
+                <text x="390" y="116" font-size="14" font-weight="600" fill="#F4F3F7" text-anchor="middle">New Shagun</text>
+                <rect x="312" y="132" width="72" height="24" rx="12" fill="#20212B"/><text x="348" y="149" font-size="10" fill="#9A9AA8" text-anchor="middle">Received</text>
+                <rect x="392" y="132" width="76" height="24" rx="12" fill="#EC6A7C"/><text x="430" y="149" font-size="10" fill="#2A0910" text-anchor="middle">Given</text>
+                <text x="390" y="182" font-size="10" fill="#9A9AA8" text-anchor="middle">direction → amount → person</text>
+              </g>
+              <g>
+                <rect x="560" y="80" width="200" height="120" rx="14" fill="#14141E" stroke="rgba(255,255,255,0.10)"/>
+                <text x="660" y="116" font-size="14" font-weight="600" fill="#F4F3F7" text-anchor="middle">Preset + person</text>
+                <rect x="586" y="132" width="66" height="26" rx="13" fill="#7158D7"/><text x="619" y="150" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#fff" text-anchor="middle">₹2,100</text>
+                <text x="660" y="182" font-size="11" fill="#9A9AA8" text-anchor="middle">occasion optional</text>
+              </g>
+              <g>
+                <rect x="830" y="80" width="150" height="120" rx="14" fill="#14141E" stroke="rgba(255,255,255,0.10)"/>
+                <rect x="852" y="150" width="106" height="34" rx="10" fill="#7158D7"/><text x="905" y="172" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Save</text>
+                <text x="905" y="122" font-size="14" font-weight="600" fill="#F4F3F7" text-anchor="middle">Confirm</text>
+              </g>
+              <g>
+                <rect x="1020" y="80" width="130" height="120" rx="14" fill="#141E17" stroke="rgba(64,196,134,0.4)"/>
+                <text x="1085" y="122" font-size="14" font-weight="600" fill="#40C486" text-anchor="middle">Home</text>
+                <text x="1085" y="146" font-size="11" fill="#9A9AA8" text-anchor="middle">balance</text>
+                <text x="1085" y="164" font-size="11" fill="#9A9AA8" text-anchor="middle">updated</text>
+              </g>
+              <!-- arrows -->
+              <g stroke="#4A4A57" stroke-width="1.5" fill="#4A4A57">
+                <path d="M220 140 h58" fill="none"/><path d="M278 140 l-8 -4 v8 z"/>
+                <path d="M490 140 h58" fill="none"/><path d="M548 140 l-8 -4 v8 z"/>
+                <path d="M760 140 h58" fill="none"/><path d="M818 140 l-8 -4 v8 z"/>
+                <path d="M980 140 h28" fill="none"/><path d="M1008 140 l-8 -4 v8 z"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </figure>
+
+      <!-- Reciprocity flow -->
+      <figure class="kit">
+        <figcaption><span class="kit-name">Reciprocity flow — whose turn</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 240" width="1180" height="240">
+            <rect width="1180" height="240" rx="16" fill="#0D0D14"/>
+            <text x="32" y="44" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="2" fill="#9A9AA8">RECIPROCITY — reading a relationship</text>
+            <g font-family="Archivo,sans-serif">
+              <rect x="40" y="76" width="200" height="110" rx="14" fill="#14141E" stroke="rgba(255,255,255,0.10)"/>
+              <text x="140" y="116" font-size="14" font-weight="600" fill="#F4F3F7" text-anchor="middle">People tab</text>
+              <text x="140" y="142" font-size="11" fill="#9A9AA8" text-anchor="middle">10 relationships</text>
+              <text x="140" y="162" font-size="11" fill="#9A9AA8" text-anchor="middle">sorted by balance</text>
+
+              <rect x="320" y="76" width="220" height="110" rx="14" fill="#14141E" stroke="rgba(124,107,223,0.4)"/>
+              <text x="430" y="112" font-size="14" font-weight="600" fill="#F4F3F7" text-anchor="middle">Person</text>
+              <text x="342" y="150" font-family="'IBM Plex Mono',monospace" font-size="14" fill="#40C486">+₹2,200</text>
+              <text x="518" y="150" font-size="11" fill="#9A9AA8" text-anchor="end">Your turn</text>
+
+              <rect x="620" y="76" width="220" height="110" rx="14" fill="#14141E" stroke="rgba(255,255,255,0.10)"/>
+              <text x="730" y="112" font-size="14" font-weight="600" fill="#F4F3F7" text-anchor="middle">Entry history</text>
+              <text x="730" y="140" font-size="11" fill="#9A9AA8" text-anchor="middle">given + received,</text>
+              <text x="730" y="158" font-size="11" fill="#9A9AA8" text-anchor="middle">netted to a balance</text>
+
+              <rect x="920" y="76" width="220" height="110" rx="14" fill="#1E1A2C" stroke="rgba(124,107,223,0.4)"/>
+              <text x="1030" y="112" font-size="14" font-weight="600" fill="#9C8BEA" text-anchor="middle">Decide</text>
+              <text x="1030" y="140" font-size="11" fill="#9A9AA8" text-anchor="middle">plan a gift, or</text>
+              <text x="1030" y="158" font-size="11" fill="#9A9AA8" text-anchor="middle">mark even</text>
+
+              <g stroke="#4A4A57" stroke-width="1.5" fill="#4A4A57">
+                <path d="M240 131 h68" fill="none"/><path d="M308 131 l-8 -4 v8 z"/>
+                <path d="M540 131 h68" fill="none"/><path d="M608 131 l-8 -4 v8 z"/>
+                <path d="M840 131 h68" fill="none"/><path d="M908 131 l-8 -4 v8 z"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ============================ 05 HANDOFF ============================ -->
+  <section class="kit-section" id="handoff">
+    <header>
+      <span class="num">05 — Handoff</span>
+      <h2>The Figma → AI Build Handoff</h2>
+      <p>The one artefact that tells the whole method: a redlined spec frame. Design decided in Figma; the values below are what got handed to the AI build, one component at a time.</p>
+    </header>
+    <div class="kit-grid wide">
+      <figure class="kit">
+        <figcaption><span class="kit-name">Annotated spec — New Shagun sheet</span><button class="copy" data-copy>Copy SVG</button></figcaption>
+        <div class="kit-canvas">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600">
+            <defs>
+              <linearGradient id="ho-g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7E6BD6"/><stop offset="1" stop-color="#8B57E6"/></linearGradient>
+            </defs>
+            <rect width="1000" height="600" rx="16" fill="#0D0D14"/>
+            <text x="40" y="48" font-family="'IBM Plex Mono',monospace" font-size="13" letter-spacing="2" fill="#9A9AA8">SPEC · NEW SHAGUN</text>
+            <text x="960" y="48" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#6E6E7C" text-anchor="end">Figma → structured spec → AI build → device test</text>
+
+            <!-- device frame (centre) -->
+            <g transform="translate(370,80)">
+              <rect x="0" y="0" width="260" height="480" rx="30" fill="#14141E" stroke="rgba(124,107,223,0.35)"/>
+              <text x="24" y="52" font-family="Georgia,serif" font-size="20" fill="#F4F3F7">New Shagun</text>
+              <text x="24" y="74" font-family="Archivo,sans-serif" font-size="11" fill="#9A9AA8">Record a gift given or received</text>
+              <!-- direction -->
+              <rect x="24" y="92" width="212" height="44" rx="12" fill="#15131F"/>
+              <rect x="29" y="97" width="101" height="34" rx="9" fill="#20212B"/><text x="79" y="119" font-family="Archivo,sans-serif" font-size="12" fill="#9A9AA8" text-anchor="middle">Received</text>
+              <rect x="132" y="97" width="99" height="34" rx="9" fill="#EC6A7C"/><text x="181" y="119" font-family="Archivo,sans-serif" font-size="12" fill="#2A0910" text-anchor="middle">Given</text>
+              <!-- amount -->
+              <rect x="24" y="150" width="212" height="48" rx="12" fill="#15131F" stroke="rgba(255,255,255,0.10)"/>
+              <text x="40" y="180" font-family="'IBM Plex Mono',monospace" font-size="17" fill="#F4F3F7">₹ 2,100</text>
+              <!-- chips -->
+              <g font-family="'IBM Plex Mono',monospace" font-size="10">
+                <rect x="24" y="212" width="60" height="28" rx="14" fill="none" stroke="rgba(124,107,223,0.5)"/><text x="54" y="230" fill="#9C8BEA" text-anchor="middle">₹501</text>
+                <rect x="92" y="212" width="66" height="28" rx="14" fill="#7158D7"/><text x="125" y="230" fill="#fff" text-anchor="middle">₹2,100</text>
+                <rect x="166" y="212" width="70" height="28" rx="14" fill="none" stroke="rgba(124,107,223,0.5)"/><text x="201" y="230" fill="#9C8BEA" text-anchor="middle">₹5,100</text>
+              </g>
+              <!-- person -->
+              <rect x="24" y="256" width="212" height="44" rx="12" fill="#15131F"/><text x="40" y="283" font-family="Archivo,sans-serif" font-size="13" fill="#C7C7D2">Meera</text>
+              <!-- save -->
+              <rect x="24" y="410" width="212" height="46" rx="13" fill="url(#ho-g)"/><text x="130" y="439" font-family="Archivo,sans-serif" font-size="14" font-weight="600" fill="#fff" text-anchor="middle">Save Shagun</text>
+            </g>
+
+            <!-- redlines LEFT -->
+            <g font-family="'IBM Plex Mono',monospace" font-size="11" fill="#7C6BDF">
+              <line x1="300" y1="172" x2="392" y2="172" stroke="#7C6BDF" stroke-dasharray="3 3"/>
+              <circle cx="300" cy="172" r="3" fill="#7C6BDF"/>
+              <text x="60" y="168" fill="#C7C7D2">Segmented control</text>
+              <text x="60" y="184" fill="#9A9AA8">h 44 · r 12 · fill field</text>
+              <text x="60" y="200" fill="#EC6A7C">selected = coral #EC6A7C</text>
+
+              <line x1="300" y1="322" x2="392" y2="322" stroke="#7C6BDF" stroke-dasharray="3 3"/>
+              <circle cx="300" cy="322" r="3" fill="#7C6BDF"/>
+              <text x="60" y="318" fill="#C7C7D2">Person picker</text>
+              <text x="60" y="334" fill="#9A9AA8">tap → searchable list</text>
+            </g>
+            <!-- redlines RIGHT -->
+            <g font-family="'IBM Plex Mono',monospace" font-size="11">
+              <line x1="608" y1="292" x2="700" y2="292" stroke="#7C6BDF" stroke-dasharray="3 3"/>
+              <circle cx="608" cy="292" r="3" fill="#7C6BDF"/>
+              <text x="712" y="278" fill="#C7C7D2">Auspicious chips</text>
+              <text x="712" y="294" fill="#9A9AA8">r 999 · gap 8</text>
+              <text x="712" y="310" fill="#40C486">selected fill = primary</text>
+
+              <line x1="608" y1="510" x2="700" y2="510" stroke="#7C6BDF" stroke-dasharray="3 3"/>
+              <circle cx="608" cy="510" r="3" fill="#7C6BDF"/>
+              <text x="712" y="496" fill="#C7C7D2">Primary button</text>
+              <text x="712" y="512" fill="#9A9AA8">h 46 · r 13 · grad</text>
+              <text x="712" y="528" fill="#9A9AA8">disabled if amount = 0</text>
+            </g>
+            <!-- spacing tick -->
+            <g stroke="#40C486" stroke-width="1">
+              <line x1="646" y1="132" x2="646" y2="150"/>
+              <text x="654" y="146" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#40C486">16</text>
+            </g>
+          </svg>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  </main>
+
+  <footer>
+    Shagunly Design Kit · internal export · colours sampled from the shipped iOS app · not linked from the portfolio.
+  </footer>
+
+  <script src="js/design-kit.js"></script>
+</body>
+</html>
