@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shagunly | Piyush Grover — Portfolio</title>
-  <meta name="description" content="Shagunly — a vibe-coded iOS app for tracking shagun gift exchanges. Product design, UX and AI-directed engineering, end-to-end.">
+  <meta name="description" content="Shagunly — an iOS app for tracking shagun gift exchanges. Designed end-to-end in Figma, built AI-directed, live on the App Store.">
   <link rel="icon" href="img/shared/Memoji1.png">
   <link rel="preload" href="fonts/Archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/PlexMono-500.woff2" as="font" type="font/woff2" crossorigin>
@@ -52,26 +52,29 @@
       <a href="#overview"><span class="idx">01</span> Overview</a>
       <a href="#problem"><span class="idx">02</span> Problem</a>
       <a href="#process"><span class="idx">03</span> Process</a>
-      <a href="#screens"><span class="idx">04</span> Screens</a>
-      <a href="#principles"><span class="idx">05</span> Principles</a>
-      <a href="#decisions"><span class="idx">06</span> Decisions</a>
-      <a href="#building"><span class="idx">07</span> Building It</a>
-      <a href="#judgment"><span class="idx">08</span> Judgment</a>
-      <a href="#testing"><span class="idx">09</span> Testing</a>
-      <a href="#next"><span class="idx">10</span> Next</a>
-      <a href="#reflection"><span class="idx">11</span> Reflection</a>
+      <a href="#system"><span class="idx">04</span> Design System</a>
+      <a href="#screens"><span class="idx">05</span> Screens</a>
+      <a href="#principles"><span class="idx">06</span> Principles</a>
+      <a href="#decisions"><span class="idx">07</span> Decisions</a>
+      <a href="#handoff"><span class="idx">08</span> Handoff</a>
+      <a href="#building"><span class="idx">09</span> Building It</a>
+      <a href="#judgment"><span class="idx">10</span> Judgment</a>
+      <a href="#testing"><span class="idx">11</span> Testing</a>
+      <a href="#next"><span class="idx">12</span> Next</a>
+      <a href="#reflection"><span class="idx">13</span> Reflection</a>
   </nav>
     <section class="cs-hero">
       <div class="wrap">
         <p class="eyebrow" data-reveal>iOS — Personal Product · Live on the App Store</p>
         <h1 class="display-lg" data-reveal>Shagunly — Tracking Tradition, One Gift at a Time</h1>
-        <p class="lede" data-reveal>A vibe-coded iOS app — designed &amp; directed by me, built in collaboration with Claude (Anthropic).</p>
+        <p class="lede" data-reveal>Designed end-to-end in Figma — theme, system, components, flows — then handed off and built AI-directed, without writing code. Live on the App Store.</p>
         <dl class="meta-grid" data-reveal>
           <div><dt>Role</dt><dd>Product Designer &amp; Director (end-to-end: research, UX, visual design, and AI-directed engineering)</dd></div>
           <div><dt>Platform</dt><dd>iOS (native, SwiftUI) — originally a PWA</dd></div>
           <div><dt>Status</dt><dd>Live on the <a href="https://apps.apple.com/us/app/shagunly/id6783436742" target="_blank" rel="noopener" style="color:var(--accent);">App Store ↗</a></dd></div>
           <div><dt>Backend</dt><dd>Supabase</dd></div>
-          <div><dt>Build method</dt><dd>Vibe coded — 100% AI-directed development, zero hand-written code</dd></div>
+          <div><dt>Design</dt><dd>Theme, design system, components and flows designed by me in Figma</dd></div>
+          <div><dt>Build method</dt><dd>Figma handoff → AI-directed build (Claude) — zero hand-written code</dd></div>
           <div><dt>Timeline</dt><dd>Ongoing, iterative builds (Build 1 → Build 3 in progress)</dd></div>
         </dl>
         <div class="hero-cta-row" style="margin-top:2rem;" data-reveal>
@@ -84,10 +87,10 @@
       <div class="shag-hero">
         <div class="shag-hero-devices">
           <div class="device-frame phone">
-            <div class="device-screen"><img src="img/shagunly/screens/phone-home.jpg" width="640" height="1391" alt="Shagunly Home screen on iPhone — balance summary and upcoming occasion" fetchpriority="high"></div>
+            <div class="device-screen"><img src="img/shagunly/screens/phone-home.jpg" width="1100" height="2390" alt="Shagunly Home screen on iPhone — balance summary and upcoming occasion" fetchpriority="high"></div>
           </div>
           <div class="device-frame phone">
-            <div class="device-screen"><img src="img/shagunly/screens/phone-new-entry.jpg" width="640" height="1391" alt="Shagunly New Shagun entry screen on iPhone"></div>
+            <div class="device-screen"><img src="img/shagunly/screens/phone-new-entry.jpg" width="1100" height="2390" alt="Shagunly New Shagun entry screen on iPhone"></div>
           </div>
           <img class="shag-hero-icon" src="img/shagunly/icon-default.png" width="256" height="256" alt="Shagunly app icon">
         </div>
@@ -103,7 +106,7 @@
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
             <p>Shagunly is an iOS app for tracking <em>shagun</em> — the cash and gift exchanges that are a core part of Indian weddings, festivals, and birthdays. It replaces the mental math, scattered notebooks, and "who gave what" guesswork with a simple, culturally-native ledger.</p>
-            <p>I designed it, made every product and UX decision, and directed its entire technical build without writing a line of code myself — using Claude as an AI engineering partner. This case study covers both halves of that story: the design thinking, and what it actually looks like to <em>vibe code</em> a real product from concept to TestFlight.</p>
+            <p>I designed it end to end in Figma — the theme, the design system, every component and flow — then directed the entire technical build without writing a line of code, using Claude as the engineering partner. This case study covers both halves: the design decisions, and what it actually takes to hand a finished design to an AI and ship it to the App Store.</p>
           </div>
         </div>
         <figure class="fig" data-reveal>
@@ -142,9 +145,53 @@
             <p>I made the call to rebuild native in SwiftUI. That's a significant product decision — trading faster iteration for a proper install, TestFlight distribution, and a path to the App Store — and it's the kind of build-vs-rebuild tradeoff any product designer has to own.</p>
           </div>
         </div>
+        <h3 style="margin-top:var(--space-4);" data-reveal>Structure before style</h3>
+        <div class="cs-prose" data-reveal>
+          <p>Before any colour or type, I resolved layout and hierarchy as greyscale wireframes in Figma — one primary question per screen, balance and next action above the fold, direction chosen before amount. The visual language came later, on top of a structure that already worked.</p>
+        </div>
+        <figure class="fig" data-reveal>
+          <img src="img/shagunly/design/lofi-core-screens.svg" width="1180" height="560" alt="Low-fidelity wireframes — Home, People and New Shagun core screens with structural annotations" loading="lazy">
+          <figcaption>Lo-fi core screens — Home, People, New Shagun</figcaption>
+        </figure>
+        <div class="fig-grid cols-2" data-reveal>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/lofi-capture-flow.svg" width="1180" height="460" alt="Low-fidelity capture flow — four steps from home to updated home" loading="lazy"><figcaption>Capture path, four taps</figcaption></figure>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/lofi-auth-occasions.svg" width="1180" height="560" alt="Low-fidelity wireframes — sign in, occasions list and occasion detail" loading="lazy"><figcaption>Auth, occasions, detail</figcaption></figure>
+        </div>
         <figure class="fig" data-reveal>
           <img src="img/shagunly/pwa-vs-native.svg" width="1200" height="600" alt="Simple two-column comparison graphic — PWA: Sagan Tracker vs Native: Shagunly with 3-4 contrast points each" loading="lazy">
         </figure>
+      </div>
+    </section>
+
+    <section class="cs-section" id="system">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">04</span><span class="eyebrow" style="margin:0;">Design System</span></div>
+            <h2>A Token Set, Not a Pile of Screens</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>Because I'd be handing this to an AI rather than an engineer, the system had to be unambiguous: every colour, size and spacing step named and fixed in Figma first. Vague intent produces vague code — a defined token set produces the screen you drew.</p>
+            <p>Two decisions drive the whole palette: a deep night base so celebratory colour can glow without shouting, and a serif display voice that brings warmth to what is, underneath, a money app.</p>
+          </div>
+        </div>
+        <div class="fig-grid cols-2" data-reveal>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/tokens-colour.svg" width="760" height="500" alt="Colour tokens — surfaces, brand and semantic colours, text tokens with hex values" loading="lazy"><figcaption>Colour tokens</figcaption></figure>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/tokens-type.svg" width="760" height="500" alt="Type scale — serif display through mono tabular numerals" loading="lazy"><figcaption>Type scale — serif display, mono numerals</figcaption></figure>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/tokens-spacing.svg" width="760" height="340" alt="Spacing scale on a 4pt base with radius rules" loading="lazy"><figcaption>Spacing — 4pt base</figcaption></figure>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/theme-night-festive.svg" width="760" height="380" alt="Theme board — night base with festive gradient treatment" loading="lazy"><figcaption>Theme — night + festive</figcaption></figure>
+        </div>
+
+        <h3 style="margin-top:var(--space-4);" data-reveal>Components &amp; states</h3>
+        <div class="cs-prose" data-reveal>
+          <p>Each component was drawn with its states before it was built — default, pressed, disabled, selected — so the build had nothing left to invent.</p>
+        </div>
+        <div class="fig-grid cols-2" data-reveal>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/comp-buttons.svg" width="760" height="380" alt="Button components — primary gradient with default, pressed and disabled states, secondary and contextual variants" loading="lazy"><figcaption>Buttons — all states</figcaption></figure>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/comp-toggles.svg" width="760" height="340" alt="Segmented controls for direction and gift type, plus the show/hide switch" loading="lazy"><figcaption>Segmented controls &amp; switch</figcaption></figure>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/comp-chips.svg" width="760" height="280" alt="Auspicious amount chips in default and selected states" loading="lazy"><figcaption>Auspicious amount chips</figcaption></figure>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/comp-cards.svg" width="760" height="380" alt="Occasion row and person balance row cards with balance states" loading="lazy"><figcaption>Cards — occasion &amp; person rows</figcaption></figure>
+        </div>
       </div>
     </section>
 
@@ -152,7 +199,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">04</span><span class="eyebrow" style="margin:0;">Key Screens &amp; Flows</span></div>
+            <div class="cs-label"><span class="idx">05</span><span class="eyebrow" style="margin:0;">Key Screens &amp; Flows</span></div>
             <h2>Calm by Default, Fast Mid-Celebration</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -185,20 +232,20 @@
           <div class="mockup-stage">
             <div class="device-frame phone" data-cursor="view" data-cursor-label="Tap to explore">
               <div class="device-screen">
-                <img data-screen="home" class="is-active" src="img/shagunly/screens/phone-home.jpg" width="640" height="1391" alt="Shagunly iPhone Home screen — balance summary, upcoming occasion, recent entries" loading="lazy">
-                <img data-screen="people" src="img/shagunly/screens/phone-people.jpg" width="640" height="1391" alt="Shagunly iPhone People screen — relationships with running balance and whose turn it is" loading="lazy">
-                <img data-screen="occasions" src="img/shagunly/screens/phone-occasions.jpg" width="640" height="1391" alt="Shagunly iPhone Occasions screen — upcoming and past occasions" loading="lazy">
-                <img data-screen="occasion-detail" src="img/shagunly/screens/phone-occasion-detail.jpg" width="640" height="1391" alt="Shagunly iPhone Occasion detail screen — gifts logged at Dad's 60th Birthday" loading="lazy">
-                <img data-screen="new-entry" src="img/shagunly/screens/phone-new-entry.jpg" width="640" height="1391" alt="Shagunly iPhone New Shagun entry form — amount, person, date, occasion" loading="lazy">
+                <img data-screen="home" class="is-active" src="img/shagunly/screens/phone-home.jpg" width="1100" height="2390" alt="Shagunly iPhone Home screen — balance summary, upcoming occasion, recent entries" loading="lazy">
+                <img data-screen="people" src="img/shagunly/screens/phone-people.jpg" width="1100" height="2390" alt="Shagunly iPhone People screen — relationships with running balance and whose turn it is" loading="lazy">
+                <img data-screen="occasions" src="img/shagunly/screens/phone-occasions.jpg" width="1100" height="2390" alt="Shagunly iPhone Occasions screen — upcoming and past occasions" loading="lazy">
+                <img data-screen="occasion-detail" src="img/shagunly/screens/phone-occasion-detail.jpg" width="1100" height="2390" alt="Shagunly iPhone Occasion detail screen — gifts logged at Dad's 60th Birthday" loading="lazy">
+                <img data-screen="new-entry" src="img/shagunly/screens/phone-new-entry.jpg" width="1100" height="2390" alt="Shagunly iPhone New Shagun entry form — amount, person, date, occasion" loading="lazy">
               </div>
             </div>
             <div class="device-frame tablet" data-cursor="view" data-cursor-label="Tap to explore">
               <div class="device-screen">
-                <img data-screen="home" class="is-active" src="img/shagunly/screens/tablet-home.jpg" width="780" height="1040" alt="Shagunly iPad Home screen, adapted for a wider layout" loading="lazy">
-                <img data-screen="people" src="img/shagunly/screens/tablet-people.jpg" width="780" height="1040" alt="Shagunly iPad People screen" loading="lazy">
-                <img data-screen="occasions" src="img/shagunly/screens/tablet-occasions.jpg" width="780" height="1040" alt="Shagunly iPad Occasions screen" loading="lazy">
-                <img data-screen="occasion-detail" src="img/shagunly/screens/tablet-occasion-detail.jpg" width="780" height="1040" alt="Shagunly iPad Occasion detail, shown as an overlay panel" loading="lazy">
-                <img data-screen="new-entry" src="img/shagunly/screens/tablet-new-entry.jpg" width="780" height="1040" alt="Shagunly iPad New Shagun entry, shown as an overlay panel" loading="lazy">
+                <img data-screen="home" class="is-active" src="img/shagunly/screens/tablet-home.jpg" width="1400" height="1867" alt="Shagunly iPad Home screen, adapted for a wider layout" loading="lazy">
+                <img data-screen="people" src="img/shagunly/screens/tablet-people.jpg" width="1400" height="1867" alt="Shagunly iPad People screen" loading="lazy">
+                <img data-screen="occasions" src="img/shagunly/screens/tablet-occasions.jpg" width="1400" height="1867" alt="Shagunly iPad Occasions screen" loading="lazy">
+                <img data-screen="occasion-detail" src="img/shagunly/screens/tablet-occasion-detail.jpg" width="1400" height="1867" alt="Shagunly iPad Occasion detail, shown as an overlay panel" loading="lazy">
+                <img data-screen="new-entry" src="img/shagunly/screens/tablet-new-entry.jpg" width="1400" height="1867" alt="Shagunly iPad New Shagun entry, shown as an overlay panel" loading="lazy">
               </div>
             </div>
           </div>
@@ -210,6 +257,11 @@
             <span data-caption="new-entry">Logging a shagun takes seconds: given or received, an auspicious-amount preset, a person, and an optional occasion link.</span>
           </p>
         </div>
+        <h3 style="margin-top:var(--space-4);" data-reveal>The two journeys it turns on</h3>
+        <div class="fig-grid cols-2" data-reveal>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/flow-capture.svg" width="1180" height="280" alt="Capture flow — home, new shagun, preset and person, confirm, updated home" loading="lazy"><figcaption>Capture — logging a gift in the moment</figcaption></figure>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/flow-reciprocity.svg" width="1180" height="240" alt="Reciprocity flow — people tab to person to entry history to decision" loading="lazy"><figcaption>Reciprocity — reading a relationship over time</figcaption></figure>
+        </div>
       </div>
     </section>
 
@@ -217,7 +269,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">05</span><span class="eyebrow" style="margin:0;">Design Principles</span></div>
+            <div class="cs-label"><span class="idx">06</span><span class="eyebrow" style="margin:0;">Design Principles</span></div>
             <h2>Principles I Held To</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -235,11 +287,11 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">06</span><span class="eyebrow" style="margin:0;">Design Decisions &amp; Trade-offs</span></div>
+            <div class="cs-label"><span class="idx">07</span><span class="eyebrow" style="margin:0;">Design Decisions &amp; Trade-offs</span></div>
             <h2>The Calls Behind the Screens</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <p>Every screen above is the survivor of a set of options. The decisions that shaped Shagunly weren't visual polish — they were product calls about what the app should <em>feel like</em> to a family mid-celebration. What was on the table, what shipped, and why:</p>
+            <p>Every screen above is the survivor of a set of options drawn out in Figma. The decisions that shaped Shagunly weren't visual polish — they were product calls about what the app should <em>feel like</em> to a family mid-celebration. What was on the table, what shipped, and why:</p>
           </div>
         </div>
         <div class="decision-grid">
@@ -280,10 +332,54 @@
             <p class="d-row why"><span class="d-tag">Why</span> The serif brings warmth and sense of occasion to a money app; the dark canvas lets celebratory color glow without shouting.</p>
           </article>
         </div>
-        <div class="fig-grid cols-2" data-reveal>
-          <figure class="fig fx-tilt" style="margin:0;"><img src="img/shagunly/screens/phone-new-entry.jpg" width="640" height="1391" alt="New Shagun entry screen — direction-first choice, auspicious presets, optional occasion" loading="lazy"><figcaption>D1 · D4 · D5 — direction-first entry, auspicious presets, optional occasion</figcaption></figure>
-          <figure class="fig fx-tilt" style="margin:0;"><img src="img/shagunly/screens/phone-people.jpg" width="640" height="1391" alt="People screen — running balances with your-turn / their-turn cues" loading="lazy"><figcaption>D2 — relationships as running balances, not transaction logs</figcaption></figure>
+        <h3 style="margin-top:var(--space-4);" data-reveal>The alternates, side by side</h3>
+        <div class="cs-prose" data-reveal>
+          <p>Each fork was drawn out in Figma before committing — the rejected option on the left, what shipped on the right.</p>
         </div>
+        <figure class="fig" data-reveal>
+          <img src="img/shagunly/design/exp-amount-entry.svg" width="760" height="440" alt="Exploration — plain numeric field versus auspicious amount presets" loading="lazy">
+          <figcaption>D1 — plain field vs auspicious presets</figcaption>
+        </figure>
+        <figure class="fig" data-reveal>
+          <img src="img/shagunly/design/exp-people.svg" width="760" height="440" alt="Exploration — transaction log versus running relationship balance" loading="lazy">
+          <figcaption>D2 — transaction log vs running balance</figcaption>
+        </figure>
+        <figure class="fig" data-reveal>
+          <img src="img/shagunly/design/exp-entry-detail.svg" width="760" height="440" alt="Exploration — editable by default versus calm read-only detail" loading="lazy">
+          <figcaption>D3 — editable by default vs calm read state</figcaption>
+        </figure>
+        <figure class="fig" data-reveal>
+          <img src="img/shagunly/design/exp-direction-first.svg" width="760" height="440" alt="Exploration — amount-first capture versus direction-first capture" loading="lazy">
+          <figcaption>D4 — amount first vs direction first</figcaption>
+        </figure>
+        <figure class="fig" data-reveal>
+          <img src="img/shagunly/design/exp-identity.svg" width="760" height="440" alt="Exploration — system light identity versus serif night identity" loading="lazy">
+          <figcaption>D6 — system/light vs serif/night identity</figcaption>
+        </figure>
+        <div class="fig-grid cols-2" data-reveal>
+          <figure class="fig fx-tilt" style="margin:0;"><img src="img/shagunly/screens/phone-new-entry.jpg" width="1100" height="2390" alt="New Shagun entry screen — direction-first choice, auspicious presets, optional occasion" loading="lazy"><figcaption>D1 · D4 · D5 — direction-first entry, auspicious presets, optional occasion</figcaption></figure>
+          <figure class="fig fx-tilt" style="margin:0;"><img src="img/shagunly/screens/phone-people.jpg" width="1100" height="2390" alt="People screen — running balances with your-turn / their-turn cues" loading="lazy"><figcaption>D2 — relationships as running balances, not transaction logs</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section" id="handoff">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">08</span><span class="eyebrow" style="margin:0;">Handoff</span></div>
+            <h2>Figma → Spec → AI Build</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>This is the join between the two halves of the project. I redlined each screen in Figma the way I'd spec it for an engineer — component, size, radius, token, state, edge case — and that spec became the brief for the build.</p>
+            <p>The discipline mattered more here than it would with a human engineer: a person asks when something's ambiguous, an AI just picks. Anything I left vague came back as something I didn't design, so the spec had to carry the decision, not just the look.</p>
+            <p class="callout">Design decided in Figma. The build only executed it.</p>
+          </div>
+        </div>
+        <figure class="fig" data-reveal>
+          <img src="img/shagunly/design/handoff-spec.svg" width="1000" height="600" alt="Annotated redline spec of the New Shagun sheet — component sizes, radii, token references and state rules" loading="lazy">
+          <figcaption>Redlined spec — the New Shagun sheet, as handed to the build</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -291,15 +387,15 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">07</span><span class="eyebrow" style="margin:0;">Building It</span></div>
-            <h2>The Vibe Coding Approach</h2>
+            <div class="cs-label"><span class="idx">09</span><span class="eyebrow" style="margin:0;">Building It</span></div>
+            <h2>Directing the Build, Not Designing in Code</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <p>This is the part of the story most portfolios don't tell, and it's increasingly the part hiring managers ask about.</p>
-            <p>I have no coding background. Every screen, flow, and backend interaction in Shagunly was built by directing Claude — describing intent, reviewing output, and iterating — the same way I'd direct an engineer, but faster and entirely in my own hands.</p>
+            <p>With the design settled in Figma, the build became an execution problem — the part of the story most portfolios don't tell, and increasingly the part hiring managers ask about.</p>
+            <p>I have no coding background. Every screen, flow, and backend interaction was built by directing Claude against the Figma spec — describing intent, reviewing output, iterating — the same way I'd direct an engineer, but faster and entirely in my own hands.</p>
             <h3>How I actually worked</h3>
             <ul>
-              <li>I thought in <strong>components and states</strong>, the same mental model as Figma layers and variants — "this view has a read state and an edit state," not "write a SwiftUI struct"</li>
+              <li>I thought in <strong>components and states</strong> — the same mental model as the Figma library I'd already built: "this view has a read state and an edit state," not "write a SwiftUI struct"</li>
               <li>Every change followed the same loop: <strong>describe the change → review the code → paste it into Xcode → build → test on my own device</strong></li>
               <li>Changes were batched and reviewed as complete file overwrites, not tiny patches — closer to reviewing a full component than debugging a line</li>
             </ul>
@@ -309,11 +405,15 @@
               <li>A working auth system with a real forgot-password flow via Supabase</li>
               <li>A new read/edit view architecture (<code>EntryDetailView</code>) built and wired into the app's root navigation</li>
               <li>A backend on Supabase, with admin accounts, a dedicated reviewer test account, and a hosted privacy policy for App Store compliance</li>
-              <li>A build that <strong>passed Apple's Beta App Review</strong> and is live on TestFlight today</li>
+              <li>A build that <strong>cleared Apple's Beta App Review, then full App Review</strong> — live on the App Store today</li>
               <li>An app icon designed across all three iOS appearance modes — default, dark, and tinted</li>
             </ul>
           </div>
         </div>
+        <figure class="fig" data-reveal style="max-width:340px;">
+          <img src="img/shagunly/screens/phone-auth.jpg" width="1100" height="2390" alt="Shagunly sign-in screen — email/password with Apple and Google sign-in" loading="lazy">
+          <figcaption>Shipped auth — email/password, Apple &amp; Google sign-in</figcaption>
+        </figure>
         <div class="icon-strip" data-reveal>
           <figure>
             <img src="img/shagunly/icon-default.png" width="256" height="256" alt="Shagunly app icon — default appearance" loading="lazy">
@@ -338,7 +438,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">08</span><span class="eyebrow" style="margin:0;">Engineering Judgment</span></div>
+            <div class="cs-label"><span class="idx">10</span><span class="eyebrow" style="margin:0;">Engineering Judgment</span></div>
             <h2>Real Engineering Problems, Solved Without Writing Code</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -359,7 +459,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">09</span><span class="eyebrow" style="margin:0;">Testing &amp; Validation</span></div>
+            <div class="cs-label"><span class="idx">11</span><span class="eyebrow" style="margin:0;">Testing &amp; Validation</span></div>
             <h2>Real Testers, Real Feedback Loop</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -376,7 +476,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">10</span><span class="eyebrow" style="margin:0;">What's Next</span></div>
+            <div class="cs-label"><span class="idx">12</span><span class="eyebrow" style="margin:0;">What's Next</span></div>
             <h2>Beyond the Launch</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -394,7 +494,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">11</span><span class="eyebrow" style="margin:0;">Reflection</span></div>
+            <div class="cs-label"><span class="idx">13</span><span class="eyebrow" style="margin:0;">Reflection</span></div>
             <h2>Product Judgment, End to End</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -404,9 +504,9 @@
           </div>
         </div>
         <div class="closing-grid" data-reveal>
-          <figure><img src="img/shagunly/screens/tablet-home.jpg" width="780" height="1040" alt="Shagunly on iPad — Home screen" loading="lazy"></figure>
-          <figure><img src="img/shagunly/screens/phone-new-entry.jpg" width="640" height="1391" alt="Shagunly on iPhone — New Shagun entry form" loading="lazy"></figure>
-          <figure><img src="img/shagunly/screens/phone-occasion-detail.jpg" width="640" height="1391" alt="Shagunly on iPhone — Occasion detail with gifts logged" loading="lazy"></figure>
+          <figure><img src="img/shagunly/screens/tablet-home.jpg" width="1400" height="1867" alt="Shagunly on iPad — Home screen" loading="lazy"></figure>
+          <figure><img src="img/shagunly/screens/phone-new-entry.jpg" width="1100" height="2390" alt="Shagunly on iPhone — New Shagun entry form" loading="lazy"></figure>
+          <figure><img src="img/shagunly/screens/phone-occasion-detail.jpg" width="1100" height="2390" alt="Shagunly on iPhone — Occasion detail with gifts logged" loading="lazy"></figure>
         </div>
       </div>
     </section>

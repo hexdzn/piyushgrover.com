@@ -486,3 +486,47 @@ iPad silhouette.
     xmlns) to the clipboard; verified the output is valid XML, starts with
     <svg>, retains gradients + text. Button → "Copied ✓" + toast. Deployed but
     unlinked, so it ships with the site without appearing in nav/sitemap.
+
+## Round 14 — Real Figma artifacts + retina screens (2026-07-30)
+
+84. **Piyush supplied 19 refined SVGs** (~/Documents/Shagunly Portfolio
+    resources) — these are the design-kit artboards he pasted into Figma,
+    refined, and exported back (text outlined to paths). Dimensions matched
+    my kit 1:1; only the FAB/bottom-nav tile (760x260) wasn't returned.
+    Imported to img/shagunly/design/ with semantic names, optimised
+    (2dp rounding + whitespace collapse): 3.1MB → 2.77MB on disk, 959K
+    gzipped across 19 lazy-loaded files. All valid XML post-optimisation.
+85. **Case study reframed around the Figma work.** Lede, meta description,
+    Overview and Building-It copy now lead with "designed end-to-end in
+    Figma, then handed off and built AI-directed" rather than "vibe coded".
+    Added a `Design` meta row. Rationale (agreed with Piyush): the old
+    framing buried the actual design work and read as "I prompted an AI";
+    the design rigour is what makes the AI build impressive, not vice versa.
+86. **Two new sections**: `04 Design System` (colour/type/spacing/theme
+    tokens + component states) and `08 Handoff` (the redlined spec — the
+    "Figma → AI build" story in one frame, with the pull-quote "Design
+    decided in Figma. The build only executed it."). Lo-fi wireframes added
+    into `03 Process`, flow diagrams into `05 Screens`, and the five real
+    A/B exploration frames into `07 Decisions`. Page went 11 → 13 sections;
+    all labels renumbered programmatically and the rail rebuilt from
+    document order (13/13 anchors verified resolving).
+87. **Section image resolution fixed** (the reported blurriness): repo
+    screens had been downscaled to 640px wide (phones) / 780px (tablets)
+    while being displayed ~640 CSS px in the Decisions figures — i.e. 1x on
+    retina. Re-exported from the untouched 1320x2868 originals on Desktop at
+    1100px (phones) and 1400px (tablets), q88 progressive → ~1.7x density at
+    display size. Screens dir 1.3MB total.
+88. **New screen captured live from the simulator today**: the sign-in
+    screen (email/password + Apple/Google SSO) at full 1320x2868, added to
+    Building It. The app was installed and launched via `xcrun simctl`
+    (bundle app.shagun.Shagunly on the booted iPhone 17 Pro Max).
+    LIMITATION: could not navigate the app to capture other screens fresh —
+    (a) the simulator MCP needs `sudo xcode-select -s
+    /Applications/Xcode.app/Contents/Developer` which requires Piyush's
+    password, and (b) the app was logged out and entering credentials is
+    off-limits. All other screens therefore come from the 6 Jul originals,
+    just re-exported at proper resolution. If the UI has changed since,
+    Piyush should sign in + run the xcode-select command and I can recapture.
+89. **Stale fact corrected**: "live on TestFlight today" → "cleared Beta App
+    Review, then full App Review — live on the App Store today". Remaining
+    TestFlight mentions are all correctly historical.
