@@ -130,10 +130,12 @@
 .device-mockup[data-device='tablet'] .device-frame.phone { display: none; }
 .device-mockup[data-device='tablet'] .device-frame.tablet { display: block; }
 
-/* ---- Paired "Occasions" state: list + selected, side by side ---- */
-.device-mockup .device-frame.companion { display: none; }
-.device-mockup[data-screen='occasions'] .device-frame.phone.companion { display: block; }
-.device-mockup[data-device='tablet'][data-screen='occasions'] .device-frame.phone.companion { display: none; }
+/* ---- Paired "Occasions" state: list + selected, side by side ----
+   NOTE: the device rules above use [data-device] so the companion-hide rule
+   must match their specificity (and come later) or companions leak into
+   every tab on iPad. */
+.device-mockup[data-device] .device-frame.companion { display: none; }
+.device-mockup[data-device='phone'][data-screen='occasions'] .device-frame.phone.companion { display: block; }
 .device-mockup[data-device='tablet'][data-screen='occasions'] .device-frame.tablet.companion { display: block; }
 
 .device-mockup[data-screen='occasions'] .mockup-stage {

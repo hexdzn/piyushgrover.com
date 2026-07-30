@@ -615,3 +615,20 @@ iPad silhouette.
 104. Verified after removal: 14 sections, 0 broken images (42 total), no
      "PLACEHOLDER" string anywhere on the page, no empty sections, rail
      anchors all resolve, no horizontal scroll.
+
+## Round 18 — Updated handoff spec + iPad companion bug (2026-07-30)
+
+105. **handoff-spec.svg replaced** with Piyush's refined export
+     (Newframe.svg, 1000x600 — same artboard, so no markup change needed).
+     Optimised to 245K on disk / 84K gzipped, valid XML.
+106. **BUG FIXED — iPad showed two frames on every tab.** My round-16
+     companion-hide rule `.device-mockup .device-frame.companion` was
+     specificity (0,3,0), but the pre-existing
+     `.device-mockup[data-device='tablet'] .device-frame.tablet` is (0,4,0)
+     — so on iPad the tablet companion won and rendered on Home, People and
+     New Shagun too. Rewrote the hide rule as
+     `.device-mockup[data-device] .device-frame.companion` (matching (0,4,0)
+     and placed later) with explicit
+     `[data-device='phone'|'tablet'][data-screen='occasions']` show rules.
+     Verified all 8 device x screen combinations: exactly one frame
+     everywhere, two only on Occasions.
