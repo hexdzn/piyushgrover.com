@@ -590,3 +590,28 @@ iPad silhouette.
      (two 150px frames, no overflow).
 101. **Not done, deliberately**: shagunly.netlify.app is NOT linked from the
      case study — user explicitly declined.
+
+## Round 17 — Placeholder graphics removed (2026-07-30)
+
+102. **All remaining placeholder SVGs removed** from shagunly.html (user
+     asked whether they were still needed; chose remove-all). Dropped the
+     four still on the page — before-after-notebook (Overview),
+     pwa-vs-native (Process), vibe-coding-workflow (Building It),
+     testflight-feedback (Testing) — plus three already-orphaned from
+     earlier rounds (hero-shot, screen-flow-tap-to-edit,
+     closing-screens-grid). Files deleted from img/shagunly/; that folder
+     now holds only the 3 app icons, design/ (19 Figma artifacts) and
+     screens/ (11 retina screens).
+     Rationale: a grey "PLACEHOLDER — replace with real screenshot" box on
+     a live portfolio reads as an unfinished page, and one sat in the
+     Overview as the first image a visitor saw. Two of the four needed
+     photography/App-Store-Connect screenshots Piyush would have to supply;
+     the other two were diagrams now largely redundant with the handoff
+     spec (which already carries "Figma → structured spec → AI build →
+     device test"). Surrounding copy already makes each point.
+103. v2 (piyush-v2) still references its own copies of these placeholders in
+     its own repo — untouched, separate files. If v2 becomes the live site
+     they need the same cleanup.
+104. Verified after removal: 14 sections, 0 broken images (42 total), no
+     "PLACEHOLDER" string anywhere on the page, no empty sections, rail
+     anchors all resolve, no horizontal scroll.
