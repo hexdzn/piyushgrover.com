@@ -56,26 +56,27 @@
       <a href="#screens"><span class="idx">05</span> Screens</a>
       <a href="#principles"><span class="idx">06</span> Principles</a>
       <a href="#decisions"><span class="idx">07</span> Decisions</a>
-      <a href="#handoff"><span class="idx">08</span> Handoff</a>
-      <a href="#building"><span class="idx">09</span> Building It</a>
-      <a href="#judgment"><span class="idx">10</span> Judgment</a>
-      <a href="#testing"><span class="idx">11</span> Testing</a>
-      <a href="#next"><span class="idx">12</span> Next</a>
-      <a href="#reflection"><span class="idx">13</span> Reflection</a>
+      <a href="#product"><span class="idx">08</span> Product</a>
+      <a href="#handoff"><span class="idx">09</span> Handoff</a>
+      <a href="#building"><span class="idx">10</span> Building It</a>
+      <a href="#judgment"><span class="idx">11</span> Judgment</a>
+      <a href="#testing"><span class="idx">12</span> Testing</a>
+      <a href="#next"><span class="idx">13</span> Next</a>
+      <a href="#reflection"><span class="idx">14</span> Reflection</a>
   </nav>
     <section class="cs-hero">
       <div class="wrap">
         <p class="eyebrow" data-reveal>iOS — Personal Product · Live on the App Store</p>
         <h1 class="display-lg" data-reveal>Shagunly — Tracking Tradition, One Gift at a Time</h1>
-        <p class="lede" data-reveal>Designed end-to-end in Figma — theme, system, components, flows — then handed off and built AI-directed, without writing code. Live on the App Store.</p>
+        <p class="lede" data-reveal>A private ledger for <em>shagun</em> — the gifts and cash exchanged at Indian celebrations — with a reciprocity engine at its heart. Designed end-to-end in Figma, then built AI-directed without writing code. Live on the App Store.</p>
         <dl class="meta-grid" data-reveal>
-          <div><dt>Role</dt><dd>Product Designer &amp; Director (end-to-end: research, UX, visual design, and AI-directed engineering)</dd></div>
-          <div><dt>Platform</dt><dd>iOS (native, SwiftUI) — originally a PWA</dd></div>
+          <div><dt>Role</dt><dd>Product &amp; design lead — solo founder, carrying design through to iOS, backend and web</dd></div>
+          <div><dt>Platform</dt><dd>iOS 17+ (SwiftUI) — originally a PWA · Android (Flutter) in development</dd></div>
           <div><dt>Status</dt><dd>Live on the <a href="https://apps.apple.com/us/app/shagunly/id6783436742" target="_blank" rel="noopener" style="color:var(--accent);">App Store ↗</a></dd></div>
-          <div><dt>Backend</dt><dd>Supabase</dd></div>
+          <div><dt>Stack</dt><dd>SwiftUI · Supabase (Postgres, RLS, Edge Functions) · native Apple &amp; Google Sign-In</dd></div>
           <div><dt>Design</dt><dd>Theme, design system, components and flows designed by me in Figma</dd></div>
           <div><dt>Build method</dt><dd>Figma handoff → AI-directed build (Claude) — zero hand-written code</dd></div>
-          <div><dt>Timeline</dt><dd>Ongoing, iterative builds (Build 1 → Build 3 in progress)</dd></div>
+          <div><dt>Timeline</dt><dd>Ongoing — shipped to the App Store, iterating on live feedback</dd></div>
         </dl>
         <div class="hero-cta-row" style="margin-top:2rem;" data-reveal>
           <a class="btn btn-solid" href="https://apps.apple.com/us/app/shagunly/id6783436742" target="_blank" rel="noopener">Download on the App Store <span class="arr">↗</span></a>
@@ -125,6 +126,7 @@
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
             <p>At Indian occasions — weddings, Diwali, birthdays — cash and gifts change hands constantly, and tracking who gave what (and what's owed in return) is a real, ongoing social obligation. Families still do this with pen-and-paper registers or fragmented memory. There was no lightweight, culturally-specific tool built for this — generic expense trackers don't understand the <em>shagun</em> mental model of reciprocity, occasions, and relationships.</p>
             <p>This was a problem I understood firsthand, which shaped both the product's name (a playful spin on "shagun") and its tone throughout.</p>
+            <p class="callout">The moment that defined the product: standing at a venue, envelope in hand, trying to remember what they gave you three years ago.</p>
           </div>
         </div>
       </div>
@@ -363,11 +365,57 @@
       </div>
     </section>
 
+    <section class="cs-section" id="product">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">08</span><span class="eyebrow" style="margin:0;">Product Decisions</span></div>
+            <h2>The Calls That Made It a Product</h2>
+          </div>
+          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
+            <p>Beyond the screen-level trade-offs, a handful of decisions shaped what Shagunly actually <em>is</em> — each a product call before it was a design or engineering one.</p>
+          </div>
+        </div>
+        <div class="decision-grid">
+          <article class="decision-card" data-reveal>
+            <h4><span class="idx">P1</span> The reciprocity engine</h4>
+            <p class="d-row why">One shared lookup answers "what did this person last give us?" everywhere — home banner, gift suggestions, reminders. It prefers a same-occasion match (their wedding &rarr; your wedding) before falling back to most recent, and every name comparison flows through one normalisation rule, so "Anita", "anita " and "ANITA" are one person.</p>
+            <p class="d-row shipped"><span class="d-tag">Why it matters</span> When grouping logic lives in five places, it disagrees in five ways. Here it can't.</p>
+          </article>
+          <article class="decision-card" data-reveal data-reveal-delay="0.06">
+            <h4><span class="idx">P2</span> Hosted occasions &mdash; flipping the book</h4>
+            <p class="d-row why">Tracking apps assume you're always the giver. But when <em>you</em> host Dad's 60th, gifts flow toward your family. Marking an occasion "My family's" flips the perspective: the CTA becomes <strong>Log gifts received</strong>, entries default to incoming, the "no gift yet" urgency disappears, and the reciprocity line hides &mdash; the guest of honour is not a prior giver.</p>
+            <p class="d-row shipped"><span class="d-tag">Why it matters</span> One boolean, but it required rethinking every screen's assumptions.</p>
+          </article>
+          <article class="decision-card" data-reveal data-reveal-delay="0.12">
+            <h4><span class="idx">P3</span> Family sharing, with manners</h4>
+            <p class="d-row why">A household keeps one gift book. Anyone joins with a six-letter share code, and every entry shows who logged it. The rule that makes it work socially: <strong>only the author can edit a record &mdash; everyone else can ask.</strong> Change requests queue on the author's home screen to approve or decline.</p>
+            <p class="d-row shipped"><span class="d-tag">Why it matters</span> Enforced twice &mdash; in the UI, and in Postgres row-level security with a <code>SECURITY DEFINER</code> function that verifies ownership server-side. A hacked client changes nothing.</p>
+          </article>
+          <article class="decision-card" data-reveal>
+            <h4><span class="idx">P4</span> Wedding-season speed</h4>
+            <p class="d-row why">Batch entry ("Save &amp; Add Another" keeps the occasion and date, resets the person), live Indian digit grouping (&#8377;1,00,000 as you type), one-tap auspicious amounts, camera capture at the door, and a picker that turns a typed one-off occasion into a saved one without leaving the form.</p>
+            <p class="d-row shipped"><span class="d-tag">Why it matters</span> The app is used standing up, in a crowd, mid-celebration &mdash; or not at all.</p>
+          </article>
+          <article class="decision-card" data-reveal data-reveal-delay="0.06">
+            <h4><span class="idx">P5</span> Shagun Wrapped</h4>
+            <p class="d-row why">The year in gifts &mdash; totals, closest exchange, most generous moment &mdash; as a full-screen story.</p>
+            <p class="d-row shipped"><span class="d-tag">Why it matters</span> A ledger app that earns a screenshot.</p>
+          </article>
+          <article class="decision-card" data-reveal data-reveal-delay="0.12">
+            <h4><span class="idx">P6</span> Privacy as a feature</h4>
+            <p class="d-row why">No analytics SDKs, no ads, no tracking. Photos never leave the user's account; export ships every record as spreadsheets in two taps; delete-account removes everything atomically. The privacy policy is plain language on purpose, with a section explaining exactly what family members can and cannot see.</p>
+            <p class="d-row shipped"><span class="d-tag">Why it matters</span> For a record of family gift-giving, discretion is the product.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="cs-section" id="handoff">
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">08</span><span class="eyebrow" style="margin:0;">Handoff</span></div>
+            <div class="cs-label"><span class="idx">09</span><span class="eyebrow" style="margin:0;">Handoff</span></div>
             <h2>Figma → Spec → AI Build</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -387,7 +435,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">09</span><span class="eyebrow" style="margin:0;">Building It</span></div>
+            <div class="cs-label"><span class="idx">10</span><span class="eyebrow" style="margin:0;">Building It</span></div>
             <h2>Directing the Build, Not Designing in Code</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -438,18 +486,19 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">10</span><span class="eyebrow" style="margin:0;">Engineering Judgment</span></div>
-            <h2>Real Engineering Problems, Solved Without Writing Code</h2>
+            <div class="cs-label"><span class="idx">11</span><span class="eyebrow" style="margin:0;">Engineering Judgment</span></div>
+            <h2>Real Problems, Solved Without Writing Code</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <p>Vibe coding doesn't mean skipping the hard parts — it means directing through them:</p>
+            <p>Directing a build doesn't mean skipping the hard parts &mdash; it means understanding them well enough to catch them. The bugs that mattered were the quiet ones:</p>
             <ul>
-              <li><strong>Signing &amp; distribution</strong> — learning to catch a free "Personal Team" signing config before it silently blocked App Store distribution</li>
-              <li><strong>Syntax integrity</strong> — instituting a mandatory validation step before every push, after one missing brace silently broke every button on a page</li>
-              <li><strong>Caching</strong> — versioning the service worker on every deploy during the PWA phase, after stale caches masked real bugs during testing</li>
-              <li><strong>Distribution targets</strong> — learning the difference between "TestFlight Internal Only" and full App Store Connect distribution, which determines whether external testers can even access a build</li>
+              <li><strong>The nil that wasn't null.</strong> Swift's synthesized <code>Encodable</code> omits <code>nil</code> keys, so clearing a photo or a note silently survived in Postgres &mdash; the classic PATCH-semantics trap. Fixed with explicit update payloads that encode every field, writing SQL <code>NULL</code> on purpose. That discipline now covers all five mutating tables.</li>
+              <li><strong>Scope-aware data, scope-blind reminders.</strong> Family sharing filters every query by the active book. The reminder scheduler cancels all pending notifications before re-adding &mdash; so feeding it the filtered list silently wiped the <em>other</em> book's reminders. Caught in review; reminders now reschedule from an unscoped fetch.</li>
+              <li><strong>Making Google say "Shagunly."</strong> Supabase's web-redirect OAuth shows users the raw backend domain on Google's account picker. Rebuilt sign-in on the native GoogleSignIn SDK &mdash; the same <code>signInWithIdToken</code> path as Apple &mdash; so auth is branded, in-app and browser-free.</li>
+              <li><strong>The deployment-target backlash.</strong> Early users on older iPhones couldn't install at all: the target was accidentally pinned to the newest OS. Audited the real API floor, dropped it to iOS 17, shipped a same-day fix &mdash; newer devices kept the Liquid Glass look, older users finally got in.</li>
+              <li><strong>Deletion without data loss.</strong> Deleting an occasion unlinks its gifts rather than destroying them; deleting a family unlinks members' entries; deleting an account runs one atomic edge function. Every destructive path answers "what happens to everyone else's data?" first.</li>
             </ul>
-            <p class="callout">These aren't things I coded — they're things I had to understand well enough to direct, which is arguably the more transferable skill.</p>
+            <p class="callout">These aren't things I coded &mdash; they're things I had to understand well enough to direct, and to catch when the build got them subtly wrong.</p>
           </div>
         </div>
       </div>
@@ -459,7 +508,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">11</span><span class="eyebrow" style="margin:0;">Testing &amp; Validation</span></div>
+            <div class="cs-label"><span class="idx">12</span><span class="eyebrow" style="margin:0;">Testing &amp; Validation</span></div>
             <h2>Real Testers, Real Feedback Loop</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -476,14 +525,17 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">12</span><span class="eyebrow" style="margin:0;">What's Next</span></div>
+            <div class="cs-label"><span class="idx">13</span><span class="eyebrow" style="margin:0;">What's Next</span></div>
             <h2>Beyond the Launch</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
             <ul>
-              <li><strong>Family grouping</strong> — shared visibility into occasions across a household</li>
-              <li><strong>Dark mode</strong> — a deliberately scoped, large effort given the size of the existing color system</li>
-              <li><strong>Phone OTP sign-in</strong> — for a lower-friction, more India-familiar auth pattern</li>
+              <li><strong>Calendar sync</strong> &mdash; occasions where people already look for them</li>
+              <li><strong>A shareable Wrapped card</strong> &mdash; the year in gifts, built to send</li>
+              <li><strong>Per-relationship insights</strong> &mdash; patterns across a single relationship over time</li>
+              <li><strong>Home-screen widgets</strong> &mdash; the next occasion at a glance</li>
+              <li><strong>Hindi localisation</strong></li>
+              <li><strong>Android</strong> &mdash; already scaffolded in Flutter against the same Supabase backend</li>
             </ul>
           </div>
         </div>
@@ -494,7 +546,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">13</span><span class="eyebrow" style="margin:0;">Reflection</span></div>
+            <div class="cs-label"><span class="idx">14</span><span class="eyebrow" style="margin:0;">Reflection</span></div>
             <h2>Product Judgment, End to End</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">

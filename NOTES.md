@@ -530,3 +530,40 @@ iPad silhouette.
 89. **Stale fact corrected**: "live on TestFlight today" → "cleared Beta App
     Review, then full App Review — live on the App Store today". Remaining
     TestFlight mentions are all correctly historical.
+
+## Round 15 — Content brought current from Shagunly-CaseStudy.md (2026-07-30)
+
+90. **Found a newer source doc**: ~/Desktop/Shagunly-CaseStudy.md (13 Jul),
+    plus the app source at ~/Desktop/Shagunly-Swift with 14 Swift files
+    modified after the 6 Jul screenshots (incl. FamilyViews.swift and
+    WrappedView.swift). The live page was materially behind reality.
+91. **Stale facts corrected**: "Family grouping" and "Account deletion flow"
+    were listed under What's Next but have SHIPPED; "Dark mode" was listed as
+    pending though the app is dark-first. Roadmap replaced with the real one
+    (calendar sync, shareable Wrapped card, per-relationship insights,
+    widgets, Hindi localisation, Android in Flutter).
+92. **Role framing** (asked Piyush; he chose "designer-led, founder scope"):
+    now "Product & design lead — solo founder, carrying design through to
+    iOS, backend and web". Keeps the site-wide Senior Product Designer
+    positioning while showing the range. Stack row now names SwiftUI /
+    Supabase (Postgres, RLS, Edge Functions) / native Apple & Google Sign-In;
+    platform notes iOS 17+ and Android (Flutter) in development.
+93. **New section 08 "Product Decisions"** — six cards from his doc: the
+    reciprocity engine, hosted occasions (flipping the book), family sharing
+    with change-request approval enforced in RLS, wedding-season speed,
+    Shagun Wrapped, privacy as a feature. This is the strongest senior-level
+    material on the page and was previously absent entirely.
+94. **Engineering Judgment rewritten** with the real war stories (nil-vs-NULL
+    PATCH trap, scope-blind reminder rescheduling, native GoogleSignIn for
+    branded auth, deployment-target lockout, deletion without data loss),
+    replacing the earlier generic list.
+95. **Problem section** gained the defining-moment callout: "standing at a
+    venue, envelope in hand, trying to remember what they gave you three
+    years ago."
+96. Page is now 14 sections; renumbered programmatically, rail rebuilt from
+    document order, 14/14 anchors verified, 0 broken images, no h-scroll.
+97. **Still outstanding**: fresh screenshots of the shipped Family / Wrapped /
+    hosted-occasion screens (app is logged out + simulator MCP needs
+    `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer`), and
+    the 4 remaining placeholder SVGs. Also unused: shagunly.netlify.app
+    marketing site — not linked from the case study yet.
