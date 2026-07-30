@@ -567,3 +567,26 @@ iPad silhouette.
     `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer`), and
     the 4 remaining placeholder SVGs. Also unused: shagunly.netlify.app
     marketing site — not linked from the case study yet.
+
+## Round 16 — Occasions tabs merged into one paired view (2026-07-30)
+
+98. **Two occasion tabs merged into one** (user request): the screen viewer
+    had separate "Occasions" and "Occasion" bubbles. Now a single
+    **Occasions** tab shows both states side by side — the list and the
+    drilled-in detail — with mono labels underneath ("Occasions list" /
+    "Occasion selected", the latter in accent). This demonstrates the
+    drill-down relationship instead of hiding it behind a second tab.
+    Tabs are now Home / People / Occasions / New Shagun.
+99. **Implementation**: added `.device-frame.companion` frames (phone +
+    tablet) holding the detail screen, shown only when
+    `[data-screen='occasions']`; labels via `::after` on `data-pair-label`.
+    Companion images carry `data-screen="occasions"` so the existing
+    toggler keeps them active — without that attribute the JS stripped
+    `is-active` and the frame rendered black (caught in verification).
+    Removed the now-unreachable `data-screen="occasion-detail"` images from
+    the primary frames (dead weight, ~280K).
+100. Captions merged — the occasions caption now covers both states.
+     Verified: iPhone + iPad pairing, labels rendering, mobile at 375px
+     (two 150px frames, no overflow).
+101. **Not done, deliberately**: shagunly.netlify.app is NOT linked from the
+     case study — user explicitly declined.

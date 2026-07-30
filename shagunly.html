@@ -227,35 +227,41 @@
               <button type="button" data-screen-btn="home" class="active">Home</button>
               <button type="button" data-screen-btn="people">People</button>
               <button type="button" data-screen-btn="occasions">Occasions</button>
-              <button type="button" data-screen-btn="occasion-detail">Occasion</button>
               <button type="button" data-screen-btn="new-entry">New Shagun</button>
             </div>
           </div>
           <div class="mockup-stage">
-            <div class="device-frame phone" data-cursor="view" data-cursor-label="Tap to explore">
+            <div class="device-frame phone" data-pair-label="Occasions list" data-cursor="view" data-cursor-label="Tap to explore">
               <div class="device-screen">
                 <img data-screen="home" class="is-active" src="img/shagunly/screens/phone-home.jpg" width="1100" height="2390" alt="Shagunly iPhone Home screen — balance summary, upcoming occasion, recent entries" loading="lazy">
                 <img data-screen="people" src="img/shagunly/screens/phone-people.jpg" width="1100" height="2390" alt="Shagunly iPhone People screen — relationships with running balance and whose turn it is" loading="lazy">
                 <img data-screen="occasions" src="img/shagunly/screens/phone-occasions.jpg" width="1100" height="2390" alt="Shagunly iPhone Occasions screen — upcoming and past occasions" loading="lazy">
-                <img data-screen="occasion-detail" src="img/shagunly/screens/phone-occasion-detail.jpg" width="1100" height="2390" alt="Shagunly iPhone Occasion detail screen — gifts logged at Dad's 60th Birthday" loading="lazy">
                 <img data-screen="new-entry" src="img/shagunly/screens/phone-new-entry.jpg" width="1100" height="2390" alt="Shagunly iPhone New Shagun entry form — amount, person, date, occasion" loading="lazy">
               </div>
             </div>
-            <div class="device-frame tablet" data-cursor="view" data-cursor-label="Tap to explore">
+            <div class="device-frame tablet" data-pair-label="Occasions list" data-cursor="view" data-cursor-label="Tap to explore">
               <div class="device-screen">
                 <img data-screen="home" class="is-active" src="img/shagunly/screens/tablet-home.jpg" width="1400" height="1867" alt="Shagunly iPad Home screen, adapted for a wider layout" loading="lazy">
                 <img data-screen="people" src="img/shagunly/screens/tablet-people.jpg" width="1400" height="1867" alt="Shagunly iPad People screen" loading="lazy">
                 <img data-screen="occasions" src="img/shagunly/screens/tablet-occasions.jpg" width="1400" height="1867" alt="Shagunly iPad Occasions screen" loading="lazy">
-                <img data-screen="occasion-detail" src="img/shagunly/screens/tablet-occasion-detail.jpg" width="1400" height="1867" alt="Shagunly iPad Occasion detail, shown as an overlay panel" loading="lazy">
                 <img data-screen="new-entry" src="img/shagunly/screens/tablet-new-entry.jpg" width="1400" height="1867" alt="Shagunly iPad New Shagun entry, shown as an overlay panel" loading="lazy">
+              </div>
+            </div>
+            <div class="device-frame phone companion" data-pair-label="Occasion selected" aria-hidden="true">
+              <div class="device-screen">
+                <img data-screen="occasions" class="is-active" src="img/shagunly/screens/phone-occasion-detail.jpg" width="1100" height="2390" alt="Shagunly iPhone Occasion detail — gifts logged at Dad's 60th Birthday" loading="lazy">
+              </div>
+            </div>
+            <div class="device-frame tablet companion" data-pair-label="Occasion selected" aria-hidden="true">
+              <div class="device-screen">
+                <img data-screen="occasions" class="is-active" src="img/shagunly/screens/tablet-occasion-detail.jpg" width="1400" height="1867" alt="Shagunly iPad Occasion detail, shown as an overlay panel" loading="lazy">
               </div>
             </div>
           </div>
           <p class="mockup-caption">
             <span data-caption="home" class="active">The home screen surfaces what matters first: net balance, the next occasion needing a gift, and recent activity.</span>
             <span data-caption="people">Every relationship is a running balance, not a transaction log — a glance tells you whose turn it is.</span>
-            <span data-caption="occasions">Occasions split into Upcoming and Past, each carrying its own gift-tracking status.</span>
-            <span data-caption="occasion-detail">Drilling into an occasion totals what was given and received, and lists every gift logged against it.</span>
+            <span data-caption="occasions">Occasions split into Upcoming and Past, each carrying its own gift-tracking status — drilling into one totals what was given and received, and lists every gift logged against it.</span>
             <span data-caption="new-entry">Logging a shagun takes seconds: given or received, an auspicious-amount preset, a person, and an optional occasion link.</span>
           </p>
         </div>
