@@ -847,3 +847,17 @@ iPad silhouette.
      that image, no broken images, and rendered all four previews side by
      side at true display size to confirm the new cover reads in the same
      visual family as the other three.
+
+## Round 23 — "See the Not Work" CTA removed from About (2026-07-31)
+
+139. **Removed the `See the Not Work →` ghost button** from the About page's
+     CTA row (user request), leaving `Connect on LinkedIn` as the single
+     call to action. Nothing else changed — the row keeps its height and
+     left alignment.
+140. Not Work stays reachable from the About page via the header nav and the
+     mobile menu overlay, so nothing is orphaned by the removal.
+141. **Noted, not changed**: no page's footer links to playground.html —
+     the footer nav is Work / About / Contact site-wide. Round 12's note #36
+     said the footer was relabelled alongside the header and mobile overlay,
+     but Not Work never made it into the footer column. Consistent across
+     all 10 pages, so it predates this change. Flag if you want it added.
