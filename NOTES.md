@@ -897,3 +897,60 @@ iPad silhouette.
      on nbs-auth, 3,650 on nbs-cass). With JS on: `no-js` is removed, GSAP
      and ScrollTrigger both load, and the timeout fallback correctly tore the
      preloader down and restored `body` overflow in a hidden tab.
+
+## Round 25 — SEO foundations, built for piyushgrover.com (2026-07-31)
+
+147. **Target domain decided**: Piyush owns piyushgrover.com (registered via
+     Wix). All canonical, og:url, sitemap and JSON-LD URLs are written
+     against `https://piyushgrover.com` — apex, no www, no trailing
+     index.html on the home URL.
+148. **CNAME deliberately NOT committed.** Adding it makes GitHub Pages
+     redirect hexdzn.github.io/piyushgrover.com/ to the custom domain
+     immediately; if DNS isn't pointed yet the site is unreachable at *both*
+     URLs. It goes in only once the Wix DNS records are live.
+149. **Canonical + social meta on all 10 indexable pages**: `rel=canonical`,
+     `author`, dual `theme-color` (dark/light), full Open Graph block
+     (type/site_name/locale/url/title/description/image + explicit
+     1200x630 dimensions + image:alt) and `twitter:card=summary_large_image`.
+     Titles and descriptions were already unique and well-sized, so they were
+     reused rather than rewritten.
+150. **Share images generated** into `img/og/` (10 files, 544K total). Three
+     are designed cards (home, about, playground) — dark surface, accent
+     kicker, name, domain rule — composed in Pillow. The other seven are the
+     existing case-study banners contain-fitted onto the brand background at
+     1200x630 so nothing is cropped. NOTE: the cards use Helvetica Neue, not
+     Archivo — the site's fonts are woff2 and neither `fonttools` nor
+     `brotli` is installed to convert them for Pillow. Close enough for a
+     share card; regenerate if the fonts become available.
+151. **JSON-LD structured data** — the highest-leverage item for ranking on a
+     personal name. `Person` (+`WebSite`) on the home page with `sameAs`
+     pointing at LinkedIn, Instagram and Behance, which is how Google ties
+     the query "Piyush Grover" to this specific person; `ProfilePage` on
+     about; `CreativeWork` on each of the 7 case studies with `author`/
+     `creator` referencing the same `@id`. Every field is drawn from what the
+     site already claims — no invented employer, school or award. All 9
+     blocks parse as valid JSON.
+152. **sitemap.xml** (10 URLs, priorities weighted to home/about/Shagunly)
+     and **robots.txt** (allows all, disallows /design-kit.html, points at
+     the sitemap). design-kit stays `noindex` as before.
+153. **404.html added** — on-brand, `noindex`, and it carries a **legacy Wix
+     URL redirect map**. The domain currently serves the old Wix site, whose
+     pages live at `/blank-1`, `/blank-1-2`, `/blank-2`, `/blank-3`,
+     `/blank-5`, `/blank-7`, `/blank-6`, plus `/home`, `/about`, `/blog`
+     (slugs recovered from content.md). Those may be linked or indexed today
+     and would become dead ends the moment the domain switches. GitHub Pages
+     cannot issue a real 301, so this is a client-side `location.replace` —
+     weaker than a true redirect for link equity, but far better than a dead
+     end. It also gives the new pages clean extensionless URLs (/rapipay,
+     /about) for free.
+154. **Honest limits, stated to Piyush**: technical SEO is fully in scope and
+     now done; ranking position is not guaranteed. "Piyush Grover" is a
+     common name competing against other people's LinkedIn profiles, and
+     Google weighs domain authority and inbound links, which are earned over
+     time, not coded. The exact-match domain plus Person/sameAs schema are
+     the two strongest levers available.
+155. **Verified**: 9/9 JSON-LD blocks valid; all 10 pages carry canonical +
+     10 og tags + 4 twitter tags + theme-color; all og:image files return
+     200; sitemap.xml is valid XML with 10 `<loc>`s; robots.txt serves;
+     Shagunly still renders 14 sections, 14/14 rail anchors, 0 broken images,
+     no horizontal scroll after the head injection.

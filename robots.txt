@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /design-kit.html
+
+Sitemap: https://piyushgrover.com/sitemap.xml
