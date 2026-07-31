@@ -177,24 +177,83 @@
     });
   }
 
-  /* ---------- Lightbox (galleries) ---------- */
+  /* ---------- Lightbox (galleries + case-study figures) ---------- */
   var lbLinks = document.querySelectorAll('[data-lightbox]');
-  if (lbLinks.length) {
+  // Case-study images are stored at 1600px wide but displayed in a ~940px
+  // column, so there is real detail to reveal on click. Filmstrip duplicates
+  // (aria-hidden, present only to seam the loop) stay out of the tab order.
+  var lbImgs = document.querySelectorAll('.fig img, .filmstrip-track img:not([aria-hidden="true"])');
+
+  if (lbLinks.length || lbImgs.length) {
     var lb = document.createElement('div');
     lb.className = 'lightbox';
-    lb.innerHTML = '<button class="lb-close" aria-label="Close">×</button><img alt="">';
+    lb.innerHTML = '<button class="lb-close" aria-label="Close expanded image">×</button><img alt="">';
     document.body.appendChild(lb);
     var lbImg = lb.querySelector('img');
+    var lbClose = lb.querySelector('.lb-close');
+    var lbReturn = null;
+
+    // Tall images (long boards, full-page captures) would collapse to an
+    // unreadable sliver inside max-height:86vh — let those overflow and scroll.
+    lbImg.addEventListener('load', function () {
+      if (lbImg.naturalWidth && lbImg.naturalHeight / lbImg.naturalWidth > 1.6) lb.classList.add('tall');
+    });
+
+    function lbOpen(src, alt, trigger) {
+      if (!src) return;
+      lbReturn = trigger || null;
+      lb.classList.remove('tall');
+      lbImg.alt = alt || '';
+      lbImg.src = src;
+      lb.classList.add('mounted');
+      // flush style so .mounted has taken effect before .open starts the fade
+      // and before we move focus — a hidden button can't take focus
+      void lb.offsetWidth;
+      lb.classList.add('open');
+      document.documentElement.classList.add('lb-open');
+      lb.scrollTop = 0;
+      lbClose.focus();
+    }
+    function lbHide() {
+      if (!lb.classList.contains('open')) return;
+      lb.classList.remove('open');
+      document.documentElement.classList.remove('lb-open');
+      if (lbReturn && lbReturn.focus) lbReturn.focus();
+      lbReturn = null;
+      // unmount once the fade has run. setTimeout still fires in a
+      // backgrounded tab, so the overlay can never be left stranded.
+      setTimeout(function () {
+        if (lb.classList.contains('open')) return; // reopened in the meantime
+        lb.classList.remove('mounted', 'tall');
+        lbImg.src = '';
+      }, 320);
+    }
+
     lbLinks.forEach(function (a) {
       a.addEventListener('click', function (e) {
         e.preventDefault();
-        lbImg.src = a.getAttribute('href');
-        lbImg.alt = (a.querySelector('img') || {}).alt || '';
-        lb.classList.add('open');
+        lbOpen(a.getAttribute('href'), (a.querySelector('img') || {}).alt, a);
       });
     });
-    lb.addEventListener('click', function () { lb.classList.remove('open'); lbImg.src = ''; });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
+
+    lbImgs.forEach(function (im) {
+      im.classList.add('is-zoomable');
+      im.setAttribute('role', 'button');
+      im.setAttribute('tabindex', '0');
+      im.setAttribute('data-cursor', 'view');
+      im.setAttribute('data-cursor-label', 'Expand');
+      im.addEventListener('click', function () { lbOpen(im.currentSrc || im.src, im.alt, im); });
+      im.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lbOpen(im.currentSrc || im.src, im.alt, im); }
+      });
+    });
+
+    // Close on the backdrop or the button only — clicking the image itself
+    // must not close it, or tall images can't be scrolled through.
+    lb.addEventListener('click', function (e) {
+      if (e.target === lb || e.target.closest('.lb-close')) lbHide();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lbHide(); });
   }
 
   /* ---------- Case-study chapter rail ---------- */

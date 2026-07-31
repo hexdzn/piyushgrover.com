@@ -493,6 +493,10 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
 .fig-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
 .fig-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 700px) { .fig-grid.cols-2, .fig-grid.cols-3 { grid-template-columns: 1fr; } }
+/* Diagrams and portraits that shouldn't run the full content width — a small
+   explanatory diagram blown up to 940px reads as a mistake. Click to expand. */
+.fig.fig-narrow, .fig-grid.fig-narrow { max-width: 560px; margin-left: auto; margin-right: auto; }
+.fig-grid.cols-2.fig-narrow { max-width: 680px; }
 
 /* Persona cards */
 .persona-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-2); margin-top: var(--space-3); }
@@ -613,11 +617,29 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
   display: grid; place-items: center;
   padding: var(--pad-x);
   opacity: 0; visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s;
+  transition: opacity 0.3s ease;
+  overflow: auto;
+  overscroll-behavior: contain;
 }
-.lightbox.open { opacity: 1; visibility: visible; }
+/* Two JS-driven classes: .mounted makes it visible and focusable, .open runs
+   the fade. Visibility is deliberately not transitioned — a visibility
+   transition that never fires (backgrounded tab) leaves an invisible overlay
+   on top of the page eating every click. */
+.lightbox.mounted { visibility: visible; }
+.lightbox.open { opacity: 1; }
 .lightbox img { max-height: 86vh; max-width: 100%; width: auto; border-radius: var(--radius); }
-.lightbox .lb-close { position: absolute; top: 1.2rem; right: 1.4rem; color: #fff; font-size: 2rem; line-height: 1; }
+/* Tall images scroll instead of shrinking to an unreadable sliver.
+   Aligning to the start keeps the top reachable — centred grid items that
+   overflow their container clip on the leading edge. */
+.lightbox.tall { place-items: start center; padding-block: 4.5rem; }
+.lightbox.tall img { max-height: none; max-width: min(1100px, 100%); }
+.lightbox .lb-close { position: fixed; top: 1.2rem; right: 1.4rem; color: #fff; font-size: 2rem; line-height: 1; z-index: 1; }
+html.lb-open, html.lb-open body { overflow: hidden; }
+
+/* Expandable figures. The custom cursor carries the "Expand" affordance on
+   fine pointers, so only show a native zoom cursor when it isn't running. */
+body:not(.has-cursor) img.is-zoomable { cursor: zoom-in; }
+img.is-zoomable:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* ---------- About ---------- */
 .about-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: var(--space-5); align-items: start; }
@@ -753,6 +775,9 @@ html.no-js [data-reveal], [data-reveal].revealed { opacity: 1; transform: none; 
   .fx-fan:hover figure:nth-child(1) { transform: rotate(-2deg) translateY(-8px); }
   .fx-fan:hover figure:nth-child(2) { transform: translateY(-16px); }
   .fx-fan:hover figure:nth-child(3) { transform: rotate(2deg) translateY(-8px); }
+  /* Two-up fans tilt symmetrically instead of borrowing the three-up rhythm */
+  .fx-fan.cols-2:hover figure:nth-child(1) { transform: rotate(-1.5deg) translateY(-10px); }
+  .fx-fan.cols-2:hover figure:nth-child(2) { transform: rotate(1.5deg) translateY(-10px); }
 }
 
 /* Before/after comparison slider */

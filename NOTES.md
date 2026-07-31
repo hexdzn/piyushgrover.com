@@ -632,3 +632,156 @@ iPad silhouette.
      `[data-device='phone'|'tablet'][data-screen='occasions']` show rules.
      Verified all 8 device x screen combinations: exactly one frame
      everywhere, two only on Occasions.
+
+## Round 19 — CASS + LinkedIn banners, Rapipay duplicate resolved (2026-07-30)
+
+107. **Banner standardization completed (closes #49).** CASS and LinkedIn
+     Commission now have 1600x600 landing banners like the other five case
+     studies, in the same `<section class="wrap"><figure class="fig">`
+     slot directly under the hero, `fetchpriority="high"`.
+108. **The repo's real banner convention, which I followed**: on every
+     existing case study the banner file appears *only* in the banner slot
+     — NBS-Cover, Banner-3, Show-hide and the Rapipay hero are each used
+     once on their page. So both new banners were built to be unique files,
+     not re-crops of something already on the page. This is the same
+     principle #56 was flagging.
+109. **CASS banner** — `img/nbs-cass/cass-banner.jpg`, built from the
+     full-res `assets/nbs-cass/Shot.png` (3200x2400, the single-phone
+     "Joint account / Step 1 of 7" render). A straight 8:3 crop cut the
+     "Joint account" heading in half, so instead I padded the source
+     sideways to exactly 6400x2400 by replicating its outermost pixel
+     columns — the backdrop is a smooth pale-blue gradient, so the
+     extension is seamless — then downscaled to 1600x600. Result: the whole
+     phone visible, screen content legible, airy gradient either side.
+     Chose this screen because `Shot.jpg` is already the CASS card image on
+     the NBS hub, so hub card and page banner now echo each other (same
+     pattern Show/Hide already uses).
+110. **Shot.jpg removed from the "Final Solution" fan** on nbs-cass.html so
+     the banner stays unique to the page (per #108). Fan went cols-3 →
+     cols-2, now Shot2 (2 screens) + Shot4 (3 screens) — still 5 screens,
+     one more than before. Added a `.fx-fan.cols-2` hover rule in main.css
+     so a two-up fan tilts symmetrically (-1.5deg / +1.5deg) instead of
+     inheriting the three-up rhythm, where the second child would have
+     lifted straight up with nothing to its right.
+111. **LinkedIn banner** — `img/linkedin-commission/linkedin-banner.jpg`,
+     the top 70% band (2880x1080 of 2880x1536) of
+     `0c9a39_c7f4ccc367624c358769982db0cc7902_mv2.png`: the populated Users
+     screen with sidebar, user list and the roles/permissions detail panel.
+     Picked deliberately over the redesigned landing page (…10e2…), which is
+     the better-looking screen but already appears twice further down (as
+     the "After" half of the before/after slider and as the first tile of
+     the redesigned-screens grid). Using it a third time as the banner would
+     also have spoiled the slider's reveal. c7f4 was unused anywhere.
+     Top-band crop keeps the LinkedIn-blue nav as the brand anchor; the
+     bottom row of the user list bleeds off, which reads as scroll depth.
+112. **#56 resolved, and it turned out to be a mislabeling bug, not just a
+     duplicate.** Rapipay's "Design Process" figure and its "Information
+     Architecture" figure were showing the wrong images:
+     - `Illustration-(1).jpg` was captioned "Rapipay information
+       architecture" but is actually the *design process* diagram —
+       Discover / Research / Ideation / Design / Testing / Collaboration.
+     - `wolfgang-hasselmann-1ICIhK-ElJs-unsplash-edited.png` — an Unsplash
+       filename inherited from Wix, so it read like stock photography and
+       had been left unused — is actually the *IA sitemap* (Home page →
+       Services / About us / Chat bot / Contact us / User profile / FAQ /
+       Media, with their children).
+     Swapping each into its correct section fixed the labeling and removed
+     the duplicated hero photograph in one move, with no image invented and
+     nothing dropped. `Home-page-banner-1` now appears exactly once on the
+     page (the hero). Alt text rewritten to describe what each diagram
+     actually shows.
+113. **Filename kept** on the IA sitemap (still "wolfgang-hasselmann-…
+     unsplash-edited.png") per the standing convention of not renaming
+     migrated assets — but flagging it, since the name actively misleads
+     about the file's contents. Say the word and I'll rename it to
+     `information-architecture.png`.
+114. **Verified** at 1280x800 on all three pages: 0 broken images, both new
+     banners load at their natural 1600x600 and render 938x353 in the
+     content column, banner sits between `.cs-hero` and the first
+     `.cs-section`, CASS rail anchors 5/5 resolve, CASS page now has zero
+     duplicate image srcs, Rapipay's only remaining duplicates are the six
+     filmstrip screens (intentional — the track is doubled for the seamless
+     loop), no horizontal scroll anywhere.
+115. **NOT done — #78/#103 are still open.** piyush-portfolio-v2 is
+     untouched, still a single commit ("v2 'Kinetic Type'"), and its
+     Shagunly page is materially behind v1: 10 sections vs v1's 14, Status
+     still "Live in TestFlight beta", the "vibe code" framing v1 dropped in
+     round 14, and its own copies of all four placeholder SVGs
+     (before-after-notebook, pwa-vs-native, vibe-coding-workflow,
+     testflight-feedback) still on the page. Nothing from rounds 12–18 has
+     been ported. Blocked on the v1-vs-v2 direction decision.
+
+## Round 20 — Click-to-expand on all project images, oversized figures (2026-07-31)
+
+116. **The lightbox existed but was wired only to the Playground gallery.**
+     `js/main.js` bound it to `[data-lightbox]` anchors, and the 41 of those
+     on the site are all on playground.html — so every case-study image was
+     inert. Extended it to `.fig img` plus the Rapipay filmstrip. Worth
+     doing because the stored images are 1600px wide but display in a ~940px
+     column, so expanding reveals real detail rather than just scaling up.
+117. **Scope of what became clickable**: 14 images on Auth Uplift, 22 on
+     Shagunly (including all 19 Figma artifacts — the design-system and
+     handoff-spec frames are the ones most worth reading at full size), 10
+     on Rapipay. Excluded on purpose: the six aria-hidden filmstrip
+     duplicates (they exist only to seam the loop, so they'd have been
+     phantom tab stops), the before/after slider halves (clipped and
+     absolutely positioned), and the Shagunly `.device-frame` screens — the
+     frame is the component, and its hidden companion images would have
+     become focusable-but-invisible tab stops.
+118. **Tall images no longer collapse.** The lightbox capped images at
+     `max-height: 86vh`, so Rapipay's 1600x5913 UI-explorations board opened
+     at roughly 186px wide — narrower than it is in the page. Images taller
+     than 1.6x their width now get a `tall` class: max-height lifted, capped
+     at 1100px wide, and the overlay scrolls. That board now opens at
+     1100x4065 and scrolls. `place-items: start center` on the tall variant
+     because a centred grid item that overflows its container clips on the
+     leading edge — the top of the image would have been unreachable.
+119. **Clicking the image no longer closes the lightbox** — only the
+     backdrop, the × button, or Escape. Required by the above: you can't
+     scroll through a tall image if any click on it dismisses.
+120. **Keyboard + a11y**: expandable images get `role="button"` and
+     `tabindex="0"`, respond to Enter/Space, take focus to the × on open and
+     hand it back to the originating image on close, and show an accent
+     focus ring. The custom cursor already supported `data-cursor="view"`
+     with a label, so figures reuse it and show "Expand"; the native
+     `cursor: zoom-in` is applied only under `body:not(.has-cursor)` so
+     pointer devices never get both the ring and a system cursor.
+121. **BUG FOUND AND FIXED during verification — a stranded invisible
+     overlay.** The original CSS animated `visibility` with a delay
+     (`transition: opacity .3s ease, visibility 0s linear .3s`) to keep the
+     element around for the fade-out. If that transition never runs — which
+     is exactly what happens in a backgrounded or throttled tab — the
+     lightbox stays `visibility: visible` at `opacity: 0`: invisible, but
+     still covering the viewport at z-index 90 and swallowing every click on
+     the page. Confirmed live: after closing, `elementFromPoint` at the
+     viewport centre still returned the overlay. Replaced with two
+     JS-controlled classes — `.mounted` (visibility) and `.open` (the fade)
+     — with the unmount on a `setTimeout`, which still fires in a
+     backgrounded tab. This pre-dated this round and would have affected the
+     Playground gallery too.
+122. **Related timing trap**: focusing the × button one frame later via
+     `requestAnimationFrame` silently did nothing, because rAF doesn't fire
+     in a hidden tab either. Now it forces a style flush (`void
+     lb.offsetWidth`) and focuses synchronously.
+123. **Tappability.jpg resized (user report).** It's a simple diagram — one
+     bell icon with two dashed boxes labelled "visual bounds" vs "tap/touch
+     target size" — and it was rendering 938x697, the full content width,
+     which read as a mistake. New `.fig-narrow` utility caps it at 560px and
+     centres it: now 560x416. Full detail still available on click.
+124. **Persona photos resized (user report).** Two 1600x2057 portraits in a
+     cols-2 grid were rendering 461x592 each — taller than the persona cards
+     they illustrate. `.fig-grid.cols-2.fig-narrow` caps the pair at 680px:
+     now 332x426 each. Chose to scale rather than re-crop so the photos stay
+     whole; the lightbox covers anyone who wants a closer look.
+125. Both caps are max-widths, so at mobile widths they're inert and the
+     figures still fill the column (verified: 350px wide at a 390px
+     viewport, no horizontal scroll).
+126. **Verified** at 1280x800 and 390x844: open/close via click, Enter,
+     Escape, backdrop and × button; focus moves to × and returns to the
+     image; page scroll locks and unlocks; `src` cleared and `tall` reset on
+     close; the page is clickable again afterwards; the Playground gallery's
+     41 anchors still work unchanged; no hidden-but-focusable images on
+     Shagunly; no horizontal scroll at either width.
+127. **Not deployed.** These are local commits-in-waiting — the live site at
+     hexdzn.github.io/piyushgrover.com won't show any of rounds 19-20 until
+     it's pushed to origin/main. Say the word and I'll commit and push.
