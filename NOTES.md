@@ -813,3 +813,37 @@ iPad silhouette.
      height, cards stack cleanly on mobile with the meta line wrapping
      inside the head row, no stray figure grid left in the section, both
      avatars zoomable, no horizontal scroll at either width.
+
+## Round 22 — Shagunly home-page hover preview (2026-07-31)
+
+133. **Hover preview replaced** (user request). The Shagunly row on the home
+     page previewed `screens/tablet-home.jpg` — a portrait iPad screenshot
+     (1400x1867, 0.75 aspect) inside a `.project-preview` box that is
+     `aspect-ratio: 4/3` with `object-fit: cover`. So ~44% of its height was
+     cropped away and what actually showed was a mid-screen band of the
+     transaction list: no device, no app identity, and the header cropped
+     off. It also sat oddly beside the other three previews, which are all
+     landscape device/brand covers.
+134. **New file `img/shagunly/shagunly-cover.jpg`** (1200x900, exactly 4:3 —
+     so `cover` now crops nothing). Composed in Pillow from the real
+     screenshots: the Home and New Shagun phone screens in device frames,
+     tilted and overlapping, with the default app icon in the top-left glow.
+135. **Background and frames replicate the case study's own CSS** rather
+     than being invented: the two radial gradients from `.shag-hero`
+     (marigold `rgba(217,154,63,.32)` at 18%/12%, purple
+     `rgba(168,85,190,.26)` at 88%/88%, over `--card` #15171C) and the
+     `.device-frame.phone` bezel (1320:2868 aspect, 34px radius, 9px
+     padding, `linear-gradient(160deg,#232329,#08080a)`, inset white
+     hairline) — all scaled proportionally. So the home preview and the
+     case-study hero now read as the same composition.
+136. First attempt was too tight — phones bled off all four edges and the
+     icon collided with the screens. Rescaled to 332px/292px screen widths
+     so both devices sit whole with margin, matching how NBS/Rapipay/
+     LinkedIn covers frame their devices.
+137. `screens/tablet-home.jpg` is **not orphaned** — still used twice on
+     shagunly.html (the device viewer in Key Screens, and the closing grid).
+138. **Verified** at 1280x800: preview box 300x225, image aspect 1.333 vs
+     box aspect 1.333 (zero crop), hovering the Shagunly row activates only
+     that image, no broken images, and rendered all four previews side by
+     side at true display size to confirm the new cover reads in the same
+     visual family as the other three.
