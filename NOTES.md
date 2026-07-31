@@ -861,3 +861,39 @@ iPad silhouette.
      said the footer was relabelled alongside the header and mobile overlay,
      but Not Work never made it into the footer column. Consistent across
      all 10 pages, so it predates this change. Flag if you want it added.
+
+## Round 24 — CRITICAL: site was invisible without JavaScript (2026-07-31)
+
+142. **Root cause.** `css/main.css` had `[data-reveal] { opacity: 0 }` as the
+     default with `html.no-js [data-reveal] { opacity: 1 }` as the escape
+     hatch — but **nothing ever set `class="no-js"` on `<html>`**, so that
+     rule had never once applied. Dead code since the original build.
+     Verified by rendering each page with every `<script>` stripped: 100% of
+     reveal elements sat at `opacity: 0`. Scope: 93 elements on Shagunly, 38
+     on nbs-auth, 34 on nbs-cass, 26 show-hide, 25 rapipay, 23 linkedin, 19
+     nbs, and the entire "Latest Projects" list on the home page.
+     On index the preloader also stayed up, covering the page at z-index 100.
+143. **Fix**: `class="no-js"` added to `<html>` on all 11 pages, cleared in
+     the existing inline head script (the earliest JS on the page, already
+     there for the theme flash) via
+     `document.documentElement.classList.remove('no-js')`. Added
+     `html.no-js .preloader { display: none }`. No new requests, no new
+     files — the CSS was already written for exactly this pattern.
+144. **Why it mattered beyond no-JS users**: Googlebot renders JS but does it
+     in a deferred second pass, and non-rendering crawlers (social scrapers,
+     several AI crawlers) see the raw DOM. Content hidden at opacity 0 behind
+     an animation library is a well-known indexing risk — and it made *any*
+     JS error a total blank-page failure.
+145. **Preloader safety net added** (`js/main.js`): the intro overlay covers
+     the whole viewport until a GSAP timeline finishes, so anything that
+     stalls that timeline strands the page. `requestAnimationFrame` does not
+     advance in a background tab, so a cmd-clicked "open in new tab" hits
+     exactly that. Now a `setTimeout(dismissPre, 6000)` clears it
+     unconditionally (~2.4s after the ~2.6s intro), and `dismissPre` is
+     idempotent so the normal path is unaffected.
+146. **Verified**, scripts stripped, cache-busted: 0 invisible elements on
+     index / about / rapipay / nbs-cass / nbs-auth / shagunly, preloader
+     hidden, and real readable text present (17,458 chars on Shagunly, 5,419
+     on nbs-auth, 3,650 on nbs-cass). With JS on: `no-js` is removed, GSAP
+     and ScrollTrigger both load, and the timeout fallback correctly tore the
+     preloader down and restored `body` overflow in a hidden tab.

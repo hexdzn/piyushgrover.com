@@ -719,6 +719,9 @@ section[id] { scroll-margin-top: 95px; }
 /* ---------- Reveal animations (GSAP adds .revealed) ---------- */
 [data-reveal] { opacity: 0; transform: translateY(28px); }
 html.no-js [data-reveal], [data-reveal].revealed { opacity: 1; transform: none; }
+/* The preloader is torn down by JS, so without JS it would sit over the page
+   forever. Same reason [data-reveal] needs the no-js escape hatch above. */
+html.no-js .preloader { display: none; }
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] { opacity: 1; transform: none; }
 }

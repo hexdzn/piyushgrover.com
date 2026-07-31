@@ -126,13 +126,18 @@
       document.body.style.overflow = 'hidden';
       var count = pre.querySelector('.pre-count');
       var n = { v: 0 };
-      gsap.timeline({
-        onComplete: function () {
-          pre.remove();
-          document.body.style.overflow = '';
-          try { sessionStorage.setItem('seen-intro', '1'); } catch (e) {}
-        }
-      })
+      var dismissPre = function () {
+        if (!pre.parentNode) return;
+        pre.remove();
+        document.body.style.overflow = '';
+        try { sessionStorage.setItem('seen-intro', '1'); } catch (e) {}
+      };
+      // Safety net: this overlay covers the whole page until the timeline
+      // finishes, so anything that stalls it (a tab opened in the background
+      // never advances rAF) would otherwise leave the site blank. The intro
+      // runs ~2.6s; clear it unconditionally well after that.
+      setTimeout(dismissPre, 6000);
+      gsap.timeline({ onComplete: dismissPre })
         .to(n, {
           v: 100, duration: 1.6, ease: 'power2.inOut',
           onUpdate: function () { if (count) count.textContent = Math.round(n.v) + '%'; }
