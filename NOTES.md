@@ -954,3 +954,47 @@ iPad silhouette.
      200; sitemap.xml is valid XML with 10 `<loc>`s; robots.txt serves;
      Shagunly still renders 14 sections, 14/14 rail anchors, 0 broken images,
      no horizontal scroll after the head injection.
+
+## Round 26 — Images converted to WebP (2026-07-31)
+
+156. **All referenced rasters converted to WebP** (quality 80, method 6):
+     150 files, 30.56 MB → 7.11 MB. Total referenced image weight across the
+     site went **33.51 MB → 9.77 MB (−71%)**. 172 `src`/`href` references
+     rewritten across all 11 pages.
+157. **Measured the alternatives first** rather than guessing: re-encoding in
+     place as JPEG q82 progressive saved only 24%; WebP saved 77%. Worth the
+     format change by a wide margin.
+158. **Deliberately NOT converted**:
+     - `img/og/*.jpg` — social scrapers (LinkedIn, WhatsApp, Slack) are
+       unreliable with WebP for `og:image`. Share cards stay JPEG.
+     - `img/shared/Memoji1.png` — it's the `rel=icon` source; PNG is the
+       safe favicon format. Resized 512px → 128px instead: 118KB → 11KB.
+       It's displayed at 30px, so 512 was ~17x oversampled.
+     - The `image` field in the JSON-LD blocks still points at
+       `IMG_5889_HEIC.jpg`; standard formats are safer for crawlers and the
+       file is still on disk.
+     - SVGs (the 19 Shagunly Figma artifacts) — already vector, and GitHub
+       Pages serves them gzipped.
+159. **Originals kept on disk**, per the standing convention (#32/#55) of not
+     deleting migrated assets. The conversion is reversible by rewriting the
+     references back. Repo is bigger; the *served* site is 71% lighter.
+160. **Persona avatars right-sized.** They were the worst offender: two
+     1600px files (864KB combined) rendering into 88px boxes, ~18x
+     oversampled — introduced in round 21 when the portraits moved into the
+     cards. Now `Persona-{1,2}-avatar.webp` at 220px (10KB each) with the
+     full-resolution file carried on a new `data-full` attribute.
+161. **Lightbox learned `data-full`** (`js/main.js`): it now prefers
+     `data-full` over `currentSrc`/`src`, so clicking a downsized avatar
+     still opens the full 1600x2057 image. This is the general mechanism for
+     any future "small inline, large on click" pair.
+162. **Verified** across 9 pages after conversion: 0 broken images (index,
+     playground 42, shagunly 42, rapipay, nbs-cass, linkedin, about, nbs,
+     show-hide), the only non-WebP `src` anywhere is the intentional favicon
+     PNG, no horizontal scroll at 1280, Shagunly still 14 sections with
+     14/14 rail anchors, and the persona lightbox confirmed opening the
+     1600x2057 original from a 220px avatar rendered at 88px.
+163. **Known caveat, stated**: WebP-only means no fallback for Safari 13 and
+     older (~1-2% of traffic, browsers from before 2020). Judged acceptable
+     for a portfolio; a `<picture>` fallback would mean rewriting ~170 `img`
+     tags and risks layout regressions across the fig grids, sliders,
+     filmstrip and device viewer. Reversible if it ever matters.

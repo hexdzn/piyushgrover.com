@@ -247,9 +247,9 @@
       im.setAttribute('tabindex', '0');
       im.setAttribute('data-cursor', 'view');
       im.setAttribute('data-cursor-label', 'Expand');
-      im.addEventListener('click', function () { lbOpen(im.currentSrc || im.src, im.alt, im); });
+      im.addEventListener('click', function () { lbOpen(im.getAttribute('data-full') || im.currentSrc || im.src, im.alt, im); });
       im.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lbOpen(im.currentSrc || im.src, im.alt, im); }
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lbOpen(im.getAttribute('data-full') || im.currentSrc || im.src, im.alt, im); }
       });
     });
 
