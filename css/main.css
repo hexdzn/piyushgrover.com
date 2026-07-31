@@ -508,6 +508,18 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
 }
 .persona-card h4 { margin-bottom: 0.2rem; }
 .persona-card .p-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; }
+/* Portrait sits with the name it belongs to rather than in a separate slab
+   below the cards. Cropped square and biased upward to keep the face centred. */
+.persona-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.1rem; }
+.persona-head .p-meta { margin-bottom: 0; }
+.persona-avatar {
+  flex: none;
+  width: 88px; height: 88px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  object-position: 50% 26%;
+  border: 1px solid var(--line-soft);
+}
 .persona-card ul { margin: 0; padding-left: 1.1em; font-size: 0.92rem; }
 
 /* Design decision cards */

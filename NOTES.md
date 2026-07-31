@@ -785,3 +785,31 @@ iPad silhouette.
 127. **Not deployed.** These are local commits-in-waiting — the live site at
      hexdzn.github.io/piyushgrover.com won't show any of rounds 19-20 until
      it's pushed to origin/main. Say the word and I'll commit and push.
+
+## Round 21 — Persona portraits moved into their cards (2026-07-31)
+
+128. **Layout fix (user report).** Round 20 shrank the two persona portraits
+     but left them where they'd always been: a separate two-up figure grid
+     sitting *below* the two persona cards. That's what actually read as
+     broken — the photos were orphaned from the names they belong to, and
+     the section was two stacked grids of different proportions.
+129. **Each portrait now lives inside its own persona card**, top-left,
+     with the name and meta line beside it — the conventional persona-card
+     shape. New `.persona-head` flex row and an 88px `.persona-avatar`
+     cropped square via `object-fit: cover` with `object-position: 50% 26%`.
+     The 26% bias is deliberate: both source photos are full-length
+     portraits, and a straight centre crop would have framed torsos. Checked
+     the exact crop offline against both files — face fully in frame and at
+     roughly the same height in each.
+130. Section height went from ~1170px to 580px, and the separate
+     `.fig-grid.cols-2.fig-narrow` block is gone. The `.fig-narrow` utility
+     stays — Tappability.jpg still uses it, and it's now cheap to reuse.
+131. **Avatars stay expandable**: added `.persona-avatar` to the lightbox
+     selector, so clicking one opens the full 1600x2057 portrait. Without
+     that they'd have dropped out of the round-20 click-to-expand set, since
+     they're no longer inside a `.fig`.
+132. **Verified** at 1280x800 and 390x844: both avatars share a top edge and
+     an identical 33px inset from their card's left padding, cards are equal
+     height, cards stack cleanly on mobile with the meta line wrapping
+     inside the head row, no stray figure grid left in the section, both
+     avatars zoomable, no horizontal scroll at either width.

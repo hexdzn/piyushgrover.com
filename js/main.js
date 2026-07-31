@@ -182,7 +182,7 @@
   // Case-study images are stored at 1600px wide but displayed in a ~940px
   // column, so there is real detail to reveal on click. Filmstrip duplicates
   // (aria-hidden, present only to seam the loop) stay out of the tab order.
-  var lbImgs = document.querySelectorAll('.fig img, .filmstrip-track img:not([aria-hidden="true"])');
+  var lbImgs = document.querySelectorAll('.fig img, .persona-avatar, .filmstrip-track img:not([aria-hidden="true"])');
 
   if (lbLinks.length || lbImgs.length) {
     var lb = document.createElement('div');
