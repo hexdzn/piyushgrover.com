@@ -101,6 +101,27 @@ li { margin-bottom: 0.35em; }
 
 .wrap { max-width: var(--w-max); margin: 0 auto; padding-inline: var(--pad-x); }
 
+/* Skip link — first tab stop, so keyboard users can bypass the nav on every
+   page. Off-screen until focused rather than display:none, which would take
+   it out of the tab order entirely. */
+.skip-link {
+  position: fixed;
+  top: 0; left: 50%;
+  transform: translate(-50%, -120%);
+  z-index: 200;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.4rem;
+  border-radius: 0 0 var(--radius) var(--radius);
+  transition: transform 0.2s var(--ease-out);
+}
+.skip-link:focus { transform: translate(-50%, 0); }
+#main:focus { outline: none; }
+
 /* ---------- Typography scale ---------- */
 .display-xl { font-size: clamp(2.4rem, 6.4vw, 6.6rem); line-height: 1.0; letter-spacing: -0.03em; }
 .display-lg { font-size: clamp(2.2rem, 5.5vw, 4.6rem); letter-spacing: -0.025em; }
@@ -151,12 +172,16 @@ li { margin-bottom: 0.35em; }
   color: var(--text-muted);
   transition: color 0.25s ease;
   position: relative;
+  /* WCAG 2.2 target size: pad to 24px tall without changing the type scale */
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
 }
 .nav-links a:hover, .nav-links a[aria-current='page'] { color: var(--text); }
 .nav-links a[aria-current='page']::after {
   content: '';
   position: absolute;
-  left: 0; right: 0; bottom: -6px;
+  left: 0; right: 0; bottom: 1px;
   height: 2px;
   background: var(--accent);
   border-radius: 2px;
@@ -218,6 +243,9 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
 }
 .menu-overlay a.menu-link small { font-size: 0.9rem; color: var(--text-muted); font-family: var(--font-body); }
 .menu-overlay .menu-socials { margin-top: var(--space-4); display: flex; gap: 1.6rem; color: var(--text-muted); font-size: 0.9rem; }
+/* These sat at 23.75px — just under the 24px target minimum, and they're the
+   touch-first copy of the nav, so they matter more than the desktop links. */
+.menu-overlay .menu-socials a { display: inline-flex; align-items: center; min-height: 28px; }
 
 /* ---------- Preloader (home) ---------- */
 .preloader {
@@ -537,14 +565,14 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
   transition: border-color 0.3s ease, transform 0.35s var(--ease-out);
 }
 .decision-card:hover { border-color: var(--line); transform: translateY(-4px); }
-.decision-card h4 {
+.decision-card .decision-title {
   font-size: 1.05rem;
   margin-bottom: 1rem;
   display: flex;
   align-items: baseline;
   gap: 0.6rem;
 }
-.decision-card h4 .idx { font-family: var(--font-mono); font-weight: 500; font-size: 0.72rem; color: var(--accent); }
+.decision-card .decision-title .idx { font-family: var(--font-mono); font-weight: 500; font-size: 0.72rem; color: var(--accent); }
 .decision-card .d-row { font-size: 0.92rem; margin-bottom: 0.7rem; color: var(--text-muted); }
 .decision-card .d-row.why { color: var(--text); margin-bottom: 0; }
 .decision-card .d-tag {
@@ -665,10 +693,13 @@ img.is-zoomable:focus-visible { outline: 2px solid var(--accent); outline-offset
 .foot-top .foot-made { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.8rem; }
 .foot-made .heart { color: var(--accent); }
 .foot-cols { display: flex; gap: clamp(2rem, 6vw, 6rem); flex-wrap: wrap; }
-.foot-cols h5 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-muted); margin: 0 0 0.9rem; font-family: var(--font-body); }
+.foot-cols .foot-col-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-muted); margin: 0 0 0.9rem; font-family: var(--font-body); }
 .foot-cols ul { list-style: none; padding: 0; margin: 0; }
-.foot-cols li { margin-bottom: 0.45rem; }
-.foot-cols a { font-size: 0.92rem; color: var(--text-muted); transition: color 0.25s ease; }
+.foot-cols li { margin-bottom: 0.15rem; }
+.foot-cols a {
+  font-size: 0.92rem; color: var(--text-muted); transition: color 0.25s ease;
+  display: inline-flex; align-items: center; min-height: 24px;
+}
 .foot-cols a:hover { color: var(--text); }
 .foot-bottom {
   display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
@@ -941,7 +972,7 @@ html.no-js .preloader { display: none; }
   font-family: var(--font-mono);
   font-weight: 500;
 }
-.meta-grid div dt, .foot-cols h5, .foot-bottom, .pn-nav .pn-dir, .fig figcaption,
+.meta-grid div dt, .foot-cols .foot-col-title, .foot-bottom, .pn-nav .pn-dir, .fig figcaption,
 .project-row .p-tag, .persona-card .p-meta, .cs-rail a,
 .menu-overlay a.menu-link small, .menu-overlay .menu-socials a {
   font-family: var(--font-mono);

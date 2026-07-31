@@ -89,6 +89,7 @@
   </script>
 </head>
 <body class="has-rail">
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="page-curtain"></div>
 
   <header class="site-head">
@@ -117,7 +118,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main" tabindex="-1">
   <nav class="cs-rail" aria-label="Chapters">
       <a href="#background"><span class="idx">01</span> Background</a>
       <a href="#goals"><span class="idx">02</span> Goals</a>
@@ -237,12 +238,11 @@
         </div>
         <p class="muted" style="font-family:var(--font-mono);font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;margin-top:0.7rem;">Drag to compare — legacy vs redesigned</p>
         <div class="fig-grid cols-2" data-reveal>
-          <figure class="fig" style="margin:0;"><img src="img/linkedin-commission/0c9a39_10e2d0b1a56b482eb93936f0535b3f2b_mv2.webp" width="1600" height="853" alt="Redesigned commission tool — landing page with clear visual hierarchy" loading="lazy"></figure>
-          <figure class="fig" style="margin:0;"><img src="img/linkedin-commission/0c9a39_ce98dd8fbcd646a29884ca1205a8680e_mv2.webp" width="1600" height="853" alt="Redesigned commission tool — team management view" loading="lazy"></figure>
-          <figure class="fig" style="margin:0;"><img src="img/linkedin-commission/0c9a39_944563e80eb14ecbaff4ae8f0db91b91_mv2.webp" width="1600" height="899" alt="Redesigned commission tool — team creation flow" loading="lazy"></figure>
-          <figure class="fig" style="margin:0;"><img src="img/linkedin-commission/0c9a39_a54a453faae94399b7346c08a0bfdeae_mv2.webp" width="1600" height="899" alt="Redesigned commission tool — role assignment forms" loading="lazy"></figure>
-          <figure class="fig" style="margin:0;"><img src="img/linkedin-commission/0c9a39_bfff8302eb13418b9fe8697ed903b830_mv2.webp" width="1600" height="899" alt="Redesigned commission tool — performance data tables" loading="lazy"></figure>
-          <figure class="fig" style="margin:0;"><img src="img/linkedin-commission/0c9a39_c2cc477b6f9047b9b0c5cb9f0297583f_mv2.webp" width="1600" height="853" alt="Redesigned commission tool — detail view" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/linkedin-commission/0c9a39_ce98dd8fbcd646a29884ca1205a8680e_mv2.webp" width="1600" height="853" alt="Redesigned landing page — organisation and application summary with live role, user and permission counts" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/linkedin-commission/0c9a39_944563e80eb14ecbaff4ae8f0db91b91_mv2.webp" width="1600" height="899" alt="Final Pay File — participant details table with per-component commission columns" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/linkedin-commission/0c9a39_a54a453faae94399b7346c08a0bfdeae_mv2.webp" width="1600" height="899" alt="Requesting to re-open a locked pay file, with a required written justification" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/linkedin-commission/0c9a39_bfff8302eb13418b9fe8697ed903b830_mv2.webp" width="1600" height="899" alt="Participant table with per-row action items — edit, history and delete" loading="lazy"></figure>
+          <figure class="fig" style="margin:0;"><img src="img/linkedin-commission/0c9a39_c2cc477b6f9047b9b0c5cb9f0297583f_mv2.webp" width="1600" height="853" alt="User management — switching between applications from the header, with a user’s assigned roles alongside" loading="lazy"></figure>
         </div>
       </div>
     </section>
@@ -286,7 +286,7 @@
       </div>
       <div class="foot-cols" data-reveal>
         <div>
-          <h5>Menu</h5>
+          <h2 class="foot-col-title">Menu</h2>
           <ul>
             <li><a href="index.html">Work</a></li>
             <li><a href="about.html">About</a></li>
@@ -294,7 +294,7 @@
           </ul>
         </div>
         <div>
-          <h5>Social</h5>
+          <h2 class="foot-col-title">Social</h2>
           <ul>
             <li><a href="https://www.instagram.com/piyushgrover_/" target="_blank" rel="noopener">Instagram</a></li>
             <li><a href="https://www.linkedin.com/in/piyushgroverdzn/" target="_blank" rel="noopener">LinkedIn</a></li>

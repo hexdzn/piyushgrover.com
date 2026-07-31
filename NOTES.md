@@ -998,3 +998,66 @@ iPad silhouette.
      for a portfolio; a `<picture>` fallback would mean rewriting ~170 `img`
      tags and risks layout regressions across the fig grids, sliders,
      filmstrip and device viewer. Reversible if it ever matters.
+
+## Round 27 — Research matrix moved, a11y pass, content fixes (2026-07-31)
+
+164. **Research matrix moved off Auth Uplift onto Show/Hide** (user
+     decision, "if it makes sense" — it does). `User-testing_edited` is a
+     ten-participant synthesis grid whose columns are entirely about hiding
+     and reordering accounts on the home screen; it was sitting in the
+     Authentication research section under the alt "User testing session —
+     observing login friction", which was wrong twice over. Copied to
+     `img/nbs-show-hide/research-matrix.webp`, placed under "What Testing
+     Revealed" where it is the direct evidence for that paragraph, with a
+     descriptive alt and a figcaption. Also consistent with round 7, where
+     the Show/Hide *content* was deliberately removed from the Auth page.
+165. **Show/Hide de-duplicated.** `show-hide-exploration` and `show-hide-2`
+     each appeared twice — inside the Key Solutions toggle *and* again as
+     standalone "Explorations" and "Final UI" sections. Removed both
+     standalone sections: the interactive swap already shows the same two
+     images and is the better presentation. Page went 7 → 5 sections, rail
+     rebuilt from document order and renumbered. Page now has zero duplicate
+     image srcs, and gained the research matrix, so it lost nothing visually.
+166. **CASS "Structuring Unhappy Paths" fixed.** The section carried two
+     images, neither about unhappy paths. Split them to where they belong:
+     the Internet-Banking-vs-mobile comparison now sits under "From Dense
+     Pages to Single-Intent Screens" (it *is* that argument, in one frame),
+     and the full journey wireframe board under "Wayfinding Without Breaking
+     Compliance". Both gained real alt text and figcaptions in place of
+     "CASS flow structure exploration" / "CASS journey design exploration".
+167. **Rapipay filmstrip alts corrected** — all six were invented at
+     migration and named the wrong pages. Now Loans / About Us / International
+     Transfers / POS solutions / Careers / Consumers, matching what each
+     capture actually shows.
+168. **LinkedIn grid**: dropped the tile repeating the landing page (already
+     the slider's "After"), and rewrote the five remaining alts, which named
+     screens that do not exist — "team management view" was the admin
+     dashboard, "team creation flow" the pay-file table, "role assignment
+     forms" a re-open-pay-file modal.
+169. **Accessibility pass:**
+     - **Skip link** on all 12 pages, first tab stop, `href="#main"`, with
+       `<main id="main" tabindex="-1">` as the target. Positioned off-screen
+       by transform rather than `display:none` so it stays in the tab order.
+     - **Heading order fixed everywhere — 0 skips on all 11 pages** (was
+       h2→h5 on most, h2→h4 twice on Shagunly). Footer column headings
+       h5 → `h2.foot-col-title`; Shagunly decision cards h4 →
+       `h3.decision-title`. CSS selectors updated to match, so nothing
+       moved visually.
+     - **Touch targets**: header nav was 19px, footer links 16px, mobile
+       menu socials 23.75px — all now ≥24px via `min-height` + inline-flex,
+       leaving the type scale untouched. The `aria-current` underline moved
+       from `bottom:-6px` to `bottom:1px` to stay snug on the taller link.
+       Zero sub-24px targets remain.
+170. **Verified**: 0 heading skips and a working skip link on all 11 pages;
+     0 remaining sub-24px targets; 0 broken images and no horizontal scroll
+     on the five edited pages; all rails resolve; no generic/incorrect alt
+     text left. The skip link's `:focus` state could not be observed
+     directly because the preview pane reports `document.hasFocus() === false`
+     (so `:focus` never matches), but forcing the focus declaration placed it
+     at top 0 and the unfocused state measures fully off-screen (bottom
+     -9.6px) — correct in both states.
+171. **Left alone deliberately**: Rapipay's six `aria-hidden` filmstrip
+     duplicates (they seam the infinite loop) and LinkedIn's `Old-image`
+     appearing as both the "Existing Screen" figure and the slider's
+     "Before" half — the comparison needs it, and unlike the Show/Hide case
+     it is a recognised before/after pattern rather than a repeat.

@@ -89,6 +89,7 @@
   </script>
 </head>
 <body class="has-rail">
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="page-curtain"></div>
 
   <header class="site-head">
@@ -117,15 +118,13 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main" tabindex="-1">
   <nav class="cs-rail" aria-label="Chapters">
       <a href="#brief"><span class="idx">01</span> Design Brief</a>
       <a href="#research"><span class="idx">02</span> Research</a>
       <a href="#collaboration"><span class="idx">03</span> Collaboration</a>
       <a href="#solutions"><span class="idx">04</span> Key Solutions</a>
-      <a href="#explorations"><span class="idx">05</span> Explorations</a>
-      <a href="#final-ui"><span class="idx">06</span> Final UI</a>
-      <a href="#outcomes"><span class="idx">07</span> Outcomes</a>
+      <a href="#outcomes"><span class="idx">05</span> Outcomes</a>
   </nav>
     <section class="cs-hero">
       <div class="wrap">
@@ -170,6 +169,10 @@
             <p>User testing revealed challenges in account discoverability, with average task completion times of 2 minutes 40 seconds to find accounts. Savings accounts were most commonly hidden by users to avoid temptation for spending. However, users initially misunderstood that reordering accounts affected category headings, highlighting areas for improved UI clarity. Confirmation screens indicating progress (e.g., "A of B") were well understood.</p>
           </div>
         </div>
+        <figure class="fig" data-reveal>
+          <img src="img/nbs-show-hide/research-matrix.webp" width="1600" height="1142" alt="Research synthesis grid — ten participants scored on hiding and reordering accounts, with their responses on when they would hide an account, which account types, and what changed on the home screen after reordering" loading="lazy">
+          <figcaption>Participant-by-participant synthesis behind the findings above.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -217,29 +220,12 @@
       </div>
     </section>
 
-    <section class="cs-section" id="explorations">
-      <div class="wrap">
-        <div class="cs-label" data-reveal><span class="idx">05</span><span class="eyebrow" style="margin:0;">Explorations</span></div>
-        <figure class="fig" data-reveal>
-          <img src="img/nbs-show-hide/show-hide-exploration.webp" width="1600" height="1200" alt="Design explorations for show/hide and reorder interactions" loading="lazy">
-        </figure>
-      </div>
-    </section>
-
-    <section class="cs-section" id="final-ui">
-      <div class="wrap">
-        <div class="cs-label" data-reveal><span class="idx">06</span><span class="eyebrow" style="margin:0;">Final UI</span></div>
-        <figure class="fig" data-reveal>
-          <img src="img/nbs-show-hide/show-hide-2.webp" width="1600" height="1200" alt="Final UI — show/hide toggles and account reordering flow" loading="lazy">
-        </figure>
-      </div>
-    </section>
 
     <section class="cs-section" id="outcomes">
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">07</span><span class="eyebrow" style="margin:0;">Outcomes</span></div>
+            <div class="cs-label"><span class="idx">05</span><span class="eyebrow" style="margin:0;">Outcomes</span></div>
             <h2>Friction Removed, Validated in Testing</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -271,7 +257,7 @@
       </div>
       <div class="foot-cols" data-reveal>
         <div>
-          <h5>Menu</h5>
+          <h2 class="foot-col-title">Menu</h2>
           <ul>
             <li><a href="index.html">Work</a></li>
             <li><a href="about.html">About</a></li>
@@ -279,7 +265,7 @@
           </ul>
         </div>
         <div>
-          <h5>Social</h5>
+          <h2 class="foot-col-title">Social</h2>
           <ul>
             <li><a href="https://www.instagram.com/piyushgrover_/" target="_blank" rel="noopener">Instagram</a></li>
             <li><a href="https://www.linkedin.com/in/piyushgroverdzn/" target="_blank" rel="noopener">LinkedIn</a></li>

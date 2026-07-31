@@ -89,6 +89,7 @@
   </script>
 </head>
 <body class="has-rail">
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="page-curtain"></div>
 
   <header class="site-head">
@@ -117,7 +118,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main" tabindex="-1">
   <nav class="cs-rail" aria-label="Chapters">
       <a href="#framing"><span class="idx">01</span> Framing</a>
       <a href="#system-analysis"><span class="idx">02</span> System Analysis</a>
@@ -280,6 +281,11 @@
           <figure class="fig" style="margin:0;"><img src="img/nbs-cass/Shot4.webp" width="1600" height="1200" alt="Redesigned mobile CASS screen — switch-type branching" loading="lazy"></figure>
         </div>
 
+        <figure class="fig" data-reveal>
+          <img src="img/nbs-cass/Screenshot-2026-02-16-at-11_10_54_AM.webp" width="1600" height="1064" alt="The same Check and Confirm step side by side — the dense Internet Banking page on the left, the restructured mobile summary on the right" loading="lazy">
+          <figcaption>The same regulated step, before and after: one dense desktop page becomes a scannable mobile summary.</figcaption>
+        </figure>
+
         <div class="cs-cols" style="margin-top:var(--space-5);">
           <div data-reveal>
             <h2>Wayfinding Without Breaking Compliance</h2>
@@ -317,10 +323,10 @@
             <p class="callout">Failure handling was designed as part of the system — not an afterthought.</p>
           </div>
         </div>
-        <div class="fig-grid cols-2" data-reveal>
-          <figure class="fig" style="margin:0;"><img src="img/nbs-cass/Screenshot-2026-02-16-at-11_10_54_AM.webp" width="1600" height="1064" alt="CASS flow structure exploration" loading="lazy"></figure>
-          <figure class="fig" style="margin:0;"><img src="img/nbs-cass/0c9a39_8dbfe7d8d482411c8318490583eb3949_mv2.webp" width="1600" height="982" alt="CASS journey design exploration" loading="lazy"></figure>
-        </div>
+        <figure class="fig" data-reveal>
+          <img src="img/nbs-cass/0c9a39_8dbfe7d8d482411c8318490583eb3949_mv2.webp" width="1600" height="982" alt="Full journey wireframe board — entry points, onboarding screens, the switch flow and its annotated failure states" loading="lazy">
+          <figcaption>The whole journey mapped end to end, annotated with the gaps each state had to cover.</figcaption>
+        </figure>
       </div>
     </section>
   </main>
@@ -344,7 +350,7 @@
       </div>
       <div class="foot-cols" data-reveal>
         <div>
-          <h5>Menu</h5>
+          <h2 class="foot-col-title">Menu</h2>
           <ul>
             <li><a href="index.html">Work</a></li>
             <li><a href="about.html">About</a></li>
@@ -352,7 +358,7 @@
           </ul>
         </div>
         <div>
-          <h5>Social</h5>
+          <h2 class="foot-col-title">Social</h2>
           <ul>
             <li><a href="https://www.instagram.com/piyushgrover_/" target="_blank" rel="noopener">Instagram</a></li>
             <li><a href="https://www.linkedin.com/in/piyushgroverdzn/" target="_blank" rel="noopener">LinkedIn</a></li>
