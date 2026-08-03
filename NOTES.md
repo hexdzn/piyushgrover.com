@@ -1089,3 +1089,30 @@ iPad silhouette.
 175. **Verified** at 1280x900 and 390x844: single row on desktop, clean
      four-item stack on mobile, no cell overflow, no horizontal scroll,
      App Store link in Status intact and the hero CTA untouched.
+
+## Round 29 — Building It layout fixed (2026-08-03)
+
+176. **Two separate problems made this section look broken** (user report):
+     - The `phone-auth` screenshot was **30% empty background**. Measured it
+       row-by-row: real content ends at y=1673 of 2390, so the bottom 717px
+       was flat dark backdrop. At 340px wide that rendered a 739px-tall
+       figure, most of the lower third being nothing.
+     - The figure sat full-width and alone, so the entire right half of the
+       section was blank next to it, and the `.icon-strip` was stranded
+       below, centre-aligned to nothing.
+177. **Screenshot cropped** 1100x2390 → 1100x1800 from the uncropped
+     `phone-auth.jpg` kept during the WebP pass (so this is reversible).
+     Leaves ~127px of breathing room below the sign-in card. Figure is now
+     300x544 instead of 340x739 — 26% shorter — and the `width`/`height`
+     attributes were updated to match so CLS still holds.
+178. **New `.build-artifacts` pairing**: the auth screen and the three app
+     icons are two halves of the same "what this actually produced" point,
+     so they now sit side by side — `minmax(0,300px) 1fr`, vertically
+     centred, with the icon strip switched to `justify-content: flex-start`
+     inside the pairing so the icons align to the screenshot rather than
+     floating in the middle of the leftover column. Stacks and re-centres
+     below 760px.
+179. **Verified** at 1280x900: figure and icon strip share a row, side by
+     side, vertically centred to within 12px, no horizontal scroll. At
+     390x844: cleanly stacked, figure capped at 280px, icons on one row, no
+     overflow. The screenshot is still lightbox-bound (`is-zoomable`).

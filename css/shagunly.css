@@ -177,7 +177,27 @@
 .mockup-caption span.active { display: inline; }
 
 /* ---------- App icon strip ---------- */
+/* Shipped artefacts: the auth screen and the icon set are two halves of the
+   same point, so they sit side by side. Previously the tall screenshot ran
+   full-width on its own, leaving the right half of the section empty, with
+   the icon strip stranded and centre-aligned below it. */
+.build-artifacts {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) 1fr;
+  gap: var(--space-4);
+  align-items: center;
+  margin-top: var(--space-3);
+}
+@media (max-width: 760px) {
+  .build-artifacts { grid-template-columns: 1fr; gap: var(--space-3); justify-items: center; }
+  .build-artifacts > .fig { max-width: 280px; }
+}
+
 .icon-strip { display: flex; gap: 1.6rem; justify-content: center; margin-top: var(--space-3); flex-wrap: wrap; }
+/* inside the pairing the icons align to the screenshot rather than floating
+   in the middle of the remaining column */
+.build-artifacts .icon-strip { justify-content: flex-start; margin-top: 0; }
+@media (max-width: 760px) { .build-artifacts .icon-strip { justify-content: center; } }
 .icon-strip figure { margin: 0; text-align: center; }
 .icon-strip img {
   width: 84px;
