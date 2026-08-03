@@ -1061,3 +1061,31 @@ iPad silhouette.
      appearing as both the "Existing Screen" figure and the slider's
      "Before" half — the comparison needs it, and unlike the Show/Hide case
      it is a recognised before/after pattern rather than a repeat.
+
+## Round 28 — Shagunly meta block trimmed (2026-08-03)
+
+172. **Hero meta grid reduced 7 fields → 4** (user request). It was the
+     outlier on the site: Rapipay has 2, CASS 4, Auth and LinkedIn 5, while
+     Shagunly carried Role, Platform, Status, Stack, Design, Build method
+     and Timeline, each a full sentence. It now reads Role · Platform ·
+     Status · Design & build and fits one row at desktop (grid height 128px,
+     down from 233px at the intermediate 5-field pass).
+173. **What was merged, and why:**
+     - *Design* + *Build method* → **Design & build**: "Designed in Figma,
+       built AI-directed — zero hand-written code". Keeps the round-14
+       reframing (design first, AI build second) in one line instead of two.
+     - *Platform* + *Stack* → **Platform**: both rows opened with "SwiftUI",
+       so the pair was partly restating itself. Now "iOS 17+ · SwiftUI ·
+       Supabase · Android in development".
+     - *Timeline* dropped: "Ongoing — shipped to the App Store" restated
+       Status, which sits two columns away, and the "Download on the App
+       Store" CTA directly beneath said it a third time.
+174. **Nothing was lost from the case study** — checked every dropped detail
+     against the body text before committing: founder scope (backend/web),
+     "originally a PWA", Flutter, Postgres/RLS, Claude as the build partner,
+     Apple/Google Sign-In, and the live-feedback iteration are all still
+     stated in Overview, Process, Product Decisions, Building It or What's
+     Next. Only the summary block got shorter.
+175. **Verified** at 1280x900 and 390x844: single row on desktop, clean
+     four-item stack on mobile, no cell overflow, no horizontal scroll,
+     App Store link in Status intact and the hero CTA untouched.
