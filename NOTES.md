@@ -1154,3 +1154,65 @@ iPad silhouette.
      `<img>` → `<video>`. Saved to memory alongside the existing swap notes
      (keep width/height for CLS, honour prefers-reduced-motion, and extend
      the lightbox selector since it binds to `.fig img`).
+
+## Round 31 — Jitter videos mapped and swapped in (2026-08-05)
+
+184. **Three videos supplied**: `Scene.mp4`, `Scene (1).mp4`, `List-16-9.mp4`.
+     Mapped them **visually** rather than by filename, as instructed — no
+     ffmpeg on this machine, so frames were extracted with a small Swift
+     AVFoundation utility and reviewed as contact sheets.
+185. **The mapping turned out to be exact, and provable twice over.** The
+     three static images sitting under the round-7 TODO in nbs-auth
+     "Final Solution" measured 1280x720, 1280x720 and 960x720 — the identical
+     dimensions of the three clips — and visual comparison confirmed they are
+     literally poster frames of them (they even carry the same watermark). So:
+     - `Scene.mp4` (1280x720) → `0c9a39_0f54d527…` — three phones: choose a
+       new six-digit passnumber, success confirmation, Pay or Move Money
+     - `Scene (1).mp4` (960x720) → `0c9a39_bb339089…` — scrolling board of
+       shipped screens incl. connection error, passnumber entry, VRP payment
+       permissions, products, Face ID capture
+     - `List-16-9.mp4` (1280x720) → `0c9a39_3e370f41…` — kinetic type loop of
+       interaction verbs (Tap, Hover, Drag, Scroll, Long-press, Focus, Flick,
+       Trigger, Rules, Feedback, Modes, States)
+186. **Renamed semantically** into a new top-level `video/` folder mirroring
+     `img/`: `passnumber-change-flow.mp4`, `auth-screens-walkthrough.mp4`,
+     `micro-interaction-terms.mp4`.
+187. **The type animation was moved to a different section.** It had been
+     sitting in "Final Solution" captioned "Final UI screen — payments",
+     which was wrong on both counts — it isn't a UI screen and isn't
+     payments. It's a micro-interaction vocabulary, so it now illustrates
+     **section 08 "Micro-Interaction — Feedback at Key Touchpoints"**, which
+     previously had no image at all. Final Solution went from a 3-up grid to
+     a 2-up of the two genuine screen walkthroughs.
+188. **All three alt texts were wrong** and have been replaced with accurate
+     `aria-label`s: "account overview" was the passnumber flow, "payments"
+     was the type animation, "product hub" was the screen inventory.
+189. **Transcoded for web**: 16.3MB → 5.3MB (−67%) via AVAssetExportSession
+     at 960x540, `shouldOptimizeForNetworkUse` so the moov atom is at the
+     front for streaming. Measured 1280x720 as an alternative — it saved
+     almost nothing (List passed straight through at 7.8MB) for no visible
+     gain. At 960 wide the clips render 2.08x density in the 2-up grid and
+     1.02x full-width, and small UI text stays legible (checked against
+     extracted frames).
+190. **Posters** are the existing static webps, renamed `poster-*.webp` —
+     they were already the exact right frames, so first paint is unchanged
+     and there is no flash before the video decodes.
+191. **Reduced motion**: `autoplay` is in the markup so clips still play
+     without JS, and `js/main.js` strips it, pauses and enables controls when
+     `prefers-reduced-motion` is set. Also added `.fig video` to the `.fig
+     img` rule — video has no `max-width:100%` from the base reset, so
+     without it the clips overflowed on mobile (caught in verification).
+192. **Verified**: all three decode (readyState 4) with correct durations
+     (3.63s / 3.03s / 9.03s), poster + aria-label + loop + muted + playsinline
+     on each, Final Solution grid is 2-up, Micro-Interaction has its figure,
+     old statics and the TODO comment gone, rail resolves, 0 broken images,
+     no horizontal scroll at 1280 or 390 (350px wide each on mobile).
+193. **FLAG — all three carry a `jitter.video` watermark**, bottom-right, and
+     the type animation also shows "Blur Effect" and "Template — 01" template
+     chrome. This is Jitter's free-plan export. It was already present in the
+     static frames so it isn't new, but it is far more noticeable in motion
+     and reads as unfinished on a portfolio. Worth re-exporting on a paid plan
+     before the domain switch.
+194. **Videos are deliberately not lightbox-bound** — the lightbox selector is
+     `.fig img`, and a looping clip is self-evident without a zoom affordance.
+     The three now-unreferenced statics stay on disk per convention #32.

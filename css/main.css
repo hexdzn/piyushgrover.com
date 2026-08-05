@@ -510,8 +510,10 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
 
 /* Figures */
 .fig { margin: var(--space-3) 0 0; }
-.fig img {
+.fig img, .fig video {
   width: 100%;
+  height: auto;
+  display: block;
   border-radius: var(--radius);
   border: 1px solid var(--line-soft);
   background: var(--card);

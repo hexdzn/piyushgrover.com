@@ -182,6 +182,17 @@
     });
   }
 
+  /* ---------- Case-study video: honour reduced motion ---------- */
+  // autoplay is set in the markup so the clips still play without JS; if the
+  // user has asked for less motion we stop them and hand over the controls.
+  if (prefersReduced) {
+    document.querySelectorAll('video[autoplay]').forEach(function (v) {
+      v.removeAttribute('autoplay');
+      v.pause();
+      v.controls = true;
+    });
+  }
+
   /* ---------- Lightbox (galleries + case-study figures) ---------- */
   var lbLinks = document.querySelectorAll('[data-lightbox]');
   // Case-study images are stored at 1600px wide but displayed in a ~940px
