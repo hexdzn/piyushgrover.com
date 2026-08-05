@@ -1116,3 +1116,41 @@ iPad silhouette.
      side, vertically centred to within 12px, no horizontal scroll. At
      390x844: cleanly stacked, figure capped at 280px, icons on one row, no
      overflow. The screenshot is still lightbox-bound (`is-zoomable`).
+
+## Round 30 — Content currency pass before launch (2026-08-05)
+
+180. **Four stale/ambiguous claims corrected**, all confirmed with Piyush
+     rather than guessed:
+     - **nbs-auth Duration**: "2+ Years (Ongoing)" → "2+ years (completed)".
+       The engagement has ended.
+     - **nbs-cass Timeline**: "In development (launch pending)" → a new
+       **Status: "Design delivered for build"**. Piyush has left the
+       organisation and doesn't know whether it shipped, so the page now
+       states what *he* did rather than making a claim about the product's
+       fate. The `dt` changed from Timeline to Status because the value is
+       no longer a timeframe.
+     - **about.html**: dropped "In my current role," (his pick of three
+       options). The sentence now reads "I specialize in designing
+       user-centered interfaces…" — makes no employment claim, so it can't
+       go stale between roles.
+     - **Home hero stat**: "8 years experience · 3 industries · 2 platforms"
+       → "8 years experience · Design systems · Shipped an iOS app solo".
+       He wanted to keep the 8 years and drop industry/platform counts.
+       Chose the shipped-app line because it's his strongest differentiator
+       and is fully grounded — Shagunly is live on the App Store and that
+       case study already says "solo founder".
+181. **Checked nothing else claims ongoing work**: the only remaining
+     "ongoing"/"in development" strings are Shagunly's own roadmap ("Android
+     in development"), its problem statement ("a real, ongoing social
+     obligation") and a Show/Hide reflection sentence — all legitimate.
+182. **Verified**: hero stat sits on one line down to 768px and wraps to two
+     at 390/360 with no overflow and no horizontal scroll at any of
+     1440/1280/768/390/360; About paragraph and both meta grids render the
+     new values; zero occurrences of "current role", "Ongoing)" or "launch
+     pending" left anywhere in the site.
+183. **Jitter videos — instruction recorded for when they arrive**: map each
+     video *visually* to the image it replaces (don't trust the Jitter export
+     filename), rename it semantically to match its section, then swap
+     `<img>` → `<video>`. Saved to memory alongside the existing swap notes
+     (keep width/height for CLS, honour prefers-reduced-motion, and extend
+     the lightbox selector since it binds to `.fig img`).
