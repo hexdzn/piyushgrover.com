@@ -1300,3 +1300,70 @@ iPad silhouette.
      invented metrics. A scene-setting sentence reads as harmless narrative
      but is a factual claim about the designer's own experience, and is
      precisely the kind of thing an interviewer will ask about.
+
+## Round 36 — Audit for fabricated first-person claims (2026-08-07)
+
+212. **Method**: extracted every first-person / experiential sentence from the
+     migrated case studies and matched each against `content.md`, the verbatim
+     Wix extraction, plus Shagunly against `~/Desktop/Shagunly-CaseStudy.md`.
+213. **NBS (hub, CASS, Auth, Show/Hide) and LinkedIn came back clean.** Both
+     CASS callouts — "Switching accounts carries emotional weight…" and
+     "Failure handling was designed as part of the system — not an
+     afterthought" — are **verbatim in the Wix source**. The one nbs-auth
+     sentence flagged as not-in-source ("UX research was led by the onshore
+     team; I worked closely with them…") is the round-4 grammar rewrite of
+     "Since UX research was led by the onshore team, I collaborated closely
+     with them to extract actionable insights" — same substance.
+214. **Rapipay Outcomes contained two invented specifics — mine, from round 5
+     (#47).** I had replaced the source's vague "marked improvement in user
+     engagement and an increase in website traffic" with:
+     - "**Stakeholders reported** the site felt more aligned with Rapipay's
+       positioning…" — no source mentions stakeholder feedback at all
+     - "the friction points identified in **the original audit**" — no audit
+       exists anywhere in the source
+     In trying to fix an unsourced claim I produced *specific-sounding*
+     unsourced claims, which is worse: specificity invites the follow-up
+     question. Rewritten to state only the deliverables, which are evidenced
+     by the design-solution images and the objectives listed in the source.
+215. **Shagunly pull-quote softened**: "Design decided in Figma. The build
+     **only executed** it" → "…The build **followed the spec**." The absolute
+     was not accurate — NOTES #76 and #94 record design decisions that came
+     out of the build and tester feedback (the read/edit split, the
+     forgot-password flow).
+216. **Flagged, not changed** — "These aren't things I coded; they're things I
+     had to understand well enough to direct, and to catch when the build got
+     them subtly wrong" (Shagunly, Engineering Judgment). Not in the source
+     doc; it's my characterisation of Piyush's experience in his voice. The
+     surrounding war stories *are* his, so it's plausible — but the clause
+     about catching the build getting things wrong is mine to justify, not
+     his. **Piyush should confirm or reword it.**
+217. **Piyush's original Wix outcome claim for Rapipay** ("marked improvement
+     in engagement and traffic") is his to make and was deliberately not
+     restored — round 5 chose qualitative-only. If he can stand behind it, it
+     can go back; that is his call, not mine.
+
+## Round 37 — Responsive audit, 280px to 3440px (2026-08-07)
+
+218. **Swept all 11 pages** at 280, 320, 390, 430, 1280, 1512, 1920, 2560 and
+     3440px. Distinguished *real* breakage (content past the viewport with no
+     clipping ancestor) from measurement noise — `documentElement.scrollWidth`
+     over-reports because the marquee's 2854px track sits inside an
+     `overflow:hidden` strip, and `body { overflow-x: clip }` means no
+     horizontal scrollbar is possible site-wide anyway.
+219. **Bug 1 — Shagunly decision cards overflowed at 320px.**
+     `repeat(auto-fit, minmax(310px, 1fr))` forces a 310px track, but the
+     content column at a 320px viewport is only 280px. Fixed with
+     `minmax(min(310px, 100%), 1fr)`, and applied the same guard to the other
+     four fixed minimums (180/280/310/280/200px) — two of which (280px) were
+     exactly on the edge and would have broken on anything narrower than
+     320px. `design-kit.css` already used this pattern.
+220. **Bug 2 — home project rows cut off the tag and arrow at 280px.** The
+     grid was `auto 1fr auto auto`; an `auto` track cannot shrink below its
+     content, so the longest tag ("iOS · Live on the App Store") pushed the
+     arrow off-screen. Changed to
+     `auto minmax(0, 1fr) minmax(0, auto) auto` so the title and tag can both
+     shrink. No breakpoint needed — at 280/320px the longest tag now wraps to
+     two lines, and at 390px and above every row is single-line exactly as
+     before.
+221. **Verified after both fixes**: nothing cut off on any page at any of the
+     nine widths, all project-row arrows inside the viewport at every width.

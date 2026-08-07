@@ -404,7 +404,9 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
 .project-list { border-top: 1px solid var(--line); }
 .project-row {
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
+  /* minmax(0,…) on the title and tag lets both shrink instead of forcing the
+     row wider than the viewport — at 280px the tag was pushing the arrow off */
+  grid-template-columns: auto minmax(0, 1fr) minmax(0, auto) auto;
   align-items: center;
   gap: clamp(1rem, 3vw, 2.5rem);
   padding: clamp(1.6rem, 4vw, 2.8rem) 0;
@@ -456,7 +458,7 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
 .cs-hero .lede { margin-top: var(--space-2); }
 .meta-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
   gap: var(--space-3);
   margin: var(--space-4) 0 0;
   padding-top: var(--space-3);
@@ -529,7 +531,7 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
 .fig-grid.cols-2.fig-narrow { max-width: 680px; }
 
 /* Persona cards */
-.persona-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-2); margin-top: var(--space-3); }
+.persona-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: var(--space-2); margin-top: var(--space-3); }
 .persona-card {
   background: var(--card);
   border: 1px solid var(--line-soft);
@@ -555,7 +557,7 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
 /* Design decision cards */
 .decision-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(310px, 100%), 1fr));
   gap: var(--space-2);
   margin-top: var(--space-3);
 }
@@ -591,7 +593,7 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
 .decision-card .d-row.shipped .d-tag { color: var(--accent); }
 
 /* Case study card (hub page) */
-.cs-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-3); }
+.cs-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: var(--space-3); }
 .cs-card {
   display: flex; flex-direction: column;
   background: var(--card);
@@ -610,7 +612,7 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
 .cs-card .cs-card-link { font-size: 0.9rem; font-weight: 600; color: var(--accent); }
 
 /* Stat band */
-.stat-band { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3); }
+.stat-band { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: var(--space-3); }
 .stat-band .stat b {
   display: block;
   font-family: var(--font-display);
