@@ -1367,3 +1367,27 @@ iPad silhouette.
      before.
 221. **Verified after both fixes**: nothing cut off on any page at any of the
      nine widths, all project-row arrows inside the viewport at every width.
+
+## Round 38 — Decisions closed (2026-08-07)
+
+222. **Jitter watermarks: keeping them.** Piyush's call. The `jitter.video`
+     mark stays on the two NBS clips (`passnumber-change-flow`,
+     `auth-screens-walkthrough`). The micro-interaction clip no longer has one
+     — the round-32 crop removed it as a side effect, not by request. Flag
+     #193 is closed, no action.
+223. **Profile links done** — LinkedIn / Instagram / Behance now point at
+     piyushgrover.com, which is what corroborates the `sameAs` block in the
+     JSON-LD.
+224. **`www` redirect: my earlier concern was wrong.** Round 33 reported www
+     serving a 200 instead of redirecting, and I flagged possible duplicate
+     content. Re-tested with `curl --resolve` against GitHub's IP directly:
+     www returns `301 → https://piyushgrover.com/` from GitHub.com. The Wix
+     page I had been seeing was this machine's resolver still holding the old
+     `www → cdn1.wixdns.net` record under its 1-hour TTL. Nothing to fix.
+225. **piyush-v2 parked.** Added a README to
+     github.com/hexdzn/piyush-v2 marking it as a parked alternate direction,
+     naming the live site and repo, and listing exactly how far behind its
+     content is, so nothing gets copied across by mistake later. Committed
+     locally; push and the GitHub "Archive" toggle are Piyush's to do.
+     Note: archiving makes a repo read-only until unarchived — reversible,
+     but it does block updates while archived.
