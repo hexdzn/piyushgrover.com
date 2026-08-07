@@ -1216,3 +1216,33 @@ iPad silhouette.
 194. **Videos are deliberately not lightbox-bound** — the lightbox selector is
      `.fig img`, and a looping clip is self-evident without a zoom affordance.
      The three now-unreferenced statics stay on disk per convention #32.
+
+## Round 32 — Micro-interaction video cropped (2026-08-07)
+
+195. **Cropped `micro-interaction-terms.mp4`** to a 3.2:1 letterbox band per
+     Piyush's reference frame: `x 0, y 176, 1280x400` — a **vertical crop
+     only**. Confirmed the reference was uncropped horizontally by matching
+     the arrow's position: 230/1280 = 18.0% in the source, ~18.1% in the
+     reference screenshot.
+196. **Crop derived by measurement, not eyeballing.** Sampled 24 frames and
+     took the bounding box of near-white pixels (the active word is the only
+     sharp, bright content): x 230..1043, y 303..505 across the whole clip.
+     That fixed the safe vertical band and proved the longest word
+     ("Long-press") is never clipped.
+197. **Removes the Jitter free-plan chrome as a side effect** — the
+     `jitter.video` watermark and the "Blur Effect" / "Template — 01" labels
+     all sit below y=660, well outside the crop. Round 31's flag (#193) is
+     resolved for this clip; the two NBS screen clips still carry the
+     watermark and would need re-exporting on a paid plan.
+198. **Encoded** with AVFoundation using an `AVMutableVideoComposition` —
+     `renderSize` set to the crop, layer transform translated by the crop
+     origin — at `AVAssetExportPresetHighestQuality` with
+     `shouldOptimizeForNetworkUse`. 2.33MB, slightly *smaller* than the
+     uncropped 540p version it replaces (2.66MB) despite the higher preset,
+     because there are far fewer pixels per frame.
+199. **Poster regenerated from the cropped clip** so first paint matches the
+     video exactly, and the `width`/`height` attributes updated 1280x720 →
+     1280x400 to keep the CLS reservation correct.
+200. **Verified**: natural 1280x400, renders 938x294 full-width, attributes
+     match, decodes (readyState 4), duration still 9.03s, no horizontal
+     scroll. The other two clips are untouched.
