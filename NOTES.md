@@ -1262,3 +1262,41 @@ iPad silhouette.
      the site unreachable at both the github.io path and the custom domain.
 203. All canonical, og:url, sitemap and JSON-LD URLs written back in round 25
      now resolve to a live site, so the SEO work stops being inert.
+
+## Round 34 — Marquee loop fixed on wide displays (2026-08-07)
+
+204. **BUG (user report): the home marquee left a gap on wide screens.** The
+     track is authored as two identical copies animated to
+     `translateX(-50%)`, which only loops cleanly while *half* the track is at
+     least as wide as the strip. Measured: one copy is 1427px, so the loop
+     broke on **any viewport wider than ~1430px** — not just large monitors.
+     At 2560px the gap was 1133px of empty space; a 1512px MacBook already
+     showed ~85px.
+205. **Fix** in `js/main.js`: measure and append copies **two at a time**
+     (keeping the count even so `-50%` still lands on a repeat boundary)
+     until half the track covers the strip. Re-runs on a debounced resize.
+206. **Duration is now derived, not fixed.** Appending copies with a hard-coded
+     28s would have made the marquee scroll proportionally faster on bigger
+     screens. The pace is pinned to the original 51 px/s by setting
+     `animationDuration = halfWidth / 51`.
+207. **Verified at five widths** — 390, 1280, 1512, 2560, 3440px: seamless at
+     every one (gap 0), span count scaling 12 → 24 → 36 as needed, and a
+     constant 51 px/s throughout.
+208. The two authored copies stay in the HTML, so with JS disabled the
+     marquee still loops correctly on viewports up to ~1430px.
+
+## Round 35 — Fabricated origin line removed from Shagunly (2026-08-07)
+
+209. **Removed an invented claim I introduced in round 15 (#95).** The
+     callout "The moment that defined the product: standing at a venue,
+     envelope in hand, trying to remember what they gave you three years ago"
+     was written as colour and was **not true** — Piyush flagged it.
+210. **Replaced with the real origin**, in his words: the idea came from his
+     father, who is tech-savvy and wanted the record off paper registers and
+     onto a phone — less physical copy, less friction, information
+     retrievable in seconds rather than leafed through.
+211. Worth noting as a process point: this is exactly the failure mode the
+     original brief warned against and that round 5 (#46) pushed back on for
+     invented metrics. A scene-setting sentence reads as harmless narrative
+     but is a factual claim about the designer's own experience, and is
+     precisely the kind of thing an interviewer will ask about.

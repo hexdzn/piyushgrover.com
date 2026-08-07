@@ -182,6 +182,35 @@
     });
   }
 
+  /* ---------- Marquee: keep the loop seamless at any viewport width ---------- */
+  // The track is authored as two identical copies and animated to
+  // translateX(-50%), which only loops cleanly while half the track is at
+  // least as wide as the strip. One copy measures ~1430px, so every viewport
+  // wider than that exposed a gap at the end of each cycle.
+  var marqueeEl = document.querySelector('.marquee');
+  if (marqueeEl) {
+    var mTrack = marqueeEl.querySelector('.marquee-track');
+    var mBase = mTrack.innerHTML;   // the two copies as authored
+    var MARQUEE_PPS = 51;           // px/sec — the pace the original 28s gave
+    var fitMarquee = function () {
+      mTrack.innerHTML = mBase;
+      var guard = 0;
+      // append two copies at a time so the total stays even and -50% still
+      // lands exactly on a repeat boundary
+      while (mTrack.scrollWidth / 2 < marqueeEl.offsetWidth && guard++ < 12) {
+        mTrack.innerHTML += mBase;
+      }
+      // scale duration with width, otherwise more copies = faster scroll
+      mTrack.style.animationDuration = (mTrack.scrollWidth / 2 / MARQUEE_PPS) + 's';
+    };
+    fitMarquee();
+    var mResize;
+    window.addEventListener('resize', function () {
+      clearTimeout(mResize);
+      mResize = setTimeout(fitMarquee, 200);
+    });
+  }
+
   /* ---------- Case-study video: honour reduced motion ---------- */
   // autoplay is set in the markup so the clips still play without JS; if the
   // user has asked for less motion we stop them and hand over the controls.
