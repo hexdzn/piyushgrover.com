@@ -1246,3 +1246,19 @@ iPad silhouette.
 200. **Verified**: natural 1280x400, renders 938x294 full-width, attributes
      match, decodes (readyState 4), duration still 9.03s, no horizontal
      scroll. The other two clips are untouched.
+
+## Round 33 — Custom domain live (2026-08-07)
+
+201. **DNS switched at Wix and verified.** Apex now resolves to all four
+     GitHub Pages IPs (185.199.108–111.153), `www` CNAMEs to
+     `hexdzn.github.io`, and the `en.` Wix multilingual alias was removed.
+     The `google-site-verification` TXT record was deliberately left intact —
+     it predates the migration and is needed to submit the sitemap in Search
+     Console.
+202. **CNAME file committed.** GitHub stored the custom domain in Pages
+     settings but did not write the file to the repo; without it in version
+     control a later push can silently clear the setting. Held back until now
+     on purpose (see #148) — committing it before DNS resolved would have made
+     the site unreachable at both the github.io path and the custom domain.
+203. All canonical, og:url, sitemap and JSON-LD URLs written back in round 25
+     now resolve to a live site, so the SEO work stops being inert.
