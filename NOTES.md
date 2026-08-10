@@ -1391,3 +1391,39 @@ iPad silhouette.
      locally; push and the GitHub "Archive" toggle are Piyush's to do.
      Note: archiving makes a repo read-only until unarchived — reversible,
      but it does block updates while archived.
+
+## Round 39 — Designer feedback: back-nav bug + rail alignment (2026-08-07)
+
+226. **"Broken back links" was not a link problem — every internal link and
+     anchor on the site resolves.** It was the page-transition curtain. On an
+     internal click the curtain animates to `scaleY(1)`, covering the viewport
+     at z-index 95, then navigates. Browsers restore a bfcache page *exactly
+     as it was left*, inline GSAP transform included — so pressing Back
+     brought the previous page back with the curtain still down: a blank
+     screen that reads as a dead link. Nothing ever reset it.
+227. **Fix**: a `pageshow` listener that resets the curtain on every restore,
+     plus a 3s safety timeout after a click so a stalled or cancelled
+     navigation can't strand the reader behind it either. Verified: with the
+     curtain forced down the page is fully covered (`wouldBlankPage: true`),
+     and dispatching `pageshow {persisted:true}` returns it to `scaleY(0)`.
+228. **Rail alignment bug confirmed and measured.** `body.has-rail main .wrap`
+     adds the 240px rail offset — but `.pn-nav` and `.site-foot` sit **outside
+     `<main>`**, so they never got it. On a case study at 1280px, article text
+     began at 291px while prev/next and the footer began at 51px: a 240px step
+     at the bottom of every case-study page.
+229. **Second, subtler misalignment above 1320px**: `.wrap` is `max-width:
+     1320px` and centred, but `.pn-nav` is full-bleed, so even after adding the
+     offset they drifted apart again (356 vs 296 at 1440px). Fixed by reusing
+     the rail's own centring formula —
+     `max((100vw - var(--w-max)) / 2, 0px) + var(--pad-x)` — applied to the
+     first child's left padding and the last child's right padding, so the
+     outer edges track the content column while the inner edges still meet at
+     the divider.
+230. **Verified at 390 / 1100 / 1180 / 1280 / 1440 / 1920px**: content,
+     prev/next and footer share one left edge at every width, and the "next"
+     link's right edge matches the content's right edge. Non-rail pages
+     (index) unchanged.
+231. **Outstanding from the same review**: Shagunly is 2,834 words across 14
+     sections (~13 min read) against 710 for the next longest case study —
+     4x. The feedback that it is too verbose is quantitatively fair. Proposed
+     options put to Piyush; no content cut made unilaterally.

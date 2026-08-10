@@ -160,7 +160,18 @@
           scaleY: 1, duration: 0.45, ease: 'power4.inOut',
           onComplete: function () { window.location.href = href; }
         });
+        // If navigation stalls or is cancelled, don't strand the reader behind
+        // a full-screen curtain.
+        setTimeout(function () { gsap.to(curtain, { scaleY: 0, duration: 0.3 }); }, 3000);
       });
+    });
+
+    // The curtain is left covering the page when we navigate away. Browsers
+    // restore a bfcache page exactly as it was left — inline GSAP transform
+    // included — so pressing Back showed a blank screen and read as a broken
+    // link. Reset it on every pageshow, restored-from-cache or not.
+    window.addEventListener('pageshow', function () {
+      gsap.set(curtain, { scaleY: 0 });
     });
   }
 
