@@ -126,15 +126,10 @@
       <a href="#process"><span class="idx">03</span> Process</a>
       <a href="#system"><span class="idx">04</span> Design System</a>
       <a href="#screens"><span class="idx">05</span> Screens</a>
-      <a href="#principles"><span class="idx">06</span> Principles</a>
-      <a href="#decisions"><span class="idx">07</span> Decisions</a>
-      <a href="#product"><span class="idx">08</span> Product</a>
-      <a href="#handoff"><span class="idx">09</span> Handoff</a>
-      <a href="#building"><span class="idx">10</span> Building It</a>
-      <a href="#judgment"><span class="idx">11</span> Judgment</a>
-      <a href="#testing"><span class="idx">12</span> Testing</a>
-      <a href="#next"><span class="idx">13</span> Next</a>
-      <a href="#reflection"><span class="idx">14</span> Reflection</a>
+      <a href="#decisions"><span class="idx">06</span> Decisions</a>
+      <a href="#handoff"><span class="idx">07</span> Handoff</a>
+      <a href="#building"><span class="idx">08</span> Building It</a>
+      <a href="#reflection"><span class="idx">09</span> Reflection</a>
   </nav>
     <section class="cs-hero">
       <div class="wrap">
@@ -176,7 +171,7 @@
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
             <p>Shagunly is an iOS app for tracking <em>shagun</em> — the cash and gift exchanges that are a core part of Indian weddings, festivals, and birthdays. It replaces the mental math, scattered notebooks, and "who gave what" guesswork with a simple, culturally-native ledger.</p>
-            <p>I designed it end to end in Figma — the theme, the design system, every component and flow — then directed the entire technical build without writing a line of code, using Claude as the engineering partner. This case study covers both halves: the design decisions, and what it actually takes to hand a finished design to an AI and ship it to the App Store.</p>
+            <p>I designed it end to end in Figma — theme, design system, every component and flow — then directed the entire build without writing a line of code. This case study covers both halves: the design decisions, and what it takes to hand a finished design to an AI and ship it.</p>
           </div>
         </div>
       </div>
@@ -191,7 +186,6 @@
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
             <p>At Indian occasions — weddings, Diwali, birthdays — cash and gifts change hands constantly, and tracking who gave what (and what's owed in return) is a real, ongoing social obligation. Families still do this with pen-and-paper registers or fragmented memory. There was no lightweight, culturally-specific tool built for this — generic expense trackers don't understand the <em>shagun</em> mental model of reciprocity, occasions, and relationships.</p>
-            <p>This was a problem I understood firsthand, which shaped both the product's name (a playful spin on "shagun") and its tone throughout.</p>
             <p class="callout">The idea came from my father — tech-savvy, and done with the paper registers. He wanted the record off paper and onto a phone, where it could be pulled up in seconds instead of leafed through.</p>
           </div>
         </div>
@@ -207,10 +201,10 @@
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
             <h3 style="margin-top:0;">Research &amp; Framing</h3>
-            <p>Rather than a formal research phase, this was insight-driven design — grounded in direct, lived experience of the problem and validated early with family as real users. That closeness to the user became a strength: every design decision could be pressure-tested against "would my own family actually use this at a wedding?"</p>
+            <p>Rather than a formal research phase, this was insight-driven design — grounded in lived experience of the problem and validated early with family as real users. Every decision could be pressure-tested against one question: would my own family actually use this at a wedding?</p>
             <h3>From PWA to Native</h3>
-            <p>Shagunly began life as <strong>Sagan Tracker</strong>, a progressive web app. It worked, but a PWA has real ceilings for this use case — no App Store presence, weaker offline reliability, and a "second-class" feel for something meant to be used mid-celebration, one-handed, often with spotty venue wifi.</p>
-            <p>I made the call to rebuild native in SwiftUI. That's a significant product decision — trading faster iteration for a proper install, TestFlight distribution, and a path to the App Store — and it's the kind of build-vs-rebuild tradeoff any product designer has to own.</p>
+            <p>Shagunly began as a progressive web app. It worked, but a PWA has real ceilings here — no App Store presence, weaker offline reliability, and a second-class feel for something used mid-celebration, one-handed, on spotty venue wifi.</p>
+            <p>I rebuilt it native in SwiftUI — trading faster iteration for a proper install and a path to the App Store. That build-vs-rebuild call is the kind any product designer has to own.</p>
           </div>
         </div>
         <h3 style="margin-top:var(--space-4);" data-reveal>Structure before style</h3>
@@ -226,6 +220,13 @@
           <figure class="fig" style="margin:0;"><img src="img/shagunly/design/lofi-auth-occasions.svg" width="1180" height="560" alt="Low-fidelity wireframes — sign in, occasions list and occasion detail" loading="lazy"><figcaption>Auth, occasions, detail</figcaption></figure>
         </div>
       </div>
+        <h3 style="margin-top:var(--space-4);" data-reveal>Principles I held to</h3>
+        <div class="cs-prose" data-reveal>
+          <ul>
+            <li><strong>Culturally specific copy</strong> — placeholder text like “Diwali, a wedding…” instead of generic examples, so the product reads as made for this context, not adapted to it</li>
+            <li><strong>Free first, monetize later</strong> — I stripped the paywall entirely during validation so nothing got in the way of real usage feedback</li>
+          </ul>
+        </div>
     </section>
 
     <section class="cs-section" id="system">
@@ -336,29 +337,12 @@
       </div>
     </section>
 
-    <section class="cs-section" id="principles">
-      <div class="wrap">
-        <div class="cs-cols">
-          <div data-reveal>
-            <div class="cs-label"><span class="idx">06</span><span class="eyebrow" style="margin:0;">Design Principles</span></div>
-            <h2>Principles I Held To</h2>
-          </div>
-          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <ul>
-              <li><strong>Calm by default, powerful on demand</strong> — read-only detail views with edit as a deliberate second step, not the default</li>
-              <li><strong>Culturally specific copy</strong> — placeholder text like <em>"Diwali, a wedding…"</em> instead of generic examples, so the product feels made <em>for</em> this context, not adapted to it</li>
-              <li><strong>Free first, monetize later</strong> — I made the call to strip the paywall entirely during the validation phase (premium logic hardcoded on, payment provider removed) so nothing gets in the way of real usage feedback</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="cs-section" id="decisions">
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">07</span><span class="eyebrow" style="margin:0;">Design Decisions &amp; Trade-offs</span></div>
+            <div class="cs-label"><span class="idx">06</span><span class="eyebrow" style="margin:0;">Design Decisions &amp; Trade-offs</span></div>
             <h2>The Calls Behind the Screens</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -368,39 +352,59 @@
         <div class="decision-grid">
           <article class="decision-card" data-reveal>
             <h3 class="decision-title"><span class="idx">D1</span> Amount entry</h3>
-            <p class="d-row"><span class="d-tag">Considered</span> A plain numeric field — fastest to build, culturally blind.</p>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> One-tap auspicious presets — ₹501, ₹1,100, ₹2,100, ₹5,100 — above the keyboard.</p>
-            <p class="d-row why"><span class="d-tag">Why</span> Shagun amounts conventionally end in ₹1. Presets make the culturally correct amount the path of least resistance and cut mid-event entry to a single tap.</p>
+            <p class="d-row"><span class="d-tag">Considered</span> A plain numeric field — fast to build, culturally blind.</p>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> One-tap auspicious presets — ₹501, ₹1,100, ₹2,100, ₹5,100 — with live Indian digit grouping (₹1,00,000 as you type).</p>
+            <p class="d-row why"><span class="d-tag">Why</span> Shagun amounts conventionally end in ₹1. Presets make the culturally correct amount the path of least resistance, and cut mid-event entry to a single tap.</p>
           </article>
           <article class="decision-card" data-reveal data-reveal-delay="0.06">
             <h3 class="decision-title"><span class="idx">D2</span> The People screen</h3>
             <p class="d-row"><span class="d-tag">Considered</span> A transaction log per contact — accurate, but reads like accounting.</p>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> A running balance per relationship, with a "Your turn / Their turn" cue.</p>
-            <p class="d-row why"><span class="d-tag">Why</span> Shagun is reciprocity, not bookkeeping. Framing each person as a relationship state answers the real question — "where do we stand?" — at a glance.</p>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> A running balance per relationship, with a “your turn / their turn” cue.</p>
+            <p class="d-row why"><span class="d-tag">Why</span> Shagun is reciprocity, not bookkeeping. A relationship state answers the real question — where do we stand? — at a glance.</p>
           </article>
           <article class="decision-card" data-reveal data-reveal-delay="0.12">
             <h3 class="decision-title"><span class="idx">D3</span> Entry detail</h3>
             <p class="d-row"><span class="d-tag">Considered</span> Editable-by-default detail views — powerful, but noisy and risky.</p>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> Read-only by default; editing sits behind a deliberate pencil tap.</p>
-            <p class="d-row why"><span class="d-tag">Why</span> Most opens are checks, not changes. A calm read state keeps the record safe from accidental edits in the middle of a crowded function.</p>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> Read-only by default; editing behind a deliberate pencil tap.</p>
+            <p class="d-row why"><span class="d-tag">Why</span> Most opens are checks, not changes — and a crowded function is no place for an accidental edit.</p>
           </article>
           <article class="decision-card" data-reveal>
             <h3 class="decision-title"><span class="idx">D4</span> Direction first</h3>
             <p class="d-row"><span class="d-tag">Considered</span> Amount-first forms, with given/received as an afterthought toggle.</p>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> Received / Given as the first, color-coded choice — green in, red out.</p>
-            <p class="d-row why"><span class="d-tag">Why</span> Direction is the meaning of the transaction. Committing it first keeps every later field — preset, person, occasion — in the right mental frame.</p>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> Received / Given as the first, colour-coded choice — green in, red out.</p>
+            <p class="d-row why"><span class="d-tag">Why</span> Direction is the meaning of the transaction. Committing it first frames every field that follows.</p>
           </article>
           <article class="decision-card" data-reveal data-reveal-delay="0.06">
             <h3 class="decision-title"><span class="idx">D5</span> Occasion linking</h3>
             <p class="d-row"><span class="d-tag">Considered</span> Requiring an occasion on every entry — cleaner data, slower capture.</p>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> Occasion is optional at capture, linkable when there's time.</p>
-            <p class="d-row why"><span class="d-tag">Why</span> At a live event, speed beats structure. Optional linking keeps the ledger usable in the moment without giving up organization afterwards.</p>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> Occasion optional at capture, linkable when there’s time.</p>
+            <p class="d-row why"><span class="d-tag">Why</span> At a live event, speed beats structure.</p>
           </article>
           <article class="decision-card" data-reveal data-reveal-delay="0.12">
             <h3 class="decision-title"><span class="idx">D6</span> Visual identity</h3>
             <p class="d-row"><span class="d-tag">Considered</span> Default system typography on a light canvas — native, but generic.</p>
             <p class="d-row shipped"><span class="d-tag">Shipped</span> A serif display voice over a deep night palette with festive gradient accents.</p>
-            <p class="d-row why"><span class="d-tag">Why</span> The serif brings warmth and sense of occasion to a money app; the dark canvas lets celebratory color glow without shouting.</p>
+            <p class="d-row why"><span class="d-tag">Why</span> The serif brings a sense of occasion to a money app; the dark canvas lets celebratory colour glow without shouting.</p>
+          </article>
+          <article class="decision-card" data-reveal>
+            <h3 class="decision-title"><span class="idx">P1</span> The reciprocity engine</h3>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> One shared lookup answers “what did this person last give us?” everywhere — home banner, gift suggestions, reminders. It prefers a same-occasion match before falling back to most recent, and every name comparison flows through one normalisation rule.</p>
+            <p class="d-row why"><span class="d-tag">Why it matters</span> Grouping logic in five places disagrees in five ways. Here it can’t.</p>
+          </article>
+          <article class="decision-card" data-reveal>
+            <h3 class="decision-title"><span class="idx">P2</span> Hosted occasions — flipping the book</h3>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> Tracking apps assume you’re always the giver. But when you host Dad’s 60th, gifts flow toward your family. Marking an occasion “My family’s” flips the perspective: the CTA becomes <em>Log gifts received</em>, entries default to incoming, and the reciprocity line hides — the guest of honour is not a prior giver.</p>
+            <p class="d-row why"><span class="d-tag">Why it matters</span> One boolean, but it required rethinking every screen’s assumptions.</p>
+          </article>
+          <article class="decision-card" data-reveal>
+            <h3 class="decision-title"><span class="idx">P3</span> Family sharing, with manners</h3>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> A household keeps one gift book. Anyone joins with a six-letter share code, and every entry shows who logged it. The rule that makes it work socially: only the author can edit a record — everyone else can ask, and requests queue for approval.</p>
+            <p class="d-row why"><span class="d-tag">Why it matters</span> Enforced twice — in the UI, and in Postgres row-level security that verifies ownership server-side. A hacked client changes nothing.</p>
+          </article>
+          <article class="decision-card" data-reveal>
+            <h3 class="decision-title"><span class="idx">P6</span> Privacy as a feature</h3>
+            <p class="d-row shipped"><span class="d-tag">Shipped</span> No analytics SDKs, no ads, no tracking. Photos never leave the user’s account, export ships every record in two taps, and delete-account removes everything atomically.</p>
+            <p class="d-row why"><span class="d-tag">Why it matters</span> For a record of family gift-giving, discretion is the product.</p>
           </article>
         </div>
         <h3 style="margin-top:var(--space-4);" data-reveal>The alternates, side by side</h3>
@@ -434,57 +438,12 @@
       </div>
     </section>
 
-    <section class="cs-section" id="product">
-      <div class="wrap">
-        <div class="cs-cols">
-          <div data-reveal>
-            <div class="cs-label"><span class="idx">08</span><span class="eyebrow" style="margin:0;">Product Decisions</span></div>
-            <h2>The Calls That Made It a Product</h2>
-          </div>
-          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <p>Beyond the screen-level trade-offs, a handful of decisions shaped what Shagunly actually <em>is</em> — each a product call before it was a design or engineering one.</p>
-          </div>
-        </div>
-        <div class="decision-grid">
-          <article class="decision-card" data-reveal>
-            <h3 class="decision-title"><span class="idx">P1</span> The reciprocity engine</h3>
-            <p class="d-row why">One shared lookup answers "what did this person last give us?" everywhere — home banner, gift suggestions, reminders. It prefers a same-occasion match (their wedding &rarr; your wedding) before falling back to most recent, and every name comparison flows through one normalisation rule, so "Anita", "anita " and "ANITA" are one person.</p>
-            <p class="d-row shipped"><span class="d-tag">Why it matters</span> When grouping logic lives in five places, it disagrees in five ways. Here it can't.</p>
-          </article>
-          <article class="decision-card" data-reveal data-reveal-delay="0.06">
-            <h3 class="decision-title"><span class="idx">P2</span> Hosted occasions &mdash; flipping the book</h3>
-            <p class="d-row why">Tracking apps assume you're always the giver. But when <em>you</em> host Dad's 60th, gifts flow toward your family. Marking an occasion "My family's" flips the perspective: the CTA becomes <strong>Log gifts received</strong>, entries default to incoming, the "no gift yet" urgency disappears, and the reciprocity line hides &mdash; the guest of honour is not a prior giver.</p>
-            <p class="d-row shipped"><span class="d-tag">Why it matters</span> One boolean, but it required rethinking every screen's assumptions.</p>
-          </article>
-          <article class="decision-card" data-reveal data-reveal-delay="0.12">
-            <h3 class="decision-title"><span class="idx">P3</span> Family sharing, with manners</h3>
-            <p class="d-row why">A household keeps one gift book. Anyone joins with a six-letter share code, and every entry shows who logged it. The rule that makes it work socially: <strong>only the author can edit a record &mdash; everyone else can ask.</strong> Change requests queue on the author's home screen to approve or decline.</p>
-            <p class="d-row shipped"><span class="d-tag">Why it matters</span> Enforced twice &mdash; in the UI, and in Postgres row-level security with a <code>SECURITY DEFINER</code> function that verifies ownership server-side. A hacked client changes nothing.</p>
-          </article>
-          <article class="decision-card" data-reveal>
-            <h3 class="decision-title"><span class="idx">P4</span> Wedding-season speed</h3>
-            <p class="d-row why">Batch entry ("Save &amp; Add Another" keeps the occasion and date, resets the person), live Indian digit grouping (&#8377;1,00,000 as you type), one-tap auspicious amounts, camera capture at the door, and a picker that turns a typed one-off occasion into a saved one without leaving the form.</p>
-            <p class="d-row shipped"><span class="d-tag">Why it matters</span> The app is used standing up, in a crowd, mid-celebration &mdash; or not at all.</p>
-          </article>
-          <article class="decision-card" data-reveal data-reveal-delay="0.06">
-            <h3 class="decision-title"><span class="idx">P5</span> Shagun Wrapped</h3>
-            <p class="d-row why">The year in gifts &mdash; totals, closest exchange, most generous moment &mdash; as a full-screen story.</p>
-            <p class="d-row shipped"><span class="d-tag">Why it matters</span> A ledger app that earns a screenshot.</p>
-          </article>
-          <article class="decision-card" data-reveal data-reveal-delay="0.12">
-            <h3 class="decision-title"><span class="idx">P6</span> Privacy as a feature</h3>
-            <p class="d-row why">No analytics SDKs, no ads, no tracking. Photos never leave the user's account; export ships every record as spreadsheets in two taps; delete-account removes everything atomically. The privacy policy is plain language on purpose, with a section explaining exactly what family members can and cannot see.</p>
-            <p class="d-row shipped"><span class="d-tag">Why it matters</span> For a record of family gift-giving, discretion is the product.</p>
-          </article>
-        </div>
-      </div>
-    </section>
 
     <section class="cs-section" id="handoff">
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">09</span><span class="eyebrow" style="margin:0;">Handoff</span></div>
+            <div class="cs-label"><span class="idx">07</span><span class="eyebrow" style="margin:0;">Handoff</span></div>
             <h2>Figma → Spec → AI Build</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -504,7 +463,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">10</span><span class="eyebrow" style="margin:0;">Building It</span></div>
+            <div class="cs-label"><span class="idx">08</span><span class="eyebrow" style="margin:0;">Building It</span></div>
             <h2>Directing the Build, Not Designing in Code</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -514,7 +473,7 @@
             <ul>
               <li>I thought in <strong>components and states</strong> — the same mental model as the Figma library I'd already built: "this view has a read state and an edit state," not "write a SwiftUI struct"</li>
               <li>Every change followed the same loop: <strong>describe the change → review the code → paste it into Xcode → build → test on my own device</strong></li>
-              <li>Changes were batched and reviewed as complete file overwrites, not tiny patches — closer to reviewing a full component than debugging a line</li>
+              <li>Changes were reviewed as complete file overwrites — closer to reviewing a component than debugging a line</li>
             </ul>
             <h3>What this actually produced</h3>
             <p>Not just prototypes:</p>
@@ -548,75 +507,39 @@
         </div>
         </div>
       </div>
+        <h3 style="margin-top:var(--space-4);" data-reveal>The bugs that mattered were the quiet ones</h3>
+        <div class="cs-prose" data-reveal>
+          <ul>
+            <li><strong>The nil that wasn’t null.</strong> Swift’s synthesized <code>Encodable</code> omits nil keys, so clearing a photo or a note silently survived in Postgres — the classic PATCH-semantics trap. Fixed with explicit payloads that write SQL <code>NULL</code> on purpose, now across all five mutating tables.</li>
+            <li><strong>Scope-aware data, scope-blind reminders.</strong> Family sharing filters every query by the active book, but the reminder scheduler cancels all pending notifications before re-adding — so feeding it the filtered list silently wiped the other book’s reminders. Reminders now reschedule from an unscoped fetch.</li>
+            <li><strong>Deletion without data loss.</strong> Deleting an occasion unlinks its gifts rather than destroying them; deleting an account runs one atomic edge function. Every destructive path answers “what happens to everyone else’s data?” first.</li>
+          </ul>
+          <p class="callout">These aren’t things I coded. They’re things I had to understand well enough to direct.</p>
+          <p>It shipped the way real software does: tested on TestFlight with family as real external testers, where the read/edit split and the forgot-password flow both came out of that feedback loop — then through full App Review to the <a href="https://apps.apple.com/us/app/shagunly/id6783436742" target="_blank" rel="noopener">App Store</a>.</p>
+        </div>
     </section>
 
-    <section class="cs-section" id="judgment">
-      <div class="wrap">
-        <div class="cs-cols">
-          <div data-reveal>
-            <div class="cs-label"><span class="idx">11</span><span class="eyebrow" style="margin:0;">Engineering Judgment</span></div>
-            <h2>Real Problems, Solved Without Writing Code</h2>
-          </div>
-          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <p>Directing a build doesn't mean skipping the hard parts &mdash; it means understanding them well enough to catch them. The bugs that mattered were the quiet ones:</p>
-            <ul>
-              <li><strong>The nil that wasn't null.</strong> Swift's synthesized <code>Encodable</code> omits <code>nil</code> keys, so clearing a photo or a note silently survived in Postgres &mdash; the classic PATCH-semantics trap. Fixed with explicit update payloads that encode every field, writing SQL <code>NULL</code> on purpose. That discipline now covers all five mutating tables.</li>
-              <li><strong>Scope-aware data, scope-blind reminders.</strong> Family sharing filters every query by the active book. The reminder scheduler cancels all pending notifications before re-adding &mdash; so feeding it the filtered list silently wiped the <em>other</em> book's reminders. Caught in review; reminders now reschedule from an unscoped fetch.</li>
-              <li><strong>Making Google say "Shagunly."</strong> Supabase's web-redirect OAuth shows users the raw backend domain on Google's account picker. Rebuilt sign-in on the native GoogleSignIn SDK &mdash; the same <code>signInWithIdToken</code> path as Apple &mdash; so auth is branded, in-app and browser-free.</li>
-              <li><strong>The deployment-target backlash.</strong> Early users on older iPhones couldn't install at all: the target was accidentally pinned to the newest OS. Audited the real API floor, dropped it to iOS 17, shipped a same-day fix &mdash; newer devices kept the Liquid Glass look, older users finally got in.</li>
-              <li><strong>Deletion without data loss.</strong> Deleting an occasion unlinks its gifts rather than destroying them; deleting a family unlinks members' entries; deleting an account runs one atomic edge function. Every destructive path answers "what happens to everyone else's data?" first.</li>
-            </ul>
-            <p class="callout">These aren't things I coded &mdash; they're things I had to understand well enough to direct, and to catch when the build got them subtly wrong.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="cs-section" id="testing">
-      <div class="wrap">
-        <div class="cs-cols">
-          <div data-reveal>
-            <div class="cs-label"><span class="idx">12</span><span class="eyebrow" style="margin:0;">Testing &amp; Validation</span></div>
-            <h2>Real Testers, Real Feedback Loop</h2>
-          </div>
-          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <p>Shagunly was tested on TestFlight with family as real, external testers — not synthetic QA. Build 2 cleared Apple's Beta App Review, and that feedback loop directly shaped Build 3 (the read/edit view split and forgot-password flow both came out of it). The app has since cleared full App Review and is <a href="https://apps.apple.com/us/app/shagunly/id6783436742" target="_blank" rel="noopener" style="color:var(--accent);">live on the App Store ↗</a>.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="cs-section" id="next">
-      <div class="wrap">
-        <div class="cs-cols">
-          <div data-reveal>
-            <div class="cs-label"><span class="idx">13</span><span class="eyebrow" style="margin:0;">What's Next</span></div>
-            <h2>Beyond the Launch</h2>
-          </div>
-          <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <ul>
-              <li><strong>Calendar sync</strong> &mdash; occasions where people already look for them</li>
-              <li><strong>A shareable Wrapped card</strong> &mdash; the year in gifts, built to send</li>
-              <li><strong>Per-relationship insights</strong> &mdash; patterns across a single relationship over time</li>
-              <li><strong>Home-screen widgets</strong> &mdash; the next occasion at a glance</li>
-              <li><strong>Hindi localisation</strong></li>
-              <li><strong>Android</strong> &mdash; already scaffolded in Flutter against the same Supabase backend</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="cs-section" id="reflection">
       <div class="wrap">
+        <h3 data-reveal>Beyond the launch</h3>
+        <div class="cs-prose" data-reveal>
+          <ul>
+            <li>Calendar sync, home-screen widgets, and a shareable Wrapped card</li>
+            <li>Per-relationship insights — patterns across a single relationship over time</li>
+            <li>Hindi localisation, and Android — already scaffolded in Flutter against the same Supabase backend</li>
+          </ul>
+        </div>
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">14</span><span class="eyebrow" style="margin:0;">Reflection</span></div>
+            <div class="cs-label"><span class="idx">09</span><span class="eyebrow" style="margin:0;">Reflection</span></div>
             <h2>Product Judgment, End to End</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <p>Shagunly is as much a case study in <strong>product judgment</strong> as it is in interface design. The interesting decisions weren't about corner radii — they were things like: rebuild native or stay web? Strip the paywall or protect revenue during validation? Ship a calm read-only view or a more powerful but noisier editable one by default?</p>
-            <p>Directing an AI to build the app didn't replace design thinking — it removed the traditional bottleneck between having a decision and seeing it live in a real, installable product that real people could test. It let me stay end-to-end: the same person who decided <em>what</em> to build also shipped <em>how</em> it works.</p>
+            <p>The interesting decisions weren’t about corner radii. Rebuild native or stay web? Strip the paywall or protect revenue during validation? Ship a calm read-only view or a noisier editable one?</p>
+            <p>Directing an AI didn’t replace design thinking — it removed the bottleneck between making a decision and seeing it live in a real, installable product. The same person who decided what to build also shipped how it works.</p>
             <p class="muted">Shagunly is out in the world. <a href="https://apps.apple.com/us/app/shagunly/id6783436742" target="_blank" rel="noopener" style="color:var(--accent);">Get it on the App Store ↗</a></p>
           </div>
         </div>

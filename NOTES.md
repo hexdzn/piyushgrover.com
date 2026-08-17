@@ -1427,3 +1427,45 @@ iPad silhouette.
      sections (~13 min read) against 710 for the next longest case study —
      4x. The feedback that it is too verbose is quantitatively fair. Proposed
      options put to Piyush; no content cut made unilaterally.
+
+## Round 40 — Shagunly condensed (2026-08-07)
+
+232. **Acted on the designer feedback that the page is too verbose.** It was
+     2,834 words across 14 sections against 710 for the next longest case
+     study — 4x everything else on the site. Now **2,062 words across 9
+     sections (-27%)**.
+233. **Merges (14 -> 9):**
+     - `principles` -> `process`. Two of its three bullets survived; "calm by
+       default, read-only detail" was cut because it restated decision D3.
+     - `product` -> `decisions`. These were the same idea twice — "here's a
+       call I made and why" in two formats, 813 words combined.
+     - `judgment` + `testing` -> `building`. All three were about the build;
+       splitting them across three sections made the page feel longer than it
+       was.
+     - `next` -> `reflection`, roadmap first then the closing thought.
+234. **Cuts within the merges.** The six D cards were compressed roughly 30%
+     each. Of the six P cards, four survived — P1 reciprocity engine, P2
+     hosted occasions, P3 family sharing/RLS, P6 privacy. Dropped P4
+     (wedding-season speed, overlapping D1/D5 — its best detail, live Indian
+     digit grouping, was folded into D1) and P5 (Shagun Wrapped, thin, and
+     already in the roadmap). Engineering Judgment kept 3 of 5 war stories.
+235. **Prose trimmed** in overview, problem, process, building and reflection.
+     The redundant "a problem I understood firsthand" line went — it now
+     restates the father callout added in round 35.
+236. **One intended cut deliberately abandoned.** I had flagged "The home
+     screen surfaces what matters first…" as a duplicated recap paragraph. It
+     is not a paragraph — it's the `data-caption` text inside the device
+     viewer, which swaps per screen. Deleting it would have silently broken
+     the viewer's captions. Caught because the regex didn't match and I
+     checked why rather than forcing it.
+237. **Two scripted edits failed safely and are worth noting for next time.**
+     Exact-string replacement asserted on entity encoding — the file uses
+     literal curly quotes, not `&rsquo;` — and three regexes missed because
+     the paragraphs contain inline `<strong>` tags. Anchoring on a distinctive
+     prefix with `.*?</p>` is the reliable pattern here.
+238. **Rail rebuilt from document order** and section labels renumbered
+     programmatically, so nothing points at a deleted section.
+239. **Verified**: 9 sections, 9/9 rail anchors resolve, 0 orphan `#` links,
+     42 images with 0 broken, device viewer and its 4 captions intact, 10
+     decision cards, closing grid and icon strip present, 4 App Store links
+     live, no horizontal scroll at 320 / 390 / 768 / 1280 / 1920px.
