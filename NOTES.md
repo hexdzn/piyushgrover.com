@@ -1500,3 +1500,29 @@ iPad silhouette.
      rail anchors. **Zero failures.** Also confirmed on all 7 case studies at
      1440px that the rail occupies 116-316px and content starts at 356px,
      with no overlap.
+
+## Round 42 — Prev/next columns rebalanced (2026-08-07)
+
+245. **Round 39's alignment fix over-corrected.** I put the 240px rail offset
+     on `.pn-nav a:first-child`. But the grid is `1fr 1fr` of the *full*
+     element width, so padding inside a cell eats that cell's text area
+     rather than shifting the split. Measured at 1440px and 2000px: "prev"
+     had **308px** of text width against "next"'s **548px**, so a long title
+     ("LinkedIn — Commission Calculation") wrapped to three lines beside a
+     one-line title. Visibly lopsided.
+246. **Fix**: move the indent from the first cell to `.pn-nav` itself, via
+     `padding-inline`. The two `1fr` halves then split what *remains*, so
+     both cells get identical text width, and the block's left edge still
+     lands on the content column.
+247. **Verified** at 390 / 1100 / 1280 / 1440 / 2000px: text widths identical
+     in both cells at every width (350/350, 474/474, 437/437, 452/452), left
+     edge matches the article column exactly, no horizontal scroll. Swept all
+     7 case studies at 1440px — balanced, aligned, no dead anchors.
+248. **One deliberate visual change**: the hover background on each half now
+     stops at the content column instead of running to the page edge, because
+     the padding moved to the container. Arguably tidier; flagging it as a
+     change rather than an accident.
+249. **Note on the wrap that remains**: "LinkedIn — Commission Calculation"
+     still takes two lines at wide viewports. That is simply a long title in
+     a half-width column, not a bug — it now has exactly the same room as the
+     title opposite it.

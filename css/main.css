@@ -627,24 +627,26 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
   display: grid;
   grid-template-columns: 1fr 1fr;
   border-top: 1px solid var(--line);
+  /* Indent the block to the content column, so the two 1fr halves split what
+     REMAINS and both titles get equal room. Padding the first cell instead
+     left "prev" with 308px of text against "next"'s 548px. */
+  padding-inline: calc(max((100vw - var(--w-max)) / 2, 0px) + var(--pad-x));
 }
 .pn-nav a {
-  padding: clamp(2.2rem, 6vw, 4rem) var(--pad-x);
+  padding-block: clamp(2.2rem, 6vw, 4rem);
+  padding-inline: 0;
   display: flex; flex-direction: column; gap: 0.5rem;
   transition: background-color 0.3s ease;
 }
-/* .pn-nav is full-bleed but .wrap is max-width and centred, so above 1320px
-   the two drifted apart. Same centring formula the rail uses, applied to the
-   outer edges only — the inner edges meet at the divider. */
-.pn-nav a:first-child { padding-left: calc(max((100vw - var(--w-max)) / 2, 0px) + var(--pad-x)); }
-.pn-nav a:last-child { padding-right: calc(max((100vw - var(--w-max)) / 2, 0px) + var(--pad-x)); }
+.pn-nav a:first-child { padding-right: var(--space-3); }
 .pn-nav a:hover { background: var(--bg-elev); }
-.pn-nav a + a { border-left: 1px solid var(--line); text-align: right; align-items: flex-end; }
+.pn-nav a + a { border-left: 1px solid var(--line); text-align: right; align-items: flex-end; padding-left: var(--space-3); }
 .pn-nav .pn-dir { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-muted); }
 .pn-nav .pn-title { font-family: var(--font-display); font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 600; letter-spacing: -0.02em; }
 @media (max-width: 640px) {
   .pn-nav { grid-template-columns: 1fr; }
-  .pn-nav a + a { border-left: none; border-top: 1px solid var(--line); }
+  .pn-nav a + a { border-left: none; border-top: 1px solid var(--line); padding-left: 0; }
+  .pn-nav a:first-child { padding-right: 0; }
 }
 
 /* ---------- Galleries (playground) ---------- */
@@ -757,7 +759,7 @@ section[id] { scroll-margin-top: 95px; }
   /* The prev/next nav and the footer sit outside <main>, so they missed the
      rail offset above and their text stepped 240px left of every other block
      on the page. Match the article column so the page keeps one left edge. */
-  body.has-rail .pn-nav a:first-child { padding-left: calc(max((100vw - var(--w-max)) / 2, 0px) + var(--pad-x) + 240px); }
+  body.has-rail .pn-nav { padding-left: calc(max((100vw - var(--w-max)) / 2, 0px) + var(--pad-x) + 240px); }
   body.has-rail .site-foot > .wrap { padding-left: calc(var(--pad-x) + 240px); }
 }
 
