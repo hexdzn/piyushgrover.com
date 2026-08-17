@@ -1469,3 +1469,34 @@ iPad silhouette.
      42 images with 0 broken, device viewer and its 4 captions intact, 10
      decision cards, closing grid and icon strip present, 4 App Store links
      live, no horizontal scroll at 320 / 390 / 768 / 1280 / 1920px.
+
+## Round 41 — Layout break fixed (my bug), Shagunly trimmed further (2026-08-07)
+
+240. **I broke the Shagunly layout in round 40.** When merging sections I
+     inserted the moved blocks by appending before `</section>` — which is
+     *after* `.wrap` closes. Content outside `.wrap` gets no max-width, no
+     padding and no rail offset, so it rendered full-bleed from x=0 and sat
+     directly on top of the fixed chapter rail. Affected the merged
+     Principles block in `process` and the whole Engineering Judgment block
+     in `building` (1,590 chars of text overlapping the rail).
+241. **Fixed** by relocating both blocks inside the `.wrap` (the wrap closes
+     at 6-space indent; everything after it was moved before it). Verified
+     structurally: a parser that strips each section's `.wrap` subtree and
+     checks for leftover text now reports nothing outside on any section.
+242. **Lesson for future scripted merges**: inserting before `</section>`
+     is wrong for this markup. Content must go before the `.wrap` closing
+     `</div>`. The structural check in #241 is the way to catch it — it is
+     cheap and would have caught this immediately.
+243. **Shagunly trimmed again** per feedback that Building still read long:
+     merged the two intro paragraphs, collapsed the three working-loop
+     bullets into one, dropped two of five "what this produced" bullets (the
+     backend one, and the app-icon one which the icon strip below already
+     shows), and cut the third war story. Building 435 -> 317 words.
+     **Page total now 1,944 words, down from 2,834 originally (-31%),
+     across 9 sections instead of 14.**
+244. **Full layout sweep, 22 page x width combinations** (320 and 1440px
+     across all 11 pages), checking three things at once: content cut off
+     past the viewport, elements colliding with the fixed rail, and dead
+     rail anchors. **Zero failures.** Also confirmed on all 7 case studies at
+     1440px that the rail occupies 116-316px and content starts at 356px,
+     with no overlap.

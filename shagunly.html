@@ -219,7 +219,6 @@
           <figure class="fig" style="margin:0;"><img src="img/shagunly/design/lofi-capture-flow.svg" width="1180" height="460" alt="Low-fidelity capture flow — four steps from home to updated home" loading="lazy"><figcaption>Capture path, four taps</figcaption></figure>
           <figure class="fig" style="margin:0;"><img src="img/shagunly/design/lofi-auth-occasions.svg" width="1180" height="560" alt="Low-fidelity wireframes — sign in, occasions list and occasion detail" loading="lazy"><figcaption>Auth, occasions, detail</figcaption></figure>
         </div>
-      </div>
         <h3 style="margin-top:var(--space-4);" data-reveal>Principles I held to</h3>
         <div class="cs-prose" data-reveal>
           <ul>
@@ -227,6 +226,7 @@
             <li><strong>Free first, monetize later</strong> — I stripped the paywall entirely during validation so nothing got in the way of real usage feedback</li>
           </ul>
         </div>
+      </div>
     </section>
 
     <section class="cs-section" id="system">
@@ -467,22 +467,18 @@
             <h2>Directing the Build, Not Designing in Code</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <p>With the design settled in Figma, the build became an execution problem — the part of the story most portfolios don't tell, and increasingly the part hiring managers ask about.</p>
-            <p>I have no coding background. Every screen, flow, and backend interaction was built by directing Claude against the Figma spec — describing intent, reviewing output, iterating — the same way I'd direct an engineer, but faster and entirely in my own hands.</p>
+            <p>I have no coding background. With the design settled in Figma, every screen, flow and backend interaction was built by directing Claude against the spec — describing intent, reviewing output, iterating — the same way I’d direct an engineer.</p>
             <h3>How I actually worked</h3>
             <ul>
               <li>I thought in <strong>components and states</strong> — the same mental model as the Figma library I'd already built: "this view has a read state and an edit state," not "write a SwiftUI struct"</li>
-              <li>Every change followed the same loop: <strong>describe the change → review the code → paste it into Xcode → build → test on my own device</strong></li>
-              <li>Changes were reviewed as complete file overwrites — closer to reviewing a component than debugging a line</li>
+              <li>Every change followed one loop: <strong>describe it → review the code → build → test on device</strong>, reviewed as complete file overwrites rather than line-by-line patches</li>
             </ul>
             <h3>What this actually produced</h3>
             <p>Not just prototypes:</p>
             <ul>
               <li>A working auth system with a real forgot-password flow via Supabase</li>
               <li>A new read/edit view architecture (<code>EntryDetailView</code>) built and wired into the app's root navigation</li>
-              <li>A backend on Supabase, with admin accounts, a dedicated reviewer test account, and a hosted privacy policy for App Store compliance</li>
               <li>A build that <strong>cleared Apple's Beta App Review, then full App Review</strong> — live on the App Store today</li>
-              <li>An app icon designed across all three iOS appearance modes — default, dark, and tinted</li>
             </ul>
           </div>
         </div>
@@ -506,17 +502,16 @@
           </figure>
         </div>
         </div>
-      </div>
         <h3 style="margin-top:var(--space-4);" data-reveal>The bugs that mattered were the quiet ones</h3>
         <div class="cs-prose" data-reveal>
           <ul>
             <li><strong>The nil that wasn’t null.</strong> Swift’s synthesized <code>Encodable</code> omits nil keys, so clearing a photo or a note silently survived in Postgres — the classic PATCH-semantics trap. Fixed with explicit payloads that write SQL <code>NULL</code> on purpose, now across all five mutating tables.</li>
             <li><strong>Scope-aware data, scope-blind reminders.</strong> Family sharing filters every query by the active book, but the reminder scheduler cancels all pending notifications before re-adding — so feeding it the filtered list silently wiped the other book’s reminders. Reminders now reschedule from an unscoped fetch.</li>
-            <li><strong>Deletion without data loss.</strong> Deleting an occasion unlinks its gifts rather than destroying them; deleting an account runs one atomic edge function. Every destructive path answers “what happens to everyone else’s data?” first.</li>
           </ul>
           <p class="callout">These aren’t things I coded. They’re things I had to understand well enough to direct.</p>
           <p>It shipped the way real software does: tested on TestFlight with family as real external testers, where the read/edit split and the forgot-password flow both came out of that feedback loop — then through full App Review to the <a href="https://apps.apple.com/us/app/shagunly/id6783436742" target="_blank" rel="noopener">App Store</a>.</p>
         </div>
+      </div>
     </section>
 
 
