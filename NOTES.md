@@ -1558,3 +1558,39 @@ iPad silhouette.
      elements, zero rail collisions; decision grid flows 1 -> 2 -> 3
      columns, exploration grid 1 -> 2. Structural check confirms all section
      content sits inside .wrap (the round-41 lesson, now a standing check).
+
+## Round 44 — Reflection section order bug, further cuts (2026-08-08)
+
+256. **BUG (user screenshot): "Beyond the launch" rendered ABOVE its own
+     section label.** Round 40 merged `next` into `reflection` by inserting
+     the roadmap before `<div class="cs-cols">` — but that div *contains* the
+     section label and h2. So the reading order was roadmap → "09 REFLECTION"
+     → "Product Judgment, End to End", which is backwards. Moved it after the
+     cs-cols and compressed the three-bullet roadmap to a single muted line.
+257. **Also fixed a silent failure from round 43**: the regex meant to drop
+     the one-paragraph "Research & Framing" heading never matched, so the
+     heading was still live. Process is now one flowing block of three
+     paragraphs with no sub-headings at all (four headings for three
+     paragraphs was most of what made it feel heavy). 218 → 180 words, and
+     the orphaned "Principles I held to" block went with it.
+258. **Building cut hard**: the "How I actually worked" bullets and the
+     "What this actually produced" list collapsed into two paragraphs, and
+     the war stories went from two to one (the nil-vs-NULL PATCH trap, the
+     sharpest of them). Kept the callout. 317 → 172 words.
+259. **Page total now 1,272 words — 55% below the original 2,834** — same 9
+     sections, all 41 images intact.
+260. **Verified**: all section content still inside `.wrap`; figure counts
+     unchanged per section (process 3, building 4, reflection 3, decisions 6,
+     screens 12, system 8, handoff 1); reflection label now sits above the
+     roadmap line at every width.
+261. **Interaction re-tested**: device viewer correct across phone/tablet ×
+     home/occasions/new-entry with the companion frame only on Occasions;
+     lightbox opens and closes on the decisions grid; **all rail links settle
+     at exactly 95px**. Worth recording that the first rail measurements
+     looked wrong (455–481px) purely because smooth scroll was still in
+     flight — polling until scrollY stabilises is the correct way to measure
+     this, not a fixed wait.
+262. **Responsive sweep at 320/390/768/1180/1440/1920px**: zero cut-off
+     elements, zero rail collisions, zero dead anchors, zero broken images.
+     Page height at 1440px is now 14,694px, down from ~20,000 before the
+     round-43/44 cuts.

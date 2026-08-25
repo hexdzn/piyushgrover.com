@@ -200,10 +200,9 @@
             <h2>Insight-Driven, Then a Hard Platform Call</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <h3 style="margin-top:0;">Research &amp; Framing</h3>
-            <p>Rather than a formal research phase, this was insight-driven design — grounded in lived experience of the problem and validated early with family as real users. Every decision could be pressure-tested against one question: would my own family actually use this at a wedding?</p>
-            <h3>From PWA to Native</h3>
-            <p>Shagunly began as a progressive web app — but a PWA has real ceilings here: no App Store presence, weaker offline reliability, a second-class feel for something used one-handed on spotty venue wifi. I rebuilt it native in SwiftUI, trading faster iteration for a proper install — the kind of build-vs-rebuild call a product designer has to own.</p>
+            <p>No formal research phase — this was insight-driven design, grounded in lived experience and validated early with family as real users. Every decision got pressure-tested against one question: would my own family actually use this at a wedding?</p>
+            <p>It began as a progressive web app, but a PWA has real ceilings here — no App Store presence, weaker offline reliability, a second-class feel for something used one-handed on spotty venue wifi. I rebuilt native in SwiftUI: the kind of build-vs-rebuild call a product designer has to own.</p>
+            <p>Structure came before style. Layout and hierarchy were resolved as greyscale wireframes first — one primary question per screen, direction chosen before amount. The visual language came later, on top of a structure that already worked.</p>
           </div>
         </div>
         <h3 style="margin-top:var(--space-4);" data-reveal>Structure before style</h3>
@@ -217,13 +216,6 @@
         <div class="fig-grid cols-2" data-reveal>
           <figure class="fig" style="margin:0;"><img src="img/shagunly/design/lofi-capture-flow.svg" width="1180" height="460" alt="Low-fidelity capture flow — four steps from home to updated home" loading="lazy"><figcaption>Capture path, four taps</figcaption></figure>
           <figure class="fig" style="margin:0;"><img src="img/shagunly/design/lofi-auth-occasions.svg" width="1180" height="560" alt="Low-fidelity wireframes — sign in, occasions list and occasion detail" loading="lazy"><figcaption>Auth, occasions, detail</figcaption></figure>
-        </div>
-        <h3 style="margin-top:var(--space-4);" data-reveal>Principles I held to</h3>
-        <div class="cs-prose" data-reveal>
-          <ul>
-            <li><strong>Culturally specific copy</strong> — placeholder text like “Diwali, a wedding…” instead of generic examples, so the product reads as made for this context, not adapted to it</li>
-            <li><strong>Free first, monetize later</strong> — I stripped the paywall entirely during validation so nothing got in the way of real usage feedback</li>
-          </ul>
         </div>
       </div>
     </section>
@@ -414,19 +406,8 @@
             <h2>Directing the Build, Not Designing in Code</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <p>I have no coding background. With the design settled in Figma, every screen, flow and backend interaction was built by directing Claude against the spec — describing intent, reviewing output, iterating — the same way I’d direct an engineer.</p>
-            <h3>How I actually worked</h3>
-            <ul>
-              <li>I thought in <strong>components and states</strong> — the same mental model as the Figma library I'd already built: "this view has a read state and an edit state," not "write a SwiftUI struct"</li>
-              <li>Every change followed one loop: <strong>describe it → review the code → build → test on device</strong>, reviewed as complete file overwrites rather than line-by-line patches</li>
-            </ul>
-            <h3>What this actually produced</h3>
-            <p>Not just prototypes:</p>
-            <ul>
-              <li>A working auth system with a real forgot-password flow via Supabase</li>
-              <li>A new read/edit view architecture (<code>EntryDetailView</code>) built and wired into the app's root navigation</li>
-              <li>A build that <strong>cleared Apple's Beta App Review, then full App Review</strong> — live on the App Store today</li>
-            </ul>
+            <p>I have no coding background. Every screen, flow and backend interaction was built by directing Claude against the Figma spec — describing intent, reviewing output, iterating — the same way I&rsquo;d direct an engineer. I thought in components and states, not SwiftUI structs.</p>
+            <p>What that produced, not just prototypes: a working auth system with a real forgot-password flow on Supabase, a read/edit view architecture wired into the app&rsquo;s root navigation, and a build that cleared Beta App Review and then full App Review — tested on TestFlight with family as real external testers along the way.</p>
           </div>
         </div>
         <div class="build-artifacts" data-reveal>
@@ -451,12 +432,8 @@
         </div>
         <h3 style="margin-top:var(--space-4);" data-reveal>The bugs that mattered were the quiet ones</h3>
         <div class="cs-prose" data-reveal>
-          <ul>
-            <li><strong>The nil that wasn’t null.</strong> Swift’s synthesized <code>Encodable</code> omits nil keys, so clearing a photo or a note silently survived in Postgres — the classic PATCH-semantics trap. Fixed with explicit payloads that write SQL <code>NULL</code> on purpose, now across all five mutating tables.</li>
-            <li><strong>Scope-aware data, scope-blind reminders.</strong> Family sharing filters every query by the active book, but the reminder scheduler cancels all pending notifications before re-adding — so feeding it the filtered list silently wiped the other book’s reminders. Reminders now reschedule from an unscoped fetch.</li>
-          </ul>
-          <p class="callout">These aren’t things I coded. They’re things I had to understand well enough to direct.</p>
-          <p>It shipped the way real software does: tested on TestFlight with family as real external testers, where the read/edit split and the forgot-password flow both came out of that feedback loop — then through full App Review to the <a href="https://apps.apple.com/us/app/shagunly/id6783436742" target="_blank" rel="noopener">App Store</a>.</p>
+          <p>Swift&rsquo;s synthesized <code>Encodable</code> omits nil keys, so clearing a photo or a note silently survived in Postgres — the classic PATCH-semantics trap. Fixed with explicit payloads that write SQL <code>NULL</code> on purpose, now across all five mutating tables.</p>
+          <p class="callout">These aren&rsquo;t things I coded. They&rsquo;re things I had to understand well enough to direct.</p>
         </div>
       </div>
     </section>
@@ -466,14 +443,6 @@
 
     <section class="cs-section" id="reflection">
       <div class="wrap">
-        <h3 data-reveal>Beyond the launch</h3>
-        <div class="cs-prose" data-reveal>
-          <ul>
-            <li>Calendar sync, home-screen widgets, and a shareable Wrapped card</li>
-            <li>Per-relationship insights — patterns across a single relationship over time</li>
-            <li>Hindi localisation, and Android — already scaffolded in Flutter against the same Supabase backend</li>
-          </ul>
-        </div>
         <div class="cs-cols">
           <div data-reveal>
             <div class="cs-label"><span class="idx">09</span><span class="eyebrow" style="margin:0;">Reflection</span></div>
@@ -484,6 +453,10 @@
             <p>Directing an AI didn’t replace design thinking — it removed the bottleneck between making a decision and seeing it live in a real, installable product. The same person who decided what to build also shipped how it works.</p>
             <p class="muted">Shagunly is out in the world. <a href="https://apps.apple.com/us/app/shagunly/id6783436742" target="_blank" rel="noopener" style="color:var(--accent);">Get it on the App Store ↗</a></p>
           </div>
+        </div>
+
+        <div class="cs-prose" data-reveal style="margin-top:var(--space-3);">
+          <p class="muted">Next: calendar sync, widgets, a shareable Wrapped card, per-relationship insights, Hindi localisation — and Android, already scaffolded in Flutter on the same backend.</p>
         </div>
         <div class="closing-grid" data-reveal>
           <figure><img src="img/shagunly/screens/tablet-home.webp" width="1400" height="1867" alt="Shagunly on iPad — Home screen" loading="lazy"></figure>
