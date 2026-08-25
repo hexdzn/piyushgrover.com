@@ -1526,3 +1526,35 @@ iPad silhouette.
      still takes two lines at wide viewports. That is simply a long title in
      a half-width column, not a bug — it now has exactly the same room as the
      title opposite it.
+
+## Round 43 — Shagunly cut to the bone, interactions verified (2026-08-08)
+
+250. **Decisions rewritten per feedback ("very long and boring")**: the ten
+     three-row Considered/Shipped/Why cards became **seven one-line cards**
+     (607 -> 225 words). Kept: auspicious presets, relationships-as-balances,
+     direction-first, calm read/deliberate edit, flipping the book, one book
+     per family, privacy. Dropped as cards: D5 occasion linking (weak), D6
+     visual identity (already the Design System section's story), P1
+     reciprocity engine (its essence lives in the balances card).
+251. **The section's physical length was mostly figures, not words**: five
+     full-width exploration SVGs stacked vertically. Now four in a 2-col
+     grid (dropped exp-identity with its card); the two shipped-screen
+     fx-tilt shots stay as the closing pair. Page height at 1440px is down
+     roughly 2,500px.
+252. **Screens section**: the six-bullet list restated the device viewer's
+     own captions and the decision cards below it. Replaced with a
+     two-sentence intro (239 -> 157 words). Process: folded the one-paragraph
+     "Research & Framing" heading away and merged the two PWA paragraphs
+     (230 -> 218).
+253. **Page total now 1,468 words — 48% below the original 2,834** — across
+     the same 9 sections. Building (317w) is now the longest section; left
+     as-is since it was trimmed in round 41 and carries the war stories.
+254. **Interaction sweep, all passing**: device viewer stepped through
+     phone/tablet x home/people/occasions — right image every time, the
+     companion frame appears only on Occasions (2 frames) and collapses back
+     to 1; lightbox opens and closes on the new grid figures; 9/9 rail
+     anchors resolve; 41 images, 0 broken.
+255. **Responsive sweep at 320/390/768/1180/1440/1920px**: zero cut-off
+     elements, zero rail collisions; decision grid flows 1 -> 2 -> 3
+     columns, exploration grid 1 -> 2. Structural check confirms all section
+     content sits inside .wrap (the round-41 lesson, now a standing check).

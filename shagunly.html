@@ -203,8 +203,7 @@
             <h3 style="margin-top:0;">Research &amp; Framing</h3>
             <p>Rather than a formal research phase, this was insight-driven design — grounded in lived experience of the problem and validated early with family as real users. Every decision could be pressure-tested against one question: would my own family actually use this at a wedding?</p>
             <h3>From PWA to Native</h3>
-            <p>Shagunly began as a progressive web app. It worked, but a PWA has real ceilings here — no App Store presence, weaker offline reliability, and a second-class feel for something used mid-celebration, one-handed, on spotty venue wifi.</p>
-            <p>I rebuilt it native in SwiftUI — trading faster iteration for a proper install and a path to the App Store. That build-vs-rebuild call is the kind any product designer has to own.</p>
+            <p>Shagunly began as a progressive web app — but a PWA has real ceilings here: no App Store presence, weaker offline reliability, a second-class feel for something used one-handed on spotty venue wifi. I rebuilt it native in SwiftUI, trading faster iteration for a proper install — the kind of build-vs-rebuild call a product designer has to own.</p>
           </div>
         </div>
         <h3 style="margin-top:var(--space-4);" data-reveal>Structure before style</h3>
@@ -269,15 +268,8 @@
             <h2>Calm by Default, Fast Mid-Celebration</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <ul>
-              <li><strong>Home (Root view)</strong> — the day-to-day dashboard, scannable at a glance</li>
-              <li><strong>Entry detail</strong> — tap an entry for a clean read-only view; a pencil icon surfaces editing, keeping the default state calm and low-friction</li>
-              <li><strong>Add/edit entry</strong> — fast capture during a live event, minimal required fields, with auspicious-amount presets (₹501, ₹1,100, ₹2,100, ₹5,100)</li>
-              <li><strong>Occasions</strong> — entries are grouped by real-world context (a wedding, Diwali, a birthday), not just a flat list</li>
-              <li><strong>People</strong> — every relationship tracked as a running balance, with an at-a-glance "your turn" or "their turn" cue instead of a flat transaction list</li>
-              <li><strong>Auth</strong> — email/password with a forgot-password flow; Apple/Google Sign-In designed and scaffolded, gated on Apple Developer enrollment</li>
-            </ul>
-            <p>Shipped as a responsive iPad layout too — same flows, same data, adapted to a wider canvas rather than just stretched.</p>
+            <p>Five screens carry the whole app: Home, People, Occasions, entry detail and capture. Logging a shagun takes seconds — given or received, an auspicious preset, a person, an optional occasion.</p>
+            <p>Shipped as a responsive iPad layout too — same flows, adapted to a wider canvas rather than stretched. Explore both below.</p>
           </div>
         </div>
 
@@ -342,98 +334,53 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">06</span><span class="eyebrow" style="margin:0;">Design Decisions &amp; Trade-offs</span></div>
+            <div class="cs-label"><span class="idx">06</span><span class="eyebrow" style="margin:0;">Decisions</span></div>
             <h2>The Calls Behind the Screens</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
-            <p>Every screen above is the survivor of a set of options drawn out in Figma. The decisions that shaped Shagunly weren't visual polish — they were product calls about what the app should <em>feel like</em> to a family mid-celebration. What was on the table, what shipped, and why:</p>
+            <p>Every screen is the survivor of options drawn out in Figma. The calls that mattered:</p>
           </div>
         </div>
         <div class="decision-grid">
           <article class="decision-card" data-reveal>
-            <h3 class="decision-title"><span class="idx">D1</span> Amount entry</h3>
-            <p class="d-row"><span class="d-tag">Considered</span> A plain numeric field — fast to build, culturally blind.</p>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> One-tap auspicious presets — ₹501, ₹1,100, ₹2,100, ₹5,100 — with live Indian digit grouping (₹1,00,000 as you type).</p>
-            <p class="d-row why"><span class="d-tag">Why</span> Shagun amounts conventionally end in ₹1. Presets make the culturally correct amount the path of least resistance, and cut mid-event entry to a single tap.</p>
+            <h3 class="decision-title"><span class="idx">01</span> Auspicious presets</h3>
+            <p class="d-row why">Shagun amounts end in ₹1 by convention, so ₹501 / ₹1,100 / ₹2,100 sit above the keyboard — the culturally correct amount is one tap.</p>
           </article>
-          <article class="decision-card" data-reveal data-reveal-delay="0.06">
-            <h3 class="decision-title"><span class="idx">D2</span> The People screen</h3>
-            <p class="d-row"><span class="d-tag">Considered</span> A transaction log per contact — accurate, but reads like accounting.</p>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> A running balance per relationship, with a “your turn / their turn” cue.</p>
-            <p class="d-row why"><span class="d-tag">Why</span> Shagun is reciprocity, not bookkeeping. A relationship state answers the real question — where do we stand? — at a glance.</p>
+          <article class="decision-card" data-reveal data-reveal-delay="0.05">
+            <h3 class="decision-title"><span class="idx">02</span> Relationships, not ledgers</h3>
+            <p class="d-row why">Each person is a running balance with a &ldquo;your turn / their turn&rdquo; cue. Shagun is reciprocity, not bookkeeping.</p>
           </article>
-          <article class="decision-card" data-reveal data-reveal-delay="0.12">
-            <h3 class="decision-title"><span class="idx">D3</span> Entry detail</h3>
-            <p class="d-row"><span class="d-tag">Considered</span> Editable-by-default detail views — powerful, but noisy and risky.</p>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> Read-only by default; editing behind a deliberate pencil tap.</p>
-            <p class="d-row why"><span class="d-tag">Why</span> Most opens are checks, not changes — and a crowded function is no place for an accidental edit.</p>
+          <article class="decision-card" data-reveal data-reveal-delay="0.1">
+            <h3 class="decision-title"><span class="idx">03</span> Direction first</h3>
+            <p class="d-row why">Received / Given is the first, colour-coded choice — it&rsquo;s the meaning of the transaction, and it frames every field after it.</p>
           </article>
-          <article class="decision-card" data-reveal>
-            <h3 class="decision-title"><span class="idx">D4</span> Direction first</h3>
-            <p class="d-row"><span class="d-tag">Considered</span> Amount-first forms, with given/received as an afterthought toggle.</p>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> Received / Given as the first, colour-coded choice — green in, red out.</p>
-            <p class="d-row why"><span class="d-tag">Why</span> Direction is the meaning of the transaction. Committing it first frames every field that follows.</p>
+          <article class="decision-card" data-reveal data-reveal-delay="0.15">
+            <h3 class="decision-title"><span class="idx">04</span> Calm read, deliberate edit</h3>
+            <p class="d-row why">Detail views are read-only; editing hides behind a pencil tap. Most opens are checks — and a crowded function is no place for an accidental edit.</p>
           </article>
-          <article class="decision-card" data-reveal data-reveal-delay="0.06">
-            <h3 class="decision-title"><span class="idx">D5</span> Occasion linking</h3>
-            <p class="d-row"><span class="d-tag">Considered</span> Requiring an occasion on every entry — cleaner data, slower capture.</p>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> Occasion optional at capture, linkable when there’s time.</p>
-            <p class="d-row why"><span class="d-tag">Why</span> At a live event, speed beats structure.</p>
+          <article class="decision-card" data-reveal data-reveal-delay="0.2">
+            <h3 class="decision-title"><span class="idx">05</span> Flipping the book</h3>
+            <p class="d-row why">Host Dad&rsquo;s 60th and gifts flow <em>toward</em> you — marking an occasion &ldquo;my family&rsquo;s&rdquo; flips the whole app to logging gifts received. One boolean, every screen rethought.</p>
           </article>
-          <article class="decision-card" data-reveal data-reveal-delay="0.12">
-            <h3 class="decision-title"><span class="idx">D6</span> Visual identity</h3>
-            <p class="d-row"><span class="d-tag">Considered</span> Default system typography on a light canvas — native, but generic.</p>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> A serif display voice over a deep night palette with festive gradient accents.</p>
-            <p class="d-row why"><span class="d-tag">Why</span> The serif brings a sense of occasion to a money app; the dark canvas lets celebratory colour glow without shouting.</p>
+          <article class="decision-card" data-reveal data-reveal-delay="0.25">
+            <h3 class="decision-title"><span class="idx">06</span> One book per family</h3>
+            <p class="d-row why">A household shares one gift book by code. Only an entry&rsquo;s author can edit — everyone else can ask — enforced in the UI and again in Postgres row-level security.</p>
           </article>
-          <article class="decision-card" data-reveal>
-            <h3 class="decision-title"><span class="idx">P1</span> The reciprocity engine</h3>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> One shared lookup answers “what did this person last give us?” everywhere — home banner, gift suggestions, reminders. It prefers a same-occasion match before falling back to most recent, and every name comparison flows through one normalisation rule.</p>
-            <p class="d-row why"><span class="d-tag">Why it matters</span> Grouping logic in five places disagrees in five ways. Here it can’t.</p>
-          </article>
-          <article class="decision-card" data-reveal>
-            <h3 class="decision-title"><span class="idx">P2</span> Hosted occasions — flipping the book</h3>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> Tracking apps assume you’re always the giver. But when you host Dad’s 60th, gifts flow toward your family. Marking an occasion “My family’s” flips the perspective: the CTA becomes <em>Log gifts received</em>, entries default to incoming, and the reciprocity line hides — the guest of honour is not a prior giver.</p>
-            <p class="d-row why"><span class="d-tag">Why it matters</span> One boolean, but it required rethinking every screen’s assumptions.</p>
-          </article>
-          <article class="decision-card" data-reveal>
-            <h3 class="decision-title"><span class="idx">P3</span> Family sharing, with manners</h3>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> A household keeps one gift book. Anyone joins with a six-letter share code, and every entry shows who logged it. The rule that makes it work socially: only the author can edit a record — everyone else can ask, and requests queue for approval.</p>
-            <p class="d-row why"><span class="d-tag">Why it matters</span> Enforced twice — in the UI, and in Postgres row-level security that verifies ownership server-side. A hacked client changes nothing.</p>
-          </article>
-          <article class="decision-card" data-reveal>
-            <h3 class="decision-title"><span class="idx">P6</span> Privacy as a feature</h3>
-            <p class="d-row shipped"><span class="d-tag">Shipped</span> No analytics SDKs, no ads, no tracking. Photos never leave the user’s account, export ships every record in two taps, and delete-account removes everything atomically.</p>
-            <p class="d-row why"><span class="d-tag">Why it matters</span> For a record of family gift-giving, discretion is the product.</p>
+          <article class="decision-card" data-reveal data-reveal-delay="0.3">
+            <h3 class="decision-title"><span class="idx">07</span> Privacy as the product</h3>
+            <p class="d-row why">No analytics, no ads, no tracking. Export everything in two taps; delete removes it all atomically.</p>
           </article>
         </div>
         <h3 style="margin-top:var(--space-4);" data-reveal>The alternates, side by side</h3>
-        <div class="cs-prose" data-reveal>
-          <p>Each fork was drawn out in Figma before committing — the rejected option on the left, what shipped on the right.</p>
-        </div>
-        <figure class="fig" data-reveal>
-          <img src="img/shagunly/design/exp-amount-entry.svg" width="760" height="440" alt="Exploration — plain numeric field versus auspicious amount presets" loading="lazy">
-          <figcaption>D1 — plain field vs auspicious presets</figcaption>
-        </figure>
-        <figure class="fig" data-reveal>
-          <img src="img/shagunly/design/exp-people.svg" width="760" height="440" alt="Exploration — transaction log versus running relationship balance" loading="lazy">
-          <figcaption>D2 — transaction log vs running balance</figcaption>
-        </figure>
-        <figure class="fig" data-reveal>
-          <img src="img/shagunly/design/exp-entry-detail.svg" width="760" height="440" alt="Exploration — editable by default versus calm read-only detail" loading="lazy">
-          <figcaption>D3 — editable by default vs calm read state</figcaption>
-        </figure>
-        <figure class="fig" data-reveal>
-          <img src="img/shagunly/design/exp-direction-first.svg" width="760" height="440" alt="Exploration — amount-first capture versus direction-first capture" loading="lazy">
-          <figcaption>D4 — amount first vs direction first</figcaption>
-        </figure>
-        <figure class="fig" data-reveal>
-          <img src="img/shagunly/design/exp-identity.svg" width="760" height="440" alt="Exploration — system light identity versus serif night identity" loading="lazy">
-          <figcaption>D6 — system/light vs serif/night identity</figcaption>
-        </figure>
         <div class="fig-grid cols-2" data-reveal>
-          <figure class="fig fx-tilt" style="margin:0;"><img src="img/shagunly/screens/phone-new-entry.webp" width="1100" height="2390" alt="New Shagun entry screen — direction-first choice, auspicious presets, optional occasion" loading="lazy"><figcaption>D1 · D4 · D5 — direction-first entry, auspicious presets, optional occasion</figcaption></figure>
-          <figure class="fig fx-tilt" style="margin:0;"><img src="img/shagunly/screens/phone-people.webp" width="1100" height="2390" alt="People screen — running balances with your-turn / their-turn cues" loading="lazy"><figcaption>D2 — relationships as running balances, not transaction logs</figcaption></figure>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/exp-amount-entry.svg" width="760" height="440" alt="Exploration — plain numeric field versus auspicious amount presets" loading="lazy"><figcaption>Plain field vs auspicious presets</figcaption></figure>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/exp-people.svg" width="760" height="440" alt="Exploration — transaction log versus running relationship balance" loading="lazy"><figcaption>Transaction log vs running balance</figcaption></figure>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/exp-entry-detail.svg" width="760" height="440" alt="Exploration — editable by default versus calm read-only detail" loading="lazy"><figcaption>Editable by default vs calm read state</figcaption></figure>
+          <figure class="fig" style="margin:0;"><img src="img/shagunly/design/exp-direction-first.svg" width="760" height="440" alt="Exploration — amount-first capture versus direction-first capture" loading="lazy"><figcaption>Amount first vs direction first</figcaption></figure>
+        </div>
+        <div class="fig-grid cols-2" data-reveal>
+          <figure class="fig fx-tilt" style="margin:0;"><img src="img/shagunly/screens/phone-new-entry.webp" width="1100" height="2390" alt="New Shagun entry screen — direction-first choice, auspicious presets, optional occasion" loading="lazy"><figcaption>Shipped — direction-first entry with auspicious presets</figcaption></figure>
+          <figure class="fig fx-tilt" style="margin:0;"><img src="img/shagunly/screens/phone-people.webp" width="1100" height="2390" alt="People screen — running balances with your-turn / their-turn cues" loading="lazy"><figcaption>Shipped — relationships as running balances</figcaption></figure>
         </div>
       </div>
     </section>
