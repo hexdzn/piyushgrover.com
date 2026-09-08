@@ -1822,3 +1822,10 @@ iPad silhouette.
      moves. The particle field's cursor repulsion and click burst stay
      (that is the background, not the text). **Standing rule: no motion on
      the hero title.**
+
+## Round 49 — Footer Contact removed (2026-09-09)
+
+287. Piyush asked for the footer "Contact" item to go. Removed from the Menu
+     column on all ten pages that had it. The footer now reads Work · Not
+     Work · About · Resume. The email is still in the JSON-LD Person block
+     and in the egg toasts; nothing else linked to it.
