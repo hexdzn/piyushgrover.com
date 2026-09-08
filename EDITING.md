@@ -100,10 +100,9 @@ the same Google Drive URL. To change it, search the repo for
 `drive.google.com` and replace every occurrence (⌘F in the GitHub editor, one
 file at a time — there are eleven pages plus `404.html`).
 
-**Access:** the Drive file is set to "request access". Recruiters who aren't
-signed into Google see a sign-in wall first. If that costs you a call-back,
-set the file to "Anyone with the link — Viewer", or drop a PDF into the repo
-and point the link at `resume.pdf` instead.
+**Access:** the Drive file should stay on "Anyone with the link — Viewer".
+If it ever flips back to "request access", recruiters who aren't signed into
+Google hit a sign-in wall before they see anything.
 
 ### Change the page title or Google description
 
@@ -126,14 +125,19 @@ In `index.html`, find `project-row`. Each project is one block:
 ```html
 <a class="project-row" href="shagunly.html" data-preview="shagunly" data-cursor="view" data-reveal>
   <span class="num">01</span>
-  <span class="p-body"><span class="p-title">Shagunly</span><span class="p-meta">2026 · Founder, design &amp; build</span></span>
-  <span class="p-tag">iOS · Live on the App Store</span>
+  <span class="p-body"><span class="p-title">Shagunly</span><span class="p-meta">2026 · Founder, design &amp; build · iOS</span></span>
+  <span class="p-tag">Live on the App Store</span>
   <span class="p-arrow">↗</span>
 </a>
 ```
 
-`p-meta` is the small "year · role" line under the title. Keep it honest and
-update it when a role or date changes.
+`p-meta` is the small "year · role · industry" line under the title and
+`p-tag` is the one-line outcome on the right. Keep both honest — the outcome
+must be something the case study itself backs up — and update them when a
+role, date or status changes.
+
+The same facts appear in the **At a glance** block on `about.html`
+(`glance-grid` and `timeline`). When one changes, change both.
 
 To reorder, cut and paste whole blocks, then **renumber the `num` values** so
 they read 01, 02, 03, 04 down the page.

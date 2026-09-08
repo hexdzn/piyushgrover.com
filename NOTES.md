@@ -1769,3 +1769,46 @@ iPad silhouette.
      640px the tag now drops under the title (`grid-column: 2; grid-row: 2`,
      left-aligned) so title and meta keep the full width. Shagunly's meta
      also shortened to "2026 · Founder, design & build".
+
+## Round 47 — About at-a-glance, row outcomes, consistent openings, Not Work copy, hygiene (2026-09-09)
+
+279. **Piyush's calls on the round-46 list**: do 2, 3, 4, 6, 7. Resume stays
+     on Drive but he is making the link public (so the EDITING.md note now
+     says "keep it on Anyone with the link" rather than warning about the
+     gate). **No availability line — he is not looking for a change and
+     doesn't want it shown.** Don't add one.
+280. **Project rows now carry an outcome** in the right-hand slot, with the
+     industry folded into the meta line ("2021 · UI Designer · Neo banking").
+     Outcomes are lifted from each case study's own copy, nothing new:
+     Shagunly "Live on the App Store"; Nationwide "Core banking for 16M+
+     members" (hub overview); Rapipay "Responsive redesign delivered"
+     (outcomes section: restructured IA, bolder visual language, full
+     responsiveness); LinkedIn "Clarity that earned trust" (its outcomes
+     heading verbatim; the longer first draft wrapped the title at 1440px).
+     Nationwide's duration corrected to **3+ years** on the row — the hub
+     says 3+ for the engagement; the 2+ on Auth Uplift is that project.
+281. **Case-study openings made consistent**: every hero now runs eyebrow →
+     h1 → one-line lede → meta grid → banner. Added: Nationwide hub lede +
+     meta (Role, Duration, Scope, Tools); Show/Hide meta (Client, Role,
+     Outcome "Validated in user testing" — its outcomes section says
+     qualitative feedback was consistently positive with no formal metrics);
+     Rapipay lede + Year 2021 + Outcome; LinkedIn lede. All three NBS
+     studies share one Client line, "Nationwide Building Society, via IBM".
+     Ledes are compressed from each page's own overview paragraph.
+282. **Rapipay body copy aligned** with the round-46 role change: the
+     "Lead Product Designer" h2 and "As the Lead Product Designer" sentence
+     now say UI Designer. Zero occurrences of the old title remain.
+283. **About "At a glance"**: a facts grid (Experience 8 years; Focus from
+     the marquee terms; Tools from the case-study meta fields plus the
+     Shagunly stack) and a four-line timeline linking to each case study,
+     newest first — Shagunly 2026, Nationwide 3+ yrs, LinkedIn 2022, Rapipay
+     2021. No "based in", no exact Nationwide dates, no availability — none
+     of those are on record. Timeline collapses to one column under 480px.
+284. **Not Work**: one muted line under each gallery heading. These three
+     lines are mine, not his — "Entries for the annual 36 Days of Type
+     challenge — letterforms as 3D renders." / "AI-generated imagery,
+     prompted and curated." / "Composition practice, off the clock." Kept
+     descriptive; the only thing asserted is what the images visibly are.
+285. **Hygiene**: retired fonts `Inter-var.woff2` and `SpaceGrotesk-var.woff2`
+     removed (zero references since round 10); dead `.closing-grid` rules
+     removed from shagunly.css (markup went in round 45).
