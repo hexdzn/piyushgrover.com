@@ -1812,3 +1812,13 @@ iPad silhouette.
 285. **Hygiene**: retired fonts `Inter-var.woff2` and `SpaceGrotesk-var.woff2`
      removed (zero references since round 10); dead `.closing-grid` rules
      removed from shagunly.css (markup went in round 45).
+
+## Round 48 — Title motion removed entirely (2026-09-09)
+
+286. **Piyush: "text title is still fluid on click."** The click/tap wave
+     kept from round 46 is gone too. `js/hero-type.js` deleted, its script
+     tag removed from index.html, and the per-letter / wave CSS removed.
+     The hero heading is now plain text in two lines and nothing about it
+     moves. The particle field's cursor repulsion and click burst stay
+     (that is the background, not the text). **Standing rule: no motion on
+     the hero title.**

@@ -337,21 +337,6 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
 /* Two lines on anything wider than a phone; natural wrap below that. */
 .hero-title .hl { display: inline; }
 @media (min-width: 761px) { .hero-title .hl { display: block; } }
-/* Per-letter spans (split at runtime by hero-type.js) so a click can send a
-   wave down the line. Atomic inlines don't receive letter-spacing, so the
-   heading's -0.03em is re-applied as a margin. */
-.hero-title.is-kinetic { letter-spacing: 0; }
-.hero-title .ch {
-  display: inline-block;
-  margin-right: -0.03em;
-  transition: color 0.35s ease;
-}
-.hero-title .ch.wave { animation: chwave 0.7s var(--ease-out); }
-@keyframes chwave {
-  0%   { font-variation-settings: 'wght' 650, 'wdth' 94; transform: none; }
-  40%  { font-variation-settings: 'wght' 900, 'wdth' 110; transform: translateY(-0.08em); color: var(--accent); }
-  100% { font-variation-settings: 'wght' 650, 'wdth' 94; transform: none; }
-}
 .hero .hero-cta-row { display: flex; align-items: center; gap: 1.6rem; margin-top: var(--space-3); flex-wrap: wrap; }
 @media (max-width: 760px) { .hero .scroll-hint { display: none; } }
 .hero .scroll-hint {
