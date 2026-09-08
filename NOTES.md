@@ -1594,3 +1594,178 @@ iPad silhouette.
      elements, zero rail collisions, zero dead anchors, zero broken images.
      Page height at 1440px is now 14,694px, down from ~20,000 before the
      round-43/44 cuts.
+
+## Round 45 — Two-line kinetic hero, visible eggs, gaming in About, Shagunly cut again (2026-09-08)
+
+263. **Hero title now breaks on two lines** ("Designing Fluid and / Functional
+     Interfaces", 19/21 characters) at every width above 760px. It had been
+     wrapping to *four* lines at 1440px (`max-width: 11ch` at 92px) — a tall
+     stack that pushed the stat line and CTAs down and read as four short
+     shouts rather than one sentence. Implemented as two `.hl` spans that are
+     `display:block` from 761px and inline below, so phones still wrap
+     naturally (at 390px it still lands on the same two lines). Piyush asked "two lines? what say?" —
+     yes: 19/21 is the balanced split; "Designing Fluid / and Functional
+     Interfaces" (15/25) is lopsided.
+264. **Kinetic title** (new `js/hero-type.js`): the heading is split into
+     per-letter spans at runtime; Archivo VF's weight (650→900) and width
+     (94→108) axes bloom for letters within 170px of the pointer, with
+     smoothstep falloff and a lerp so it feels fluid rather than jumpy. A
+     click or tap sends a 22ms-staggered wave down the line (weight 900,
+     width 110, accent colour at the crest). Rest positions are measured
+     once and on resize, never mid-bloom, so a widening letter pushing its
+     neighbours can't feed back into the distance maths. Markup stays plain
+     text — the h1 gets an `aria-label` with the full sentence and the letter
+     spans are `aria-hidden`. Atomic inlines don't receive `letter-spacing`,
+     so the heading's -0.03em is reapplied as a per-letter negative margin.
+     Off entirely under `prefers-reduced-motion`; tap-to-wave only on touch.
+265. **Particle field reacts to the pointer** (`js/hero.js`): a 1.5-unit
+     repulsion radius parts the flow around the cursor, and a click or tap
+     anywhere on the banner that isn't a link or button sends a ring of
+     particles outward (3.2-unit radius). Impulses live in a separate
+     velocity buffer that decays at 0.88 per frame, so the flow field
+     reclaims them on its own. Repulsion is desktop-only; taps burst on
+     mobile too. Skipped under reduced motion (static frame as before).
+266. **Two new eggs, both discoverable on purpose** (the brief: "slightly
+     more approachable and visible"):
+     - **Idle hint (home).** Eight quiet seconds on the hero with no scroll
+       and the vertical "Scroll" cue becomes "Psst — type my name" in the
+       accent colour — a nudge toward egg 5. Reverts on first scroll or once
+       the name is typed. Desktop only (the cue is hidden on phones).
+     - **Aim test (About).** A visible mono pill with a pulsing dot and a
+       controller glyph sits at the end of the new gaming paragraph
+       (custom-cursor label "Play"). Click: five osu!-style targets appear
+       one at a time, each with a ring that closes over 1.4s; hit or miss,
+       the next spawns. Scored toast at the end — "5/5 — flawless. Now do
+       it on a controller." / "n/5 — solid. One more warm-up round?" /
+       "n/5 — blame the mouse." / "0/5 — controller player? Respect." —
+       copy scores the round only, no claims about anyone's rank. Escape
+       aborts. Targets are real buttons, spawn clear of the header, and
+       work with taps on phones.
+     - The footer ♥ now advertises itself: hovering shows the cursor label
+       "♥ ×3". The console hint mentions the aim test.
+267. **About: gaming paragraph added** (Piyush's ask; his list). "Off the
+     clock, I game — mostly FPS titles like Valorant and Call of Duty, with
+     Rocket League and Forza Horizon 6 in the rotation." Rocket League and
+     Forza aren't FPS, so the sentence is phrased to keep that accurate. No
+     rank, hours, or platform claims. Same type size as the two existing
+     paragraphs.
+268. **Shagunly cut again, this time mostly visuals.** Brief: "keep it simple
+     and not too much for user to go through even the visuals… take a call."
+     Calls made:
+     - **Overview absorbs The Problem** (9 → 8 sections). Both opened by
+       explaining what shagun is and paper registers; one sentence of
+       problem framing and the father callout now live in Overview.
+     - **Process**: the "Structure before style" h3 + paragraph restated
+       paragraph 3 almost word for word — gone. Two of three lo-fi boards
+       dropped (the capture-flow board reappeared as a flow diagram later;
+       auth/occasions lo-fi added nothing the viewer doesn't show).
+     - **Design System**: 8 boards → 4 (colour, type, buttons, chips — the
+       four the decisions actually lean on). Spacing, theme board, toggles
+       and cards dropped along with the "Components & states" sub-heading;
+       its one sentence folded into the intro.
+     - **Screens**: the two flow diagrams removed. Capture is the viewer's
+       New Shagun tab; reciprocity is stated by the People caption, card 02
+       and the "log vs balance" exploration — three times was enough.
+     - **Decisions**: the two fx-tilt "shipped" screens removed — both are
+       already in the device viewer. The four explorations stay; they are
+       the evidence.
+     - **Reflection**: closing grid removed — three screens the reader had
+       already seen (phone-new-entry was on the page four times).
+     - Hero lede loses its trailing "Live on the App Store." — the eyebrow,
+       Status row and CTA all say it.
+     Result: **27 images (was 40), 10 of them inside the one device viewer;
+     section text 1,388 → 1,210 words; page height at 1440px 14,694 →
+     11,130px.** Rail and section indices renumbered from document order.
+     `.closing-grid` CSS is now unused; left in place.
+269. **Verified** (1440 and 390): title two lines at both widths, no
+     horizontal overflow on any changed page; letters near the pointer reach
+     wght 893 / wdth 108 with smooth falloff; wave class applied on click;
+     idle hint swaps at 8s and reverts on scroll; aim test spawns five
+     in-viewport targets, scores 5/5 on five hits and leaves no stray
+     elements; Shagunly 8/8 rail anchors resolve, 0 broken images, all
+     section content inside `.wrap` (the round-41 standing check), content
+     column at 356px beside the rail. No console errors on any page.
+     Sitemap `lastmod` bumped for /, about and shagunly.
+270. **Preview-pane caveat for next time**: the pane reports
+     `visibilityState: hidden` and requestAnimationFrame only fires during
+     screenshot captures, so anything timing-based (bloom lerp, wave
+     stagger, GSAP reveals) has to be checked by dispatching events and
+     reading state, or by fronting the tab before capturing — a background
+     tab screenshots as solid black.
+271. **Suggestions raised, not acted on** (Piyush asked for suggestions):
+     footer "Menu" omits Not Work; About has no facts block (currently /
+     based in / previously / tools) and no CV link; hero primary CTA leaves
+     the site (LinkedIn) before the work is seen; project rows carry no
+     year or role; 185 unreferenced legacy JPG/PNG originals (36 MB) still
+     ship in `img/` alongside their WebP replacements; 404 page lacks the
+     theme toggle and mobile menu; sitemap `lastmod` on the seven untouched
+     pages still says 2026-07-31 though several changed in August.
+
+## Round 46 — Suggestions actioned, resume link, hover bloom pulled (2026-09-09)
+
+272. **Hover bloom removed the day after it shipped.** Piyush: "remove the
+     fluid movement on text it is very distracting." `js/hero-type.js` now
+     only splits the letters and runs the click/tap wave; no pointer
+     tracking at all. The particle field's cursor repulsion (#265) stays —
+     the note was about the text.
+273. **Resume link added** (his Google Drive file, "request access" mode).
+     Validated: the URL returns HTTP 401 to an anonymous request, which is
+     Drive's sign-in gate for a restricted file that exists — a bad ID
+     returns 404. Placement (his "add a tab? or find best placement" — my
+     call): header nav as a fourth item "Resume ↗" (opens in a new tab, so
+     the page curtain skips it), mobile menu as 04, footer Menu column, and
+     a ghost button beside "Connect on LinkedIn" on About. Not in the hero
+     — the hero already has two CTAs. **Flag:** the access gate means a
+     recruiter not signed into Google hits a sign-in wall; documented in
+     EDITING.md with the two alternatives (open the sharing, or host a PDF).
+274. **Footer Contact is not a dummy** — it is `mailto:piyushggrover@gmail.com`
+     (set in round 2, #19, because the Wix footer's Contact had no target).
+     Kept.
+275. **Suggestions 1, 3, 4, 5, 6, 7 from #271 actioned** on his "take your
+     call":
+     1. Footer Menu now lists Work · Not Work · About · Resume · Contact.
+     3. Hero CTAs swapped: solid "Latest projects ↓" first, ghost
+        "LinkedIn ↗" second — see the work before leaving the site.
+     4. Project rows carry a mono "year · role" line under the title
+        (`.p-body` / `.p-meta`), from his message: Shagunly "2026 · Founder,
+        design & build"; Nationwide "2+ years · Sr. Product
+        Designer, via IBM"; Rapipay "2021 · UI Designer"; LinkedIn "2022 ·
+        Product Designer, via Accenture" (the year was already on the page's
+        Duration field; he didn't recall it).
+     5. **182 unreferenced legacy JPG/PNG originals deleted from `img/` and
+        `video/` (≈36 MB)** via `git rm`, so they stay in history. The
+        check scans every html/css/js file plus sitemap for `img/` and
+        `video/` paths, and asserts nothing under `img/og/` is flagged.
+        Nine Shagunly design SVGs that rounds 43/45 had unlinked were
+        swept up too and were **restored** — they are his Figma exports and
+        may come back; SVGs cost nothing. `img/` is now 11 MB.
+     6. 404 page gets the full header (theme toggle, menu button) and the
+        mobile menu overlay; it only loads main.js, which handles both.
+     7. Sitemap `lastmod` set to 2026-09-09 on every page — the nav change
+        genuinely touched all of them.
+276. **Case-study claims aligned to what he told me.** Rapipay Role: "Lead
+     Product Designer" → **"UI Designer"** (his words: "rapipay was in 2021,
+     UI designer"; the old value was inherited Wix copy). LinkedIn meta gets
+     a new row **Via: Accenture** (round 1 #4 had noted Accenture appeared
+     nowhere on the live site; he has now confirmed it). Both one-line
+     reverts if he meant otherwise.
+277. **Two scripting notes for next time.** (a) An f-string containing a
+     backslash-escaped quote is a compile-time SyntaxError, so the whole
+     script ran zero lines — check for partial writes before assuming
+     anything landed (nothing had). (b) `git restore` on a globbed set of
+     deleted paths brought back the legacy JPG/PNGs alongside the SVGs I
+     wanted; re-removed them by extension. Restore by explicit list.
+     (c) **The reference scanner's path regex excluded `)`**, so two
+     referenced files with parentheses in their Wix-era names —
+     `img/home/Group-885-(1)_edited.webp` (Rapipay hover preview) and
+     `img/rapipay/Illustration-(1).webp` — were flagged unreferenced and
+     deleted. Caught by a second pass that checks every deleted path
+     against the raw source text; both restored, and a final attribute-
+     level check (`src`/`href`/`data-full`/`poster`/`url()`) reports zero
+     missing files. Lesson: match on the attribute value, not a character
+     class guess at what a path looks like.
+278. **Phone layout for the row meta**: at 390px the long Shagunly tag left
+     the meta line a 41px-wide column that wrapped to seven lines. Below
+     640px the tag now drops under the title (`grid-column: 2; grid-row: 2`,
+     left-aligned) so title and meta keep the full width. Shagunly's meta
+     also shortened to "2026 · Founder, design & build".

@@ -178,6 +178,7 @@ li { margin-bottom: 0.35em; }
   min-height: 24px;
 }
 .nav-links a:hover, .nav-links a[aria-current='page'] { color: var(--text); }
+.nav-links a .ext { font-size: 0.9em; margin-left: 0.25em; opacity: 0.7; }
 .nav-links a[aria-current='page']::after {
   content: '';
   position: absolute;
@@ -332,7 +333,25 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
     var(--bg);
 }
 .hero .hero-eyebrow { display: flex; align-items: center; gap: 0.7rem; }
-.hero h1 { max-width: 11ch; margin-bottom: 0.4em; }
+.hero h1 { margin-bottom: 0.4em; }
+/* Two lines on anything wider than a phone; natural wrap below that. */
+.hero-title .hl { display: inline; }
+@media (min-width: 761px) { .hero-title .hl { display: block; } }
+/* Per-letter spans (split at runtime by hero-type.js) so a click can send a
+   wave down the line. Atomic inlines don't receive letter-spacing, so the
+   heading's -0.03em is re-applied as a margin. */
+.hero-title.is-kinetic { letter-spacing: 0; }
+.hero-title .ch {
+  display: inline-block;
+  margin-right: -0.03em;
+  transition: color 0.35s ease;
+}
+.hero-title .ch.wave { animation: chwave 0.7s var(--ease-out); }
+@keyframes chwave {
+  0%   { font-variation-settings: 'wght' 650, 'wdth' 94; transform: none; }
+  40%  { font-variation-settings: 'wght' 900, 'wdth' 110; transform: translateY(-0.08em); color: var(--accent); }
+  100% { font-variation-settings: 'wght' 650, 'wdth' 94; transform: none; }
+}
 .hero .hero-cta-row { display: flex; align-items: center; gap: 1.6rem; margin-top: var(--space-3); flex-wrap: wrap; }
 @media (max-width: 760px) { .hero .scroll-hint { display: none; } }
 .hero .scroll-hint {
@@ -344,7 +363,10 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
   text-transform: uppercase;
   color: var(--text-muted);
   writing-mode: vertical-rl;
+  transition: color 0.5s ease;
 }
+/* Idle hint (eggs.js swaps the label after a quiet spell on the hero) */
+.hero .scroll-hint.egg-hint { color: var(--accent); }
 
 /* Buttons */
 .btn {
@@ -429,7 +451,29 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
   transition: color 0.3s ease;
 }
 .project-row:hover .p-title { color: var(--accent); }
+/* Year · role under the title — recruiters skim for both */
+.project-row .p-body { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
+.project-row .p-meta {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
 .project-row .p-tag { font-size: 0.85rem; color: var(--text-muted); text-align: right; }
+/* Phones: the tag drops under the title so title + meta keep the full width
+   instead of being squeezed beside a long tag ("iOS · Live on the App Store"
+   left the meta line a 41px column at 390px). */
+@media (max-width: 640px) {
+  .project-row { grid-template-columns: auto minmax(0, 1fr) auto; row-gap: 0.6rem; }
+  /* every cell placed explicitly — row-locked items are auto-placed before
+     free ones, so without this the arrow grabbed column 2 ahead of the title */
+  .project-row .num { grid-column: 1; grid-row: 1; }
+  .project-row .p-body { grid-column: 2; grid-row: 1; }
+  .project-row .p-arrow { grid-column: 3; grid-row: 1; }
+  .project-row .p-tag { grid-column: 2; grid-row: 2; text-align: left; }
+}
 .project-row .p-arrow { font-size: 1.4rem; color: var(--text-muted); transition: transform 0.35s var(--ease-out), color 0.3s ease; }
 .project-row:hover .p-arrow { transform: translate(6px, -6px); color: var(--text); }
 
@@ -809,6 +853,62 @@ html.no-js .preloader { display: none; }
 .marquee-track span.egg-hearts::after { content: '♥'; }
 @media (prefers-reduced-motion: reduce) {
   .egg-spin { animation: none; }
+}
+
+/* Aim test (About) — a visible egg: the pill invites the click, the targets
+   are osu!-style approach circles that close over 1.4s. */
+.egg-aim {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  vertical-align: middle;
+  margin-left: 0.35rem;
+  padding: 0.45rem 0.95rem 0.45rem 0.8rem;
+  border-radius: 99px;
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.3s ease, border-color 0.3s ease, transform 0.3s var(--ease-out);
+}
+.egg-aim::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: aimpulse 1.8s ease-in-out infinite;
+}
+.egg-aim:hover, .egg-aim:focus-visible { color: var(--text); border-color: var(--text); transform: translateY(-2px); }
+@keyframes aimpulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+  60% { box-shadow: 0 0 0 7px transparent; }
+}
+.aim-target {
+  position: fixed;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: radial-gradient(circle, var(--accent) 0 17%, transparent 18% 100%);
+  z-index: 305;
+  cursor: crosshair;
+  animation: aimpop 0.22s var(--ease-out);
+  transition: transform 0.22s var(--ease-out), opacity 0.22s ease;
+}
+.aim-target::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 2px solid var(--text-muted);
+  animation: aimring var(--life, 1400ms) linear forwards;
+}
+.aim-target.hit { transform: scale(1.4); opacity: 0; }
+.aim-target.miss { transform: scale(0.6); opacity: 0; }
+@keyframes aimpop { from { transform: scale(0.4); opacity: 0; } }
+@keyframes aimring { from { transform: scale(1.5); opacity: 1; } to { transform: scale(0.9); opacity: 0.2; } }
+@media (prefers-reduced-motion: reduce) {
+  .egg-aim::before, .aim-target, .aim-target::after { animation: none; }
 }
 
 /* Page curtain transition */

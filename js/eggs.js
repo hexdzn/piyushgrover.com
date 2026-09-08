@@ -91,6 +91,9 @@
   if (heart) {
     var taps = 0, tapTimer = null;
     heart.classList.add('egg-heart');
+    // let the custom cursor give the game away on hover
+    heart.setAttribute('data-cursor', 'view');
+    heart.setAttribute('data-cursor-label', '♥ ×3');
     heart.addEventListener('click', function () {
       taps++;
       heart.classList.remove('beat');
@@ -197,6 +200,7 @@
     nPos = (c === NAME[nPos]) ? nPos + 1 : (c === NAME[0] ? 1 : 0);
     if (nPos === NAME.length) {
       nPos = 0;
+      clearHint();
       confetti(innerWidth / 2, innerHeight * 0.35, 110);
       toast('You rang? → piyushggrover@gmail.com');
       // marquee asterisks turn to hearts for a moment
@@ -207,6 +211,93 @@
     }
   });
 
+  /* ---------- Egg 7: the idle hint (home) ----------
+     Someone who sits on the hero for eight seconds without scrolling is
+     curious. The "Scroll" cue quietly turns into a nudge toward egg 5. */
+  var hint = document.querySelector('.hero .scroll-hint');
+  var hintTimer = null;
+  function clearHint() {
+    clearTimeout(hintTimer);
+    if (hint && hint.classList.contains('egg-hint')) {
+      hint.classList.remove('egg-hint');
+      hint.textContent = 'Scroll';
+    }
+  }
+  if (hint && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    hintTimer = setTimeout(function () {
+      if (window.scrollY > 40 || nPos > 0) return;
+      hint.textContent = 'Psst — type my name';
+      hint.classList.add('egg-hint');
+    }, 8000);
+    window.addEventListener('scroll', clearHint, { passive: true, once: true });
+  }
+
+  /* ---------- Egg 8: aim test (about) ----------
+     Five targets, 1.4s each, click or tap. Nothing is claimed about anyone's
+     rank; the copy only scores the round. */
+  var aimBtn = document.querySelector('.egg-aim');
+  if (aimBtn) {
+    var ROUNDS = 5, LIFE = 1400;
+    var aimLive = false, aimHits = 0, aimRound = 0, aimTarget = null, aimExpire = null;
+
+    aimBtn.addEventListener('click', function () {
+      if (aimLive) return;
+      aimLive = true; aimHits = 0; aimRound = 0;
+      toast('Five targets. Hit them before the ring closes.');
+      setTimeout(nextTarget, 1100);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && aimLive) { aimLive = false; if (aimTarget) aimTarget.remove(); clearTimeout(aimExpire); }
+    });
+
+    function nextTarget() {
+      if (!aimLive) return;
+      if (aimRound >= ROUNDS) return finishAim();
+      aimRound++;
+      var size = 64, pad = 28, top = 96;
+      var x = pad + Math.random() * Math.max(1, innerWidth - size - pad * 2);
+      var y = top + Math.random() * Math.max(1, innerHeight - size - top - pad);
+      var t = document.createElement('button');
+      t.type = 'button';
+      t.className = 'aim-target';
+      t.setAttribute('aria-label', 'Target ' + aimRound + ' of ' + ROUNDS);
+      t.style.left = x + 'px';
+      t.style.top = y + 'px';
+      t.style.setProperty('--life', LIFE + 'ms');
+      document.body.appendChild(t);
+      aimTarget = t;
+      var done = false;
+      aimExpire = setTimeout(function () {
+        if (done) return;
+        done = true;
+        t.classList.add('miss');
+        setTimeout(function () { t.remove(); }, 240);
+        nextTarget();
+      }, LIFE);
+      t.addEventListener('pointerdown', function () {
+        if (done) return;
+        done = true;
+        clearTimeout(aimExpire);
+        aimHits++;
+        var r = t.getBoundingClientRect();
+        confetti(r.left + r.width / 2, r.top + r.height / 2, 18);
+        t.classList.add('hit');
+        setTimeout(function () { t.remove(); }, 240);
+        setTimeout(nextTarget, 280);
+      });
+    }
+    function finishAim() {
+      aimLive = false;
+      var h = aimHits;
+      var msg;
+      if (h === ROUNDS) { msg = '5/5 — flawless. Now do it on a controller.'; confetti(innerWidth / 2, innerHeight * 0.4, 120); }
+      else if (h >= 3) msg = h + '/5 — solid. One more warm-up round?';
+      else if (h >= 1) msg = h + '/5 — blame the mouse.';
+      else msg = '0/5 — controller player? Respect.';
+      toast(msg);
+    }
+  }
+
   /* ---------- Egg 6: for the ones who open the console ---------- */
   try {
     console.log(
@@ -214,7 +305,7 @@
       'background:#6c92ff;color:#0b0c0e;font-weight:700;padding:4px 8px;border-radius:3px 0 0 3px;font-family:monospace;',
       'background:#15171c;color:#e9e7e2;padding:4px 8px;border-radius:0 3px 3px 0;font-family:monospace;'
     );
-    console.log('%cInspecting the craft? Good instinct. There\'s a Konami surprise on the keyboard, and the footer ♥ likes attention. → piyushggrover@gmail.com',
+    console.log('%cInspecting the craft? Good instinct. There\'s a Konami surprise on the keyboard, the footer ♥ likes attention, and the About page has an aim test. → piyushggrover@gmail.com',
       'color:#91959d;font-family:monospace;');
     // (no other secrets here — keep looking)
   } catch (e) {}

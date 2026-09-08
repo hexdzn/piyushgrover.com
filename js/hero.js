@@ -104,6 +104,46 @@ function init(canvas) {
     });
   }
 
+  // Pointer interaction: the field parts around the cursor, and a click or
+  // tap anywhere on the banner sends a ring of particles outward. Impulses
+  // live in a separate velocity buffer that decays each frame, so the flow
+  // field reclaims the particles on its own.
+  const vel = new Float32Array(COUNT * 2);
+  let ptrOn = false, ptrX = 0, ptrY = 0;
+  const PUSH_R = 1.5, BURST_R = 3.2;
+  function toWorld(clientX, clientY) {
+    const r = canvas.getBoundingClientRect();
+    const nx = ((clientX - r.left) / (r.width || 1)) * 2 - 1;
+    const ny = -(((clientY - r.top) / (r.height || 1)) * 2 - 1);
+    const vh = 2 * camera.position.z * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    return [nx * vh * camera.aspect / 2 + camera.position.x, ny * vh / 2 + camera.position.y];
+  }
+  function burst(wx, wy) {
+    for (let i = 0; i < COUNT; i++) {
+      const ix = i * 3;
+      const dx = p0(ix) - wx, dy = p0(ix + 1) - wy;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      if (d < BURST_R && d > 1e-3) {
+        const f = 0.24 * (1 - d / BURST_R);
+        vel[i * 2] += (dx / d) * f;
+        vel[i * 2 + 1] += (dy / d) * f;
+      }
+    }
+  }
+  const p0 = (k) => geo.attributes.position.array[k];
+  const hero = canvas.parentElement;
+  if (!reduced) {
+    if (!isMobile) {
+      hero.addEventListener('pointermove', (e) => { ptrOn = true; [ptrX, ptrY] = toWorld(e.clientX, e.clientY); });
+      hero.addEventListener('pointerleave', () => { ptrOn = false; });
+    }
+    hero.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('a, button')) return;
+      const [wx, wy] = toWorld(e.clientX, e.clientY);
+      burst(wx, wy);
+    });
+  }
+
   function resize() {
     const w = canvas.clientWidth || canvas.parentElement.clientWidth;
     const h = canvas.clientHeight || canvas.parentElement.clientHeight;
@@ -135,6 +175,24 @@ function init(canvas) {
       p[ix] += fx * sp + 0.12 * sp;          // slight constant drift to the right
       p[ix + 1] += fy * sp;
       p[ix + 2] += fz * sp;
+      // pointer repulsion + decaying impulses
+      if (ptrOn) {
+        const dx = p[ix] - ptrX, dy = p[ix + 1] - ptrY;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < PUSH_R * PUSH_R && d2 > 1e-6) {
+          const d = Math.sqrt(d2);
+          const k = 1 - d / PUSH_R;
+          const f = k * k * 0.2 * dt;
+          vel[i * 2] += (dx / d) * f;
+          vel[i * 2 + 1] += (dy / d) * f;
+        }
+      }
+      const vx = vel[i * 2], vy = vel[i * 2 + 1];
+      if (vx !== 0 || vy !== 0) {
+        p[ix] += vx; p[ix + 1] += vy;
+        vel[i * 2] = Math.abs(vx) < 1e-4 ? 0 : vx * 0.88;
+        vel[i * 2 + 1] = Math.abs(vy) < 1e-4 ? 0 : vy * 0.88;
+      }
       // wrap around bounds
       if (p[ix] > BOUND) p[ix] = -BOUND;
       if (p[ix] < -BOUND) p[ix] = BOUND;

@@ -92,6 +92,19 @@ These live in the `meta-grid` block near the top of each case study:
 **This is the thing most likely to go stale.** When a project ships, or you
 change jobs, this is what needs updating.
 
+### Update the resume link
+
+The Resume link appears in four places on every page — the header nav, the
+mobile menu, the footer Menu column, and the About page button. All point at
+the same Google Drive URL. To change it, search the repo for
+`drive.google.com` and replace every occurrence (⌘F in the GitHub editor, one
+file at a time — there are eleven pages plus `404.html`).
+
+**Access:** the Drive file is set to "request access". Recruiters who aren't
+signed into Google see a sign-in wall first. If that costs you a call-back,
+set the file to "Anyone with the link — Viewer", or drop a PDF into the repo
+and point the link at `resume.pdf` instead.
+
 ### Change the page title or Google description
 
 At the top of each file, inside `<head>`:
@@ -113,11 +126,14 @@ In `index.html`, find `project-row`. Each project is one block:
 ```html
 <a class="project-row" href="shagunly.html" data-preview="shagunly" data-cursor="view" data-reveal>
   <span class="num">01</span>
-  <span class="p-title">Shagunly</span>
+  <span class="p-body"><span class="p-title">Shagunly</span><span class="p-meta">2026 · Founder, design &amp; build</span></span>
   <span class="p-tag">iOS · Live on the App Store</span>
   <span class="p-arrow">↗</span>
 </a>
 ```
+
+`p-meta` is the small "year · role" line under the title. Keep it honest and
+update it when a role or date changes.
 
 To reorder, cut and paste whole blocks, then **renumber the `num` values** so
 they read 01, 02, 03, 04 down the page.
