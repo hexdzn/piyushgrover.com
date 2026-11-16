@@ -1,9 +1,10 @@
-/* Home hero — Three.js particle flow field.
-   An abstract "data-flow" motif: particles drifting along a curl-like noise
-   field, a quiet nod to transaction flows / systems work. Theme-aware,
-   degrades on mobile (fewer particles), renders a single static frame under
-   prefers-reduced-motion, and leaves the CSS gradient fallback when WebGL
-   is unavailable. */
+/* Home hero — Three.js galaxy.
+   A tilted spiral of stars that turns very slowly on its own, over a sparse
+   field of background stars that fade in and out. Nothing reacts to the
+   pointer: the motion is ambient, slow enough to read as stillness at a
+   glance. Theme-aware, lighter on mobile (fewer stars), renders a single
+   static frame under prefers-reduced-motion, and leaves the CSS gradient
+   fallback when WebGL is unavailable. */
 import * as THREE from 'three';
 
 const canvas = document.getElementById('hero-canvas');
@@ -12,6 +13,11 @@ if (canvas) init(canvas);
 function cssColor(name) {
   const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   return new THREE.Color(v);
+}
+
+// Roughly normal-distributed random number in about [-1, 1]
+function gauss() {
+  return (Math.random() + Math.random() + Math.random() + Math.random() - 2) / 2;
 }
 
 function init(canvas) {
@@ -31,118 +37,79 @@ function init(canvas) {
   const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
   camera.position.z = 7;
 
-  const COUNT = isMobile ? 900 : 3200;
-  const BOUND = 9;
-
-  const positions = new Float32Array(COUNT * 3);
-  const speeds = new Float32Array(COUNT);
-  const phases = new Float32Array(COUNT);
-  for (let i = 0; i < COUNT; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * BOUND * 2;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * BOUND;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 4;
-    speeds[i] = 0.3 + Math.random() * 0.9;
-    phases[i] = Math.random() * Math.PI * 2;
-  }
-  const geo = new THREE.BufferGeometry();
-  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-  // Soft round sprite so points don't render as squares
   const sprite = makeSprite();
-
-  const mat = new THREE.PointsMaterial({
-    size: isMobile ? 0.065 : 0.055,
-    map: sprite,
-    transparent: true,
-    depthWrite: false,
-    sizeAttenuation: true
+  const makeMat = (size) => new THREE.PointsMaterial({
+    size, map: sprite, transparent: true, depthWrite: false, sizeAttenuation: true
   });
 
-  const points = new THREE.Points(geo, mat);
-  scene.add(points);
+  /* ---- The galaxy: a three-armed spiral disc, seen at an angle ---- */
+  const GALAXY_COUNT = isMobile ? 900 : 2600;
+  const RADIUS = 10.5;
+  const ARMS = 3;
+  const gPos = new Float32Array(GALAXY_COUNT * 3);
+  for (let i = 0; i < GALAXY_COUNT; i++) {
+    const r = Math.pow(Math.random(), 0.62) * RADIUS;      // denser toward the core
+    const arm = (i % ARMS) * (Math.PI * 2 / ARMS);
+    const wind = r * 0.42;                                  // arms trail as they go out
+    const scatter = gauss() * (0.55 + r * 0.035);           // loose, not drawn-on, arms
+    const a = arm + wind + scatter;
+    gPos[i * 3] = Math.cos(a) * r;
+    gPos[i * 3 + 1] = gauss() * 0.32 * (1 - 0.6 * r / RADIUS); // thin disc, thicker at core
+    gPos[i * 3 + 2] = Math.sin(a) * r;
+  }
+  const gGeo = new THREE.BufferGeometry();
+  gGeo.setAttribute('position', new THREE.BufferAttribute(gPos, 3));
+  const gMat = makeMat(isMobile ? 0.06 : 0.05);
+  const galaxy = new THREE.Points(gGeo, gMat);
 
-  // A few accent particles, slightly larger
-  const ACCENT_COUNT = Math.floor(COUNT * 0.04);
-  const aPos = new Float32Array(ACCENT_COUNT * 3);
-  for (let i = 0; i < ACCENT_COUNT * 3; i++) aPos[i] = positions[i];
+  // A few larger accent-coloured stars riding the same disc
+  const ACCENT_COUNT = Math.floor(GALAXY_COUNT * 0.04);
   const aGeo = new THREE.BufferGeometry();
-  aGeo.setAttribute('position', new THREE.BufferAttribute(aPos, 3));
-  const aMat = new THREE.PointsMaterial({
-    size: 0.09, map: sprite, transparent: true, depthWrite: false, sizeAttenuation: true
-  });
-  const aPoints = new THREE.Points(aGeo, aMat);
-  scene.add(aPoints);
+  aGeo.setAttribute('position', new THREE.BufferAttribute(gPos.slice(0, ACCENT_COUNT * 3), 3));
+  const aMat = makeMat(0.085);
+  const accents = new THREE.Points(aGeo, aMat);
+
+  // spin = turns about the disc's own axis; tilt = how we look at it
+  const spin = new THREE.Group();
+  spin.add(galaxy, accents);
+  const tilt = new THREE.Group();
+  tilt.add(spin);
+  tilt.rotation.set(1.02, 0, 0.32);
+  tilt.position.set(isMobile ? 0.6 : 2.4, isMobile ? 1.2 : 0.4, -3);
+  scene.add(tilt);
+
+  /* ---- Background stars: three layers that fade on different beats ---- */
+  const FIELD_PER_LAYER = isMobile ? 110 : 260;
+  const fieldMats = [];
+  const field = new THREE.Group();
+  for (let l = 0; l < 3; l++) {
+    const fp = new Float32Array(FIELD_PER_LAYER * 3);
+    for (let i = 0; i < FIELD_PER_LAYER; i++) {
+      fp[i * 3] = (Math.random() - 0.5) * 30;
+      fp[i * 3 + 1] = (Math.random() - 0.5) * 16;
+      fp[i * 3 + 2] = -2 - Math.random() * 6;
+    }
+    const fg = new THREE.BufferGeometry();
+    fg.setAttribute('position', new THREE.BufferAttribute(fp, 3));
+    const fm = makeMat(0.05);
+    fieldMats.push(fm);
+    field.add(new THREE.Points(fg, fm));
+  }
+  scene.add(field);
+
+  let baseOpacity = 0.7;
   applyTheme();
 
   function applyTheme() {
     const light = document.documentElement.getAttribute('data-theme') === 'light';
-    const accent = cssColor('--accent');
     const base = cssColor('--text-muted');
-    mat.color = base;
-    mat.opacity = light ? 0.55 : 0.7;
-    mat.blending = light ? THREE.NormalBlending : THREE.AdditiveBlending;
-    aMat.color = accent;
-    aMat.opacity = light ? 0.8 : 0.9;
-    aMat.blending = mat.blending;
+    const blending = light ? THREE.NormalBlending : THREE.AdditiveBlending;
+    baseOpacity = light ? 0.6 : 0.7;
+    gMat.color = base; gMat.opacity = baseOpacity; gMat.blending = blending;
+    aMat.color = cssColor('--accent'); aMat.opacity = light ? 0.9 : 0.9; aMat.blending = blending;
+    fieldMats.forEach((m) => { m.color = base; m.blending = blending; });
   }
   window.addEventListener('themechange', () => { applyTheme(); if (reduced) renderOnce(); });
-
-  // Pseudo curl-noise flow field (cheap, no lib)
-  function flow(x, y, z, t) {
-    const s = 0.22;
-    const fx = Math.sin(y * s + t * 0.25) + 0.5 * Math.cos(z * s * 1.7 + t * 0.15);
-    const fy = Math.sin(z * s * 1.3 + t * 0.2) * 0.45 + 0.2 * Math.sin(x * s * 0.8 + t * 0.1);
-    const fz = Math.cos(x * s + t * 0.12) * 0.3;
-    return [fx, fy, fz];
-  }
-
-  let mouseX = 0, mouseY = 0;
-  if (!isMobile) {
-    document.addEventListener('mousemove', (e) => {
-      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-    });
-  }
-
-  // Pointer interaction: the field parts around the cursor, and a click or
-  // tap anywhere on the banner sends a ring of particles outward. Impulses
-  // live in a separate velocity buffer that decays each frame, so the flow
-  // field reclaims the particles on its own.
-  const vel = new Float32Array(COUNT * 2);
-  let ptrOn = false, ptrX = 0, ptrY = 0;
-  const PUSH_R = 1.5, BURST_R = 3.2;
-  function toWorld(clientX, clientY) {
-    const r = canvas.getBoundingClientRect();
-    const nx = ((clientX - r.left) / (r.width || 1)) * 2 - 1;
-    const ny = -(((clientY - r.top) / (r.height || 1)) * 2 - 1);
-    const vh = 2 * camera.position.z * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
-    return [nx * vh * camera.aspect / 2 + camera.position.x, ny * vh / 2 + camera.position.y];
-  }
-  function burst(wx, wy) {
-    for (let i = 0; i < COUNT; i++) {
-      const ix = i * 3;
-      const dx = p0(ix) - wx, dy = p0(ix + 1) - wy;
-      const d = Math.sqrt(dx * dx + dy * dy);
-      if (d < BURST_R && d > 1e-3) {
-        const f = 0.24 * (1 - d / BURST_R);
-        vel[i * 2] += (dx / d) * f;
-        vel[i * 2 + 1] += (dy / d) * f;
-      }
-    }
-  }
-  const p0 = (k) => geo.attributes.position.array[k];
-  const hero = canvas.parentElement;
-  if (!reduced) {
-    if (!isMobile) {
-      hero.addEventListener('pointermove', (e) => { ptrOn = true; [ptrX, ptrY] = toWorld(e.clientX, e.clientY); });
-      hero.addEventListener('pointerleave', () => { ptrOn = false; });
-    }
-    hero.addEventListener('pointerdown', (e) => {
-      if (e.target.closest('a, button')) return;
-      const [wx, wy] = toWorld(e.clientX, e.clientY);
-      burst(wx, wy);
-    });
-  }
 
   function resize() {
     const w = canvas.clientWidth || canvas.parentElement.clientWidth;
@@ -160,71 +127,39 @@ function init(canvas) {
   }
   resize();
 
-  const clock = new THREE.Clock();
+  // One full turn takes about five and a half minutes.
+  const SPIN_SPEED = 0.019;
+  let t = 0;
+  let last = performance.now();
   let raf = null;
   let visible = true;
 
-  function step(dtFixed) {
-    const t = clock.getElapsedTime();
-    const dt = dtFixed !== undefined ? dtFixed : Math.min(clock.getDelta(), 0.05);
-    const p = geo.attributes.position.array;
-    for (let i = 0; i < COUNT; i++) {
-      const ix = i * 3;
-      const [fx, fy, fz] = flow(p[ix], p[ix + 1], p[ix + 2], t);
-      const sp = speeds[i] * dt * 0.55;
-      p[ix] += fx * sp + 0.12 * sp;          // slight constant drift to the right
-      p[ix + 1] += fy * sp;
-      p[ix + 2] += fz * sp;
-      // pointer repulsion + decaying impulses
-      if (ptrOn) {
-        const dx = p[ix] - ptrX, dy = p[ix + 1] - ptrY;
-        const d2 = dx * dx + dy * dy;
-        if (d2 < PUSH_R * PUSH_R && d2 > 1e-6) {
-          const d = Math.sqrt(d2);
-          const k = 1 - d / PUSH_R;
-          const f = k * k * 0.2 * dt;
-          vel[i * 2] += (dx / d) * f;
-          vel[i * 2 + 1] += (dy / d) * f;
-        }
-      }
-      const vx = vel[i * 2], vy = vel[i * 2 + 1];
-      if (vx !== 0 || vy !== 0) {
-        p[ix] += vx; p[ix + 1] += vy;
-        vel[i * 2] = Math.abs(vx) < 1e-4 ? 0 : vx * 0.88;
-        vel[i * 2 + 1] = Math.abs(vy) < 1e-4 ? 0 : vy * 0.88;
-      }
-      // wrap around bounds
-      if (p[ix] > BOUND) p[ix] = -BOUND;
-      if (p[ix] < -BOUND) p[ix] = BOUND;
-      if (p[ix + 1] > BOUND * 0.6) p[ix + 1] = -BOUND * 0.6;
-      if (p[ix + 1] < -BOUND * 0.6) p[ix + 1] = BOUND * 0.6;
-      if (p[ix + 2] > 2.5) p[ix + 2] = -2.5;
-      if (p[ix + 2] < -2.5) p[ix + 2] = 2.5;
-    }
-    geo.attributes.position.needsUpdate = true;
-
-    const ap = aGeo.attributes.position.array;
-    for (let i = 0; i < ACCENT_COUNT * 3; i += 3) {
-      ap[i] = p[i]; ap[i + 1] = p[i + 1]; ap[i + 2] = p[i + 2];
-    }
-    aGeo.attributes.position.needsUpdate = true;
-
-    // gentle mouse parallax
-    camera.position.x += (mouseX * 0.6 - camera.position.x) * 0.03;
-    camera.position.y += (-mouseY * 0.35 - camera.position.y) * 0.03;
+  function render() {
+    spin.rotation.y = t * SPIN_SPEED;
+    field.rotation.z = t * 0.0025;
+    // slow, shallow breathing of the viewpoint so the scene never sits dead still
+    camera.position.x = Math.sin(t * 0.045) * 0.25;
+    camera.position.y = Math.cos(t * 0.037) * 0.15;
     camera.lookAt(0, 0, 0);
-
+    // background stars fade between roughly 45% and 100% of base, out of step
+    fieldMats.forEach((m, l) => {
+      m.opacity = baseOpacity * (0.72 + 0.28 * Math.sin(t * (0.35 + l * 0.11) + l * 2.1));
+    });
     renderer.render(scene, camera);
   }
 
-  function loop() {
+  function loop(now) {
     raf = requestAnimationFrame(loop);
-    step();
+    t += Math.min((now - last) / 1000, 0.05);
+    last = now;
+    render();
   }
+  function start() { last = performance.now(); raf = requestAnimationFrame(loop); }
+  function stop() { cancelAnimationFrame(raf); raf = null; }
 
   function renderOnce() {
-    // advance a few fixed steps so the static frame doesn't look like a fresh grid
-    for (let i = 0; i < 30; i++) step(0.05);
+    t = 40; // a settled angle, so the still frame is not the construction pose
+    render();
   }
 
   if (reduced) {
@@ -233,15 +168,16 @@ function init(canvas) {
     // pause when tab hidden or hero scrolled away
     const io = new IntersectionObserver((entries) => {
       visible = entries[0].isIntersecting;
-      if (visible && raf === null) { clock.getDelta(); loop(); }
-      else if (!visible && raf !== null) { cancelAnimationFrame(raf); raf = null; }
+      if (visible && raf === null) start();
+      else if (!visible && raf !== null) stop();
     });
     io.observe(canvas);
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden && raf !== null) { cancelAnimationFrame(raf); raf = null; }
-      else if (!document.hidden && visible && raf === null) { clock.getDelta(); loop(); }
+      if (document.hidden && raf !== null) stop();
+      else if (!document.hidden && visible && raf === null) start();
     });
-    loop();
+    render();
+    start();
   }
 
   function makeSprite() {

@@ -104,10 +104,10 @@
       gsap.to(el, {
         opacity: 1,
         y: 0,
-        duration: 0.9,
+        duration: 0.45,
         ease: 'power3.out',
         delay: parseFloat(el.getAttribute('data-reveal-delay') || 0),
-        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+        scrollTrigger: { trigger: el, start: 'top 96%', once: true },
         onComplete: function () { el.classList.add('revealed'); }
       });
     });

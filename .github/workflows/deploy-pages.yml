@@ -23,8 +23,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      # Publish only the site itself: working notes (*.md), editor config and
+      # repo plumbing stay in the repository but are not served.
+      - name: Assemble site
+        run: |
+          mkdir _site
+          rsync -a --exclude='_site' --exclude='.git' --exclude='.github' --exclude='.claude' --exclude='.gitignore' --exclude='*.md' ./ _site/
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
