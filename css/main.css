@@ -337,6 +337,8 @@ body.menu-open .site-head { z-index: 80; background: transparent; -webkit-backdr
 /* Two lines on anything wider than a phone; natural wrap below that. */
 .hero-title .hl { display: inline; }
 @media (min-width: 761px) { .hero-title .hl { display: block; } }
+/* Button rows outside the home hero (About, case-study heroes) wrap on phones */
+.hero-cta-row { display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem 1rem; }
 .hero .hero-cta-row { display: flex; align-items: center; gap: 1.6rem; margin-top: var(--space-3); flex-wrap: wrap; }
 @media (max-width: 760px) { .hero .scroll-hint { display: none; } }
 .hero .scroll-hint {
