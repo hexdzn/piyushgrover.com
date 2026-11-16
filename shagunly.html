@@ -80,6 +80,7 @@
   </script>
   <link rel="stylesheet" href="css/main.css?v=20261117">
   <link rel="stylesheet" href="css/shagunly.css?v=20261117">
+  <link rel="stylesheet" href="css/shagunly-demo.css?v=20261117">
   <script>
     (function () {
       var t; try { t = localStorage.getItem('theme'); } catch (e) {}
@@ -127,10 +128,11 @@
       <a href="#process"><span class="idx">02</span> Process</a>
       <a href="#system"><span class="idx">03</span> Design System</a>
       <a href="#screens"><span class="idx">04</span> Screens</a>
-      <a href="#decisions"><span class="idx">05</span> Decisions</a>
-      <a href="#handoff"><span class="idx">06</span> Handoff</a>
-      <a href="#building"><span class="idx">07</span> Building It</a>
-      <a href="#reflection"><span class="idx">08</span> Reflection</a>
+      <a href="#try"><span class="idx">05</span> Try It</a>
+      <a href="#decisions"><span class="idx">06</span> Decisions</a>
+      <a href="#handoff"><span class="idx">07</span> Handoff</a>
+      <a href="#building"><span class="idx">08</span> Building It</a>
+      <a href="#reflection"><span class="idx">09</span> Reflection</a>
   </nav>
     <section class="cs-hero">
       <div class="wrap">
@@ -286,11 +288,34 @@
       </div>
     </section>
 
+    <section class="cs-section" id="try">
+      <div class="wrap">
+        <div class="cs-cols">
+          <div data-reveal>
+            <div class="cs-label"><span class="idx">05</span><span class="eyebrow" style="margin:0;">Try It</span></div>
+            <h2>Log a Shagun in Seconds</h2>
+            <div class="cs-prose" style="margin-top:1.5rem;">
+              <p>This is the app, rebuilt for the browser with sample names. Tap anything.</p>
+              <ul>
+                <li>Tap <strong>+</strong>, choose <strong>Received</strong>, an amount and a person, then <strong>Save Shagun</strong>.</li>
+                <li>Tap <strong>Plan a gift</strong> on the upcoming occasion.</li>
+                <li>Open <strong>People</strong> to see whose turn it is.</li>
+              </ul>
+            </div>
+          </div>
+          <div data-reveal data-reveal-delay="0.1">
+            <div class="sg-demo" data-sg-demo aria-label="Interactive demo of the Shagunly app"></div>
+            <p class="sg-demo-note">Simplified demo · nothing is saved</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="cs-section" id="decisions">
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">05</span><span class="eyebrow" style="margin:0;">Decisions</span></div>
+            <div class="cs-label"><span class="idx">06</span><span class="eyebrow" style="margin:0;">Decisions</span></div>
             <h2>The Calls Behind the Screens</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -341,7 +366,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">06</span><span class="eyebrow" style="margin:0;">Handoff</span></div>
+            <div class="cs-label"><span class="idx">07</span><span class="eyebrow" style="margin:0;">Handoff</span></div>
             <h2>Figma → Spec → AI Build</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -361,7 +386,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">07</span><span class="eyebrow" style="margin:0;">Building It</span></div>
+            <div class="cs-label"><span class="idx">08</span><span class="eyebrow" style="margin:0;">Building It</span></div>
             <h2>Directing the Build, Not Designing in Code</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -401,7 +426,7 @@
       <div class="wrap">
         <div class="cs-cols">
           <div data-reveal>
-            <div class="cs-label"><span class="idx">08</span><span class="eyebrow" style="margin:0;">Reflection</span></div>
+            <div class="cs-label"><span class="idx">09</span><span class="eyebrow" style="margin:0;">Reflection</span></div>
             <h2>Product Judgment, End to End</h2>
           </div>
           <div class="cs-prose" data-reveal data-reveal-delay="0.1">
@@ -468,5 +493,7 @@
   <script src="js/interactions.js?v=20261117"></script>
   <script src="js/eggs.js?v=20261117"></script>
   <script src="js/shagunly-mockup.js?v=20261117"></script>
+  <script src="js/shagunly-demo.js?v=20261117"></script>
+  <script data-goatcounter="https://hexdzn.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

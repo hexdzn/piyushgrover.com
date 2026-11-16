@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Padlock on a dark background">
+  <defs>
+    <radialGradient id="g" cx="62%" cy="38%" r="75%">
+      <stop offset="0" stop-color="#232838"/>
+      <stop offset="0.55" stop-color="#14161d"/>
+      <stop offset="1" stop-color="#0b0c0e"/>
+    </radialGradient>
+    <pattern id="d" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#ffffff" opacity="0.07"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <rect width="1600" height="900" fill="url(#d)"/>
+  <g fill="none" stroke="#6c92ff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" transform="translate(800 450)">
+    <rect x="-92" y="-22" width="184" height="150" rx="26"/>
+    <path d="M-56 -22v-48a56 56 0 0 1 112 0v48"/>
+    <circle cx="0" cy="42" r="14" fill="#6c92ff" stroke="none"/>
+    <path d="M0 54v28"/>
+  </g>
+</svg>
